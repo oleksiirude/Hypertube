@@ -2,7 +2,8 @@
 
 @section('content')
     <registration-component
-        register="{{ route('register') }}"
+        action="{{ route('register') }}"
+        login="{{ route('login') }}"
         token="{{ csrf_token() }}">
     </registration-component>
 @endsection

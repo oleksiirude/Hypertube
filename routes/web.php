@@ -1,13 +1,8 @@
 <?php
     
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', function () {return view('welcome');})->middleware('guest');
     
     Auth::routes();
     
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/main', 'MainPageController@index')->name('main');
     
-    Route::post('/test', 'HomeController@test')->name('test');
-    
-    Route::post('/axios', 'HomeController@axios')->name('axios');

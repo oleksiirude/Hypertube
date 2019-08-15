@@ -17,15 +17,6 @@ class User extends Authenticatable
     protected $fillable = [
         'id', 'username', 'first_name', 'last_name', 'email', 'password',
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
     
     /**
      * Turn off default casting [id] to int type

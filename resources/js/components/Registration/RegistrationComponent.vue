@@ -74,7 +74,7 @@
 <script>
     export default {
         mounted () {
-            let register =  document.getElementById('register');
+            let register = document.getElementById('register');
             if (register)
                 register.addEventListener('click', this.ajaxRegister);
         },
@@ -105,11 +105,10 @@
                             console.log('ajax response error');
                         } else if (ajax.readyState === 4) {
                             let validation = JSON.parse(ajax.responseText);
-                            console.log(validation);
                             if (!validation['result'])
                                 this.handleNotValidRegistrationAttempt(validation);
                             else
-                                window.location.href = this.login;
+                                this.showSuccessMessage();
                         }
                     }
                 } else
@@ -187,17 +186,39 @@
             },
 
             handleNotValidRegistrationAttempt: function (validation) {
-                let error = document.getElementsByClassName('text-danger text-center');
+                let error = document.getElementsByClassName('w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded');
                 if (error.length)
                     error[0].remove();
 
                 let parent =  document.getElementById(validation['id']);
                 let child = document.createElement('div');
                 child.innerHTML = validation['error'];
-                child.className = 'text-danger text-center';
+                child.className = 'w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded';
                 parent.parentNode.insertBefore(child, parent.nextSibling);
             },
 
+            showSuccessMessage: function () {
+                let content = document.getElementById('register-div');
+                content.innerHTML = "";
+
+                let mainDiv = document.createElement('div');
+                mainDiv.className = 'text-center';
+                mainDiv.innerHTML = 'You have been successfully registered!';
+
+                let internalDiv = document.createElement('div');
+                internalDiv.className = 'text-center';
+
+                let button = document.createElement('a');
+                button.className = 'btn btn-primary';
+                button.innerText = 'Login';
+                button.role = 'button';
+                button.href = this.login;
+
+                internalDiv.appendChild(button);
+                mainDiv.appendChild(internalDiv);
+
+                content.appendChild(mainDiv);
+            }
         },
 
         name: "RegistrationComponent",

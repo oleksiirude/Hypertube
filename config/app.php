@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Hypertube'),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,8 +66,8 @@ return [
     | ahead and set this to a sensible default for you out of the box.
     |
     */
-
-    'timezone' => 'UTC',
+    
+    'timezone' => 'Europe/Kiev',
 
     /*
     |--------------------------------------------------------------------------

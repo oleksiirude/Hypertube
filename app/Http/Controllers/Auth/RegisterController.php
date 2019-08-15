@@ -12,27 +12,15 @@
         
         use RegistersUsers;
         
-        /**
-         * Create a new controller instance.
-         *
-         * @return void
-         */
         public function __construct() {
             $this->middleware('guest');
         }
     
         public function register(Registration $request) {
             $this->create($request->all());
-            
             return response()->json(['result' => true]);
         }
-    
-        /**
-         * Create a new user instance after a valid registration.
-         *
-         * @param  array  $data
-         * @return \App\User
-         */
+        
         protected function create(array $data) {
             return User::create([
                 'id' => $this->getNewUuidForUserTable(),

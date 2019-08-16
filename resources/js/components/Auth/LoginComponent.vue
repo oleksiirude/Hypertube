@@ -3,13 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header">{{ login }}</div>
 
                     <div id="login-div" class="card-body">
                         <form id="login-form" :action="action">
 
                             <div id="username-div" class="form-group row">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right">{{ username }}</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="text" class="form-control" name="username" value="" autofocus>
@@ -17,7 +17,7 @@
                             </div>
 
                             <div id="password-div" class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ password }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password">
@@ -30,7 +30,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
 
                                         <label class="form-check-label" for="remember">
-                                            Remember Me
+                                            {{ remember_me }}
                                         </label>
                                     </div>
                                 </div>
@@ -39,11 +39,11 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button id="login" type="submit" class="btn btn-primary">
-                                        Login
+                                        {{ login }}
                                     </button>
 
                                     <a class="btn btn-link" :href="reset">
-                                        Forgot Your Password?
+                                        {{ forgot_password }}
                                     </a>
                                 </div>
                             </div>
@@ -113,7 +113,13 @@
             'action',
             'reset',
             'main',
-            'csrf_token'
+            'csrf_token',
+            // titles
+            'login',
+            'username',
+            'password',
+            'remember_me',
+            'forgot_password'
         ]
     }
 </script>

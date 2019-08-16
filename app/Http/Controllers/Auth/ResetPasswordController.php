@@ -54,7 +54,7 @@
             return response()->json([
                 'result' => false,
                 'target' => 'expired',
-                'error' => 'It seems your link is expired!',
+                'error' => trans('constant.link_expired'),
                 'id' => 'password_confirmation-div'
             ]);
         }

@@ -67,9 +67,9 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login') }}">{{ __('constant.login') }}</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('register') }}"> {{ __('constant.register') }}</a>
                     @endif
                 </div>
             @endif
@@ -78,6 +78,12 @@
                 <div class="title m-b-md">
                     Hypertube
                 </div>
+                <a href="{{ route('set.language', 'en') }}" style="text-decoration: none">
+                    <img src="{{ asset('service/en.png') }}" alt="English" style="width: 30px">
+                </a>
+                <a href="{{ route('set.language', 'uk') }}" style="text-decoration: none">
+                    <img src="{{ asset('service/uk.png') }}" alt="Ukrainian" style="width: 30px">
+                </a>
             </div>
         </div>
     </body>

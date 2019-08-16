@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Invalid username or password',
+    'failed' => 'Невiрний логiн або пароль',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

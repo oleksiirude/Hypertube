@@ -39,7 +39,7 @@
         protected function sendResetLinkFailedResponse(Request $request, $response) {
             return response()->json([
                 'result' => false,
-                'error' => "We haven't any user with this email address",
+                'error' => trans('constant.nonexistent_email'),
                 'id' => 'email-div'
             ]);
         }

@@ -5,6 +5,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\App;
     use Illuminate\Support\Facades\Auth;
 
     class LoginController extends Controller {
@@ -22,15 +23,21 @@
         public function login(Request $request) {
             $request->validate($this->rules());
             
+            $locale = session()->get('locale');
+            
             if (Auth::attempt([
                 'username' => $request->get('username'),
                 'password' => $request->get('password')],
-                $request->get('remember')))
-                    return response()->json(['result' => true]);
+                $request->get('remember'))) {
+                
+                App::setLocale($locale);
+                session()->put('locale', $locale);
+                return response()->json(['result' => true, 'locale' => App::getLocale()]);
+            }
             
             return response()->json([
                 'result' => false,
-                'error' => 'Invalid username or password',
+                'error' => trans('auth.failed'),
                 'id' => 'password-div'
             ]);
         }

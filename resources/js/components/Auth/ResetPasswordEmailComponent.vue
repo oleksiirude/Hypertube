@@ -3,13 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Reset Password</div>
+                    <div class="card-header">{{ reset_password }}</div>
 
                     <div id="reset-password-div" class="card-body">
                         <form :action="action">
 
                             <div id="email-div" class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ email }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="text" autofocus>
@@ -19,7 +19,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button id="send-email" type="submit" class="btn btn-primary">
-                                        Send Password Reset Link
+                                        {{ send_link }}
                                     </button>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
 
                 let mainDiv = document.createElement('div');
                 mainDiv.className = 'text-center';
-                mainDiv.innerHTML = 'Reset link has been successfully sent on ' + email;
+                mainDiv.innerHTML = this.successful_link + email;
 
                 content.appendChild(mainDiv);
             }
@@ -96,7 +96,12 @@
         name: "ResetPasswordEmailComponent",
         props: [
             'action',
-            'csrf_token'
+            'csrf_token',
+            // titles
+            'reset_password',
+            'email',
+            'send_link',
+            'successful_link'
         ]
     }
 </script>

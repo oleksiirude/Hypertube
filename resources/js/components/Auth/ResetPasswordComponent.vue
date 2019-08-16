@@ -3,13 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Reset Password</div>
+                    <div class="card-header">{{ set_new_password_title }}</div>
 
                     <div id="reset-password-div" class="card-body">
                         <form id="reset-password-form" :action="action">
 
                             <div id="password-div" class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ password }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" autofocus>
@@ -17,7 +17,7 @@
                             </div>
 
                             <div id="password_confirmation-div" class="form-group row">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ password_confirmation }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
@@ -27,7 +27,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button id="reset-password" type="submit" class="btn btn-primary">
-                                        Reset Password
+                                        {{ set_new_password_action }}
                                     </button>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
 
                 let button = document.createElement('a');
                 button.className = 'btn btn-primary';
-                button.innerText = 'Get new link';
+                button.innerText = this.get_new_link;
                 button.role = 'button';
                 button.href = this.new_link;
 
@@ -120,14 +120,14 @@
 
                 let mainDiv = document.createElement('div');
                 mainDiv.className = 'text-center';
-                mainDiv.innerHTML = 'Your password has been successfully reset!<br>Please, click to continue';
+                mainDiv.innerHTML = this.successful_reset;
 
                 let internalDiv = document.createElement('div');
                 internalDiv.className = 'text-center';
 
                 let button = document.createElement('a');
                 button.className = 'btn btn-primary';
-                button.innerText = 'Continue';
+                button.innerText = this.continue;
                 button.role = 'button';
                 button.href = this.main;
 
@@ -145,7 +145,15 @@
             'token',
             'main',
             'new_link',
-            'csrf_token'
+            'csrf_token',
+            // titles
+            'set_new_password_title',
+            'password',
+            'password_confirmation',
+            'set_new_password_action',
+            'successful_reset',
+            'continue',
+            'get_new_link'
         ]
     }
 </script>

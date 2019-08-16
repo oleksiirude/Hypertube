@@ -19,8 +19,10 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('registration-component', require('./components/Registration/RegistrationComponent').default);
-Vue.component('login-component', require('./components/Login/LoginComponent').default);
+Vue.component('registration-component', require('./components/Auth/RegistrationComponent').default);
+Vue.component('login-component', require('./components/Auth/LoginComponent').default);
+Vue.component('reset-password-email-component', require('./components/Auth/ResetPasswordEmailComponent').default);
+Vue.component('reset-password-component', require('./components/Auth/ResetPasswordComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

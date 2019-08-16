@@ -58,84 +58,50 @@
 <script>
     export default {
         mounted () {
-            let login = document.getElementById('login');
-            if (login)
-                login.addEventListener('click', this.ajaxLogin);
+            document.getElementById('login').addEventListener('click', this.ajaxLogin);
         },
 
         methods: {
             ajaxLogin: function (e) {
                 e.preventDefault();
 
+                let button = document.getElementById('login');
+                button.disabled = true;
                 let inputs = document.getElementById('login-form').getElementsByTagName('input');
-                let validation = this.validateInputs(inputs);
 
-                if (validation['result'] === true) {
-                    const ajax = new XMLHttpRequest();
-                    ajax.open('POST', this.action, true);
-                    ajax.setRequestHeader('Content-Type', 'application/json');
-                    ajax.send(JSON.stringify({
-                        '_token': this.token,
-                        'username': inputs[0].value,
-                        'password': inputs[1].value,
-                        'remember': inputs[2].checked
-                    }));
+                const ajax = new XMLHttpRequest();
+                ajax.open('POST', this.action, true);
+                ajax.setRequestHeader('Content-Type', 'application/json');
+                ajax.setRequestHeader('X-CSRF-TOKEN', this.csrf_token);
+                ajax.send(JSON.stringify({
+                    'username': inputs[0].value,
+                    'password': inputs[1].value,
+                    'remember': inputs[2].checked
+                }));
 
-                    ajax.onreadystatechange = () => {
-                        if (ajax.status !== 200) {
-                            console.log('ajax response error');
-                        } else if (ajax.readyState === 4) {
-                            let validation = JSON.parse(ajax.responseText);
-                            if (!validation['result'])
-                               this.handleNotValidRegistrationAttempt(validation);
-                            else
-                               window.location.href = this.main;
+                ajax.onreadystatechange = () => {
+                    if (ajax.status !== 200)
+                        console.log('ajax response error with ' + ajax.status + ' status');
+                    if (ajax.readyState === 4) {
+                        let response = JSON.parse(ajax.responseText);
+                        if (response['result'] === false) {
+                            this.handleNotValidRegistrationAttempt(response);
+                            button.disabled = false;
                         }
+                        else
+                            window.location.href = this.main;
                     }
-                } else
-                    this.handleNotValidRegistrationAttempt(validation);
-            },
-
-            validateInputs: function (inputs) {
-                if (inputs.length !== 3)
-                    return {'result': false, 'error': 'Lack of inputs', 'id': 'login-div'};
-
-                let result;
-                if ((result = this.validateUsername(inputs[0])) !== true)
-                    return result;
-                if ((result = this.validatePassword(inputs[1])) !== true)
-                    return result;
-                return {'result': true};
-            },
-
-            validateUsername: function(input) {
-                if (/^username$/.test(input.id)) {
-                    if (!input.value.length)
-                        return {'result': false, 'error': 'Username is required', 'id': 'username-div'};
-                    if (/^[a-zA-Z]{3,20}$/.test(input.value))
-                        return true;
                 }
-                return {'result': false, 'error': 'Invalid username', 'id': 'username-div'};
             },
 
-            validatePassword: function(input) {
-                if (/^password$/.test(input.id)) {
-                    if (!input.value.length)
-                        return {'result': false, 'error': 'Password is required', 'id': 'password-div'};
-                    if (/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/.test(input.value))
-                        return true;
-                }
-                return {'result': false, 'error': 'Invalid password', 'id': 'password-div'};
-            },
-
-            handleNotValidRegistrationAttempt: function (validation) {
+            handleNotValidRegistrationAttempt: function (response) {
                 let error = document.getElementsByClassName('w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded');
                 if (error.length)
                     error[0].remove();
 
-                let parent =  document.getElementById(validation['id']);
+                let parent =  document.getElementById(response['id']);
                 let child = document.createElement('div');
-                child.innerHTML = validation['error'];
+                child.innerHTML = response['error'];
                 child.className = 'w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded';
                 parent.parentNode.insertBefore(child, parent.nextSibling);
             },
@@ -147,7 +113,7 @@
             'action',
             'reset',
             'main',
-            'token'
+            'csrf_token'
         ]
     }
 </script>

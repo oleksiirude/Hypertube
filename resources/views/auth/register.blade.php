@@ -4,6 +4,6 @@
     <registration-component
         action="{{ route('register') }}"
         login="{{ route('login') }}"
-        token="{{ csrf_token() }}">
+        csrf_token="{{ csrf_token() }}">
     </registration-component>
 @endsection

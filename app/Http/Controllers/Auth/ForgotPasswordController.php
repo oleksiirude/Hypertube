@@ -1,32 +1,46 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+    namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+    use App\Http\Controllers\Controller;
+    use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Password;
 
-class ForgotPasswordController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
-    |
-    */
-
-    use SendsPasswordResetEmails;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+    class ForgotPasswordController extends Controller{
+        use SendsPasswordResetEmails;
+        
+        public function __construct() {
+            $this->middleware('guest');
+        }
+        
+        public function sendResetLinkEmail(Request $request) {
+            $request->validate($this->rules());
+            
+            $response = $this->broker()->sendResetLink(
+                $this->credentials($request)
+            );
+        
+            return $response == Password::RESET_LINK_SENT
+                ? $this->sendResetLinkResponse($request, $response)
+                : $this->sendResetLinkFailedResponse($request, $response);
+        }
+    
+        protected function rules() {
+            return [
+                'email' => 'required|email|between:5,100'
+            ];
+        }
+        
+        protected function sendResetLinkResponse(Request $request, $response) {
+            return response()->json(['result' => true]);
+        }
+        
+        protected function sendResetLinkFailedResponse(Request $request, $response) {
+            return response()->json([
+                'result' => false,
+                'error' => "We haven't any user with this email address",
+                'id' => 'email-div'
+            ]);
+        }
     }
-}

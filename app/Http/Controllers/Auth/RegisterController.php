@@ -3,8 +3,8 @@
     namespace App\Http\Controllers\Auth;
     
     use App\User;
-    use App\Http\Requests\Registration;
     use App\Http\Controllers\Controller;
+    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Foundation\Auth\RegistersUsers;
     
@@ -16,9 +16,22 @@
             $this->middleware('guest');
         }
     
-        public function register(Registration $request) {
+        public function register(Request $request) {
+            $request->validate($this->rules());
+            
             $this->create($request->all());
             return response()->json(['result' => true]);
+        }
+    
+        protected function rules() {
+            return [
+                'username' => 'required|regex:/^[a-zA-Z]{3,20}$/|unique:users',
+                'first_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
+                'last_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
+                'email' => 'required|email|between:5,100|unique:users',
+                'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
+                'password_confirmation' => 'required|same:password'
+            ];
         }
         
         protected function create(array $data) {

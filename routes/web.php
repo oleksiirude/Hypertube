@@ -1,6 +1,8 @@
 <?php
     
-    Route::get('/', function () {return view('welcome');})->middleware('guest');
+    Route::get('/', function () {return view('welcome');})
+        ->name('welcome')
+        ->middleware('guest');
     
     Auth::routes();
     

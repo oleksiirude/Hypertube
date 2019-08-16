@@ -20,14 +20,13 @@
         }
         
         public function login(Request $request) {
-            if (($result = $this->validateNotEmpty($request->all())) !== true)
-                return response()->json($result);
+            $request->validate($this->rules());
             
             if (Auth::attempt([
                 'username' => $request->get('username'),
                 'password' => $request->get('password')],
                 $request->get('remember')))
-                return response()->json(['result' => true]);
+                    return response()->json(['result' => true]);
             
             return response()->json([
                 'result' => false,
@@ -35,27 +34,11 @@
                 'id' => 'password-div'
             ]);
         }
-        
-        protected function validateNotEmpty($data) {
-            if (!isset($data['username']) || empty($data['username']))
-                return [
-                    'result' => false,
-                    'error' => 'Username is required',
-                    'id' => 'username-div'
-                ];
-            if (!isset($data['password']) || empty($data['password']))
-                return [
-                    'result' => false,
-                    'error' => 'Password is required',
-                    'id' => 'password-div'
-                ];
-            if (!isset($data['remember']) || !is_bool($data['remember']))
-                return [
-                    'result' => false,
-                    'error' => 'Lack of inputs',
-                    'id' => 'login-div'
-                ];
-            
-            return true;
+    
+        protected function rules() {
+            return [
+                'username' => 'required|regex:/^[a-zA-Z]{3,20}$/',
+                'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
+            ];
         }
     }

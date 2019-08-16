@@ -5,6 +5,6 @@
             action="{{ route('login') }}"
             reset="{{ route('password.request') }}"
             main="{{ route('main') }}"
-            token="{{ csrf_token() }}">
+            csrf_token="{{ csrf_token() }}">
     </login-component>
 @endsection

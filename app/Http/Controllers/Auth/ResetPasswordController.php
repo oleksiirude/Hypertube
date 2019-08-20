@@ -1,7 +1,8 @@
 <?php
 
     namespace App\Http\Controllers\Auth;
-    
+
+    use Validator;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
     use App\Http\Controllers\Controller;
@@ -17,7 +18,9 @@
         }
         
         public function reset(Request $request) {
-            $request->validate($this->rules());
+            $validation = Validator::make($request->all(), $this->rules());
+            if ($validation->fails())
+                return $this->specifyValidationErrors($validation);
             
             $response = $this->broker()->reset(
                 $this->credentials($request), function ($user, $password) {

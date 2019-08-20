@@ -12,6 +12,19 @@
     class Controller extends BaseController {
         use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
         
+        // specify auth validation errors
+        public function specifyValidationErrors($validation) {
+            $message = $validation->getMessageBag()->first();
+            $key = key($validation->getMessageBag()->toArray());
+            
+            return [
+                'result' => false,
+                'target' => $key,
+                'error' => $message,
+                'id' => $key . '-div'
+            ];
+        }
+        
         // get universally unique identifier for new User
         public function getNewUuidForUserTable() {
             while (true) {

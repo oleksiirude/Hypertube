@@ -1,7 +1,8 @@
 <?php
 
     namespace App\Http\Controllers\Auth;
-    
+
+    use Validator;
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
     use Illuminate\Http\Request;
@@ -21,7 +22,9 @@
         }
         
         public function login(Request $request) {
-            $request->validate($this->rules());
+            $validation = Validator::make($request->all(), $this->rules());
+            if ($validation->fails())
+                return $this->specifyValidationErrors($validation);
             
             $locale = session()->get('locale');
             

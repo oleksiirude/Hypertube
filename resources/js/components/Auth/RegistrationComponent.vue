@@ -131,16 +131,16 @@
 
                 let mainDiv = document.createElement('div');
                 mainDiv.className = 'text-center';
-                mainDiv.innerHTML = 'You have been successfully registered!';
+                mainDiv.innerHTML = this.successful_registration;
 
                 let internalDiv = document.createElement('div');
                 internalDiv.className = 'text-center';
 
                 let button = document.createElement('a');
                 button.className = 'btn btn-primary';
-                button.innerText = 'Login';
+                button.innerText = this.login_title;
                 button.role = 'button';
-                button.href = this.login;
+                button.href = this.login_route;
 
                 internalDiv.appendChild(button);
                 mainDiv.appendChild(internalDiv);
@@ -152,16 +152,18 @@
         name: "RegistrationComponent",
         props: [
             'action',
-            'login',
+            'login_route',
             'csrf_token',
             // titles
             'register',
+            'login_title',
             'username',
             'first_name',
             'last_name',
             'email',
             'password',
-            'password_confirmation'
+            'password_confirmation',
+            'successful_registration'
         ]
     }
 </script>

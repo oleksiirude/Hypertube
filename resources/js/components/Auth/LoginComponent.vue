@@ -85,7 +85,7 @@
                     if (ajax.readyState === 4) {
                         let response = JSON.parse(ajax.responseText);
                         if (response['result'] === false) {
-                            this.handleNotValidRegistrationAttempt(response);
+                            this.showErrorMessage(response);
                             button.disabled = false;
                         }
                         else
@@ -94,7 +94,7 @@
                 }
             },
 
-            handleNotValidRegistrationAttempt: function (response) {
+            showErrorMessage: function (response) {
                 let error = document.getElementsByClassName('w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded');
                 if (error.length)
                     error[0].remove();

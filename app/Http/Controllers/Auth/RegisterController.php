@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Auth;
     
     use App\User;
+    use Validator;
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,9 @@
         }
     
         public function register(Request $request) {
-            $request->validate($this->rules());
+            $validation = Validator::make($request->all(), $this->rules());
+            if ($validation->fails())
+                return $this->specifyValidationErrors($validation);
             
             $this->create($request->all());
             return response()->json(['result' => true]);

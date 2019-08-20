@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\Auth;
 
+    use Validator;
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
     use Illuminate\Http\Request;
@@ -15,7 +16,9 @@
         }
         
         public function sendResetLinkEmail(Request $request) {
-            $request->validate($this->rules());
+            $validation = Validator::make($request->all(), $this->rules());
+            if ($validation->fails())
+                return $this->specifyValidationErrors($validation);
             
             $response = $this->broker()->sendResetLink(
                 $this->credentials($request)

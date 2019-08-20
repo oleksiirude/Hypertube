@@ -15,13 +15,12 @@
         // specify auth validation errors
         public function specifyValidationErrors($validation) {
             $message = $validation->getMessageBag()->first();
-            $key = key($validation->getMessageBag()->toArray());
+            $div = key($validation->getMessageBag()->toArray());
             
             return [
                 'result' => false,
-                'target' => $key,
                 'error' => $message,
-                'id' => $key . '-div'
+                'div' => $div
             ];
         }
         

@@ -29,7 +29,7 @@
             $locale = session()->get('locale');
             
             if (Auth::attempt([
-                'username' => $request->get('username'),
+                'login' => $request->get('login'),
                 'password' => $request->get('password')],
                 $request->get('remember'))) {
                 
@@ -41,13 +41,13 @@
             return response()->json([
                 'result' => false,
                 'error' => trans('auth.failed'),
-                'id' => 'password-div'
+                'div' => 'password'
             ]);
         }
     
         protected function rules() {
             return [
-                'username' => 'required|regex:/^[a-zA-Z]{3,20}$/',
+                'login' => 'required|regex:/^[a-zA-Z]{3,20}$/',
                 'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
             ];
         }

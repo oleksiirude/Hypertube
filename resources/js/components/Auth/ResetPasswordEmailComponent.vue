@@ -1,39 +1,10 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ reset_password }}</div>
-
-                    <div id="reset-password-div" class="card-body">
-                        <form :action="action">
-
-                            <div id="email-div" class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ email }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="text" autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button id="send-email" type="submit" class="btn btn-primary">
-                                        {{ send_link }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 
 <script>
     export default {
         mounted () {
+            document.getElementById('email').focus();
             document.getElementById('send-email').addEventListener('click', this.ajaxSendResetEmailLink);
         },
 
@@ -73,7 +44,7 @@
                 if (error.length)
                     error[0].remove();
 
-                let parent = document.getElementById(response['id']);
+                let parent = document.getElementById(response['div'] + '-div');
                 let child = document.createElement('div');
                 child.innerHTML = response['error'];
                 child.className = 'w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded';
@@ -97,15 +68,9 @@
         props: [
             'action',
             'csrf_token',
-            // titles
-            'reset_password',
-            'email',
-            'send_link',
+
+            // localization titles
             'successful_link'
         ]
     }
 </script>
-
-<style scoped>
-
-</style>

@@ -56,9 +56,9 @@
         protected function sendResetFailedResponse(Request $request, $response) {
             return response()->json([
                 'result' => false,
-                'target' => 'expired',
+                'expired' => true,
                 'error' => trans('constant.link_expired'),
-                'id' => 'password_confirmation-div'
+                'div' => 'password_confirmation'
             ]);
         }
     }

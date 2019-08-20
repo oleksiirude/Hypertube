@@ -43,7 +43,7 @@
             return response()->json([
                 'result' => false,
                 'error' => trans('constant.nonexistent_email'),
-                'id' => 'email-div'
+                'div' => 'email'
             ]);
         }
     }

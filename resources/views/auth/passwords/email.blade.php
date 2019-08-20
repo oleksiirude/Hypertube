@@ -4,10 +4,38 @@
     <reset-password-email-component
             action="{{ route('password.email') }}"
             csrf_token="{{ csrf_token() }}"
-            {{-- titles --}}
-            reset_password="{{ __('constant.reset_password') }}"
-            email="{{ __('constant.email') }}"
-            send_link="{{ __('constant.send_link') }}"
+
+            {{-- localization titles --}}
             successful_link="{{ __('constant.successful_link') }}">
     </reset-password-email-component>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('constant.reset_password') }}</div>
+
+                    <div id="reset-password-div" class="card-body">
+                        <form>
+                            <div id="email-div" class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('constant.email') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="text" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button id="send-email" type="submit" class="btn btn-primary">
+                                        {{ __('constant.send_link') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

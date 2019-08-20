@@ -42,7 +42,7 @@
                 e.preventDefault();
 
                 let button = document.getElementById('send-email');
-                button.disabled = true;
+                //button.disabled = true;
                 let input = document.getElementById('email');
 
                 const ajax = new XMLHttpRequest();

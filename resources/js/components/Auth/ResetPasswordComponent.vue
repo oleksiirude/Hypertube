@@ -69,8 +69,9 @@
                         console.log('ajax response error with ' + ajax.status + ' status');
                     if (ajax.readyState === 4) {
                         let response = JSON.parse(ajax.responseText);
-                        if (response['result'] === false)
+                        if (response['result'] === false) {
                             this.showErrorMessage(response, button);
+                        }
                         else
                             this.showSuccessMessage();
                     }

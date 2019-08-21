@@ -20,5 +20,10 @@
         'get_new_link' => 'Get New Reset Link',
         'link_expired' => 'It seems your link is expired!',
         'nonexistent_email' => "We haven't any user with this email address",
-        'successful_registration' => 'You have been successfully registered!'
+        'successful_registration' => 'You have been successfully registered!',
+        'already_taken' => ' has already been taken',
+        'via' => ' via ',
+        'github' => 'GitHub',
+        '42' => '42',
+        'services' => 'other services'
     ];

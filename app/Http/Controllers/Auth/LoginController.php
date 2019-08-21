@@ -47,7 +47,7 @@
     
         protected function rules() {
             return [
-                'login' => 'required|regex:/^[a-zA-Z]{3,20}$/',
+                'login' => 'required|regex:/^[a-zA-Z]{3,20}[0-9]{0,10}?$/|unique:users',
                 'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
             ];
         }

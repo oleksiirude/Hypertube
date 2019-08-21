@@ -28,7 +28,7 @@
     
         protected function rules() {
             return [
-                'login' => 'required|regex:/^[a-zA-Z]{3,20}$/|unique:users',
+                'login' => 'required|regex:/^[a-zA-Z]{3,20}[0-9]{0,10}?$/|unique:users',
                 'first_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
                 'last_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
                 'email' => 'required|email|between:5,100|unique:users',
@@ -39,7 +39,7 @@
         
         protected function create(array $data) {
             return User::create([
-                'id' => $this->getNewUuidForUserTable(),
+                'uuid' => $this->getNewUuidForUserTable(),
                 'login' => $data['login'],
                 'first_name' => ucfirst($data['first_name']),
                 'last_name' => ucfirst($data['last_name']),

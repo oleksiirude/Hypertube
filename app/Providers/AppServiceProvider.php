@@ -22,5 +22,19 @@
          */
         public function boot() {
             Schema::defaultStringLength(191);
+            
+            $this->boot42Socialite();
+        }
+    
+        private function boot42Socialite()
+        {
+            $socialite = $this->app->make('Laravel\Socialite\Contracts\Factory');
+            $socialite->extend(
+                '42',
+                function ($app) use ($socialite) {
+                    $config = $app['config']['services.42'];
+                    return $socialite->buildProvider(FortyTwoAuthProvider::class, $config);
+                }
+            );
         }
     }

@@ -5,7 +5,11 @@
     export default {
         mounted () {
             document.getElementById('login').focus();
+
             document.getElementById('login-btn').addEventListener('click', this.ajaxLogin);
+
+            // document.getElementById('42').addEventListener('click', this.disableLinks);
+            // document.getElementById('github').addEventListener('click', this.disableLinks);
         },
 
         methods: {
@@ -52,6 +56,13 @@
                 child.className = 'w-50 p-1 mb-2 ml-auto mr-auto bg-danger text-white text-center rounded';
                 parent.parentNode.insertBefore(child, parent.nextSibling);
             },
+
+            // disableLinks: function () {
+            //     let oauth = document.getElementById('oauth');
+            //
+            //     for (let i = 0; i < oauth.childElementCount; i++)
+            //         oauth.children[i].href = 'javascript:void(0)';
+            // }
 
         },
 

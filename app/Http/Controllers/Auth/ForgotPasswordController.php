@@ -8,7 +8,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Password;
 
-    class ForgotPasswordController extends Controller{
+    class ForgotPasswordController extends Controller {
         use SendsPasswordResetEmails;
         
         public function __construct() {

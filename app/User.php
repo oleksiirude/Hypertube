@@ -15,8 +15,10 @@
          * @var array
          */
         protected $fillable = [
-            'id', 'login', 'first_name', 'last_name', 'email', 'password',
+            'uuid', 'login', 'first_name', 'last_name', 'avatar', 'email', 'password', 'auth_provider', 'auth_provider_id'
         ];
+        
+        protected $primaryKey = 'uuid';
         
         /**
          * Turn off default casting [id] to int type

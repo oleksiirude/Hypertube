@@ -43,5 +43,17 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+    
+    '42' => [
+        'client_id' => env('42_CLIENT_ID'),
+        'client_secret' => env('42_CLIENT_SECRET'),
+        'redirect' => env('42_CALLBACK_URL')
+    ],
+    
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_CALLBACK_URL')
+    ],
 
 ];

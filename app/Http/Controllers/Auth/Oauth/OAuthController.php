@@ -1,13 +1,42 @@
 <?php
     
-    namespace App\Http\Controllers\Auth\AuthServices;
-
+    namespace App\Http\Controllers\Auth\Oauth;
+    
     use App;
-    use Hash;
     use App\User;
+    use Exception;
+    use Hash;
+    use Laravel\Socialite\Facades\Socialite;
     use App\Http\Controllers\Controller;
     
-    class AuthServicesHelperController extends Controller {
+    class OAuthController extends Controller {
+        
+        
+        public function redirectToProvider($provider) {
+            try {
+                $socialite = Socialite::driver($provider);
+                return $socialite->redirect();
+            } catch (Exception $exception) {
+                dd($exception->getMessage());
+                // abort(401);
+            }
+        }
+        
+        public function handleProviderCallback($provider) {
+            try {
+                $data = Socialite::driver($provider)->user();
+                
+                if (!($user = $this->ifUserAlreadyExists($data, $provider)))
+                    $user = $this->create($data, $provider);
+                
+                $this->login($user);
+            } catch (Exception $exception) {
+                dd($exception->getMessage());
+                // abort(401);
+            }
+            
+            return redirect('main');
+        }
     
         public function ifUserAlreadyExists($data, $provider) {
             $id = $data->getId();
@@ -81,7 +110,7 @@
         }
     
         public function handleEmailDublicate($email) {
-            
+        
             if (User::where('email', $email)->first())
                 return ['result' => false, 'email' => $email];
             return ['result' => true, 'email' => $email];
@@ -102,7 +131,7 @@
             }
             return 'images/profiles/' . $login . '/avatar.jpg';
         }
-        
+    
         public function login($user) {
             $locale = session()->get('locale');
             auth()->login($user);

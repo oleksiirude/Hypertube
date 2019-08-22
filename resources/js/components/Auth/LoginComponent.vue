@@ -5,11 +5,12 @@
     export default {
         mounted () {
             document.getElementById('login').focus();
-
             document.getElementById('login-btn').addEventListener('click', this.ajaxLogin);
 
-            // document.getElementById('42').addEventListener('click', this.disableLinks);
-            // document.getElementById('github').addEventListener('click', this.disableLinks);
+            let oauth = document.getElementById('oauth');
+                for (let i = 0; i < oauth.childElementCount; i++) {
+                    oauth.children[i].addEventListener('click', this.disableLinks);
+            }
         },
 
         methods: {
@@ -57,12 +58,17 @@
                 parent.parentNode.insertBefore(child, parent.nextSibling);
             },
 
-            // disableLinks: function () {
-            //     let oauth = document.getElementById('oauth');
-            //
-            //     for (let i = 0; i < oauth.childElementCount; i++)
-            //         oauth.children[i].href = 'javascript:void(0)';
-            // }
+            disableLinks: function (e) {
+                let oauth = document.getElementById('oauth');
+                for (let i = 0; i < oauth.childElementCount; i++) {
+                    if (oauth.children[i] !== e.target)
+                        oauth.children[i].href = 'javascript:(void)';
+                    if (oauth.children[i] === e.target)
+                        oauth.children[i].onclick = () => {
+                            oauth.children[i].href = 'javascript:(void)';
+                        };
+                }
+            }
 
         },
 

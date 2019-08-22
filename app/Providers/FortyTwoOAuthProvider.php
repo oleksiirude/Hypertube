@@ -7,7 +7,7 @@
     use Laravel\Socialite\Two\ProviderInterface;
     use Laravel\Socialite\Two\User;
     
-    class FortyTwoAuthProvider extends AbstractProvider implements ProviderInterface {
+    class FortyTwoOAuthProvider extends AbstractProvider implements ProviderInterface {
         
         protected function getAuthUrl($state) {
             return $this->buildAuthUrlFromBase('https://api.intra.42.fr/oauth/authorize', $state);

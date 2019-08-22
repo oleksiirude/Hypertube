@@ -33,7 +33,7 @@
                 '42',
                 function ($app) use ($socialite) {
                     $config = $app['config']['services.42'];
-                    return $socialite->buildProvider(FortyTwoAuthProvider::class, $config);
+                    return $socialite->buildProvider(FortyTwoOAuthProvider::class, $config);
                 }
             );
         }

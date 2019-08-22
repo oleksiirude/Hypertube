@@ -8,13 +8,10 @@
     
     Route::get('/main', 'MainPageController@index')->name('main');
     
-    // Auth via 42, GitHub, etc
-    Route::group(['prefix' => '/auth'], function () {
-        Route::get('/42', 'Auth\AuthServices\FortyTwoAuthController@redirectToFortyTwo')->name('login_42');
-        Route::get('/42/callback', 'Auth\AuthServices\FortyTwoAuthController@handleFortyTwoCallback');
-        
-        Route::get('/github', 'Auth\AuthServices\GitHubAuthController@redirectToGitHub')->name('login_github');
-        Route::get('/github/callback', 'Auth\AuthServices\GitHubAuthController@handleGitHubCallback');
+    // Auth via 42, Facebook, GitHub, etc
+    Route::group(['prefix' => '/oauth'], function () {
+        Route::get('/{provider}', 'Auth\Oauth\OauthController@redirectToProvider')->name('oauth');
+        Route::get('/{provider}/callback', 'Auth\Oauth\OauthController@handleProviderCallback');
     });
     
     // Localization

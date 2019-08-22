@@ -61,8 +61,8 @@
                         <div class="text-center">
                             {{ __('constant.login') }}{{ __('constant.via') }} {{ __('constant.services') }}:
                             <div id="oauth">
-                                <a id="42" class="btn btn-primary" href="{{ route('login_42') }}">42</a>
-                                <a id="github" class="btn btn-primary" href="{{ route('login_github') }}">GitHub</a>
+                                <a id="42" class="btn btn-primary" href="{{ route('oauth', '42') }}">42</a>
+                                <a id="github" class="btn btn-primary" href="{{ route('oauth', 'github') }}">GitHub</a>
                             </div>
                         </div>
 

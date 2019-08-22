@@ -89,10 +89,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    {{-- My Profile --}}
+                                    <a class="dropdown-item menu_link" href="{{ route('profile.show.auth') }}">
+                                        {{ __('constant.my-profile') }}
+                                    </a>
+
+                                    {{-- Logout --}}
                                     <a class="dropdown-item menu_link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('constant.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

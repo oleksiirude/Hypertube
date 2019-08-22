@@ -23,13 +23,4 @@
                 'div' => $div
             ];
         }
-        
-        // get universally unique identifier for new User
-        public function getNewUuidForUserTable() {
-            while (true) {
-                $uuid = Str::uuid()->toString();
-                if (!User::find($uuid))
-                    return $uuid;
-            }
-        }
     }

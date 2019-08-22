@@ -11,7 +11,6 @@
     
     class OAuthController extends Controller {
         
-        
         public function redirectToProvider($provider) {
             try {
                 $socialite = Socialite::driver($provider);
@@ -51,7 +50,7 @@
     
     
         public function create($data, $provider) {
-            $uuid = $this->getNewUuidForUserTable();
+            $uuid = User::getNewUuidForUserTable();
             $login = $this->specifyLogin($data->getNickname());
             $name = $this->specifyName($data->getName());
             $email = $this->handleEmailDublicate($data->getEmail());

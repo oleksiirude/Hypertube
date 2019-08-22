@@ -2,7 +2,7 @@ body, html {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #221f1f;;
+    background: #221f1f;
     color: #fff;
     font-size: 16px;
     direction: ltr;
@@ -11,10 +11,10 @@ body, html {
 .card {
     background: #141414;
     /*border: 1px solid grey;*/
-    box-shadow: 5px 5px 8px dimgrey;
+    box-shadow: 5px 5px 8px black;
 }
 #main_container {
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 260px);
     text-align: center;
     padding-bottom: 1.5rem !important;
     padding-top: 1.5rem !important;
@@ -39,9 +39,14 @@ body, html {
     -webkit-box-shadow: 0 0.6vw 1vw -0.4vw rgba(0,0,0,.35);
     -moz-box-shadow: 0 .6vw 1vw -.4vw rgba(0,0,0,.35);
     box-shadow: 0 0.6vw 1vw -0.4vw rgba(0,0,0,.35);
-    background-color: #e6e6e6;
+    background-color: gray;
     color: #000;
     /*height: 1.2vw;*/
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: rgba(51,51,51,.4);
+    border-width: 0;
 }
 .btn-link {
     color: grey;
@@ -49,6 +54,33 @@ body, html {
 .btn-link:hover {
     color: grey;
     text-decoration: underline;
+}
+
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff;
+    background-color: rgba(51,51,51,.4);
+    border-width: 0;
+}
+button:focus {
+    /*outline: 1px dotted;*/
+    outline: none;
+}
+
+/*forms*/
+.col-form-label {
+    color: gray;
+}
+.form-control {
+    background: #221f1f;
+    color: white;
+}
+.form-control:focus {
+    color: gray;
+    background: #221f1f;
+    border-color: #e6e6e6;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(236, 236, 236, 0.2);
 }
 
 /*navbar*/
@@ -62,6 +94,14 @@ body, html {
 
 .logo {
     width: 120px;
+}
+.logo:hover {
+    text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    /* -webkit-animation: neon2 1.5s ease-in-out infinite alternate; */
+}
+svg:hover {
+     /*-webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));*/
+     filter: drop-shadow( 0 0 30px #228DFF);
 }
 .navbar-dark .navbar-nav .nav-link {
     color: white;
@@ -77,10 +117,22 @@ body, html {
     color: rgba(255, 255, 255, 0.5);
     border:none;
 }
-button:focus {
-    /*outline: 1px dotted;*/
-    outline: none;
+.dropdown-menu {
+    background-color: #141414;
+    color: white;
+    box-shadow: 2px 2px 5px black;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    color: white;
+    text-decoration: underline;
+    background-color: #141414;
 }
 
+/*login*/
+#oauth .btn-primary {
+    width: 110px;
+}
 
-
+.oath_img {
+    height: 30px;
+}

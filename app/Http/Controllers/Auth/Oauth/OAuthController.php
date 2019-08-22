@@ -124,7 +124,7 @@
                     mkdir(public_path() . '/images/profiles');
                 if (!file_exists(public_path() . '/images/profiles/' . $login))
                     mkdir(public_path() . '/images/profiles/' . $login);
-                if (!copy($avatar,public_path() . '/images/profiles/' . $login . '/avatar.jpg')) {
+                if (!@copy($avatar,public_path() . '/images/profiles/' . $login . '/avatar.jpg')) {
                     rmdir(public_path() . '/images/profiles/' . $login);
                     return 'images/service/default.png';
                 }

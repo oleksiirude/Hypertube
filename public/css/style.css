@@ -1,0 +1,86 @@
+body, html {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #221f1f;;
+    color: #fff;
+    font-size: 16px;
+    direction: ltr;
+}
+
+.card {
+    background: #141414;
+    /*border: 1px solid grey;*/
+    box-shadow: 5px 5px 8px dimgrey;
+}
+#main_container {
+    min-height: calc(100vh - 180px);
+    text-align: center;
+    padding-bottom: 1.5rem !important;
+    padding-top: 1.5rem !important;
+}
+
+/*buttons*/
+.btn-primary {
+    background-color: rgba(51,51,51,.4);
+    border-width: 0;
+    padding: .75em 2.3em;
+    /*height: 1.2vw;*/
+    -webkit-border-radius: .2vw;
+    -moz-border-radius: .2vw;
+    border-radius: .2vw;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    /*font-size: 1.1vw;*/
+    margin-bottom: .75em;
+}
+.btn-primary:hover {
+    -webkit-box-shadow: 0 0.6vw 1vw -0.4vw rgba(0,0,0,.35);
+    -moz-box-shadow: 0 .6vw 1vw -.4vw rgba(0,0,0,.35);
+    box-shadow: 0 0.6vw 1vw -0.4vw rgba(0,0,0,.35);
+    background-color: #e6e6e6;
+    color: #000;
+    /*height: 1.2vw;*/
+}
+.btn-link {
+    color: grey;
+}
+.btn-link:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+/*navbar*/
+
+.navbar {
+    background-color: #141414;
+    color: white;
+    min-height: 100px;
+    /*box-shadow: 5px 5px 8px dimgrey;*/
+}
+
+.logo {
+    width: 120px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: white;
+    text-decoration: underline;
+}
+.menu_link {
+    color: white;
+}
+.navbar-dark .navbar-toggler {
+    color: rgba(255, 255, 255, 0.5);
+    border:none;
+}
+button:focus {
+    /*outline: 1px dotted;*/
+    outline: none;
+}
+
+
+

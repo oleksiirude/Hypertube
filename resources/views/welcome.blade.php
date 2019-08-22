@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: black;
@@ -17,7 +18,6 @@
                 opacity: 0.9;
                 background-size: cover;
                 background-position: center;
-                font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -112,7 +112,7 @@
                 padding: 0 5px;
             }
             .language > a > img {
-                opacity: 0.7;
+                opacity: 0.8;
             }
             .language > a > img:hover {
                 opacity: 1;

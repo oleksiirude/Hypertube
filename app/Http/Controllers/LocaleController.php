@@ -8,7 +8,7 @@
     class LocaleController extends Controller {
         
         public function setLanguage($locale) {
-            if (!preg_match('/^en|uk$/', $locale))
+            if (!preg_match('/^en|ua$/', $locale))
                 return redirect()->back();
             
             session()->put('locale', $locale);

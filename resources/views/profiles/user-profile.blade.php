@@ -8,8 +8,7 @@
                     <div class="card-header">Main page</div>
 
                     <div class="card-body">
-
-                        Here will be main page content
+                        user-profile page
                     </div>
                 </div>
             </div>

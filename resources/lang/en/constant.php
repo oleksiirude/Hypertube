@@ -25,5 +25,10 @@
         'via' => ' via ',
         'github' => 'GitHub',
         '42' => '42',
-        'services' => 'other services'
+        'services' => 'other services',
+        'my-profile' => 'My profile',
+        'logout' => 'Logout',
+        'avatar' => 'Avatar',
+        'about' => 'About me',
+        'not_specified' => 'Not specified',
     ];

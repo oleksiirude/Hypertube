@@ -1,7 +1,8 @@
 <?php
     
     namespace App;
-    
+
+    use Illuminate\Support\Str;
     use App\Notifications\SendRecoverPasswordEmail;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,6 +33,15 @@
          */
         public function sendPasswordResetNotification($token) {
             $this->notify(new SendRecoverPasswordEmail($token));
+        }
+    
+        // get universally unique identifier for new User
+        public static function getNewUuidForUserTable() {
+            while (true) {
+                $uuid = Str::uuid()->toString();
+                if (!User::find($uuid))
+                    return $uuid;
+            }
         }
         
     }

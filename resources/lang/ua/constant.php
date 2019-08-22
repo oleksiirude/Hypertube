@@ -26,4 +26,9 @@
         'github' => 'GitHub',
         '42' => '42',
         'services' => 'інших сервісів',
+        'my-profile' => 'Мій профіль',
+        'logout' => 'Вийти',
+        'avatar' => 'Аватар',
+        'about' => 'Про себе',
+        'not_specified' => 'Не вказано',
     ];

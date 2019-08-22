@@ -39,7 +39,7 @@
         
         protected function create(array $data) {
             return User::create([
-                'uuid' => $this->getNewUuidForUserTable(),
+                'uuid' => User::getNewUuidForUserTable(),
                 'login' => $data['login'],
                 'first_name' => ucfirst($data['first_name']),
                 'last_name' => ucfirst($data['last_name']),

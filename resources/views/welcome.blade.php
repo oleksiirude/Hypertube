@@ -127,8 +127,8 @@
                         <a href="{{ route('set.language', 'en') }}" style="text-decoration: none">
                             <img src="{{ asset('images/service/en.png') }}" alt="English" style="width: 30px">
                         </a>
-                        <a href="{{ route('set.language', 'uk') }}" style="text-decoration: none">
-                            <img src="{{ asset('images/service/uk.png') }}" alt="Ukrainian" style="width: 30px">
+                        <a href="{{ route('set.language', 'ua') }}" style="text-decoration: none">
+                            <img src="{{ asset('images/service/ua.png') }}" alt="Ukrainian" style="width: 30px">
                         </a>
                     </div>
                 </div>

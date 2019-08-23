@@ -1,10 +1,10 @@
 <template>
-    <footer>
-        <div class="upper_footer"></div>
-        <p class="copyright">
-            &copy; created by US, 2019
-        </p>
-    </footer>
+<!--    <footer>-->
+<!--        <div class="upper_footer"></div>-->
+<!--        <p class="copyright">-->
+<!--            &copy; created by US, 2019-->
+<!--        </p>-->
+<!--    </footer>-->
 </template>
 
 <script>

@@ -8,10 +8,13 @@
     use Hash;
     use Laravel\Socialite\Facades\Socialite;
     use App\Http\Controllers\Controller;
+    use App\Http\Controllers\ImageController;
     
-    class OAuthController extends Controller {
+    class OAuthController extends Controller
+    {
         
-        public function redirectToProvider($provider) {
+        public function redirectToProvider($provider)
+        {
             try {
                 $socialite = Socialite::driver($provider);
                 return $socialite->redirect();
@@ -21,7 +24,8 @@
             }
         }
         
-        public function handleProviderCallback($provider) {
+        public function handleProviderCallback($provider)
+        {
             try {
                 $data = Socialite::driver($provider)->user();
                 
@@ -37,7 +41,8 @@
             return redirect('main');
         }
     
-        public function ifUserAlreadyExists($data, $provider) {
+        public function ifUserAlreadyExists($data, $provider)
+        {
             $id = $data->getId();
         
             $user = User::where([
@@ -49,20 +54,22 @@
         }
     
     
-        public function create($data, $provider) {
+        public function create($data, $provider)
+        {
             $uuid = User::getNewUuidForUserTable();
             $login = $this->specifyLogin($data->getNickname());
             $name = $this->specifyName($data->getName());
             $email = $this->handleEmailDublicate($data->getEmail());
-            $avatar = $this->handleCopyAvatar($data->getAvatar(), $login);
         
             if (!$email['result'])
                 exit (view('auth.error',
                     [
-                        'title' => trans('constant.login') . trans("constant.via") . trans("constant.$provider"),
-                        'error' => trans('constant.email') . " $email[email]" . trans('constant.already_taken')
+                        'title' => trans('titles.login') . trans("partst.via") . $provider,
+                        'error' => trans('titles.email') . " $email[email]" . trans('errors.alreadyTaken')
                     ])
                 );
+    
+            $avatar = $this->handleCopyAvatar($data->getAvatar(), $login);
         
             return User::create([
                 'uuid' => $uuid,
@@ -77,7 +84,8 @@
             ]);
         }
     
-        public function specifyLogin($login) {
+        public function specifyLogin($login)
+        {
             if ($login) {
                 if (!User::where('login', $login)->first())
                     return $login;
@@ -96,7 +104,8 @@
                 }
         }
     
-        public function specifyName($name) {
+        public function specifyName($name)
+        {
             if ($name) {
                 $name = explode(' ', $name);
                 if (!isset($name[1]))
@@ -108,30 +117,32 @@
             return $name;
         }
     
-        public function handleEmailDublicate($email) {
+        public function handleEmailDublicate($email)
+        {
         
             if (User::where('email', $email)->first())
                 return ['result' => false, 'email' => $email];
             return ['result' => true, 'email' => $email];
         }
     
-        public function handleCopyAvatar($avatar, $login) {
+        public function handleCopyAvatar($avatar, $login)
+        {
             if (!$avatar)
-                return 'images/service/default.png';
+                return DEFAULT_AVATAR;
             else {
-                if (!file_exists(public_path() . '/images/profiles'))
-                    mkdir(public_path() . '/images/profiles');
-                if (!file_exists(public_path() . '/images/profiles/' . $login))
-                    mkdir(public_path() . '/images/profiles/' . $login);
-                if (!@copy($avatar,public_path() . '/images/profiles/' . $login . '/avatar.jpg')) {
-                    rmdir(public_path() . '/images/profiles/' . $login);
-                    return 'images/service/default.png';
+                $avatar = @file_get_contents($avatar);
+                if ($avatar !== false) {
+                    $this->manageDir($login);
+                    ImageController::manageAvatar($avatar, $login);
                 }
+                else
+                    return DEFAULT_AVATAR;
             }
             return 'images/profiles/' . $login . '/avatar.jpg';
         }
     
-        public function login($user) {
+        public function login($user)
+        {
             $locale = session()->get('locale');
             auth()->login($user);
             App::setLocale($locale);

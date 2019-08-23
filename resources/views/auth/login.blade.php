@@ -11,13 +11,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('constant.login') }}</div>
+                    <div class="card-header">{{ __('titles.login') }}</div>
 
                     <div id="enter-div" class="card-body">
                         <form id="login-form">
 
                             <div id="login-div" class="form-group row">
-                                <label for="login" class="col-md-4 col-form-label text-md-right">{{ __('constant.username') }}</label>
+                                <label for="login" class="col-md-4 col-form-label text-md-right">{{ __('titles.username') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="login" type="text" class="form-control" name="login" value="">
@@ -25,7 +25,7 @@
                             </div>
 
                             <div id="password-div" class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('constant.password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('titles.password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password">
@@ -38,7 +38,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember">
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('constant.remember_me') }}
+                                            {{ __('titles.rememberMe') }}
                                         </label>
                                     </div>
                                 </div>
@@ -47,11 +47,11 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button id="login-btn" type="submit" class="btn btn-primary">
-                                        {{ __('constant.login') }}
+                                        {{ __('titles.login') }}
                                     </button>
 
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('constant.forgot_password') }}
+                                        {{ __('titles.forgotPassword') }}
                                     </a>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
 
                         <div class="dropdown-divider"></div>
                         <div class="text-center">
-                            {{ __('constant.login') }}{{ __('constant.via') }} {{ __('constant.services') }}:
+                            {{ __('titles.login') }}{{ __('parts.via') }} {{ __('parts.services') }}:
                             <div id="oauth">
                                 <a id="42" class="btn btn-primary" href="{{ route('oauth', '42') }}"><img src="/images/service/42_white.svg" alt="42_school" title="school42" class="oath_img"></a>
                                 <a id="github" class="btn btn-primary" href="{{ route('oauth', 'github') }}"><img src="/images/service/git.png" alt="GitHub" title="GitHub" class="oath_img"></a>

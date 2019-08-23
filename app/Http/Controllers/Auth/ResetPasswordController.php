@@ -10,14 +10,17 @@
     use Illuminate\Support\Facades\Password;
     use Illuminate\Foundation\Auth\ResetsPasswords;
     
-    class ResetPasswordController extends Controller {
+    class ResetPasswordController extends Controller
+    {
         use ResetsPasswords;
         
-        public function __construct() {
+        public function __construct()
+        {
             $this->middleware('guest');
         }
         
-        public function reset(Request $request) {
+        public function reset(Request $request)
+        {
             $validation = Validator::make($request->all(), $this->rules());
             if ($validation->fails())
                 return $this->specifyValidationErrors($validation);
@@ -33,7 +36,8 @@
                 : $this->sendResetFailedResponse($request, $response);
         }
         
-        protected function rules() {
+        protected function rules()
+        {
             return [
                 'email' => 'required|email|between:5,100',
                 'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
@@ -41,7 +45,8 @@
             ];
         }
         
-        protected function resetPassword($user, $password) {
+        protected function resetPassword($user, $password)
+        {
             $user->password = Hash::make($password);
             $user->save();
         
@@ -49,15 +54,17 @@
             $this->guard()->login($user);
         }
         
-        protected function sendResetResponse(Request $request, $response) {
+        protected function sendResetResponse(Request $request, $response)
+        {
             return response()->json(['result' => true]);
         }
         
-        protected function sendResetFailedResponse(Request $request, $response) {
+        protected function sendResetFailedResponse(Request $request, $response)
+        {
             return response()->json([
                 'result' => false,
                 'expired' => true,
-                'error' => trans('constant.link_expired'),
+                'error' => trans('errors.linkExpired'),
                 'div' => 'password_confirmation'
             ]);
         }

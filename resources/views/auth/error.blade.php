@@ -9,7 +9,7 @@
                     <div class="card-body text-center">
                         {{ $error }}
                         <div>
-                            <a class="btn btn-primary" href="{{ route('register') }}">{{ trans('constant.register') }}</a>
+                            <a class="btn btn-primary" href="{{ route('register') }}">{{ trans('titles.register') }}</a>
                         </div>
                     </div>
                 </div>

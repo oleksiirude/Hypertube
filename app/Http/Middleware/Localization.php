@@ -14,7 +14,8 @@
          * @param  \Closure  $next
          * @return mixed
          */
-        public function handle($request, Closure $next) {
+        public function handle($request, Closure $next)
+        {
             if (session()->has('locale')) {
                 App::setLocale(session()->get('locale'));
             }

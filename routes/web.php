@@ -10,18 +10,25 @@
     
     // Profile manipulations
     Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {
-        Route::get('/show/auth', 'ProfileController@showAuthProfile')->name('profile.show.auth');
-        Route::get('/show/user', 'ProfileController@showUserProfile')->name('profile.show.user');
+        Route::get('/', 'ProfileController@showAuthProfile')->name('show.auth');
+        Route::get('/{user}', 'ProfileController@showUserProfile')->name('show.user');
         
-        Route::post('/change/login', 'ProfileController@changeLogin')->name('profile.change.login');
-        Route::post('/change/first-name', 'ProfileController@changeFirstName')->name('profile.change.first-name');
-        Route::post('/change/last-name', 'ProfileController@changeLastName')->name('profile.change.last-name');
-        Route::post('/change/email', 'ProfileController@changeEmail')->name('profile.change.email');
-        Route::post('/change/password', 'ProfileController@changePassword')->name('profile.change.password');
-        Route::post('/change/avatar', 'ImageController@changeAvatar')->name('profile.change.avatar');
+        Route::group(['prefix' => '/change'], function () {
+            Route::post('/login', 'ProfileController@changeLogin')->name('change.login');
+            Route::post('/info', 'ProfileController@changeInfo')->name('change.info');
+            Route::post('/first/name', 'ProfileController@changeFirstName')->name('change.firstName');
+            Route::post('/last/name', 'ProfileController@changeLastName')->name('change.lastName');
+            Route::post('/email', 'ProfileController@changeEmail')->name('change.email');
+            Route::post('/password', 'ProfileController@changePassword')->name('change.password');
+            Route::post('/avatar', 'ImageController@changeAvatar')->name('change.avatar');
+        });
+    
+        Route::group(['prefix' => '/delete'], function () {
+            Route::post('/avatar', 'ImageController@deleteAvatar')->name('delete.avatar');
+        });
     });
     
-    // Auth via 42, Facebook, GitHub, etc
+    // Auth via 42, GitHub, etc
     Route::group(['prefix' => '/oauth', 'middleware' => 'guest'], function () {
         Route::get('/{provider}', 'Auth\Oauth\OauthController@redirectToProvider')->name('oauth');
         Route::get('/{provider}/callback', 'Auth\Oauth\OauthController@handleProviderCallback');

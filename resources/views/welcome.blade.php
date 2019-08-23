@@ -154,11 +154,11 @@
                 @if (Route::has('login'))
                     <div class="links">
 {{--                        <div class="login">--}}
-                            <a href="{{ route('login') }}">{{ __('constant.login') }}</a>
+                            <a href="{{ route('login') }}">{{ __('titles.login') }}</a>
 {{--                        </div>--}}
                         @if (Route::has('register'))
 {{--                            <div class="register">--}}
-                                <a href="{{ route('register') }}" style=" margin-left: 20px;"> {{ __('constant.register') }}</a>
+                                <a href="{{ route('register') }}" style=" margin-left: 20px;"> {{ __('titles.register') }}</a>
 {{--                            </div>--}}
                         @endif
                     </div>

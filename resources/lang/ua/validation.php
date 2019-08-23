@@ -26,7 +26,7 @@ return [
     'between' => [
         'numeric' => 'The :attribute must be between :min and :max',
         'file' => 'The :attribute must be between :min and :max kilobytes',
-        'string' => 'The :attribute must be between :min and :max characters',
+        'string' => 'Пошта бути від :min до :max символів',
         'array' => 'The :attribute must have between :min and :max items',
     ],
     'boolean' => 'The :attribute field must be true or false',
@@ -37,7 +37,7 @@ return [
     'different' => 'The :attribute and :other must be different',
     'digits' => 'The :attribute must be :digits digits',
     'digits_between' => 'The :attribute must be between :min and :max digits',
-    'dimensions' => 'The :attribute has invalid image dimensions',
+    'dimensions' => 'Невалідна ширина або висота зображення',
     'distinct' => 'The :attribute field has a duplicate value',
     'email' => 'Невірний формат',
     'ends_with' => 'The :attribute must end with one of the following: :values',
@@ -78,11 +78,11 @@ return [
     ],
     'max' => [
         'numeric' => 'The :attribute may not be greater than :max',
-        'file' => 'The :attribute may not be greater than :max kilobytes',
-        'string' => 'The :attribute may not be greater than :max characters',
+        'file' => 'Зображення занадто велике',
+        'string' => 'Не може бути більше за 500 символів',
         'array' => 'The :attribute may not have more than :max items',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values',
+    'mimes' => 'Невалідний формат зображення',
     'mimetypes' => 'The :attribute must be a file of type: :values',
     'min' => [
         'numeric' => 'The :attribute must be at least :min',

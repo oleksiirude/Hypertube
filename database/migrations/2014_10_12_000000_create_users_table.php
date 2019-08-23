@@ -16,7 +16,7 @@
                 $table->string('login');
                 $table->string('first_name');
                 $table->string('last_name');
-                $table->string('avatar')->default('images/service/default.png');
+                $table->string('avatar')->default('images/service/defaultAvatar.png');
                 $table->string('info')->nullable();
                 $table->string('email')->unique();
                 $table->string('password');

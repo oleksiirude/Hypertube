@@ -9,15 +9,18 @@
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Foundation\Auth\RegistersUsers;
     
-    class RegisterController extends Controller {
+    class RegisterController extends Controller
+    {
         
         use RegistersUsers;
         
-        public function __construct() {
+        public function __construct()
+        {
             $this->middleware('guest');
         }
     
-        public function register(Request $request) {
+        public function register(Request $request)
+        {
             $validation = Validator::make($request->all(), $this->rules());
             if ($validation->fails())
                 return $this->specifyValidationErrors($validation);
@@ -26,18 +29,20 @@
             return response()->json(['result' => true]);
         }
     
-        protected function rules() {
+        protected function rules()
+        {
             return [
-                'login' => 'required|regex:/^[a-zA-Z]{3,20}[0-9]{0,10}?$/|unique:users',
-                'first_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
-                'last_name' => 'required|regex:/^[a-zA-Z]{2,20}$/',
+                'login' => 'required|regex:/^[a-z]{3,20}[0-9]{0,10}?$/i|unique:users',
+                'first_name' => 'required|regex:/^[a-zа-яёїі]{2,20}$/iu',
+                'last_name' => 'required|regex:/^[a-zа-яёїі]{2,20}$/iu',
                 'email' => 'required|email|between:5,100|unique:users',
                 'password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
                 'password_confirmation' => 'required|same:password'
             ];
         }
         
-        protected function create(array $data) {
+        protected function create(array $data)
+        {
             return User::create([
                 'uuid' => User::getNewUuidForUserTable(),
                 'login' => $data['login'],

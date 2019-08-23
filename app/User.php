@@ -7,7 +7,8 @@
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
     
-    class User extends Authenticatable {
+    class User extends Authenticatable
+    {
         use Notifiable;
     
         /**
@@ -16,7 +17,10 @@
          * @var array
          */
         protected $fillable = [
-            'uuid', 'login', 'first_name', 'last_name', 'avatar', 'email', 'password', 'auth_provider', 'auth_provider_id'
+            'uuid', 'login', 'first_name',
+            'last_name', 'avatar', 'info',
+            'email', 'password',
+            'auth_provider', 'auth_provider_id'
         ];
         
         protected $primaryKey = 'uuid';
@@ -31,12 +35,14 @@
          *
          * @param  string  $token
          */
-        public function sendPasswordResetNotification($token) {
+        public function sendPasswordResetNotification($token)
+        {
             $this->notify(new SendRecoverPasswordEmail($token));
         }
     
         // get universally unique identifier for new User
-        public static function getNewUuidForUserTable() {
+        public static function getNewUuidForUserTable()
+        {
             while (true) {
                 $uuid = Str::uuid()->toString();
                 if (!User::find($uuid))

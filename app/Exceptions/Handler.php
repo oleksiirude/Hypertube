@@ -4,7 +4,9 @@
     
     use Exception;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-    
+    use Illuminate\Http\Exceptions\PostTooLargeException;
+    use Symfony\Component\HttpKernel\Exception\HttpException;
+
     class Handler extends ExceptionHandler
     {
         /**
@@ -32,7 +34,8 @@
          * @param  \Exception  $exception
          * @return void
          */
-        public function report(Exception $exception) {
+        public function report(Exception $exception)
+        {
             parent::report($exception);
         }
     
@@ -43,7 +46,14 @@
          * @param  \Exception  $e
          * @return \Illuminate\Http\Response
          */
-        public function render($request, Exception $e) {
+        public function render($request, Exception $e)
+        {
+            if ($e instanceof PostTooLargeException)
+                return response()->json([
+                    'result' => false,
+                    'error' => trans('errors.tooBigImage')
+                ]);
+            
             return parent::render($request, $e);
         }
     }

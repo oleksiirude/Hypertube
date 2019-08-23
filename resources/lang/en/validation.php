@@ -37,7 +37,7 @@ return [
     'different' => 'The :attribute and :other must be different',
     'digits' => 'The :attribute must be :digits digits',
     'digits_between' => 'The :attribute must be between :min and :max digits',
-    'dimensions' => 'The :attribute has invalid image dimensions',
+    'dimensions' => 'Not valid image dimensions',
     'distinct' => 'The :attribute field has a duplicate value',
     'email' => 'Invalid format',
     'ends_with' => 'The :attribute must end with one of the following: :values',
@@ -78,11 +78,11 @@ return [
     ],
     'max' => [
         'numeric' => 'The :attribute may not be greater than :max',
-        'file' => 'The :attribute may not be greater than :max kilobytes',
-        'string' => 'The :attribute may not be greater than :max characters',
+        'file' => 'Image is too big',
+        'string' => 'May not be greater than :max characters',
         'array' => 'The :attribute may not have more than :max items',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values',
+    'mimes' => 'Not valid image format',
     'mimetypes' => 'The :attribute must be a file of type: :values',
     'min' => [
         'numeric' => 'The :attribute must be at least :min',

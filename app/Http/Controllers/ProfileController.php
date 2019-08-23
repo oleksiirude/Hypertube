@@ -2,36 +2,145 @@
 
     namespace App\Http\Controllers;
     
+    use Auth;
     use App\User;
+    use Validator;
+    use Illuminate\Support\Facades\Hash;
     use Illuminate\Http\Request;
     
-    class ProfileController extends Controller {
+    class ProfileController extends Controller
+    {
+        private $user;
         
-        public function showAuthProfile() {
+        public function __construct()
+        {
+            $this->middleware(function($request, $next)
+            {
+               $this->user = User::find(Auth::id());
+               return $next($request);
+            });
+        }
+    
+        protected function showAuthProfile()
+        {
             return view('profiles.auth-profile', ['profile' => User::find(auth()->id())]);
         }
         
-        public function showUserProfile() {
-            dd('show user profile');
+        protected function showUserProfile($user)
+        {
+            dd('show user profile: ' . $user);
         }
         
-        public function changeLogin(Request $request) {
-            dd('change login');
+        protected function changeLogin(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'login' => 'required|unique:users|regex:/^[a-z]{3,20}[0-9]{0,10}?$/i'
+            ]);
+            
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+            
+            $newLogin = $request->get('login');
+            
+            if($this->user->avatar !== DEFAULT_AVATAR) {
+                $this->user->update([
+                    'avatar' => 'images/profiles/' . $newLogin . '/avatar.jpg'
+                ]);
+            }
+            
+            $this->renameDir(auth()->user()->login, $newLogin);
+            $this->user->update(['login' => $newLogin]);
+            return response()->json(['result' => true]);
+        }
+        
+        protected function changeInfo(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'info' => 'max:500'
+            ]);
+    
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+    
+            $this->user->update(['info' => $request->get('info')]);
+            return response()->json(['result' => true]);
+        }
+        
+        protected function changeFirstName(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'first_name' => 'required|regex:/^[a-zа-яёїі]{2,20}$/iu'
+            ]);
+    
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+    
+            $this->user->update(['first_name' => $request->get('first_name')]);
+            return response()->json(['result' => true]);
         }
     
-        public function changeFirstName(Request $request) {
-            dd('change first name');
+        protected function changeLastName(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'last_name' => 'required|regex:/^[a-zа-яёїі]{2,20}$/iu'
+            ]);
+    
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+    
+            $this->user->update(['last_name' => $request->get('last_name')]);
+            return response()->json(['result' => true]);
         }
     
-        public function changeLastName(Request $request) {
-            dd('change last name');
+        protected function changeEmail(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'password' => 'required',
+                'email' => 'required|email|between:5,100|unique:users'
+            ]);
+            
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+            
+            if (!Hash::check($request->get('password'), $this->user->password))
+                return $this->jsonResponseWithError(trans('errors.invalidPassword'));
+            
+            $this->user->update(['email' => $request->get('email')]);
+            return response()->json(['result' => true]);
         }
     
-        public function changeEmail(Request $request) {
-            dd('change email');
-        }
+        protected function changePassword(Request $request)
+        {
+            $validation = Validator::make($request->all(), [
+                'password' => 'required',
+                'new_password' => 'required|regex:/^(?=.*[A-Z]{1,})(?=.*[!@#$%^&*()_+-]{1,})(?=.*[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/',
+                'password_confirmation' => 'required|same:new_password'
+            ]);
     
-        public function changePassword(Request $request) {
-            dd('change password');
+            if ($validation->fails())
+                return $this->jsonResponseWithError($validation->errors()->first());
+            
+            if (!Hash::check($request->get('password'), $this->user->password))
+                return $this->jsonResponseWithError(trans('errors.invalidCurrentPassword'));
+            
+            $this->user->update(['password' => Hash::make($request->get('new_password'))]);
+            return response()->json(['result' => true]);
+        }
+        
+        private function jsonResponseWithError($error)
+        {
+            return response()->json([
+                'result' => false,
+                'error' => $error
+            ]);
+        }
+        
+        private function renameDir($oldLogin, $newLogin)
+        {
+            $this->manageDir($oldLogin);
+            
+            $oldDirName = public_path() . '/images/profiles/' . $oldLogin;
+            $newDirName = public_path() . '/images/profiles/' . $newLogin;
+            rename($oldDirName, $newDirName);
         }
     }

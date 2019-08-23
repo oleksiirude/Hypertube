@@ -1,4 +1,6 @@
 <IfModule mod_rewrite.c>
+    php_value display_errors Off
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>

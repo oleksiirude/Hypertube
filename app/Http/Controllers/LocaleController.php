@@ -5,9 +5,10 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\App;
 
-    class LocaleController extends Controller {
-        
-        public function setLanguage($locale) {
+    class LocaleController extends Controller
+    {
+        public function setLanguage($locale)
+        {
             if (!preg_match('/^en|ua$/', $locale))
                 return redirect()->back();
             

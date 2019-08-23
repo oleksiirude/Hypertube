@@ -9,11 +9,20 @@
     use Illuminate\Foundation\Validation\ValidatesRequests;
     use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
     
-    class Controller extends BaseController {
+    class Controller extends BaseController
+    {
         use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
         
+        // manage creating necessary directories
+        protected function manageDir($login) {
+            if (!file_exists(public_path() . '/images/profiles'))
+                mkdir(public_path() . '/images/profiles');
+            if (!file_exists(public_path() . '/images/profiles/' . $login))
+                mkdir(public_path() . '/images/profiles/' . $login);
+        }
+        
         // specify auth validation errors
-        public function specifyValidationErrors($validation) {
+        protected function specifyValidationErrors($validation) {
             $message = $validation->getMessageBag()->first();
             $div = key($validation->getMessageBag()->toArray());
             

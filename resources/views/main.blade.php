@@ -9,7 +9,8 @@
 
                     <div class="card-body">
 
-                        Here will be main page content
+                        Here will be main page content<p>
+                        <a class="btn-light" href="{{ route('show') }}">show</a>
                     </div>
                 </div>
             </div>

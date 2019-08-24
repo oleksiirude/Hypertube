@@ -7,6 +7,8 @@
     Auth::routes();
     
     Route::get('/main', 'MainPageController@index')->name('main');
+    Route::get('/show', 'MainPageController@show')->name('show');
+    
     
     // Profile manipulations
     Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {

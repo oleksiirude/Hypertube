@@ -69,7 +69,7 @@
 
                 let button = document.createElement('a');
                 button.className = 'btn btn-primary';
-                button.innerText = this.login_title;
+                button.innerText = this.sign_in_title;
                 button.role = 'button';
                 button.href = this.login_route;
 
@@ -87,7 +87,7 @@
             'csrf_token',
 
             // localization titles
-            'login_title',
+            'sign_in_title',
             'successful_registration'
         ]
     }

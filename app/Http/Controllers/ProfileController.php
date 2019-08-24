@@ -26,9 +26,9 @@
             return view('profiles.auth-profile', ['profile' => User::find(auth()->id())]);
         }
         
-        protected function showUserProfile($user)
+        protected function showUserProfile($login)
         {
-            dd('show user profile: ' . $user);
+            return view('profiles.user-profile', ['profile' => User::where('login', $login)->firstOrFail()]);
         }
         
         protected function changeLogin(Request $request)
@@ -44,7 +44,7 @@
             
             if($this->user->avatar !== DEFAULT_AVATAR) {
                 $this->user->update([
-                    'avatar' => 'images/profiles/' . $newLogin . '/avatar.jpg'
+                    'avatar' => PATH_TO_PROFILE . $newLogin . AVATAR
                 ]);
             }
             
@@ -127,20 +127,12 @@
             return response()->json(['result' => true]);
         }
         
-        private function jsonResponseWithError($error)
-        {
-            return response()->json([
-                'result' => false,
-                'error' => $error
-            ]);
-        }
-        
         private function renameDir($oldLogin, $newLogin)
         {
             $this->manageDir($oldLogin);
             
-            $oldDirName = public_path() . '/images/profiles/' . $oldLogin;
-            $newDirName = public_path() . '/images/profiles/' . $newLogin;
+            $oldDirName = public_path() . PATH_TO_PROFILE . $oldLogin;
+            $newDirName = public_path() . PATH_TO_PROFILE . $newLogin;
             rename($oldDirName, $newDirName);
         }
     }

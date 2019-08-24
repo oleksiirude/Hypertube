@@ -7,7 +7,7 @@
         csrf_token="{{ csrf_token() }}"
 
         {{-- localization titles --}}
-        login_title="{{ __('titles.login') }}"
+        sign_in_title="{{ __('titles.signIn') }}"
         successful_registration="{{ __('messages.successfulRegistration') }}">
     </registration-component>
 

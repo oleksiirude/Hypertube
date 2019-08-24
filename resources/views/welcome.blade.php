@@ -154,7 +154,7 @@
                 @if (Route::has('login'))
                     <div class="links">
 {{--                        <div class="login">--}}
-                            <a href="{{ route('login') }}">{{ __('titles.login') }}</a>
+                            <a href="{{ route('login') }}">{{ __('titles.signIn') }}</a>
 {{--                        </div>--}}
                         @if (Route::has('register'))
 {{--                            <div class="register">--}}

@@ -21,7 +21,7 @@
         public function sendResetLinkEmail(Request $request)
         {
             $validation = Validator::make($request->all(), [
-                'email' => 'required|email|between:5,100'
+                'email' => 'required|email|exists:users|between:5,100'
             ]);
             if ($validation->fails())
                 return $this->specifyValidationErrors($validation);
@@ -57,7 +57,7 @@
         {
             return response()->json([
                 'result' => false,
-                'error' => trans('errors.nonexistentEmail'),
+                'error' => trans('errors.forbidReset'),
                 'div' => 'email'
             ]);
         }

@@ -1,8 +1,8 @@
 <?php
     return [
-        'login' => 'Login',
+        'signIn' => 'Sign in',
         'register' => 'Register',
-        'username' => 'Username',
+        'username' => 'Login',
         'password' => 'Password',
         'rememberMe' => 'Remember Me',
         'forgotPassword' => 'Forgot Your Password?',
@@ -21,4 +21,5 @@
         'avatar' => 'Avatar',
         'about' => 'About me',
         'notSpecified' => 'Not specified',
+        'profile' => "Profile:",
     ];

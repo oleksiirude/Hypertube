@@ -15,21 +15,30 @@
         
         // manage creating necessary directories
         protected function manageDir($login) {
-            if (!file_exists(public_path() . '/images/profiles'))
-                mkdir(public_path() . '/images/profiles');
-            if (!file_exists(public_path() . '/images/profiles/' . $login))
-                mkdir(public_path() . '/images/profiles/' . $login);
+            if (!file_exists(public_path() . PATH_TO_PROFILE))
+                mkdir(public_path() . PATH_TO_PROFILE);
+            if (!file_exists(public_path() . PATH_TO_PROFILE . $login))
+                mkdir(public_path() . PATH_TO_PROFILE . $login);
         }
         
         // specify auth validation errors
         protected function specifyValidationErrors($validation) {
-            $message = $validation->getMessageBag()->first();
-            $div = key($validation->getMessageBag()->toArray());
+            $message = $validation->errors()->first();
+            $div = key($validation->errors()->toArray());
             
             return [
                 'result' => false,
                 'error' => $message,
                 'div' => $div
             ];
+        }
+    
+        // prepare json response with error
+        protected function jsonResponseWithError($error)
+        {
+            return response()->json([
+                'result' => false,
+                'error' => $error
+            ]);
         }
     }

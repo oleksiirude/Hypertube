@@ -11,7 +11,7 @@
     // Profile manipulations
     Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {
         Route::get('/', 'ProfileController@showAuthProfile')->name('show.auth');
-        Route::get('/{user}', 'ProfileController@showUserProfile')->name('show.user');
+        Route::get('/{login}', 'ProfileController@showUserProfile')->name('show.user');
         
         Route::group(['prefix' => '/change'], function () {
             Route::post('/login', 'ProfileController@changeLogin')->name('change.login');

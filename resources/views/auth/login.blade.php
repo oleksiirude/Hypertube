@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('titles.login') }}</div>
+                    <div class="card-header">{{ __('titles.signIn') }}</div>
 
                     <div id="enter-div" class="card-body">
                         <form id="login-form">
@@ -47,7 +47,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button id="login-btn" type="submit" class="btn btn-primary">
-                                        {{ __('titles.login') }}
+                                        {{ __('titles.signIn') }}
                                     </button>
 
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -59,7 +59,7 @@
 
                         <div class="dropdown-divider"></div>
                         <div class="text-center">
-                            {{ __('titles.login') }}{{ __('parts.via') }} {{ __('parts.services') }}:
+                            {{ __('titles.signIn') }}{{ __('parts.via') }} {{ __('parts.services') }}:
                             <div id="oauth">
                                 <a id="42" class="btn btn-primary" href="{{ route('oauth', '42') }}"><img src="/images/service/42_white.svg" alt="42_school" title="school42" class="oath_img"></a>
                                 <a id="github" class="btn btn-primary" href="{{ route('oauth', 'github') }}"><img src="/images/service/git.png" alt="GitHub" title="GitHub" class="oath_img"></a>

@@ -29,12 +29,9 @@
                 return $result;
     
             $login = $this->user->login;
-            
             $this->manageDir($login);
-            
             $this::manageAvatar($result, $login);
-            
-            $path = '/images/profiles/' . $login . '/avatar.jpg';
+            $path = PATH_TO_PROFILE . $login . AVATAR;
             
             $this->user->where('uuid', auth()->id())->update([
                 'avatar' => $path
@@ -66,19 +63,15 @@
                 'avatar' => 'required|mimes:jpeg|max:5632|dimensions:min_width=200,min_height=200,max_width=5000,max_height=5000'
             ]);
             
-            if ($validation->fails()) {
-                return response()->json([
-                    'result' => false,
-                    'error' => $validation->getMessageBag()->first()
-                    ]);
-            }
+            if ($validation->fails())
+                $this->jsonResponseWithError($validation->errors()->first());
             
             return $request->file('avatar');
         }
         
         public static function manageAvatar($avatar, $login)
         {
-            $absolutePath = public_path() . '/images/profiles/' . $login . '/avatar.jpg';
+            $absolutePath = public_path() . PATH_TO_PROFILE . $login . AVATAR;
             
             (new ImageManager())->make($avatar)
                 ->orientate()

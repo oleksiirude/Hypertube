@@ -1,8 +1,8 @@
 <?php
     return [
-        'login' => 'Увійти',
+        'signIn' => 'Увійти',
         'register' => 'Зареєструватися',
-        'username' => 'Користувач',
+        'username' => 'Логін',
         'password' => 'Пароль',
         'rememberMe' => "Запам'ятати Мене",
         'forgotPassword' => 'Забули Ваш Пароль?',
@@ -21,4 +21,5 @@
         'avatar' => 'Аватар',
         'about' => 'Про себе',
         'notSpecified' => 'Не вказано',
+        'profile' => "Профіль:",
     ];

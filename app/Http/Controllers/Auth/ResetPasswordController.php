@@ -32,8 +32,8 @@
             );
             
             return $response == Password::PASSWORD_RESET
-                ? $this->sendResetResponse($request, $response)
-                : $this->sendResetFailedResponse($request, $response);
+                ? $this->sendResetResponse()
+                : $this->sendResetFailedResponse();
         }
         
         protected function rules()
@@ -54,12 +54,12 @@
             $this->guard()->login($user);
         }
         
-        protected function sendResetResponse(Request $request, $response)
+        protected function sendResetResponse()
         {
             return response()->json(['result' => true]);
         }
         
-        protected function sendResetFailedResponse(Request $request, $response)
+        protected function sendResetFailedResponse()
         {
             return response()->json([
                 'result' => false,

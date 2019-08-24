@@ -75,7 +75,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link menu_link" href="{{ route('login') }}">{{ trans('titles.login') }}</a>
+                                <a class="nav-link menu_link" href="{{ route('login') }}">{{ trans('titles.signIn') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">

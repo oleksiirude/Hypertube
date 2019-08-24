@@ -43,11 +43,9 @@
     
         public function ifUserAlreadyExists($data, $provider)
         {
-            $id = $data->getId();
-        
             $user = User::where([
                 'auth_provider' => $provider,
-                'auth_provider_id' => $id
+                'auth_provider_id' => $data->getId()
             ])->first();
         
             return $user ? $user : false;
@@ -59,12 +57,12 @@
             $uuid = User::getNewUuidForUserTable();
             $login = $this->specifyLogin($data->getNickname());
             $name = $this->specifyName($data->getName());
-            $email = $this->handleEmailDublicate($data->getEmail());
+            $email = $this->handleEmailDuplicate($data->getEmail());
         
             if (!$email['result'])
                 exit (view('auth.error',
                     [
-                        'title' => trans('titles.login') . trans("partst.via") . $provider,
+                        'title' => trans('titles.login') . trans("parts.via") . $provider,
                         'error' => trans('titles.email') . " $email[email]" . trans('errors.alreadyTaken')
                     ])
                 );
@@ -86,22 +84,14 @@
     
         public function specifyLogin($login)
         {
-            if ($login) {
-                if (!User::where('login', $login)->first())
-                    return $login;
-                else
-                    while (true) {
-                        $login = $login . str_shuffle('0123456789');
-                        if (!User::where('login', $login)->first())
-                            return $login;
-                    }
-            }
+            if ($login && !User::where('login', $login)->first())
+                return $login;
             else
                 while (true) {
-                    $login = 'user' . str_shuffle('0123456789');
-                    if (!User::where('login', $login)->first())
-                        return $login;
-                }
+                $login = $login . str_shuffle(DIGITS);
+                if (!User::where('login', $login)->first())
+                    return $login;
+            }
         }
     
         public function specifyName($name)
@@ -117,9 +107,8 @@
             return $name;
         }
     
-        public function handleEmailDublicate($email)
+        public function handleEmailDuplicate($email)
         {
-        
             if (User::where('email', $email)->first())
                 return ['result' => false, 'email' => $email];
             return ['result' => true, 'email' => $email];
@@ -138,7 +127,7 @@
                 else
                     return DEFAULT_AVATAR;
             }
-            return 'images/profiles/' . $login . '/avatar.jpg';
+            return PATH_TO_PROFILE . $login . AVATAR;
         }
     
         public function login($user)

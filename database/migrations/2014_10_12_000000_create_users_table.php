@@ -4,19 +4,21 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Database\Migrations\Migration;
     
-    class CreateUsersTable extends Migration {
+    class CreateUsersTable extends Migration
+    {
         /**
          * Run the migrations.
          *
          * @return void
          */
-        public function up() {
+        public function up()
+        {
             Schema::create('users', function (Blueprint $table) {
                 $table->uuid('uuid');
                 $table->string('login');
                 $table->string('first_name');
                 $table->string('last_name');
-                $table->string('avatar')->default('images/service/defaultAvatar.png');
+                $table->string('avatar')->default(DEFAULT_AVATAR);
                 $table->string('info')->nullable();
                 $table->string('email')->unique();
                 $table->string('password');
@@ -32,7 +34,8 @@
          *
          * @return void
          */
-        public function down() {
+        public function down()
+        {
             Schema::dropIfExists('users');
         }
     }

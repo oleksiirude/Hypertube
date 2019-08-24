@@ -41,7 +41,7 @@ return [
     'distinct' => 'The :attribute field has a duplicate value',
     'email' => 'Invalid format',
     'ends_with' => 'The :attribute must end with one of the following: :values',
-    'exists' => 'The selected :attribute is invalid',
+    'exists' => "We haven't any user with this email",
     'file' => 'The :attribute must be a file',
     'filled' => 'The :attribute field must have a value',
     'gt' => [

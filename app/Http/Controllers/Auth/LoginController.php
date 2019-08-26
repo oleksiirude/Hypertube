@@ -39,6 +39,7 @@
                 $remember_me)) {
                 
                 App::setLocale($locale);
+                $locale = $locale ? $locale : 'en';
                 session()->put('locale', $locale);
                 return response()->json(['result' => true, 'locale' => App::getLocale()]);
             }

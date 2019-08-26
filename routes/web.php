@@ -1,12 +1,16 @@
 <?php
     
-    Route::get('/', function () {return view('welcome');})
+    Route::get('/welcome', function () {return view('welcome');})
         ->name('welcome')
         ->middleware('guest');
     
     Auth::routes();
     
-    Route::get('/main', 'MainPageController@index')->name('main');
+    Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+        Route::get('/', 'MainPageController@index')->name('main');
+        Route::get('/search', 'MainPageController@searchByTitle')->name('search.title');
+    });
+    
     Route::get('/imdb', 'MainPageController@imdb')->name('imdb');
     Route::get('/tmdb', 'MainPageController@tmdb')->name('tmdb');
     

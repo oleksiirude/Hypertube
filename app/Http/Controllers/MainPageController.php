@@ -17,6 +17,21 @@
             return view('main');
         }
         
+        protected function searchByTitle(Request $request)
+        {
+            $language = session()->get('locale');
+            
+            $query = $request->get('title');
+            $client = new Client();
+    
+            $key = config('keys.tmdb');
+            $response = $client->request('GET',
+                "https://api.themoviedb.org/3/search/movie?api_key=$key&language=$language&query=$query&page=1&include_adult=false", [
+                ]);
+    
+            dd(json_decode($response->getBody()));
+        }
+        
         protected function imdb(Request $request)
         {
             $target = $request->get('request');

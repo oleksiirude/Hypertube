@@ -37,7 +37,7 @@
                 // abort(401);
             }
             
-            return redirect('main');
+            return redirect('/');
         }
     
         public function ifUserAlreadyExists($data, $provider)
@@ -135,6 +135,7 @@
             $locale = session()->get('locale');
             auth()->login($user, true);
             App::setLocale($locale);
+            $locale = $locale ? $locale : 'en';
             session()->put('locale', $locale);
         }
     }

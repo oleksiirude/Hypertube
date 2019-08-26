@@ -115,6 +115,19 @@
 
         <main class="py-4" id="main_container">
             @yield('content')
+            <div class="top-right links mt-2">
+                <div class="language">
+                    <a href="{{ route('set.language', 'en') }}" style="text-decoration: none">
+                        <img src="{{ asset('images/service/en.png') }}" alt="English" style="width: 30px">
+                    </a>
+                    <a href="{{ route('set.language', 'ua') }}" style="text-decoration: none">
+                        <img src="{{ asset('images/service/ua.png') }}" alt="Ukrainian" style="width: 30px">
+                    </a>
+                    <a href="{{ route('set.language', 'ru') }}" style="text-decoration: none">
+                        <img src="{{ asset('images/service/ru.png') }}" alt="Russian" style="width: 30px">
+                    </a>
+                </div>
+            </div>
         </main>
         <footer-component></footer-component>
     </div>

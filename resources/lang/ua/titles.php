@@ -4,8 +4,8 @@
         'register' => 'Зареєструватися',
         'username' => 'Логін',
         'password' => 'Пароль',
-        'rememberMe' => "Запам'ятати Мене",
-        'forgotPassword' => 'Забули Ваш Пароль?',
+        'doNotRememberMe' => "Не запам'ятовувати мене",
+        'forgotPassword' => 'Забули Ваш пароль?',
         'firstName' => "Ім'я",
         'lastName' => 'Прiзвище',
         'email' => 'Пошта',
@@ -22,4 +22,5 @@
         'about' => 'Про себе',
         'notSpecified' => 'Не вказано',
         'profile' => "Профіль:",
+        'newAccount' => 'Створити акаунт'
     ];

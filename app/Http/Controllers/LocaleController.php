@@ -9,7 +9,7 @@
     {
         public function setLanguage($locale)
         {
-            if (!preg_match('/^en|ua$/', $locale))
+            if (!preg_match('/^en|ua|ru$/', $locale))
                 return redirect()->back();
             
             session()->put('locale', $locale);

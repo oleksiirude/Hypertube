@@ -8,9 +8,17 @@
                     <div class="card-header">Main page</div>
 
                     <div class="card-body">
+                        Searching films:<p>
 
-                        Here will be main page content<p>
-                        <a class="btn-light" href="{{ route('show') }}">show</a>
+                        <form method="GET" action="{{ route('imdb') }}">
+                            <input type="text" name="request">
+                            <button class="button-blue" type="submit">imdb api</button>
+                        </form>
+
+                        <form method="GET" action="{{ route('tmdb') }}">
+                            <input type="text" name="request">
+                            <button class="button-blue" type="submit">tmdb api</button>
+                        </form>
                     </div>
                 </div>
             </div>

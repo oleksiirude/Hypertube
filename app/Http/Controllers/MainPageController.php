@@ -3,7 +3,7 @@
     namespace App\Http\Controllers;
     
     use GuzzleHttp\Client;
-    use GuzzleHttp\Psr7\Request;
+    use Illuminate\Http\Request;
 
     class MainPageController extends Controller
     {
@@ -17,8 +17,9 @@
             return view('main');
         }
         
-        protected function show()
+        protected function imdb(Request $request)
         {
+            $target = $request->get('request');
             $client = new Client([
                 'headers' => [
                     'x-rapidapi-host' => 'movie-database-imdb-alternative.p.rapidapi.com',
@@ -28,34 +29,25 @@
           
            $response = $client->request('GET', 'https://movie-database-imdb-alternative.p.rapidapi.com/', [
                    'query' => [
-                       'i' => 'tt4154796',
-                       'r' => 'json'
+                       'page' => '2',
+                       'r' => 'json',
+                       's' => $target
                    ]
                ]);
-           dd($response->getBody());
-            
-            
-            
-            $request = new Request('GET', 'https://movie-database-imdb-alternative.p.rapidapi.com');
-            
-//            $client = new Client();
-//            $request = new Client\Request();
-//
-//            $request->setRequestUrl('https://movie-database-imdb-alternative.p.rapidapi.com/');
-//            $request->setRequestMethod('GET');
-//            $request->setQuery(new QueryString(array(
-//                'i' => 'tt4154796',
-//                'r' => 'json'
-//            )));
-//
-//            $request->setHeaders(array(
-//                'x-rapidapi-host' => 'movie-database-imdb-alternative.p.rapidapi.com',
-//                'x-rapidapi-key' => config('keys.imdb')
-//            ));
-//
-//            $client->enqueue($request)->send();
-//            $response = $client->getResponse();
-//
-//            dd($response->getBody());
+           
+           dd(json_decode($response->getBody()));
+           
+        }
+        
+        protected function tmdb(Request $request) {
+            $query = $request->get('request');
+            $client = new Client();
+
+            $key = config('keys.tmdb');
+            $response = $client->request('GET',
+                "https://api.themoviedb.org/3/search/movie?api_key=$key&language=en-US&query=$query&page=2&include_adult=false", [
+            ]);
+
+            dd(json_decode($response->getBody()));
         }
     }

@@ -25,7 +25,6 @@
         height: 160px;
         color: #fff;
         background: black;
-
         text-align: right;
     }
     .copyright {

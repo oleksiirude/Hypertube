@@ -132,6 +132,9 @@
                         <a href="{{ route('set.language', 'ua') }}" style="text-decoration: none">
                             <img src="{{ asset('images/service/ua.png') }}" alt="Ukrainian" style="width: 30px">
                         </a>
+                        <a href="{{ route('set.language', 'ru') }}" style="text-decoration: none">
+                            <img src="{{ asset('images/service/ru.png') }}" alt="Russian" style="width: 30px">
+                        </a>
                     </div>
                 </div>
                 <div class="top-left">

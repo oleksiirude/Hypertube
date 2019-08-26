@@ -28,7 +28,6 @@
         {
             try {
                 $data = Socialite::driver($provider)->user();
-                
                 if (!($user = $this->ifUserAlreadyExists($data, $provider)))
                     $user = $this->create($data, $provider);
                 
@@ -62,7 +61,7 @@
             if (!$email['result'])
                 exit (view('auth.error',
                     [
-                        'title' => trans('titles.login') . trans("parts.via") . $provider,
+                        'title' => trans('titles.signIn') . trans("parts.via") . $provider,
                         'error' => trans('titles.email') . " $email[email]" . trans('errors.alreadyTaken')
                     ])
                 );
@@ -78,7 +77,7 @@
                 'email' => strtolower($data->getEmail()),
                 'password' => Hash::make(str_shuffle($uuid)),
                 'auth_provider' => $provider,
-                'auth_provider_id' => (string)$data->getId()
+                'auth_provider_id' => $data->getId()
             ]);
         }
     
@@ -88,6 +87,7 @@
                 return $login;
             else
                 while (true) {
+                $login = $login ? $login : 'username';
                 $login = $login . str_shuffle(DIGITS);
                 if (!User::where('login', $login)->first())
                     return $login;
@@ -133,7 +133,7 @@
         public function login($user)
         {
             $locale = session()->get('locale');
-            auth()->login($user);
+            auth()->login($user, true);
             App::setLocale($locale);
             session()->put('locale', $locale);
         }

@@ -1,0 +1,26 @@
+<?php
+    return [
+        'signIn' => 'Ввойти',
+        'register' => 'Регистрация',
+        'username' => 'Логин',
+        'password' => 'Пароль',
+        'doNotRememberMe' => "Не запоминать меня",
+        'forgotPassword' => 'Забыли Ваш пароль?',
+        'firstName' => "Имя",
+        'lastName' => 'Фамилия',
+        'email' => 'Почта',
+        'passwordConfirmation' => 'Подтверждение пароля',
+        'resetPassword' => 'Восстановить пароль',
+        'sendLink' => 'Отправить линк для восстановления пароля',
+        'setNewPasswordTitle' => 'Установка нового пароля',
+        'setNewPasswordAction' => 'Установить новый пароль',
+        'continue' => 'Продолжить',
+        'getNewLink' => 'Получить новый линк для восстановления пароля',
+        'myProfile' => 'Мой профиль',
+        'logout' => 'Выйти',
+        'avatar' => 'Аватар',
+        'about' => 'Про себя',
+        'notSpecified' => 'Не указано',
+        'profile' => "Профиль:",
+        'newAccount' => 'Создать аккаунт'
+    ];

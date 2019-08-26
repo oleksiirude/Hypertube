@@ -1,7 +1,7 @@
 <?php
 
     namespace App\Http\Controllers\Auth;
-
+    
     use Validator;
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -31,10 +31,12 @@
             
             $locale = session()->get('locale');
             
+            $remember_me = $request->get('remember') ? false : true;
+            
             if (Auth::attempt([
                 'login' => $request->get('login'),
                 'password' => $request->get('password')],
-                $request->get('remember'))) {
+                $remember_me)) {
                 
                 App::setLocale($locale);
                 session()->put('locale', $locale);

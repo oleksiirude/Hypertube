@@ -7,7 +7,8 @@
     Auth::routes();
     
     Route::get('/main', 'MainPageController@index')->name('main');
-    Route::get('/show', 'MainPageController@show')->name('show');
+    Route::get('/imdb', 'MainPageController@imdb')->name('imdb');
+    Route::get('/tmdb', 'MainPageController@tmdb')->name('tmdb');
     
     
     // Profile manipulations

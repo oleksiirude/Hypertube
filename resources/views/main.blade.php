@@ -13,9 +13,29 @@
                 navbar
             </div>
             <div class="col-10" style="background-color: darkgrey">
-{{--                @if(count($content))--}}
-{{--                    content--}}
-{{--                @endif--}}
+                <div class="row">
+                    @if(isset($content) && $content)
+                        @foreach($content as $item)
+                            <div class="col-sm-4 pt-2 pb-2">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $item->title }}</h5>
+                                        <img class="img-thumbnail" src="{{ BASE_URL . SMALL . $item->poster_path }}">
+                                        <p class="card-text">{{ $item->release_date }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+{{--                    @if(isset($content) && $content)--}}
+{{--                        @foreach($content as $item)--}}
+{{--                            <div class="col-xs-4">--}}
+{{--                                {{ $item->title }}--}}
+{{--                                <img class="img-thumbnail" src="{{ BASE_URL . SMALL . $item->poster_path }}" style="width: 200px">--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
+                </div>
             </div>
         </div>
     </div>

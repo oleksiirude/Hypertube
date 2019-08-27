@@ -7,9 +7,12 @@
 
     class MainPageController extends Controller
     {
+        private $tmdb;
+        
         public function __construct()
         {
             $this->middleware('auth');
+            $this->tmdb = new TMDBController();
         }
         
         protected function index()
@@ -19,17 +22,11 @@
         
         protected function searchByTitle(Request $request)
         {
-            $language = session()->get('locale');
+            $results = $this->tmdb->getByTitle($request->get('title'));
+    
+            dd($results);
             
-            $query = $request->get('title');
-            $client = new Client();
-    
-            $key = config('keys.tmdb');
-            $response = $client->request('GET',
-                "https://api.themoviedb.org/3/search/movie?api_key=$key&language=$language&query=$query&page=1&include_adult=false", [
-                ]);
-    
-            dd(json_decode($response->getBody()));
+            return view('main', ['content' => $results->results]);
         }
         
         protected function imdb(Request $request)
@@ -52,17 +49,5 @@
            
            dd(json_decode($response->getBody()));
            
-        }
-        
-        protected function tmdb(Request $request) {
-            $query = $request->get('request');
-            $client = new Client();
-
-            $key = config('keys.tmdb');
-            $response = $client->request('GET',
-                "https://api.themoviedb.org/3/search/movie?api_key=$key&language=en-US&query=$query&page=2&include_adult=false", [
-            ]);
-
-            dd(json_decode($response->getBody()));
         }
     }

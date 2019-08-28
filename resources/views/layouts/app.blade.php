@@ -116,7 +116,13 @@
         <main class="py-4" id="main_container">
             @yield('content')
         </main>
-        <footer-component ua_url="{{ route('set.language', 'ua') }}" en_url="{{ route('set.language', 'en') }}" ua_img="{{ asset('images/service/ua.png') }}" en_img="{{ asset('images/service/en.png') }}"></footer-component>
+        <footer-component ua_url="{{ route('set.language', 'ua') }}"
+                          en_url="{{ route('set.language', 'en') }}"
+                          ua_img="{{ asset('images/service/ua.png') }}"
+                          ru_url="{{ route('set.language', 'ru') }}"
+                          ru_img="{{ asset('images/service/ru.png') }}"
+                          en_img="{{ asset('images/service/en.png') }}"
+        ></footer-component>
     </div>
 </body>
 </html>

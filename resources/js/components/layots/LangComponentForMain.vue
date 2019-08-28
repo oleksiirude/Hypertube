@@ -7,6 +7,9 @@
             <a :href="ua_url">
                 <img :src="ua_img" id="ua" alt="Ukrainian">
             </a>
+            <a :href="ru_url">
+                <img :src="ru_img" id="ru" alt="Russian">
+            </a>
         </div>
     </div>
 </template>
@@ -17,9 +20,10 @@
             let lang = document.documentElement.lang;
             if (lang === 'ua') {
                 document.getElementById('ua').classList.add("active_lng");
-            }
-            else {
+            } else if (lang === 'en'){
                 document.getElementById('en').classList.add("active_lng");
+            } else if (lang === 'ru'){
+                document.getElementById('ru').classList.add("active_lng");
             }
             console.log('lang', document.documentElement.lang);
         },
@@ -28,6 +32,8 @@
             'en_url',
             'ua_img',
             'en_img',
+            'ru_url',
+            'ru_img',
         ],
     }
 </script>

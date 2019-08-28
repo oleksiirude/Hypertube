@@ -1,5 +1,5 @@
 <template>
-    <div class="top-right links">
+    <div class="top-right links" :id="id">
         <div class="language">
             <a :href="en_url">
                 <img :src="en_img" id="en" alt="English" v-bind:class=" {active_lng: ('en' === currentLang)} ">
@@ -26,6 +26,7 @@
             'en_img',
             'ru_url',
             'ru_img',
+            'id'
         ],
         data: function () {
             return {
@@ -37,9 +38,11 @@
 
 <style scoped>
     .top-right {
-        position: absolute;
+        display: inline-block;
+        float: right;
+        position: relative;
         right: 10px;
-        top: 18px;
+        /*bottom: 10px;*/
         z-index: 11;
     }
     .top-right {
@@ -57,6 +60,11 @@
     }
     .language > a > .active_lng {
         opacity: 1.0;
+    }
+    #main_lang {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
     }
 
 

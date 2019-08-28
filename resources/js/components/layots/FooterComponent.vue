@@ -5,19 +5,14 @@
             <p class="copyright">
                 &copy; created by US, 2019
             </p>
-            <div class="top-right links">
-                <div class="language">
-                    <a :href="en_url">
-                        <img :src="en_img" id="en" alt="English" v-bind:class=" {active_lng: ('en' === currentLang)} ">
-                    </a>
-                    <a :href="ua_url">
-                        <img :src="ua_img" id="ua" alt="Ukrainian" v-bind:class=" {active_lng: ('ua' === currentLang)} ">
-                    </a>
-                    <a :href="ru_url">
-                        <img :src="ru_img" id="ru" alt="Russian" v-bind:class=" {active_lng: ('ru' === currentLang)} ">
-                    </a>
-                </div>
-            </div>
+            <lang-component :ua_url="ua_url"
+                            :ua_img="ua_img"
+                            :ru_url="ru_url"
+                            :ru_img="ru_img"
+                            :en_url="en_url"
+                            :en_img="en_img"
+                            id="footer_lang"
+            ></lang-component>
         </div>
     </footer>
 </template>
@@ -27,7 +22,6 @@
         mounted(){
 
         },
-        name: "FooterComponent.vue",
         props: [
             'ua_url',
             'en_url',
@@ -36,11 +30,6 @@
             'ru_url',
             'ru_img',
         ],
-        data: function () {
-            return {
-                currentLang: document.documentElement.lang
-            }
-        }
     }
 </script>
 
@@ -66,7 +55,7 @@
         content: '';
         position: absolute;
         /*top: 0;*/
-        height: 140px;
+        height: 120px;
         left: 0;
         right: 0;
         /*bottom: 40px;*/
@@ -85,22 +74,6 @@
         background-size: contain;
         z-index: -1;
 
-    }
-    .top-right {
-        display: inline-block;
-        float: right;
-    }
-    .language {
-        margin-right: 20px;
-    }
-    .language > a > img {
-        opacity: 0.4;
-    }
-    .language > a > img:hover {
-        opacity: 1.0;
-    }
-    .language > a > .active_lng {
-        opacity: 1.0;
     }
 
 

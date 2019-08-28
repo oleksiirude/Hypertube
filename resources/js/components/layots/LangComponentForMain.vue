@@ -2,13 +2,13 @@
     <div class="top-right links">
         <div class="language">
             <a :href="en_url">
-                <img :src="en_img" id="en" alt="English">
+                <img :src="en_img" id="en" alt="English" v-bind:class=" {active_lng: ('en' === currentLang)} ">
             </a>
             <a :href="ua_url">
-                <img :src="ua_img" id="ua" alt="Ukrainian">
+                <img :src="ua_img" id="ua" alt="Ukrainian" v-bind:class=" {active_lng: ('ua' === currentLang)} ">
             </a>
             <a :href="ru_url">
-                <img :src="ru_img" id="ru" alt="Russian">
+                <img :src="ru_img" id="ru" alt="Russian" v-bind:class=" {active_lng: ('ru' === currentLang)} ">
             </a>
         </div>
     </div>
@@ -17,15 +17,7 @@
 <script>
     export default {
         mounted(){
-            let lang = document.documentElement.lang;
-            if (lang === 'ua') {
-                document.getElementById('ua').classList.add("active_lng");
-            } else if (lang === 'en'){
-                document.getElementById('en').classList.add("active_lng");
-            } else if (lang === 'ru'){
-                document.getElementById('ru').classList.add("active_lng");
-            }
-            console.log('lang', document.documentElement.lang);
+
         },
         props: [
             'ua_url',
@@ -35,6 +27,11 @@
             'ru_url',
             'ru_img',
         ],
+        data: function () {
+            return {
+                currentLang: document.documentElement.lang
+            }
+        }
     }
 </script>
 

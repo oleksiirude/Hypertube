@@ -136,3 +136,11 @@ svg:hover {
 .oath_img {
     height: 30px;
 }
+/*language*/
+
+.language a {
+    text-decoration: none;
+}
+.language a img {
+    width: 30px;
+}

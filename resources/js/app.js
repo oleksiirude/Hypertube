@@ -24,6 +24,7 @@ Vue.component('login-component', require('./components/Auth/LoginComponent').def
 Vue.component('reset-password-email-component', require('./components/Auth/ResetPasswordEmailComponent').default);
 Vue.component('reset-password-component', require('./components/Auth/ResetPasswordComponent').default);
 Vue.component('footer-component', require('./components/layots/FooterComponent').default);
+Vue.component('lang-component', require('./components/layots/LangComponentForMain').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

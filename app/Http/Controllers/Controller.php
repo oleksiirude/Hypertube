@@ -41,4 +41,13 @@
                 'error' => $error
             ]);
         }
+    
+        // prepare json response with success
+        protected function jsonResponseWithSuccess($data)
+        {
+            return response()->json([
+                'result' => true,
+                'data' => $data
+            ]);
+        }
     }

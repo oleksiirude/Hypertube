@@ -7,13 +7,11 @@
     Auth::routes();
     
     Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
-        Route::get('/', 'MainPageController@index')->name('main');
-        Route::get('/search', 'MainPageController@searchByTitle')->name('search.title');
+        Route::get('/', 'BrowseMoviesController@showMainPageWithSuggestions')->name('main');
+        Route::get('/research', 'BrowseMoviesController@researchByParams')->name('research');
+        Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
+        Route::get('/watch/{imdbId}/{movie}', 'BrowseMoviesController@watchMovie')->name('watch');
     });
-    
-    Route::get('/imdb', 'MainPageController@imdb')->name('imdb');
-    Route::get('/tmdb', 'MainPageController@tmdb')->name('tmdb');
-    
     
     // Profile manipulations
     Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {

@@ -129,7 +129,13 @@
                 </div>
             </div>
         </main>
-        <footer-component></footer-component>
+        <footer-component ua_url="{{ route('set.language', 'ua') }}"
+                          en_url="{{ route('set.language', 'en') }}"
+                          ua_img="{{ asset('images/service/ua.png') }}"
+                          ru_url="{{ route('set.language', 'ru') }}"
+                          ru_img="{{ asset('images/service/ru.png') }}"
+                          en_img="{{ asset('images/service/en.png') }}"
+        ></footer-component>
     </div>
 </body>
 </html>

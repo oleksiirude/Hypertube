@@ -1,78 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('titles.myProfile') }}</div>
+    <div class="slider row">
+        <div class="profile_cont">
+            <div class="incont">
+
+                <avatar-component src="{{ asset($profile->avatar) }}"
+                                  alt="{{ __('titles.avatar') }}"
+                                  action="{{ route('change.avatar') }}"
+                                  action_delete="{{ route('delete.avatar') }}"
+                                  csrf="{{csrf_token()}}"
+                ></avatar-component>
+
+                <div class="content_profile col-lg-8 col-md-6 col-sm-6 col-xs-6">
+                    <div class="title">{{ __('titles.myProfile') }}</div>
 
                     <div class="card-body">
 
-                        <img src="{{ asset($profile->avatar) }}" alt="{{ __('titles.avatar') }}" style="width: 200px; border-radius: 100%">
+                        <name-component name="login"
+                                        title="{{ __('titles.username') }}"
+                                        value="{{ $profile->login }}"
+                                        action="{{ route('change.login') }}"
+                        ></name-component>
 
-                        <p>{{ __('titles.username') }}: {{ $profile->login }}</p>
+                        <name-component name="first_name"
+                                        title="{{ __('titles.firstName') }}"
+                                        value="{{ $profile->first_name }}"
+                                        action="{{ route('change.firstName') }}"
+                        ></name-component>
 
-                        <p>{{ __('titles.firstName') }}: {{ $profile->first_name }}<br>
-                        {{ __('titles.lastName') }}: {{ $profile->last_name }}</p>
+                        <name-component name="last_name"
+                                        title="{{ __('titles.lastName') }}"
+                                        value="{{ $profile->last_name }}"
+                                        action="{{ route('change.lastName') }}"
+                        ></name-component>
 
-                        <p>{{ __('titles.about') }}:
-                            @if(!$profile->info)
-                                {{ __('titles.notSpecified') }}
-                            @else
-                                {{ $profile->info }}
-                            @endif
-                        </p>
 
-                        <p>{{ __('titles.email') }}: {{ $profile->email }}</p>
+                        <p class="titles">{{ __('titles.email') }}: </p>
+                        <p class="profiledata">{{ $profile->email }}</p>
+
+
+                        <bio-component title="{{ __('titles.about') }}"
+                                       bio="@if($profile->info) {{ $profile->info }} @endif"
+                                       no_bio="{{ __('titles.notSpecified') }}"
+                                       action="{{ route('change.info') }}"
+                                       csrf="{{csrf_token()}}"
+                                       placeholder="{{ __('titles.bioPlaceholder') }}"
+                        ></bio-component>
+
                     </div>
 
-                    <div class="dropdown-divider"></div>
-
-                    {{-- Change avatar --}}
-                    <form method="POST" enctype="multipart/form-data" action="{{ route('change.avatar') }}">
-                        @csrf
-                        <input type="file" name="avatar" accept=".jpg, .jpeg">
-                        <button type="submit">Change avatar</button>
-                    </form>
-
-                    {{-- Delete avatar --}}
-                    <form method="POST" action="{{ route('delete.avatar') }}">
-                        @csrf
-                        <button type="submit">Delete avatar</button>
-                    </form>
-
-                    {{-- Change about me --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.info') }}">
-                        @csrf
-                        <input type="text" name="info">
-                        <button type="submit">Change about me</button>
-                    </form>
-
-                    {{-- Change login --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.login') }}">
-                        @csrf
-                        <input type="text" name="login">
-                        <button type="submit">Change login</button>
-                    </form>
-
-                    {{-- Change first name --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.firstName') }}">
-                        @csrf
-                        <input type="text" name="first_name">
-                        <button type="submit">Change first name</button>
-                    </form>
-
-                    {{-- Change last name --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.lastName') }}">
-                        @csrf
-                        <input type="text" name="last_name">
-                        <button type="submit">Change last name</button>
-                    </form>
 
                     @if(!$profile->auth_provider)
                         {{-- Change email --}}

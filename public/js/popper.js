@@ -116,7 +116,8 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/olrudenk/mamp/apache2/htdocs/Hypertube/node_modules/popper.js/dist/popper.js */"./node_modules/popper.js/dist/popper.js");
+module.exports = __webpack_require__(/*! /Users/dpiven/http/MyWebSite/Hypertube/node_modules/popper.js/dist/popper.js */"./node_modules/popper.js/dist/popper.js");
+
 
 
 /***/ })

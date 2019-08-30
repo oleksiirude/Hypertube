@@ -20,7 +20,7 @@
             $data = TorrentsController::getPopularMoviesSortedByRating($this->client);
 
             if (App::getLocale() !== 'en')
-                $data = TMDBController::getTranslatedTitles($this->client, $data, App::getLocale());
+                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
 
             return view('main', ['content' => $data]);
             
@@ -32,21 +32,40 @@
             $title = $request->get('title');
             $data = TorrentsController::getMovie($this->client, $title);
             
-            //dd($this->jsonResponseWithSuccess($data));
+            if (!$data)
+                $data = TorrentsController::getPopularMoviesSortedByRating($this->client);
             
-            return $this->jsonResponseWithSuccess($data);
+            if (App::getLocale() !== 'en')
+                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
+    
+            return view('main', ['content' => $data]);
+            
+//            return $this->jsonResponseWithSuccess($data);
         }
     
     
         protected function researchByParams(Request $request)
         {
-            dd($request->all());
+            $params = $request->all();
+          
+            $data = TorrentsController::getMoviesByParams($this->client, $params);
+    
+            if (App::getLocale() !== 'en')
+                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
+            
+            
+            return view('main', ['content' => $data]);
+    
+//            return $this->jsonResponseWithSuccess($data);
         }
         
         protected function watchMovie($imdbId)
         {
-            $data = TorrentsController::getMovie($this->client, $imdbId);
+            $data = TorrentsController::getMovie($this->client, $imdbId)[0];
             
-            dd($data);
+            $data = TMDBController::getTranslatedAndAdditionalDataForItem($this->client, $data, App::getLocale());
+            
+            //  dd($data);
+            return view('watch', ['content' => $data]);
         }
     }

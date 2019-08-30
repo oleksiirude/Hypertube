@@ -4,7 +4,6 @@
     
     use App;
     use Exception;
-    use stdClass;
 
     class TorrentsController extends Controller
     {
@@ -21,20 +20,37 @@
                     ]);
         
                 $results = json_decode($response->getBody());
+
+                return $results->data->movies;
+            } catch (Exception $e) {
+                return false;
+            }
+        }
+        
+        public static function getMoviesByParams($client, $params)
+        {
+            try {
+                $response = $client->request('GET',
+                    'https://yts.am/api/v2/list_movies.json', [
+                        'query' => [
+                            'genre' => $params['genre'],
+                            'minimum_rating' => $params['min_rating'],
+                            'sort_by' => $params['sort'],
+                            'order_by' => $params['order'],
+                            'limit' => 9
+                        ]
+                    ]);
                 
-                foreach ($results->data->movies as $result) {
-                    $new = new stdClass();
-                    $new->year = $result->year;
-                    $new->title = $result->title;
-                    $new->imdb_code = $result->imdb_code;
-                    $new->slug = $result->slug;
-                    $new->large_cover_image = $result->large_cover_image;
-                    $new->rating = $result->rating;
-                    $new->genres = $result->genres;
-                    $filteredData[] = $new;
-                }
+                $results = json_decode($response->getBody());
                 
-                return $filteredData;
+                    $i = 0;
+                    foreach ($results->data->movies as $item) {
+                        if ($params['year_from'] > $item->year || $params['year_to'] < $item->year)
+                            unset($results->data->movies[$i]);
+                        $i++;
+                    }
+                    
+                return $results->data->movies;
             } catch (Exception $e) {
                 return false;
             }

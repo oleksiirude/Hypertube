@@ -34,22 +34,32 @@
                     </select>
 
                     Production year:
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from">
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to">
+                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" value="1920">
+                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" value="2019">
 
-                    IMDB Rating:
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="rating_from">
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="rating_to">
+                    Minimum Rating:
+                    <select name="min_rating" class="browser-default custom-select m-2">
+                        <option value="0" selected>0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
 
 
                     Sort by:
                     <select name="sort" class="browser-default custom-select m-2">
-                        <option value="prod_year" selected>production year</option>
+                        <option value="year" selected>production year</option>
                         <option value="rating">rating</option>
                     </select>
-                    <select name="direction" class="browser-default custom-select m-2">
-                        <option value="asc" selected>ascending</option>
+                    <select name="order" class="browser-default custom-select m-2">
                         <option value="desc">descending</option>
+                        <option value="asc">ascending</option>
                     </select>
 
                     <button class="btn btn-secondary m-2" type="submit">Research it!</button>

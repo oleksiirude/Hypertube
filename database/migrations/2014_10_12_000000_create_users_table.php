@@ -19,7 +19,7 @@
                 $table->string('first_name');
                 $table->string('last_name');
                 $table->string('avatar')->default(DEFAULT_AVATAR);
-                $table->string('info')->nullable();
+                $table->string('info', 500)->nullable();
                 $table->string('email')->unique();
                 $table->string('password');
                 $table->string('auth_provider')->nullable();;

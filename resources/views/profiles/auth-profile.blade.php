@@ -24,22 +24,24 @@
 
                         <p>{{ __('titles.email') }}: {{ $profile->email }}</p>
 
-                        <p>{{ __('titles.about') }}:
-                            @if(!$profile->info)
-                                {{ __('titles.notSpecified') }}
-                            @else
-                                {{ $profile->info }}
-                            @endif
-                        </p>
+
+                        <bio-component title="{{ __('titles.about') }}"
+                                       bio="@if($profile->info) {{ $profile->info }} @endif"
+                                       no_bio="{{ __('titles.notSpecified') }}"
+                                       action="{{ route('change.info') }}"
+                                       csrf="{{csrf_token()}}"
+                                       placeholder="{{ __('titles.bioPlaceholder') }}"
+                        ></bio-component>
+
                     </div>
 
-                    {{-- Change about me --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.info') }}">
-                        @csrf
-                        <input type="text" name="info">
-                        <button type="submit">Change about me</button>
-                    </form>
+{{--                    --}}{{-- Change about me --}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <form method="POST" action="{{ route('change.info') }}">--}}
+{{--                        @csrf--}}
+{{--                        <input type="text" name="info">--}}
+{{--                        <button type="submit">Change about me</button>--}}
+{{--                    </form>--}}
 
                     {{-- Change login --}}
                     <div class="dropdown-divider"></div>

@@ -22,5 +22,6 @@
         'about' => 'About me',
         'notSpecified' => 'Not specified',
         'profile' => "Profile:",
-        'newAccount' => 'Create account'
+        'newAccount' => 'Create account',
+        'bioPlaceholder' => 'Tell about yourself, up to 500 symbols'
     ];

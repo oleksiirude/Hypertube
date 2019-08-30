@@ -34,6 +34,7 @@ Vue.component('reset-password-component', require('./components/Auth/ResetPasswo
 Vue.component('footer-component', require('./components/layots/FooterComponent').default);
 Vue.component('lang-component', require('./components/layots/LangComponentForMain').default);
 Vue.component('avatar-component', require('./components/profile/AvatarComponent').default);
+Vue.component('bio-component', require('./components/profile/BioComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

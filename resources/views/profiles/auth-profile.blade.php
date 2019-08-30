@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="slider">
+    <div class="slider row">
         <div class="profile_cont">
             <div class="incont">
 
@@ -12,17 +12,32 @@
                                   csrf="{{csrf_token()}}"
                 ></avatar-component>
 
-                <div class="content_profile">
+                <div class="content_profile col-lg-8 col-md-6 col-sm-6 col-xs-6">
                     <div class="title">{{ __('titles.myProfile') }}</div>
 
                     <div class="card-body">
 
-                        <p>{{ __('titles.username') }}: {{ $profile->login }}</p>
+                        <name-component name="login"
+                                        title="{{ __('titles.username') }}"
+                                        value="{{ $profile->login }}"
+                                        action="{{ route('change.login') }}"
+                        ></name-component>
 
-                        <p>{{ __('titles.firstName') }}: {{ $profile->first_name }}<br>
-                        {{ __('titles.lastName') }}: {{ $profile->last_name }}</p>
+                        <name-component name="first_name"
+                                        title="{{ __('titles.firstName') }}"
+                                        value="{{ $profile->first_name }}"
+                                        action="{{ route('change.firstName') }}"
+                        ></name-component>
 
-                        <p>{{ __('titles.email') }}: {{ $profile->email }}</p>
+                        <name-component name="last_name"
+                                        title="{{ __('titles.lastName') }}"
+                                        value="{{ $profile->last_name }}"
+                                        action="{{ route('change.lastName') }}"
+                        ></name-component>
+
+
+                        <p class="titles">{{ __('titles.email') }}: </p>
+                        <p class="profiledata">{{ $profile->email }}</p>
 
 
                         <bio-component title="{{ __('titles.about') }}"
@@ -35,37 +50,6 @@
 
                     </div>
 
-{{--                    --}}{{-- Change about me --}}
-{{--                    <div class="dropdown-divider"></div>--}}
-{{--                    <form method="POST" action="{{ route('change.info') }}">--}}
-{{--                        @csrf--}}
-{{--                        <input type="text" name="info">--}}
-{{--                        <button type="submit">Change about me</button>--}}
-{{--                    </form>--}}
-
-                    {{-- Change login --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.login') }}">
-                        @csrf
-                        <input type="text" name="login">
-                        <button type="submit">Change login</button>
-                    </form>
-
-                    {{-- Change first name --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.firstName') }}">
-                        @csrf
-                        <input type="text" name="first_name">
-                        <button type="submit">Change first name</button>
-                    </form>
-
-                    {{-- Change last name --}}
-                    <div class="dropdown-divider"></div>
-                    <form method="POST" action="{{ route('change.lastName') }}">
-                        @csrf
-                        <input type="text" name="last_name">
-                        <button type="submit">Change last name</button>
-                    </form>
 
                     @if(!$profile->auth_provider)
                         {{-- Change email --}}

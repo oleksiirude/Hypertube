@@ -35,6 +35,7 @@ Vue.component('footer-component', require('./components/layots/FooterComponent')
 Vue.component('lang-component', require('./components/layots/LangComponentForMain').default);
 Vue.component('avatar-component', require('./components/profile/AvatarComponent').default);
 Vue.component('bio-component', require('./components/profile/BioComponent').default);
+Vue.component('name-component', require('./components/profile/NameComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

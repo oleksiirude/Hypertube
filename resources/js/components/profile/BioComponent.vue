@@ -36,7 +36,6 @@
             },
 
             cancel: function () {
-                this.mutableBio = this.bio;
                 this.isHidden = true;
                 document.getElementById('bio').value = this.mutableBio;
                 this.empty_err();
@@ -45,7 +44,6 @@
                 let self = this;
                 const data = new FormData();
                 let info = document.getElementById('bio').value;
-                // console.log('info', info.length);
                 data.append('info', info);
                 axios.post(self.action, data, {
                     headers: {
@@ -65,9 +63,6 @@
                                 self.mutableBio = document.getElementById('bio').value;
                             self.isHidden = true;
                             self.empty_err();
-                            // self.mutableSrc = 'http://localhost:8080' + response.data.path + '?ver=' + self.i;
-                            // self.empty_err();
-                            // self.i++;
                         }
                         else {
                             self.error = response.data.error;
@@ -89,14 +84,14 @@
         word-wrap: break-word;
         width: calc(100% - 120px);
         max-height: 100%;
-        /*min-height: 180px;*/
+        max-width: 500px;
         vertical-align: top;
         padding: 0px;
         padding-left: 5px;
         border: none;
     }
     :focus {
-        outline: black auto 5px;
+        outline: black auto 2px;
     }
     .edit_submit {
         margin-top: 10px;

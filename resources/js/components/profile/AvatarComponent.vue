@@ -1,5 +1,5 @@
 <template>
-    <div id="vue_av_div">
+    <div id="vue_av_div" class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
         <div id="avatar_div">
             <img :src=mutableSrc :alt=alt class="poster_avatar" @click="choose_file('avatar_label')" id="avatar" title="click to download">
             <button class="destroy" @click="removeAvatar()" title="delete avatar"></button>
@@ -106,16 +106,23 @@
 
 <style scoped>
     #vue_av_div {
-       height: 100%;
+        /*width: calc(50% - 50px);*/
+        display: inline-block;
+        height: 100%;
         text-align: left;
+        float: left;
+    }
+    #avatar_div {
+        display: inline-block;
+
     }
     .poster_avatar {
-        height: calc(100% - 50px);
-        top: 50px;
-        max-height: 500px;
-        left: -100px;
+        width: 100%;
+        top: -50px;
+        /*max-height: 500px;*/
+        left: -50px;
         opacity: 1;
-        position: absolute;
+        position: relative;
         -webkit-filter: saturate(116%);
         border-radius: 100%;
         -webkit-mask-image: -webkit-gradient(linear, right top, left top, color-stop(1,rgba(0,0,0,1)), color-stop(0.5,rgba(0,0,0,1)), color-stop(0,rgba(0,0,0,0)));
@@ -139,12 +146,11 @@
         padding: 0px;
         display: none;
         position: absolute;
-        top: 110px;
-        left: 10px;
+        top: -10px;
+        margin-left: 10px;
         /*bottom: 0;*/
         width: 35px;
         height: 35px;
-        margin: auto;
         font-size: 24px;
         color: white;
         background-color: transparent;
@@ -162,7 +168,7 @@
     .err_msg {
         position: absolute;
         color: red;
-        top:150px;
+        top: 150px;
         font-size: 18px;
         margin-left: 20px;
     }

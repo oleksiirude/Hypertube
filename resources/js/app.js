@@ -36,6 +36,8 @@ Vue.component('lang-component', require('./components/layots/LangComponentForMai
 Vue.component('avatar-component', require('./components/profile/AvatarComponent').default);
 Vue.component('bio-component', require('./components/profile/BioComponent').default);
 Vue.component('name-component', require('./components/profile/NameComponent').default);
+Vue.component('email-component', require('./components/profile/EmailComponent').default);
+Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

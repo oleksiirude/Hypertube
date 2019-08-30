@@ -13,7 +13,7 @@
                 ></avatar-component>
 
                 <div class="content_profile">
-                    <div class="card-header title">{{ __('titles.myProfile') }}</div>
+                    <div class="title">{{ __('titles.myProfile') }}</div>
 
                     <div class="card-body">
 
@@ -32,12 +32,6 @@
                             @endif
                         </p>
                     </div>
-
-{{--                    --}}{{-- Delete avatar --}}
-                    <form method="POST" action="{{ route('delete.avatar') }}">
-                        @csrf
-                        <button type="submit">Delete avatar</button>
-                    </form>
 
                     {{-- Change about me --}}
                     <div class="dropdown-divider"></div>

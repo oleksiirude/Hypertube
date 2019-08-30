@@ -155,7 +155,7 @@ svg:hover {
     width: 100%;
     height: calc(100% - 160px);
     position: absolute;
-    background: rgba(0,0,0,0.89);
+    background: #221f1f;
     z-index: 6;
     /*opacity: 0;*/
     transition-property: all;

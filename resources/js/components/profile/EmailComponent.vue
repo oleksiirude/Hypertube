@@ -6,12 +6,12 @@
         <form method="POST" :action="action" :id="name" v-show="!isHidden">
             <label :for="'new_' + name" class="titles">&#10148;&#10148;&#10148; New E-mail: </label>
             <input type="text" name="email" class="profiledata" autocomplete="off" :id="'new_' + name" :value="newemail"><br>
-            <label for="password" class="titles">&#10148;&#10148;&#10148; Password: </label>
+            <label for="password" class="titles">&#10148;&#10148;&#10148;{{ trans('titles.password') }}: </label>
             <input type="password" name="password" class="profiledata" autocomplete="off" :value="password" id="password">
         </form>
         <div>
-            <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">Save</button>
-            <button v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">Cancel</button>
+            <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">{{ title_save | capitalize }}</button>
+            <button v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize}}</button>
         </div>
         <span class="err_msg" @click="empty_err">{{ error }}</span>
     </div>
@@ -24,7 +24,10 @@
             'title',
             'value',
             'action',
-            'edit'
+            'edit',
+            'title_save',
+            'title_cancel',
+            'titles'
         ],
         data: function() {
             return {
@@ -36,7 +39,13 @@
                 password: ''
             }
         },
+        mounted(){
+            console.log('dfdf', this.titles);
+        },
         methods: {
+            parseData(data) {
+                this.object= JSON.parse(data);
+            },
             empty_err: function () {
                 this.error = '';
             },

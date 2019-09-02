@@ -4,11 +4,14 @@
         'register' => 'Зареєструватися',
         'username' => 'Логін',
         'password' => 'Пароль',
+        'currentPassword' => 'Поточний пароль',
+        'newPassword' => 'Новий пароль',
         'doNotRememberMe' => "Не запам'ятовувати мене",
         'forgotPassword' => 'Забули Ваш пароль?',
         'firstName' => "Ім'я",
         'lastName' => 'Прiзвище',
         'email' => 'Пошта',
+        'newEmail' => 'Нова пошта',
         'passwordConfirmation' => 'Підтвердження паролю',
         'resetPassword' => 'Відновити пароль',
         'sendLink' => 'Відправити лінк для відновлення паролю',
@@ -23,5 +26,7 @@
         'notSpecified' => 'Не вказано',
         'profile' => "Профіль:",
         'newAccount' => 'Створити акаунт',
-        'bioPlaceholder' => 'Розкажіть про себе, до 500 символів'
+        'bioPlaceholder' => 'Розкажіть про себе, до 500 символів',
+        'save' => 'зберегти',
+        'cancel' => 'відмінити'
     ];

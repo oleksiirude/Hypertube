@@ -19,13 +19,19 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.filter ('capitalize', function (value) {
-//    if (!value) return ''
-//    value = value.toString()
-//    return value.replace(/\b\w/g, function (l) {
-//        return l.toUpperCase();
-//    })
-// });
+// const _ = import('lodash');
+import _ from 'lodash';
+// Vue.prototype.trans = string => _.get(window.i18n, string);
+//
+Vue.filter ('capitalize', function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+});
+
+Vue.prototype.trans = (key) => {
+    return _.get(window.trans, key, key);
+};
 
 Vue.component('registration-component', require('./components/Auth/RegistrationComponent').default);
 Vue.component('login-component', require('./components/Auth/LoginComponent').default);

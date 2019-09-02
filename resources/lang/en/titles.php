@@ -4,11 +4,14 @@
         'register' => 'Register',
         'username' => 'Login',
         'password' => 'Password',
+        'currentPassword' => 'Current password',
+        'newPassword' => 'New password',
         'doNotRememberMe' => 'Do not remember me',
         'forgotPassword' => 'Forgot your password?',
         'firstName' => 'First Name',
         'lastName' => 'Last Name',
         'email' => 'E-mail',
+        'newEmail' => 'New e-mail',
         'passwordConfirmation' => 'Confirm password',
         'resetPassword' => 'Reset password',
         'sendLink' => 'Send password reset link',
@@ -23,5 +26,7 @@
         'notSpecified' => 'Not specified',
         'profile' => "Profile:",
         'newAccount' => 'Create account',
-        'bioPlaceholder' => 'Tell about yourself, up to 500 symbols'
+        'bioPlaceholder' => 'Tell about yourself, up to 500 symbols',
+        'save' => 'save',
+        'cancel' => 'cancel'
     ];

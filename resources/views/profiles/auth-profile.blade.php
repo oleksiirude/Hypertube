@@ -22,6 +22,8 @@
                                         value="{{ $profile->login }}"
                                         action="{{ route('change.login') }}"
                                         edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
                         <name-component name="first_name"
@@ -29,6 +31,8 @@
                                         value="{{ $profile->first_name }}"
                                         action="{{ route('change.firstName') }}"
                                         edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
                         <name-component name="last_name"
@@ -36,6 +40,8 @@
                                         value="{{ $profile->last_name }}"
                                         action="{{ route('change.lastName') }}"
                                         edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
                         @if($profile->auth_provider)
@@ -45,31 +51,33 @@
 
                         @if(!$profile->auth_provider)
                             <email-component name="email"
-                                            title="{{ __('titles.email') }}"
-                                            value="{{ $profile->email }}"
-                                            action="{{ route('change.email') }}"
-                                            edit="{{asset('/images/service/edit.png')}}"
-                            ></email-component>
-{{--                            --}}{{-- Change email --}}
-{{--                            <p class="titles">{{ __('titles.email') }}: </p>--}}
-{{--                            <p class="profiledata">{{ $profile->email }}</p>--}}
-{{--                            <div class="dropdown-divider"></div>--}}
-{{--                            <form method="POST" action="{{ route('change.email') }}">--}}
-{{--                                @csrf--}}
-{{--                                New E-mail: <input type="text" name="email"><br>--}}
-{{--                                Password: <input type="password" name="password"><br>--}}
-{{--                                <button type="submit">Change email</button>--}}
-{{--                            </form>--}}
+                                             title="{{ __('titles.email') }}"
+                                             value="{{ $profile->email }}"
+                                             action="{{ route('change.email') }}"
+                                             edit="{{asset('/images/service/edit.png')}}"
+                                             title_save="{{ __('titles.save') }}"
+                                             title_cancel="{{ __('titles.cancel') }}"
 
-                            {{-- Change password --}}
-                            <div class="dropdown-divider"></div>
-                            <form method="POST" action="{{ route('change.password') }}">
-                                @csrf
-                                Current password: <input type="password" name="password"><br>
-                                New password: <input type="password" name="new_password"><br>
-                                Confirm password: <input type="password" name="password_confirmation"><br>
-                                <button type="submit">Change password</button>
-                            </form>
+{{--                                             titles="parseData({{ $(@lang('titles')) }})"--}}
+                            ></email-component>
+
+                            <paswword-component name="password"
+{{--                                                title="{{ __('titles.email') }}"--}}
+{{--                                                value="{{ $profile->email }}"--}}
+                                                action="{{ route('change.password') }}"
+                                                edit="{{asset('/images/service/edit.png')}}"
+                                                title_save="{{ __('titles.save') }}"
+                                                title_cancel="{{ __('titles.cancel') }}"
+                            ></paswword-component>
+
+{{--                            --}}{{-- Change password --}}
+{{--                            <form method="POST" action="{{ route('change.password') }}">--}}
+{{--                                @csrf--}}
+{{--                                Current password: <input type="password" name="password"><br>--}}
+{{--                                New password: <input type="password" name="new_password"><br>--}}
+{{--                                Confirm password: <input type="password" name="password_confirmation"><br>--}}
+{{--                                <button type="submit">Change password</button>--}}
+{{--                            </form>--}}
                         @endif
 
 
@@ -80,6 +88,8 @@
                                        csrf="{{csrf_token()}}"
                                        placeholder="{{ __('titles.bioPlaceholder') }}"
                                        edit="{{asset('/images/service/edit.png')}}"
+                                       title_save="{{ __('titles.save') }}"
+                                       title_cancel="{{ __('titles.cancel') }}"
                         ></bio-component>
 
                     </div>

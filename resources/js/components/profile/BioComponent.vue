@@ -10,8 +10,8 @@
         >{{ mutableBio }}</textarea>
         <img :src = "edit" class="edit_img" v-show="upHere">
         <span class="err_msg" @click="empty_err">{{ error }}</span>
-        <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">Change about me</button>
-        <button type="submit" v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">Cancel</button>
+        <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">{{ title_save | capitalize}}</button>
+        <button type="submit" v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize }}</button>
     </div>
 </template>
 
@@ -25,7 +25,9 @@
             'name',
             'title',
             'placeholder',
-            'edit'
+            'edit',
+            'title_save',
+            'title_cancel'
         ],
         data: function() {
             return {

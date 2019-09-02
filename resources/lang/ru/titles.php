@@ -4,11 +4,14 @@
         'register' => 'Регистрация',
         'username' => 'Логин',
         'password' => 'Пароль',
+        'currentPassword' => 'Текущий пароль',
+        'newPassword' => 'Новый пароль',
         'doNotRememberMe' => "Не запоминать меня",
         'forgotPassword' => 'Забыли Ваш пароль?',
         'firstName' => "Имя",
         'lastName' => 'Фамилия',
         'email' => 'Почта',
+        'newEmail' => 'Новая почта',
         'passwordConfirmation' => 'Подтверждение пароля',
         'resetPassword' => 'Восстановить пароль',
         'sendLink' => 'Отправить линк для восстановления пароля',
@@ -19,9 +22,11 @@
         'myProfile' => 'Мой профиль',
         'logout' => 'Выйти',
         'avatar' => 'Аватар',
-        'about' => 'Про себя',
+        'about' => 'О себе',
         'notSpecified' => 'Не указано',
         'profile' => "Профиль:",
         'newAccount' => 'Создать аккаунт',
-        'bioPlaceholder' => 'Расскажите о себе, до 500 символов'
+        'bioPlaceholder' => 'Расскажите о себе, до 500 символов',
+        'save' => 'сохранить',
+        'cancel' => 'отменить'
     ];

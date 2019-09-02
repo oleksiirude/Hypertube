@@ -37,7 +37,6 @@
         data: function() {
             return {
                 error: '',
-                // mutableValue: this.value,
                 isHidden: true,
                 upHere: false,
                 // newpassword: '',

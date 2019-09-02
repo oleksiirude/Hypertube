@@ -1,9 +1,10 @@
 <template>
     <div>
         <label :for="name" class="titles">{{ title }}: </label>
-        <input :name="name" class="profiledata" :id="name" @keydown="isHidden = false" :value="mutableValue" placeholder="" autocomplete="off">
-        <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">Save</button>
-        <button type="submit" v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">Cancel</button>
+        <input :name="name" class="profiledata" :id="name" @keydown="isHidden = false" :value="mutableValue" placeholder="" autocomplete="off" @mouseover="upHere = true" @mouseleave="upHere = false">
+        <img :src = "edit" class="edit_img" v-show="upHere">
+        <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">{{ title_save | capitalize }}</button>
+        <button v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize}}</button>
         <span class="err_msg" @click="empty_err">{{ error }}</span>
     </div>
 </template>
@@ -14,13 +15,17 @@
             'name',
             'title',
             'value',
-            'action'
+            'action',
+            'edit',
+            'title_save',
+            'title_cancel'
         ],
         data: function() {
             return {
                 error: '',
                 mutableValue: this.value,
-                isHidden: true
+                isHidden: true,
+                upHere: false
             }
         },
         methods: {
@@ -97,4 +102,10 @@
         cursor: pointer;
         text-decoration: line-through;
     }
+    .edit_img {
+        /*display: none;*/
+        width: 20px;
+        opacity: 0.5;
+    }
+
 </style>

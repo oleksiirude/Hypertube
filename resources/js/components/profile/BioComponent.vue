@@ -5,10 +5,13 @@
                   class="profiledata"
                   id="bio" @keyup="isHidden = false"
                   maxlength="500"
-                  spellcheck="false">{{ mutableBio }}</textarea>
+                  spellcheck="false"
+                  @mouseover="upHere = true" @mouseleave="upHere = false"
+        >{{ mutableBio }}</textarea>
+        <img :src = "edit" class="edit_img" v-show="upHere">
         <span class="err_msg" @click="empty_err">{{ error }}</span>
-        <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">Change about me</button>
-        <button type="submit" v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">Cancel</button>
+        <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">{{ title_save | capitalize}}</button>
+        <button type="submit" v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize }}</button>
     </div>
 </template>
 
@@ -21,13 +24,17 @@
             'action',
             'name',
             'title',
-            'placeholder'
+            'placeholder',
+            'edit',
+            'title_save',
+            'title_cancel'
         ],
         data: function() {
             return {
                 isHidden: true,
                 mutableBio: this.bio.trim(),
-                error: ''
+                error: '',
+                upHere: false
             }
         },
         methods: {
@@ -118,5 +125,9 @@
     .err_msg:hover {
         cursor: pointer;
         text-decoration: line-through;
+    }
+    .edit_img {
+        width: 20px;
+        opacity: 0.5;
     }
 </style>

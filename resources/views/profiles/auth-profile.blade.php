@@ -21,23 +21,57 @@
                                         title="{{ __('titles.username') }}"
                                         value="{{ $profile->login }}"
                                         action="{{ route('change.login') }}"
+                                        edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
                         <name-component name="first_name"
                                         title="{{ __('titles.firstName') }}"
                                         value="{{ $profile->first_name }}"
                                         action="{{ route('change.firstName') }}"
+                                        edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
                         <name-component name="last_name"
                                         title="{{ __('titles.lastName') }}"
                                         value="{{ $profile->last_name }}"
                                         action="{{ route('change.lastName') }}"
+                                        edit="{{asset('/images/service/edit.png')}}"
+                                        title_save="{{ __('titles.save') }}"
+                                        title_cancel="{{ __('titles.cancel') }}"
                         ></name-component>
 
+                        @if($profile->auth_provider)
+                            <p class="titles">{{ __('titles.email') }}: </p>
+                            <p class="profiledata">{{ $profile->email }}</p>
+                        @endif
 
-                        <p class="titles">{{ __('titles.email') }}: </p>
-                        <p class="profiledata">{{ $profile->email }}</p>
+                        @if(!$profile->auth_provider)
+
+                            <email-component name="email"
+                                             title="{{ __('titles.email') }}"
+                                             value="{{ $profile->email }}"
+                                             action="{{ route('change.email') }}"
+                                             edit="{{asset('/images/service/edit.png')}}"
+                                             title_save="{{ __('titles.save') }}"
+                                             title_cancel="{{ __('titles.cancel') }}"
+                                             eye_show="{{asset('/images/service/eye.png')}}"
+                                             eye_hide="{{asset('/images/service/hide_eye.png')}}"
+                            ></email-component>
+
+                            <paswword-component name="password"
+                                                action="{{ route('change.password') }}"
+                                                edit="{{asset('/images/service/edit.png')}}"
+                                                title_save="{{ __('titles.save') }}"
+                                                title_cancel="{{ __('titles.cancel') }}"
+                                                eye_show="{{asset('/images/service/eye.png')}}"
+                                                eye_hide="{{asset('/images/service/hide_eye.png')}}"
+                            ></paswword-component>
+
+                        @endif
 
 
                         <bio-component title="{{ __('titles.about') }}"
@@ -46,31 +80,13 @@
                                        action="{{ route('change.info') }}"
                                        csrf="{{csrf_token()}}"
                                        placeholder="{{ __('titles.bioPlaceholder') }}"
+                                       edit="{{asset('/images/service/edit.png')}}"
+                                       title_save="{{ __('titles.save') }}"
+                                       title_cancel="{{ __('titles.cancel') }}"
                         ></bio-component>
 
                     </div>
 
-
-                    @if(!$profile->auth_provider)
-                        {{-- Change email --}}
-                        <div class="dropdown-divider"></div>
-                        <form method="POST" action="{{ route('change.email') }}">
-                            @csrf
-                            New E-mail: <input type="text" name="email"><br>
-                            Password: <input type="password" name="password"><br>
-                            <button type="submit">Change email</button>
-                        </form>
-
-                        {{-- Change password --}}
-                        <div class="dropdown-divider"></div>
-                        <form method="POST" action="{{ route('change.password') }}">
-                            @csrf
-                            Current password: <input type="password" name="password"><br>
-                            New password: <input type="password" name="new_password"><br>
-                            Confirm password: <input type="password" name="password_confirmation"><br>
-                            <button type="submit">Change password</button>
-                        </form>
-                    @endif
                 </div>
             </div>
         </div>

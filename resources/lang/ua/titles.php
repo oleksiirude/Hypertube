@@ -4,6 +4,7 @@
         'register' => 'Зареєструватися',
         'username' => 'Логін',
         'password' => 'Пароль',
+        'editPassword' => 'Редагувати пароль',
         'currentPassword' => 'Поточний пароль',
         'newPassword' => 'Новий пароль',
         'doNotRememberMe' => "Не запам'ятовувати мене",

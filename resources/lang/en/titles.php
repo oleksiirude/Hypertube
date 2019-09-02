@@ -4,6 +4,7 @@
         'register' => 'Register',
         'username' => 'Login',
         'password' => 'Password',
+        'editPassword' => 'Edit password',
         'currentPassword' => 'Current password',
         'newPassword' => 'New password',
         'doNotRememberMe' => 'Do not remember me',

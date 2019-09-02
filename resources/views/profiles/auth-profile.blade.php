@@ -50,6 +50,7 @@
                         @endif
 
                         @if(!$profile->auth_provider)
+
                             <email-component name="email"
                                              title="{{ __('titles.email') }}"
                                              value="{{ $profile->email }}"
@@ -57,27 +58,19 @@
                                              edit="{{asset('/images/service/edit.png')}}"
                                              title_save="{{ __('titles.save') }}"
                                              title_cancel="{{ __('titles.cancel') }}"
-
-{{--                                             titles="parseData({{ $(@lang('titles')) }})"--}}
+                                             eye_show="{{asset('/images/service/eye.png')}}"
+                                             eye_hide="{{asset('/images/service/hide_eye.png')}}"
                             ></email-component>
 
                             <paswword-component name="password"
-{{--                                                title="{{ __('titles.email') }}"--}}
-{{--                                                value="{{ $profile->email }}"--}}
                                                 action="{{ route('change.password') }}"
                                                 edit="{{asset('/images/service/edit.png')}}"
                                                 title_save="{{ __('titles.save') }}"
                                                 title_cancel="{{ __('titles.cancel') }}"
+                                                eye_show="{{asset('/images/service/eye.png')}}"
+                                                eye_hide="{{asset('/images/service/hide_eye.png')}}"
                             ></paswword-component>
 
-{{--                            --}}{{-- Change password --}}
-{{--                            <form method="POST" action="{{ route('change.password') }}">--}}
-{{--                                @csrf--}}
-{{--                                Current password: <input type="password" name="password"><br>--}}
-{{--                                New password: <input type="password" name="new_password"><br>--}}
-{{--                                Confirm password: <input type="password" name="password_confirmation"><br>--}}
-{{--                                <button type="submit">Change password</button>--}}
-{{--                            </form>--}}
                         @endif
 
 

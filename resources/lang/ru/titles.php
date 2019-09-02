@@ -4,6 +4,7 @@
         'register' => 'Регистрация',
         'username' => 'Логин',
         'password' => 'Пароль',
+        'editPassword' => 'Редактировать пароль',
         'currentPassword' => 'Текущий пароль',
         'newPassword' => 'Новый пароль',
         'doNotRememberMe' => "Не запоминать меня",

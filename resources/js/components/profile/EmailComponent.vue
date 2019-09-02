@@ -1,15 +1,17 @@
 <template>
     <div>
         <p class="titles">{{ title }}: </p>
-        <p class="profiledata" @mouseover="upHere = true" @mouseleave="upHere = false" @click="isHidden = !isHidden">{{ mutableValue }}</p>
+        <p class="profiledata" @mouseover="upHere = true" @mouseleave="upHere = false" @click="showData">{{ mutableValue }}</p>
         <img :src = "edit" class="edit_img" v-show="upHere">
         <form method="POST" :action="action" :id="name" v-show="!isHidden">
-            <label :for="'new_' + name" class="titles">&#10148;&#10148;&#10148; New E-mail: </label>
-            <input type="text" name="email" class="profiledata" autocomplete="off" :id="'new_' + name" :value="newemail"><br>
-            <label for="password" class="titles">&#10148;&#10148;&#10148;{{ trans('titles.password') }}: </label>
-            <input type="password" name="password" class="profiledata" autocomplete="off" :value="password" id="password">
+            <label :for="'new_' + name" class="titles">&#10148;&#10148;&#10148; {{ trans('titles.newEmail') }}: </label>
+            <input type="text" name="email" class="profiledata" autocomplete="off" :id="'new_' + name">
+            <br>
+            <label for="password_email" class="titles">&#10148;&#10148;&#10148; {{ trans('titles.password') }}: </label>
+            <input :type="type" name="password" class="profiledata" autocomplete="off" id="password_email">
+            <img :src = "mutableEye" class="eye_img" @click="show_hide">
         </form>
-        <div>
+        <div v-show="!isHidden">
             <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">{{ title_save | capitalize }}</button>
             <button v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize}}</button>
         </div>
@@ -27,7 +29,9 @@
             'edit',
             'title_save',
             'title_cancel',
-            'titles'
+            'titles',
+            'eye_show',
+            'eye_hide'
         ],
         data: function() {
             return {
@@ -35,14 +39,31 @@
                 mutableValue: this.value,
                 isHidden: true,
                 upHere: false,
-                newemail: '',
-                password: ''
+                // newemail: '',
+                // password: '',
+                mutableEye: this.eye_show,
+                type: 'password'
             }
         },
-        mounted(){
-            console.log('dfdf', this.titles);
-        },
         methods: {
+            show_hide: function(){
+                let img1 = this.eye_show,
+                    img2 = this.eye_hide;
+                let imgElement = this.mutableEye;
+                console.log(this.mutableEye, img1, img2);
+                if (imgElement === img1) {
+                    this.mutableEye = img2;
+                    this.type = 'text';
+                } else {
+                    this.mutableEye = img1;
+                    this.type = 'password';
+                }
+
+            },
+            showData: function(){
+                this.isHidden = !this.isHidden;
+                this.empty_err();
+            },
             parseData(data) {
                 this.object= JSON.parse(data);
             },
@@ -51,12 +72,13 @@
             },
             cancel: function () {
                 this.isHidden = true;
-                // document.getElementById(this.name).value = this.mutableValue;
+                document.getElementById('new_' + this.name).value = '';
+                document.getElementById('password_email').value = '';
                 this.empty_err();
             },
             submit: function () {
                 let self = this;
-                const data = new FormData(document.getElementById(this.name));
+                let data = new FormData(document.getElementById(this.name));
                 // data.append(this.name, info);
                 axios.post(self.action, data)
                     .then(function (response){
@@ -121,5 +143,13 @@
         /*display: none;*/
         width: 20px;
         opacity: 0.5;
+    }
+    .eye_img {
+        width: 20px;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    .eye_img:hover {
+        opacity: 1;
     }
 </style>

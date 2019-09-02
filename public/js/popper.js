@@ -119,7 +119,6 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 module.exports = __webpack_require__(/*! /Users/dpiven/http/MyWebSite/Hypertube/node_modules/popper.js/dist/popper.js */"./node_modules/popper.js/dist/popper.js");
 
 
-
 /***/ })
 
 /******/ });

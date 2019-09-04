@@ -146,7 +146,7 @@
         padding: 0px;
         display: none;
         position: absolute;
-        top: -10px;
+        top: 10px;
         margin-left: 10px;
         /*bottom: 0;*/
         width: 35px;

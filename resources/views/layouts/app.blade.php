@@ -126,7 +126,7 @@
             </div>
         </nav>
 
-        <main class="py-4" id="main_container">
+        <main id="main_container">
             @yield('content')
             <div class="top-right links mt-2">
 {{--                <div class="language">--}}

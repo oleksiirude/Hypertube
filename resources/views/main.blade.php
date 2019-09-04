@@ -9,7 +9,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col" style="background-color: #1d643b">
+            <div class="col">
                 Research:
                 <form method="GET" action="{{ route('research') }}">
                     <select name="genre" class="browser-default custom-select m-2">
@@ -65,7 +65,7 @@
                     <button class="btn btn-secondary m-2" type="submit">Research it!</button>
                 </form>
             </div>
-            <div class="col-10" style="background-color: darkgrey">
+            <div class="col-10">
                 <div class="row">
                     @if(isset($content) && $content)
                         @foreach($content as $item)

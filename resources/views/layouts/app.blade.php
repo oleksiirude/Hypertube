@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://use.fontawesome.com/6884b0b935.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script>
@@ -106,7 +107,7 @@
         <main id="main_container">
             @yield('content')
         </main>
-        <footer-component ua_url="{{ route('set.language', 'ua') }}"
+        <footer-component ua_url="{{ route('set.language', 'uk') }}"
                           en_url="{{ route('set.language', 'en') }}"
                           ua_img="{{ asset('images/service/ua.png') }}"
                           ru_url="{{ route('set.language', 'ru') }}"

@@ -9,7 +9,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-2">
                 Research:
                 <form method="GET" action="{{ route('research') }}">
                     <select name="genre" class="browser-default custom-select m-2">
@@ -66,34 +66,78 @@
                 </form>
             </div>
             <div class="col-10">
-                <div class="row">
+                <div class="row" id="movies_catalog">
                     @if(isset($content) && $content)
                         @foreach($content as $item)
-                            <div class="col-sm-4 pt-2 pb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <span class="badge badge-info float-right">{{ $item->year }}</span>
-                                        <h5 class="card-title">{{ $item->title }}</h5>
-                                        <a href="{{ route('watch', [
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
+                                <a href="{{ route('watch', [
                                                 'imdDB' => $item->imdb_code,
                                                 'movie' => $item->slug
                                             ]) }}">
-                                                <img class="img-thumbnail" src="{{ $item->large_cover_image }}">
-                                        </a>
-                                        <h6>Rating: <span class="badge badge-warning">{{ $item->rating }}</span></h6>
+                                    <div class="movie">
+                                    <div class="">
+                                        <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
+                                            <img class="movie_poster" src="{{ $item->large_cover_image }}">
+                                        <div class="poster_slide">
+                                            <div class="poster_slide_cont">
+                                                <div class="poster_slide_bg"></div>
+                                                <div class="poster_slide_details">
+                                                    <h5 class="movie_title">
+                                                        {{ $item->title }}
 
-                                        <div class="card-text">
-                                        @foreach($item->genres as $genre)
-                                                <span class="badge badge-secondary">{{ $genre }}</span>
-                                        @endforeach
+                                                    </h5>
+
+                                                    <div class="details">
+                                                        @foreach($item->genres as $genre)
+                                                            <span class="badge badge-secondary">{{ $genre }}</span>
+                                                        @endforeach
+{{--                                                        <div class="tools">--}}
+{{--                                                            <span class="icon2 heart fav-btn "></span> &nbsp;<span class="icon2 download"></span>--}}
+{{--                                                        </div>--}}
+                                                            <star-component rating="{{ $item->rating }}"></star-component>
+{{--                                                            <div class="title_info stars" title="{{ $item->rating }} / 10">--}}
+{{--                                                                <span class="icon star"></span>--}}
+{{--                                                                <span class="icon star"></span>--}}
+{{--                                                                <span class="icon star"></span>--}}
+{{--                                                                <span class="icon star"></span>--}}
+{{--                                                                <span class="icon star"></span>--}}
+{{--                                                            </div>--}}
+                                                        <div class="stars">
+                                                            Rating: <span class="badge badge-warning movie_rating">{{ $item->rating }}</span>
+                                                            <span class="icon star"></span>
+                                                            <span class="icon star"></span>
+                                                            <span class="icon star"></span>
+                                                            <span class="icon star"></span>
+                                                            <span class="icon star_empty"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                         </div>
+{{--                                        <h5 class="card-title">{{ $item->title }}</h5>--}}
+
+{{--                                        <h6>Rating: <span class="badge badge-warning">{{ $item->rating }}</span></h6>--}}
+
+{{--                                        <div class="card-text">--}}
+{{--                                        @foreach($item->genres as $genre)--}}
+{{--                                                <span class="badge badge-secondary">{{ $genre }}</span>--}}
+{{--                                        @endforeach--}}
+{{--                                        </div>--}}
+
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         @endforeach
                     @endif
                 </div>
             </div>
+{{--            <div class="iScrollVerticalScrollbar iScrollLoneScrollbar" style="position: absolute; z-index: 9999; width: 7px; bottom: 2px; top: 2px; right: 1px; overflow: hidden; transform: translateZ(0px); transition-duration: 500ms; opacity: 0;">--}}
+{{--                <div class="iScrollIndicator" style="box-sizing: border-box; position: absolute; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 3px; width: 100%; transition-duration: 0ms; display: block; height: 75px; transform: translate(0px, 294px) translateZ(0px);">--}}
+
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endsection

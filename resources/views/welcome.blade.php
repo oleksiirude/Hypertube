@@ -157,7 +157,7 @@
                     </div>
                 @endif
             </div>
-            <lang-component ua_url="{{ route('set.language', 'ua') }}"
+            <lang-component ua_url="{{ route('set.language', 'uk') }}"
                             en_url="{{ route('set.language', 'en') }}"
                             ua_img="{{ asset('images/service/ua.png') }}"
                             ru_url="{{ route('set.language', 'ru') }}"

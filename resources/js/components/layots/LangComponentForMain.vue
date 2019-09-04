@@ -5,7 +5,7 @@
                 <img :src="en_img" id="en" alt="English" v-bind:class=" {active_lng: ('en' === currentLang)} ">
             </a>
             <a :href="ua_url">
-                <img :src="ua_img" id="ua" alt="Ukrainian" v-bind:class=" {active_lng: ('ua' === currentLang)} ">
+                <img :src="ua_img" id="ua" alt="Ukrainian" v-bind:class=" {active_lng: ('uk' === currentLang)} ">
             </a>
             <a :href="ru_url">
                 <img :src="ru_img" id="ru" alt="Russian" v-bind:class=" {active_lng: ('ru' === currentLang)} ">

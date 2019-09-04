@@ -44,6 +44,7 @@ Vue.component('bio-component', require('./components/profile/BioComponent').defa
 Vue.component('name-component', require('./components/profile/NameComponent').default);
 Vue.component('email-component', require('./components/profile/EmailComponent').default);
 Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
+Vue.component('star-component', require('./components/movies/StarComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

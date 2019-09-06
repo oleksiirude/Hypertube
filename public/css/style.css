@@ -334,9 +334,9 @@ svg:hover {
 .movie_poster {
     width: 100%;
 }
-.movie_rating {
-    background-color: #228DFF;
-}
+/*.movie_rating {*/
+/*    background-color: #228DFF;*/
+/*}*/
 .movie_title {
     text-align: center;
     width: calc(100% - 10px);
@@ -360,14 +360,14 @@ svg:hover {
     overflow-y: scroll;
     scrollbar-color: #0A4C95 #C2D2E4;
 }
-.icon.star:before {
-    content: '\f005';
+
+.icon.search:before {
+    content: "\f002";
     font-family: FontAwesome;
+    cursor: pointer;
 }
-.icon.star_half:before {
-    content: '\f123';
-}
-.icon.star_empty:before {
-    content: '\f006';
-    font-family: FontAwesome;
+
+.icon.search:hover {
+    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+    text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
 }

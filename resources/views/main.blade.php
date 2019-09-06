@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
+@push('search')
+    <div class="icon search">
+    <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>
+        <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">
+        <button class="btn btn-secondary" type="submit">Go!</button>
+    </form>
+    </div>
+@endpush
+
 @section('content')
     <div class="container">
-        <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}">
-            <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">
-            <button class="btn btn-secondary" type="submit">Go!</button>
-        </form>
+
     </div>
     <div class="container">
         <div class="row">
@@ -84,46 +90,20 @@
                                                 <div class="poster_slide_details">
                                                     <h5 class="movie_title">
                                                         {{ $item->title }}
-
                                                     </h5>
 
                                                     <div class="details">
                                                         @foreach($item->genres as $genre)
                                                             <span class="badge badge-secondary">{{ $genre }}</span>
                                                         @endforeach
-{{--                                                        <div class="tools">--}}
-{{--                                                            <span class="icon2 heart fav-btn "></span> &nbsp;<span class="icon2 download"></span>--}}
-{{--                                                        </div>--}}
-                                                            <star-component rating="{{ $item->rating }}"></star-component>
-{{--                                                            <div class="title_info stars" title="{{ $item->rating }} / 10">--}}
-{{--                                                                <span class="icon star"></span>--}}
-{{--                                                                <span class="icon star"></span>--}}
-{{--                                                                <span class="icon star"></span>--}}
-{{--                                                                <span class="icon star"></span>--}}
-{{--                                                                <span class="icon star"></span>--}}
-{{--                                                            </div>--}}
-                                                        <div class="stars">
-                                                            Rating: <span class="badge badge-warning movie_rating">{{ $item->rating }}</span>
-                                                            <span class="icon star"></span>
-                                                            <span class="icon star"></span>
-                                                            <span class="icon star"></span>
-                                                            <span class="icon star"></span>
-                                                            <span class="icon star_empty"></span>
-                                                        </div>
+
+                                                        <star-component rating="{{ $item->rating }}"></star-component>
+
                                                     </div>
                                                 </div>
 
                                             </div>
                                         </div>
-{{--                                        <h5 class="card-title">{{ $item->title }}</h5>--}}
-
-{{--                                        <h6>Rating: <span class="badge badge-warning">{{ $item->rating }}</span></h6>--}}
-
-{{--                                        <div class="card-text">--}}
-{{--                                        @foreach($item->genres as $genre)--}}
-{{--                                                <span class="badge badge-secondary">{{ $genre }}</span>--}}
-{{--                                        @endforeach--}}
-{{--                                        </div>--}}
 
                                     </div>
                                 </div>
@@ -133,11 +113,6 @@
                     @endif
                 </div>
             </div>
-{{--            <div class="iScrollVerticalScrollbar iScrollLoneScrollbar" style="position: absolute; z-index: 9999; width: 7px; bottom: 2px; top: 2px; right: 1px; overflow: hidden; transform: translateZ(0px); transition-duration: 500ms; opacity: 0;">--}}
-{{--                <div class="iScrollIndicator" style="box-sizing: border-box; position: absolute; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 3px; width: 100%; transition-duration: 0ms; display: block; height: 75px; transform: translate(0px, 294px) translateZ(0px);">--}}
-
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
     </div>
 @endsection

@@ -64,6 +64,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+
+                        @stack('search')
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link menu_link" href="{{ route('login') }}">{{ trans('titles.signIn') }}</a>

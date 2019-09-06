@@ -1,8 +1,13 @@
 <template>
     <li class="nav-item dropdown search_div">
         <form class="search_form" :action="action" v-show="!isHidden">
-            <input class="" type="text" placeholder="Search films..." name="title" id="search_input" autocomplete="off" v-show="!isHidden" @blur="hide_search()" @mouseleave="hide_search()">
-            <!--            <button class="btn btn-secondary" type="submit">Go!</button>-->
+            <input class="" type="text"
+                   :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
+                   name="title" id="search_input"
+                   autocomplete="off"
+                   v-show="!isHidden"
+                   @blur="hide_search()"
+                   @mouseleave="hide_search()">
         </form>
         <div class="icon search" :title="trans('titles.search')" @mouseover="show_search()">
         </div>
@@ -18,13 +23,11 @@
         data: function() {
             return {
                 isHidden: true,
-                // title : trans('titles.search')
             }
         },
         methods: {
             show_search: function () {
                 this.isHidden = false;
-//                console.log('show');
             },
             hide_search: function () {
                 this.isHidden = true;
@@ -60,34 +63,24 @@
     }
     #search_input{
         vertical-align: middle;
-        /* margin: auto; */
         display: inline-block;
         width: 100%;
         height: 100%;
-        /*display: none;*/
-        /*position: absolute;*/
-        /*width: calc(100% - 30px);*/
-        /*height: 100%;*/
-        /*line-height: 16px;*/
         font-size: 14px;
         color: rgba(255,255,255,0.8);
         right: 2px;
         top: 0;
         background: transparent;
-        /*background: #221f1f;*/
         border: 0;
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
     }
-    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    ::placeholder {
         color: rgba(255,255,255,0.6);
-        opacity: 1; /* Firefox */
+        opacity: 1;
     }
     #search_input:focus {
         color: rgba(255,255,255,0.9);
-        /*background: #221f1f;*/
-        /*border-color: #e6e6e6;*/
         outline: 0;
-        /*box-shadow: 0 0 0 0.2rem rgba(236, 236, 236, 0.2);*/
     }
 </style>

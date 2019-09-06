@@ -30,5 +30,6 @@
         'bioPlaceholder' => 'Tell about yourself, up to 500 symbols',
         'save' => 'save',
         'cancel' => 'cancel',
-        'search' => 'search'
+        'search' => 'search',
+        'searchFilms' => 'films'
     ];

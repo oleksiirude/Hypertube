@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@push('search_page_class') movie_page @endpush
+
 @push('search')
     <search-component action="{{ route('search.title') }}"></search-component>
 {{--    <div class="icon search" title="{{ __('titles.search') }}">--}}

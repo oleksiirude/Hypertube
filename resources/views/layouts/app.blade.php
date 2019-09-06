@@ -36,7 +36,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm @stack('search_page_class')">
             <div class="container">
                 @if (Auth::check())
                     <a class="navbar-brand" href="{{ route('main') }}">
@@ -107,7 +107,7 @@
             </div>
         </nav>
 
-        <main id="main_container">
+        <main id="main_container" class="@stack('search_page_class')">
             @yield('content')
         </main>
         <footer-component ua_url="{{ route('set.language', 'uk') }}"

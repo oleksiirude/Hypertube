@@ -13,77 +13,73 @@
 @endpush
 
 @section('content')
-    <div class="container">
+    <div class="container search_page">
+        <div class="search_menu">
+            Research:
+            <form method="GET" action="{{ route('research') }}">
+                <select name="genre" class="browser-default custom-select m-2">
+                    <option value="Action" selected>Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Animation">Animation</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Crime">Crime</option>
+                    <option value="Documentary">Documentary</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Family">Family</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="History">History</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Musical">Musical</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Sci-Fi">Sci-Fi</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="War">War</option>
+                    <option value="Western">Western</option>
+                </select>
 
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-2">
-                Research:
-                <form method="GET" action="{{ route('research') }}">
-                    <select name="genre" class="browser-default custom-select m-2">
-                        <option value="Action" selected>Action</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Animation">Animation</option>
-                        <option value="Biography">Biography</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Crime">Crime</option>
-                        <option value="Documentary">Documentary</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Family">Family</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="History">History</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Musical">Musical</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="War">War</option>
-                        <option value="Western">Western</option>
-                    </select>
+                Production year:
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" value="1920">
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" value="2019">
 
-                    Production year:
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" value="1920">
-                    <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" value="2019">
-
-                    Minimum Rating:
-                    <select name="min_rating" class="browser-default custom-select m-2">
-                        <option value="0" selected>0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                    </select>
+                Minimum Rating:
+                <select name="min_rating" class="browser-default custom-select m-2">
+                    <option value="0" selected>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
 
 
-                    Sort by:
-                    <select name="sort" class="browser-default custom-select m-2">
-                        <option value="year" selected>production year</option>
-                        <option value="rating">rating</option>
-                    </select>
-                    <select name="order" class="browser-default custom-select m-2">
-                        <option value="desc">descending</option>
-                        <option value="asc">ascending</option>
-                    </select>
+                Sort by:
+                <select name="sort" class="browser-default custom-select m-2">
+                    <option value="year" selected>production year</option>
+                    <option value="rating">rating</option>
+                </select>
+                <select name="order" class="browser-default custom-select m-2">
+                    <option value="desc">descending</option>
+                    <option value="asc">ascending</option>
+                </select>
 
-                    <button class="btn btn-secondary m-2" type="submit">Research it!</button>
-                </form>
-            </div>
-            <div class="col-10">
-                <div class="row" id="movies_catalog">
-                    @if(isset($content) && $content)
-                        @foreach($content as $item)
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
-                                <a href="{{ route('watch', [
+                <button class="btn btn-secondary m-2" type="submit">Research it!</button>
+            </form>
+        </div>
+        <div class="movies_list">
+            <div class="row" id="movies_catalog">
+                @if(isset($content) && $content)
+                    @foreach($content as $item)
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
+                            <a href="{{ route('watch', [
                                                 'imdDB' => $item->imdb_code,
                                                 'movie' => $item->slug
                                             ]) }}">
-                                    <div class="movie">
+                                <div class="movie">
                                     <div class="">
                                         <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
                                             <img class="movie_poster" src="{{ $item->large_cover_image }}">
@@ -110,11 +106,10 @@
 
                                     </div>
                                 </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

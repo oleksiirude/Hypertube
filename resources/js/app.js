@@ -45,6 +45,7 @@ Vue.component('name-component', require('./components/profile/NameComponent').de
 Vue.component('email-component', require('./components/profile/EmailComponent').default);
 Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
 Vue.component('star-component', require('./components/movies/StarComponent').default);
+Vue.component('search-component', require('./components/movies/SearchComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

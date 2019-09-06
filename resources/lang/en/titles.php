@@ -29,5 +29,6 @@
         'newAccount' => 'Create account',
         'bioPlaceholder' => 'Tell about yourself, up to 500 symbols',
         'save' => 'save',
-        'cancel' => 'cancel'
+        'cancel' => 'cancel',
+        'search' => 'search'
     ];

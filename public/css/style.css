@@ -18,6 +18,7 @@ body, html {
 #main_container {
     min-height: calc(100vh - 260px);
     text-align: center;
+    /*padding-top: 100px;*/
     /*padding-bottom: 1.5rem !important;*/
     /*padding-top: 1.5rem !important;*/
 }
@@ -93,8 +94,15 @@ button:focus {
     min-height: 100px;
     opacity: 0.92;
     z-index: 15;
+    /*position: fixed;*/
+    /*width: 100%;*/
     /*box-shadow: 5px 5px 8px dimgrey;*/
 }
+/*.navbar .movie_page {*/
+/*    position: fixed;*/
+/*    width: 100%;*/
+/*    !*box-shadow: 5px 5px 8px dimgrey;*!*/
+/*}*/
 
 .logo {
     width: 120px;
@@ -359,15 +367,4 @@ svg:hover {
     height: 100px;
     overflow-y: scroll;
     scrollbar-color: #0A4C95 #C2D2E4;
-}
-
-.icon.search:before {
-    content: "\f002";
-    font-family: FontAwesome;
-    cursor: pointer;
-}
-
-.icon.search:hover {
-    -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
-    text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
 }

@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @push('search')
-    <div class="icon search">
-    <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>
-        <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">
-        <button class="btn btn-secondary" type="submit">Go!</button>
-    </form>
-    </div>
+    <search-component action="{{ route('search.title') }}"></search-component>
+{{--    <div class="icon search" title="{{ __('titles.search') }}">--}}
+{{--        <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>--}}
+{{--            <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">--}}
+{{--            <button class="btn btn-secondary" type="submit">Go!</button>--}}
+{{--        </form>--}}
+{{--    </div>--}}
 @endpush
 
 @section('content')

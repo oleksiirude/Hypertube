@@ -4,7 +4,7 @@
         <ul class="movies_list">
             <li v-for="(actor, index) in actors_parse.slice(0,9)" class="actor" @mouseover="show_img(index)" @mouseleave="hide_img(index)">
                 {{ actor.name }};
-                <div class="photo_frame" v-show="show[index]">
+                <div class="photo_frame" v-if="actor.profile_path" v-show="show[index]">
                     <img :src="path + actor.profile_path" class="actors_img">
                 </div>
             </li>

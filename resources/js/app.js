@@ -147,6 +147,7 @@ Vue.component('star-component', require('./components/movies/StarComponent').def
 Vue.component('search-component', require('./components/movies/SearchComponent').default);
 Vue.component('actors-component', require('./components/one_movie_page/ActorsComponent').default);
 Vue.component('genre-component', require('./components/one_movie_page/GenreComponent').default);
+Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

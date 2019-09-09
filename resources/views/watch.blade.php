@@ -12,15 +12,14 @@
                     <genre-component genres="{{ json_encode($content->genres,TRUE)}}"
                     ></genre-component>
 
+                    <info-component year="{{ $content->year }}"
+                                    runtime="{{ $content->runtime }}"
+                                    rating="{{ $content->rating }}"
+                    ></info-component>
+
                     <actors-component actors="{{ json_encode($content->actors,TRUE)}}"
                                       path="{{ BASE_URL . SMALL}}"
                     ></actors-component>
-
-                    <div class="title_info_cont">
-                        <div class="title_info">Year: {{ $content->year }}</div>
-                        <div class="title_info">Runtime: {{ $content->runtime }} minutes</div>
-                        <div class="title_info">Rating: {{ $content->rating }}</div>
-                    </div>
 
                     <div class="">
                         <div>

@@ -39,8 +39,6 @@
                 mutableValue: this.value,
                 isHidden: true,
                 upHere: false,
-                // newemail: '',
-                // password: '',
                 mutableEye: this.eye_show,
                 type: 'password'
             }
@@ -50,7 +48,6 @@
                 let img1 = this.eye_show,
                     img2 = this.eye_hide;
                 let imgElement = this.mutableEye;
-                console.log(this.mutableEye, img1, img2);
                 if (imgElement === img1) {
                     this.mutableEye = img2;
                     this.type = 'text';
@@ -92,7 +89,7 @@
                         else {
                             self.error = response.data.error;
                         }
-                        console.log('RESP', response.data);
+                        // console.log('RESP', response.data);
                     })
                     .catch((error) =>
                         console.log(error.response.data)

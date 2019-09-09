@@ -490,10 +490,10 @@ svg:hover {
 }
 .slider_movie .movie_profile {
     width: calc(67% - 30px);
-    min-width: 500px;
+    min-width: 400px;
     position: absolute;
     top: 150px;
-    /* left: 36%; */
+    left: 30%;
     right: 20px;
     /*height: 50%;*/
 }
@@ -507,4 +507,8 @@ svg:hover {
 }
 .slider_movie {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+
+.details .stars {
+    margin-top: 20px;
 }

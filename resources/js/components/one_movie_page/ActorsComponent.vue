@@ -30,10 +30,7 @@
                 JSON.parse(this.actors);
             },
             show_img: function (index) {
-                // this.isHidden = false;
                 Vue.set(this.show, index, true);
-                // console.log(this.show);
-                // console.log(this.show[index]);
             },
             hide_img: function (index) {
                 Vue.set(this.show, index, false);

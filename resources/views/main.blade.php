@@ -91,7 +91,7 @@
                                                             <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
                                                         @endforeach
 
-                                                        <star-component rating="{{ $item->rating }}"></star-component>
+                                                        <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>
 
                                                     </div>
                                                 </div>

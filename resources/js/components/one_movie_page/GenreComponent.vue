@@ -29,7 +29,7 @@
 
 <style scoped>
     .genres_list {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
     }
     .genre {

@@ -15,6 +15,7 @@
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
                                     rating="{{ $content->rating }}"
+                                    studio="{{ $content->studio }}"
                     ></info-component>
 
                     <actors-component actors="{{ json_encode($content->actors,TRUE)}}"
@@ -22,13 +23,16 @@
                     ></actors-component>
 
                     <div class="">
-                        <div>
-
-                            <p>Studio: {{ $content->studio }}</p>
-
-
+                        <div class="movie_desc">
                             {{  $content->summary }}
                         </div>
+
+{{--                        <div class="sep">--}}
+{{--                            <div class="watch-btn" onclick="">--}}
+{{--                                <div class="icon2 trailer"></div>--}}
+{{--                                <div class="caption" >trailer</div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 {{--                        <div class="embed-responsive embed-responsive-16by9">--}}
 {{--                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}" allowfullscreen style="width: 500px; height: 300px"></iframe>--}}
 {{--                        </div>--}}

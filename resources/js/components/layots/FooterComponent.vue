@@ -66,6 +66,7 @@
         background-image: -o-linear-gradient(to top,#221f1f 10%,rgba(0,0,0,0) 85%);
         background-image: linear-gradient(to bottom,#221f1f 10%,rgba(0,0,0,0) 85%);
         zoom: 1;
+        box-shadow: 0px -10px 25px 10px #221f1f;
     }
     .upper_footer {
         content: "";

@@ -3,15 +3,17 @@
         <div class="title_info" id="year"><span class="mini_icon"></span> {{ year }}</div>
         <div class="title_info" id="runtime"><span class="mini_icon"></span> {{ runtime }} {{trans('movie.minutes')}}</div>
         <div class="title_info" id="rating"><span class="mini_icon"><star-component :rating="rating" :rating_nbr="false"></star-component></span><span class="nbr">{{ rating }} / 10</span></div>
+        <div class="title_info" id="studio"><span class="mini_icon"></span> {{ studio }}</div>
     </div>
 </template>
 
 <script>
     export default {
         props : [
-          'year',
-          'runtime',
-          'rating'
+            'year',
+            'runtime',
+            'rating',
+            'studio'
         ],
 
     }
@@ -32,10 +34,10 @@
         content: '\f017';
         font-family: FontAwesome;
     }
-    /*#rating .mini_icon:before {*/
-    /*    content: '\e61a';*/
-    /*    font-family: FontAwesome;*/
-    /*}*/
+    #studio .mini_icon:before {
+        content: '\f008';
+        font-family: FontAwesome;
+    }
     .title_info {
         display: inline-block;
         margin-right: 20px;

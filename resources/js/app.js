@@ -148,6 +148,7 @@ Vue.component('search-component', require('./components/movies/SearchComponent')
 Vue.component('actors-component', require('./components/one_movie_page/ActorsComponent').default);
 Vue.component('genre-component', require('./components/one_movie_page/GenreComponent').default);
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
+Vue.component('trailer-component', require('./components/one_movie_page/TrailerComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

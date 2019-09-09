@@ -30,7 +30,7 @@
 <style scoped>
     .genres_list {
         margin-bottom: 10px;
-
+        font-size: 12px;
     }
     .genre {
         display: inline-block;

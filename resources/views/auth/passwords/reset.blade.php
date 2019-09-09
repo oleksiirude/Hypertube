@@ -15,7 +15,7 @@
             get_new_link="{{ __('titles.getNewLink') }}">
     </reset-password-component>
 
-    <div class="container">
+    <div class="container login_div">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

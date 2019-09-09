@@ -111,8 +111,6 @@
             'main',
             'new_link',
             'csrf_token',
-
-            // localization titles
             'successful_reset',
             'continue',
             'get_new_link'

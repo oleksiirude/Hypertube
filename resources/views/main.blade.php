@@ -4,12 +4,7 @@
 
 @push('search')
     <search-component action="{{ route('search.title') }}"></search-component>
-{{--    <div class="icon search" title="{{ __('titles.search') }}">--}}
-{{--        <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>--}}
-{{--            <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">--}}
-{{--            <button class="btn btn-secondary" type="submit">Go!</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
+
 @endpush
 
 @section('content')
@@ -18,24 +13,24 @@
             Research:
             <form method="GET" action="{{ route('research') }}">
                 <select name="genre" class="browser-default custom-select m-2">
-                    <option value="Action" selected>Action</option>
-                    <option value="Adventure">Adventure</option>
-                    <option value="Animation">Animation</option>
-                    <option value="Biography">Biography</option>
-                    <option value="Comedy">Comedy</option>
-                    <option value="Crime">Crime</option>
-                    <option value="Documentary">Documentary</option>
-                    <option value="Drama">Drama</option>
-                    <option value="Family">Family</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="History">History</option>
-                    <option value="Horror">Horror</option>
-                    <option value="Musical">Musical</option>
-                    <option value="Romance">Romance</option>
-                    <option value="Sci-Fi">Sci-Fi</option>
-                    <option value="Thriller">Thriller</option>
-                    <option value="War">War</option>
-                    <option value="Western">Western</option>
+                    <option value="Action" selected>{{ __('genres.Action') }}</option>
+                    <option value="Adventure">{{ __('genres.Adventure') }}</option>
+                    <option value="Animation">{{ __('genres.Animation') }}</option>
+                    <option value="Biography">{{ __('genres.Biography') }}</option>
+                    <option value="Comedy">{{ __('genres.Comedy') }}</option>
+                    <option value="Crime">{{ __('genres.Crime') }}</option>
+                    <option value="Documentary">{{ __('genres.Documentary') }}</option>
+                    <option value="Drama">{{ __('genres.Drama') }}</option>
+                    <option value="Family">{{ __('genres.Family') }}</option>
+                    <option value="Fantasy">{{ __('genres.Fantasy') }}</option>
+                    <option value="History">{{ __('genres.History') }}</option>
+                    <option value="Horror">{{ __('genres.Horror') }}</option>
+                    <option value="Musical">{{ __('genres.Musical') }}</option>
+                    <option value="Romance">{{ __('genres.Romance') }}</option>
+                    <option value="Sci-Fi">{{ __('genres.Sci-Fi') }}</option>
+                    <option value="Thriller">{{ __('genres.Thriller') }}</option>
+                    <option value="War">{{ __('genres.War') }}</option>
+                    <option value="Western">{{ __('genres.Western') }}</option>
                 </select>
 
                 Production year:
@@ -93,7 +88,7 @@
 
                                                     <div class="details">
                                                         @foreach($item->genres as $genre)
-                                                            <span class="badge badge-secondary">{{ $genre }}</span>
+                                                            <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
                                                         @endforeach
 
                                                         <star-component rating="{{ $item->rating }}"></star-component>

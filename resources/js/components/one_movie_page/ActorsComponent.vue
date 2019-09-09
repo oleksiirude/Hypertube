@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        Cast:
+        {{ trans('movie.cast') | capitalize }}:
         <ul class="movies_list">
             <li v-for="(actor, index) in actors_parse.slice(0,9)" class="actor" @mouseover="show_img(index)" @mouseleave="hide_img(index)">
                 {{ actor.name }};
@@ -32,8 +32,8 @@
             show_img: function (index) {
                 // this.isHidden = false;
                 Vue.set(this.show, index, true);
-                console.log(this.show);
-                console.log(this.show[index]);
+                // console.log(this.show);
+                // console.log(this.show[index]);
             },
             hide_img: function (index) {
                 Vue.set(this.show, index, false);

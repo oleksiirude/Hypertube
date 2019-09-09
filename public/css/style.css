@@ -497,3 +497,14 @@ svg:hover {
     right: 20px;
     /*height: 50%;*/
 }
+
+.slider_movie .title {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+    font-size: 32px;
+    color: #fff;
+    /*font-family: opensansbold;*/
+    text-transform: uppercase;
+}
+.slider_movie {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}

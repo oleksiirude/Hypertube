@@ -27,12 +27,8 @@
                             {{  $content->summary }}
                         </div>
 
-{{--                        <div class="sep">--}}
-{{--                            <div class="watch-btn" onclick="">--}}
-{{--                                <div class="icon2 trailer"></div>--}}
-{{--                                <div class="caption" >trailer</div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
+
 {{--                        <div class="embed-responsive embed-responsive-16by9">--}}
 {{--                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}" allowfullscreen style="width: 500px; height: 300px"></iframe>--}}
 {{--                        </div>--}}

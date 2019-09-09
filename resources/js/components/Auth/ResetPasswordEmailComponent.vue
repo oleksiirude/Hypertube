@@ -1,11 +1,39 @@
 <template>
+    <div class="container login_div">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ trans('titles.resetPassword') }}</div>
+
+                    <div id="reset-password-div" class="card-body">
+                        <form>
+                            <div id="email-div" class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('titles.email') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="text" autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button id="send-email" type="submit" class="btn btn-primary" @click="ajaxSendResetEmailLink">
+                                        {{ trans('titles.sendLink') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
         mounted () {
             document.getElementById('email').focus();
-            document.getElementById('send-email').addEventListener('click', this.ajaxSendResetEmailLink);
         },
 
         methods: {
@@ -68,8 +96,6 @@
         props: [
             'action',
             'csrf_token',
-
-            // localization titles
             'successful_link'
         ]
     }

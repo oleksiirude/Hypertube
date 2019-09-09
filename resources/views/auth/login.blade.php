@@ -7,7 +7,7 @@
             csrf_token="{{ csrf_token() }}">
     </login-component>
 
-    <div class="container">
+    <div class="container login_div">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

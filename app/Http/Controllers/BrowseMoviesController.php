@@ -18,10 +18,10 @@
         protected function showMainPageWithSuggestions()
         {
             $data = TorrentsController::getPopularMoviesSortedByRating($this->client);
-
+            
             if (App::getLocale() !== 'en')
                 $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
-
+            
             return view('main', ['content' => $data]);
             
 //            return view('main');
@@ -65,7 +65,7 @@
             
             $data = TMDBController::getTranslatedAndAdditionalDataForItem($this->client, $data, App::getLocale());
             
-            //  dd($data);
+            //dd($data);
             return view('watch', ['content' => $data]);
         }
     }

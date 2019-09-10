@@ -29,7 +29,7 @@
                     return false;
                 }
             }
-        
+      
             return $data;
         }
     
@@ -45,7 +45,7 @@
                         ]
                     ]);
                 $data = json_decode($response->getBody());
-                
+               
                 $response = $client->request('GET',
                     'https://api.themoviedb.org/3/movie/' . $data->movie_results[0]->id, [
                         'query' => [
@@ -63,7 +63,7 @@
                 $item->summary = $data->overview;
                 $item->actors = $data->credits->cast;
                 $item->studio = $data->production_companies[0]->name;
-    
+           
                 return $item;
             } catch (Exception $e) {
                 return false;

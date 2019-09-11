@@ -160,8 +160,19 @@
         padding: 10px;
     }
     select {
-        border: 1px solid black;
-        color: white;
+        /*border: 1px solid black;*/
+        /*color: white;*/
+        display: block;
+        margin-top: 5px;
+        color: #ccc;
+        background: rgba(50,50,50,0.75);
+        height: 30px;
+        /*width: 222px;*/
+        line-height: 30px;
+        padding: 0 4px;
+        border: 0;
+        font-size: 14px;
+        margin-bottom: 5px;
     }
     .search_menu {
         display: inline-block;

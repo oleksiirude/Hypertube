@@ -267,10 +267,17 @@ svg:hover {
     opacity: 1;
 }
 
-
+/*#movies_catalog {*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(12, 1fr);*/
+/*}*/
 .movie_main_div {
     padding: 2px;
 }
+
+/*.movie_main_div {*/
+/*    grid-column: span 2;*/
+/*}*/
 .movie_year {
     position: absolute;
     top: 10px;
@@ -414,6 +421,30 @@ svg:hover {
     outline: none;
 }
 
+@media only screen and (max-width: 1600px), only screen and (max-device-width: 1600px) {
+    .col-xl-2 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+@media only screen and (max-width: 992px), only screen and (max-device-width: 992px) {
+    .col-xl-2 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+@media only screen and (max-width: 768px), only screen and (max-device-width: 768px) {
+    .col-xl-2 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media only screen and (max-width: 576px), only screen and (max-device-width: 576px) {
+    .col-xl-2 {
+        flex: 0 0 100%;
+        max-width: 10025%;
+    }
+}
 
 @media only screen and (max-width: 900px), only screen and (max-device-width: 900px) {
     .movie_desc {

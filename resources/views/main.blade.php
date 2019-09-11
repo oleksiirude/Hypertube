@@ -22,36 +22,35 @@
             <div class="row" id="movies_catalog">
                 @if(isset($content) && $content)
                     @foreach($content as $item)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
+{{--                        <div class="movie_main_div">--}}
+                        <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
                             <a href="{{ route('watch', [
                                                 'imdDB' => $item->imdb_code,
                                                 'movie' => $item->slug
                                             ]) }}">
                                 <div class="movie">
-                                    <div class="">
-                                        <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
-                                            <img class="movie_poster" src="{{ $item->large_cover_image }}">
-                                        <div class="poster_slide">
-                                            <div class="poster_slide_cont">
-                                                <div class="poster_slide_bg"></div>
-                                                <div class="poster_slide_details">
-                                                    <h5 class="movie_title">
-                                                        {{ $item->title }}
-                                                    </h5>
 
-                                                    <div class="details">
-                                                        @foreach($item->genres as $genre)
-                                                            <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
-                                                        @endforeach
+                                    <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
+                                    <img class="movie_poster" src="{{ $item->large_cover_image }}">
+                                    <div class="poster_slide">
+                                        <div class="poster_slide_cont">
+                                            <div class="poster_slide_bg"></div>
+                                            <div class="poster_slide_details">
+                                                <h5 class="movie_title">
+                                                    {{ $item->title }}
+                                                </h5>
 
-                                                        <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>
+                                                <div class="details">
+                                                    @foreach($item->genres as $genre)
+                                                        <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
+                                                    @endforeach
 
-                                                    </div>
+                                                    <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>
+
                                                 </div>
-
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </a>

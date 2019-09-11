@@ -54,11 +54,9 @@
     footer::before {
         content: '';
         position: absolute;
-        /*top: 0;*/
         height: 120px;
         left: 0;
         right: 0;
-        /*bottom: 40px;*/
         z-index: 10;
         background-image: -webkit-gradient(linear,left top,right top,color-stop(10%,#221f1f),color-stop(85%,rgba(0,0,0,0)));
         background-image: -webkit-linear-gradient(to top,#221f1f 10%,rgba(0,0,0,0) 85%);
@@ -74,8 +72,5 @@
         background: url(/images/service/cinema.jpg) repeat-x;
         background-size: contain;
         z-index: -1;
-
     }
-
-
 </style>

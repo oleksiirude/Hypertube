@@ -40,6 +40,7 @@
             console.log('actors', this.actors_parse);
         }
 
+
     }
 </script>
 
@@ -71,8 +72,5 @@
         background-position: center center;
         background-repeat: no-repeat;
         position: absolute;
-        /*margin-right: 20px;*/
-        /*top: 0px;*/
-        /*right:20px;*/
     }
 </style>

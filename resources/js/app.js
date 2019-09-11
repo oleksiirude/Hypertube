@@ -145,6 +145,7 @@ Vue.component('email-component', require('./components/profile/EmailComponent').
 Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
 Vue.component('star-component', require('./components/movies/StarComponent').default);
 Vue.component('search-component', require('./components/movies/SearchComponent').default);
+Vue.component('sidebar-component', require('./components/movies/SideBarComponent').default);
 Vue.component('actors-component', require('./components/one_movie_page/ActorsComponent').default);
 Vue.component('genre-component', require('./components/one_movie_page/GenreComponent').default);
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);

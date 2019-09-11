@@ -1,7 +1,6 @@
 <template>
     <div class="genres_list">
         <div v-for="(genre, index) in genres_parse" class="genre">
-<!--            {{ genre }}-->
             {{ trans('genres.' + genre ) }}
         </div>
     </div>
@@ -15,7 +14,6 @@
         data: function() {
             return {
                 genres_parse: JSON.parse(this.genres),
-
             }
         },
         parseData () {

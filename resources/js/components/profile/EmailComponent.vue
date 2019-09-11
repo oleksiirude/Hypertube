@@ -127,7 +127,6 @@
     }
     .err_msg {
         display: inline-block;
-        /*width: 100%;*/
         color: red;
         font-size: 14.4px;
         vertical-align: middle;
@@ -137,7 +136,6 @@
         text-decoration: line-through;
     }
     .edit_img {
-        /*display: none;*/
         width: 20px;
         opacity: 0.5;
     }

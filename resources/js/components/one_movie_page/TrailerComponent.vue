@@ -27,9 +27,6 @@
         height: 60px;
         position: relative;
         color: #fff;
-        /* -webkit-animation: neon2 1.5s ease-in-out infinite alternate; */
-
-        /*height: 100%;*/
         border-radius: 4px;
         border: 1px rgba(255,255,255, 0.91) solid;
         cursor: pointer !important;
@@ -41,10 +38,7 @@
     }
     .watch-btn .icon.trailer {
         display: inline-block;
-        /*position: absolute;*/
         font-size: 32px;
-        /*left: 25px;*/
-        /*top: 0;*/
         line-height: 60px;
     }
     .icon.trailer:before {

@@ -1,12 +1,52 @@
 <template>
+    <form id="login-form">
 
+        <div id="login-div" class="form-group row">
+            <label for="login" class="col-md-4 col-form-label text-md-right">{{ trans('titles.username') }}</label>
+
+            <div class="col-md-6">
+                <input id="login" type="text" class="form-control" name="login" value="">
+            </div>
+        </div>
+
+        <div id="password-div" class="form-group row">
+            <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('titles.password') }}</label>
+
+            <div class="col-md-6">
+                <input id="password" type="password" class="form-control" name="password">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6 offset-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember">
+
+                    <label class="form-check-label" for="remember">
+                        {{ trans('titles.doNotRememberMe') }}
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mb-0">
+            <div class="col-md-8 offset-md-4">
+                <button id="login-btn" type="submit" class="btn btn-primary" @click="ajaxLogin">
+                    {{ trans('titles.signIn') }}
+                </button>
+
+                <a class="btn btn-link" :href="forget_pass">
+                    {{ trans('titles.forgotPassword') }}
+                </a>
+            </div>
+        </div>
+    </form>
 </template>
 
 <script>
     export default {
         mounted () {
             document.getElementById('login').focus();
-            document.getElementById('login-btn').addEventListener('click', this.ajaxLogin);
         },
 
         methods: {
@@ -59,7 +99,8 @@
         props: [
             'action',
             'csrf_token',
-            'main'
+            'main',
+            'forget_pass'
         ]
     }
 </script>

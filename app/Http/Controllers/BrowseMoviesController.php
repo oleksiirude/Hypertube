@@ -17,30 +17,21 @@
         
         protected function showMainPageWithSuggestions()
         {
-            $data = TorrentsController::getPopularMoviesSortedByRating($this->client);
-            
-            if (App::getLocale() !== 'en')
-                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
+            $data = SearchController::getPopularMoviesSortedByRating(session()->get('locale'));
             
             return view('main', ['content' => $data]);
-            
-//            return view('main');
         }
         
         protected function searchByTitle(Request $request)
         {
             $title = $request->get('title');
-            $data = TorrentsController::getMovie($this->client, $title);
             
-            if (!$data)
-                $data = TorrentsController::getPopularMoviesSortedByRating($this->client);
+            if (!preg_match('/^[a-zа-яёїі !?,.]{2,20}$/iu', $title))
+                return $this->jsonResponseWithError();
             
-            if (App::getLocale() !== 'en')
-                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
+            $data = SearchController::getMovieByTitle($title, session()->get('locale'));
     
             return view('main', ['content' => $data]);
-            
-//            return $this->jsonResponseWithSuccess($data);
         }
     
     

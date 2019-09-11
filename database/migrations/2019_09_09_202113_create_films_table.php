@@ -17,7 +17,7 @@
         {
             Schema::create('films', function (Blueprint $table) {
                 $table->string('imdb_id', 20)->unique();
-                $table->string('year', 4);
+                $table->string('prod_year', 4);
                 $table->string('rating', 20);
             });
         }

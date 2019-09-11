@@ -4,12 +4,6 @@
 
 @push('search')
     <search-component action="{{ route('search.title') }}"></search-component>
-{{--    <div class="icon search" title="{{ __('titles.search') }}">--}}
-{{--        <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>--}}
-{{--            <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">--}}
-{{--            <button class="btn btn-secondary" type="submit">Go!</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
 @endpush
 
 @section('content')
@@ -77,13 +71,13 @@
                     @foreach($content as $item)
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
                             <a href="{{ route('watch', [
-                                                'imdDB' => $item->imdb_code,
-                                                'movie' => $item->slug
+                                                'imdDB' => $item->imdb_id,
+                                                'movie' => $item->title
                                             ]) }}">
                                 <div class="movie">
                                     <div class="">
-                                        <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
-                                            <img class="movie_poster" src="{{ $item->large_cover_image }}">
+                                        <span class="badge badge-info float-right movie_year">{{ $item->prod_year }}</span>
+                                            <img class="movie_poster" src="{{ $item->poster }}">
                                         <div class="poster_slide">
                                             <div class="poster_slide_cont">
                                                 <div class="poster_slide_bg"></div>
@@ -101,10 +95,8 @@
 
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </a>

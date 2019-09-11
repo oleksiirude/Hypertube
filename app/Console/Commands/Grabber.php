@@ -84,7 +84,7 @@
     
                         // GET FILMS
                         file_put_contents(base_path() . '/storage/app/public/grabber/films.txt',
-                            $movie->imdb_code . ';' . $movie->year . ';' . $movie->rating . PHP_EOL, FILE_APPEND);
+                            $movie->imdb_code . ';' . $movie->year . ';' . $data->movie_results[0]->vote_average . PHP_EOL, FILE_APPEND);
 
                         // GET LOCALIZED TITLES
                         $tmdb_id = $data->movie_results[0]->id;
@@ -123,7 +123,7 @@
                         echo $filmCounter . ' films have written to files' . PHP_EOL;
                         
                         if ($sleepCounter === 1) {
-                            sleep(1);
+                            sleep(2);
                             $sleepCounter = 0;
                         }
                         else

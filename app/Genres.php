@@ -6,5 +6,5 @@
     
     class Genres extends Model
     {
-        //
+        protected $primaryKey = 'imdb_id';
     }

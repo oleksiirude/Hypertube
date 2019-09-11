@@ -33,7 +33,7 @@
         });
     });
     
-    // Auth via 42, GitHub, etc
+    // Oauth via 42, GitHub, etc
     Route::group(['prefix' => '/oauth', 'middleware' => 'guest'], function () {
         Route::get('/{provider}', 'Auth\Oauth\OauthController@redirectToProvider')->name('oauth');
         Route::get('/{provider}/callback', 'Auth\Oauth\OauthController@handleProviderCallback');

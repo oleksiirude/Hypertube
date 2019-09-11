@@ -59,6 +59,7 @@
                 </select>
 
                 <button class="research" type="submit">Research it!</button>
+                <a :href="url_default" class="back_link" id="back_link">Back to default</a>
             </form>
             <div class="sidebar_right">
             </div>
@@ -79,7 +80,8 @@
             }
         },
         props: [
-            'action'
+            'action',
+            'url_default'
         ],
         mounted(){
             this.checkHeight();
@@ -266,5 +268,9 @@
     .research:hover {
         text-decoration: none;
         text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+    .back_link {
+        display: block;
+        color: gray;
     }
 </style>

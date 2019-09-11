@@ -25,6 +25,7 @@
         echo json_encode($trans);
         ?>;
     </script>
+    @stack('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,6 +33,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('style')
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>

@@ -4,7 +4,14 @@
 
 @push('search')
     <search-component action="{{ route('search.title') }}"></search-component>
+@endpush
 
+@push('scripts')
+    <script src="{{ asset('nouislider/distribute/nouislider.js')}}"></script>
+@endpush
+
+@push('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('nouislider/distribute/nouislider.css')}}" />
 @endpush
 
 @section('content')

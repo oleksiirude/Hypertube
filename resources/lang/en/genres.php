@@ -1,5 +1,6 @@
 <?php
 return  [
+        'all' => 'all genres',
         '28' => 'Action',
         '12' => 'Adventure',
         '16' => 'Animation',

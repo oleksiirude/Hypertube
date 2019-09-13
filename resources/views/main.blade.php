@@ -16,7 +16,8 @@
 
 @section('content')
     <div class="search_page">
-        <sidebar-component action="{{ route('research') }}"
+
+        <sidebar-component action="{{ route('search.params') }}"
                            url_default="{{ route('main') }}">
         </sidebar-component>
         <div class="movies_list" id="movies_list">
@@ -59,5 +60,4 @@
         </div>
     </div>
 @endsection
-
 

@@ -52,12 +52,13 @@
 
                 {{ trans('titles.sortBy') | capitalize }}:
                 <select name="sort" class="browser-default custom-select m-2">
-                    <option value="year"> {{ trans('titles.productionYear') | capitalize }}</option>
-                    <option value="rating" selected> {{ trans('titles.rating') | capitalize }}</option>
+                    <option value="prod_year" selected> {{ trans('titles.productionYear') | capitalize }}</option>
+                    <option value="rating"> {{ trans('titles.rating') | capitalize }}</option>
+                    <option value="title"> {{ trans('titles.title') | capitalize }}</option>
                 </select>
                 <select name="order" class="browser-default custom-select m-2">
-                    <option value="desc" selected>{{ trans('parts.desc') }}</option>
-                    <option value="asc">{{ trans('parts.asc') }}</option>
+                    <option value="DESC">{{ trans('parts.desc') }}</option>
+                    <option value="ASC">{{ trans('parts.asc') }}</option>
                 </select>
 
                 <button class="research" type="submit">Research it!</button>

@@ -1,8 +1,7 @@
 <?php
 
     namespace App\Console\Commands;
-
-    use PDO;
+    
     use GuzzleHttp\Client;
     use Illuminate\Console\Command;
     
@@ -20,7 +19,7 @@
          *
          * @var string
          */
-        protected $description = 'Grab all films from yts.lt';
+        protected $description = 'Grab all films data from yts.lt';
     
         /**
          * Create a new command instance.
@@ -39,10 +38,7 @@
          */
         public function handle()
         {
-            $start = time();
-            $filmCounter = 0;
-            echo 'grabber started...' . PHP_EOL;
-            
+            echo 'grabbing data: launched' . PHP_EOL;
             $client = new Client();
     
             $response = $client->request('GET', 'https://yts.am/api/v2/list_movies.json');
@@ -50,21 +46,23 @@
 
             $pageCount = (int)round($results->data->movie_count / 20 + 1, 1 ,PHP_ROUND_HALF_UP);
             
-            //$i = 1;
-            $i = 659;
+            $i = 209;
+            echo 'page ' . $i . ': started' . PHP_EOL;
+            $start = time();
+            $filmCounter = 0;
             $sleepCounter = 0;
             while ($i <= $pageCount) {
                 $response = $client->request('GET',
                     'https://yts.am/api/v2/list_movies.json', [
                         'query' => [
-                            'page' => (string)$i,
+                            'limit' => 50,
+                            'page' => $i,
                         ]
                     ]);
                 $results = json_decode($response->getBody());
 
                 if (isset($results->data->movies)) {
                     foreach ($results->data->movies as $movie) {
-
                         $response = $client->request('GET',
                             'https://api.themoviedb.org/3/find/' . $movie->imdb_code, [
                                 'query' => [
@@ -73,22 +71,35 @@
                                 ]
                             ]);
                         $data = json_decode($response->getBody());
-
+    
+                        // GET FILMS (year, rating)
+                        $response = $client->request('GET',
+                            'https://yts.am/api/v2/list_movies.json', [
+                                'query' => [
+                                    'query_term' => $movie->imdb_code,
+                                ]
+                            ]);
+                        $result = json_decode($response->getBody());
+                        
+                        if (!isset($result->data->movies[0]->rating)) {
+                            echo 'no rating data with ' . $movie->imdb_code .  ', continue...' . PHP_EOL;
+                            continue;
+                        }
+                        
                         // GET GENRES
                         if (isset($data->movie_results[0])) {
                             foreach ($data->movie_results[0]->genre_ids as $genre_id) {
-                                file_put_contents(public_path() . '/genres.txt',
+                                file_put_contents(base_path() . '/storage/app/public/grabber/genres.txt',
                                     $movie->imdb_code . ';' . $genre_id . PHP_EOL, FILE_APPEND);
                             }
                         } else {
-                            echo 'no data in TMDB with ' . $movie->imdb_code .  ' continue...' . PHP_EOL;
+                            echo 'no data on TMDB with ' . $movie->imdb_code .  ', continue...' . PHP_EOL;
                             continue;
                         }
     
-                        // GET FILMS
-                        file_put_contents(public_path() . '/films.txt',
-                            $movie->imdb_code . ';' . $movie->year . ';' . $movie->rating . PHP_EOL, FILE_APPEND);
-
+                        file_put_contents(base_path() . '/storage/app/public/grabber/films.txt',
+                            $movie->imdb_code . ';' . $movie->year . ';' . $result->data->movies[0]->rating . PHP_EOL, FILE_APPEND);
+                        
                         // GET LOCALIZED TITLES
                         $tmdb_id = $data->movie_results[0]->id;
 
@@ -113,51 +124,35 @@
 
                         $ru = json_decode($response->getBody());
 
-                        file_put_contents(public_path() . '/titles.txt',
+                        file_put_contents(base_path() . '/storage/app/public/grabber/titles.txt',
                             $movie->imdb_code . ';' . $movie->title . ';' . $uk->title .  ';' . $ru->title . PHP_EOL,
                             FILE_APPEND);
 
                         // GET LOCALIZED POSTERS
-                        file_put_contents(public_path() . '/posters.txt',
+                        file_put_contents(base_path() . '/storage/app/public/grabber/posters.txt',
                             $movie->imdb_code . ';' . $movie->large_cover_image . ';' . BASE_URL . BIG . $uk->poster_path . ';' . BASE_URL . BIG . $ru->poster_path . PHP_EOL,
                             FILE_APPEND);
                         
                         $filmCounter++;
-                        echo $filmCounter . ' films have written to file' . PHP_EOL;
+                        echo $filmCounter . ' films have written to files, imdb_id->' . $movie->imdb_code . ', rating-> ' . $result->data->movies[0]->rating .PHP_EOL;
                         
                         if ($sleepCounter === 1) {
-                            sleep(1);
+                            //sleep(1);
                             $sleepCounter = 0;
                         }
                         else
                             $sleepCounter++;
                     }
                 }
+                echo 'page ' . $i . ': done' . PHP_EOL;
+//                if ($i === 1000)
+//                    exit('stopped' . PHP_EOL);
                 $i++;
             }
             $end = time();
             $result = $end - $start;
     
-            echo 'time: ' . round($result / 60, 2) . ' minutes' .PHP_EOL;
-            echo 'data grabbed' . " ($filmCounter films)" . ' from yts.lt api and filled into file' . PHP_EOL;
-            return $this->putDataIntoDB();
-        }
-        
-        private function putDataIntoDB()
-        {
-            $con = new PDO("mysql:host=" . env('DB_HOST') . ";dbname=" . env('DB_DATABASE'),
-                            env('DB_USERNAME'),
-                            env('DB_PASSWORD'), [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::MYSQL_ATTR_LOCAL_INFILE => true
-                           ]);
-            
-            $con->query("LOAD DATA LOCAL INFILE \"" . public_path() . '/films.txt' . "\" INTO TABLE films FIELDS TERMINATED BY \";\" LINES TERMINATED BY \"\\n\"");
-            $con->query("LOAD DATA LOCAL INFILE \"" . public_path() . '/titles.txt' . "\" INTO TABLE titles FIELDS TERMINATED BY \";\" LINES TERMINATED BY \"\\n\"");
-            $con->query("LOAD DATA LOCAL INFILE \"" . public_path() . '/posters.txt' . "\" INTO TABLE posters FIELDS TERMINATED BY \";\" LINES TERMINATED BY \"\\n\"");
-            $con->query("LOAD DATA LOCAL INFILE \"" . public_path() . '/genres.txt' . "\" INTO TABLE genres FIELDS TERMINATED BY \";\" LINES TERMINATED BY \"\\n\"");
-            
-            echo 'data inserted from file to db' . PHP_EOL;
-            echo 'done' . PHP_EOL;
+            echo 'consumed time: ' . round($result / 60, 2) . ' minutes' . PHP_EOL;
+            echo 'data grabbed' . " ($filmCounter films)" . ' from yts.lt api and filled into files' . PHP_EOL;
         }
     }

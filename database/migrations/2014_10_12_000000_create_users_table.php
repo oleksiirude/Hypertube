@@ -22,8 +22,9 @@
                 $table->string('info', 500)->nullable();
                 $table->string('email')->unique();
                 $table->string('password');
-                $table->string('auth_provider')->nullable();;
-                $table->string('auth_provider_id')->nullable();;
+                $table->string('lang', 2)->default('en');;
+                $table->string('auth_provider')->nullable();
+                $table->string('auth_provider_id')->nullable();
                 $table->rememberToken();
                 $table->timestamps();
             });

@@ -112,10 +112,10 @@
         <main id="main_container" class="@stack('search_page_class')">
             @yield('content')
         </main>
-        <footer-component ua_url="{{ route('set.language', 'uk') }}"
-                          en_url="{{ route('set.language', 'en') }}"
+        <footer-component ua_url="{{ route('change.language', 'uk') }}"
+                          en_url="{{ route('change.language', 'en') }}"
                           ua_img="{{ asset('images/service/ua.png') }}"
-                          ru_url="{{ route('set.language', 'ru') }}"
+                          ru_url="{{ route('change.language', 'ru') }}"
                           ru_img="{{ asset('images/service/ru.png') }}"
                           en_img="{{ asset('images/service/en.png') }}"
         ></footer-component>

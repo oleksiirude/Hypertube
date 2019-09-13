@@ -14,10 +14,10 @@
         public function up()
         {
             Schema::create('titles', function (Blueprint $table) {
-                $table->string('imdb_id', 20);
-                $table->string('en', 255);
-                $table->string('uk', 255);
-                $table->string('ru', 255);
+                $table->string('imdb_id', 20)->unique();
+                $table->string('en_title', 255);
+                $table->string('uk_title', 255);
+                $table->string('ru_title', 255);
             });
         }
     

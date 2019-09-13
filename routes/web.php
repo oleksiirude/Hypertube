@@ -10,7 +10,7 @@
         Route::get('/', 'BrowseMoviesController@showMainPageWithSuggestions')->name('main');
         Route::get('/research', 'BrowseMoviesController@researchByParams')->name('research');
         Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
-        Route::get('/watch/{imdbId}/{movie}', 'BrowseMoviesController@watchMovie')->name('watch');
+        Route::get('/watch/{imdbId}', 'BrowseMoviesController@watchMovie')->name('watch');
     });
     
     // Profile manipulations
@@ -33,12 +33,12 @@
         });
     });
     
-    // Auth via 42, GitHub, etc
+    // Oauth via 42, GitHub, etc
     Route::group(['prefix' => '/oauth', 'middleware' => 'guest'], function () {
         Route::get('/{provider}', 'Auth\Oauth\OauthController@redirectToProvider')->name('oauth');
         Route::get('/{provider}/callback', 'Auth\Oauth\OauthController@handleProviderCallback');
     });
     
     // Localization
-    Route::get('/lang/{language}', 'LocaleController@setLanguage')->name('set.language');
+    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language');
     

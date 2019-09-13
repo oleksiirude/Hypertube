@@ -247,10 +247,17 @@ svg:hover {
     transition-duration: 0.25s;
     transition-timing-function: linear;
 }
-
+#movies_catalog .movie:hover {
+    /*width: 120%;*/
+    /*height: 120%;*/
+    /*position: absolute;*/
+    /*z-index: 5;*/
+}
 #movies_catalog .movie:hover .poster_slide .poster_slide_bg {
     opacity: 0.75;
     transition-duration: 0.1s;
+    /*width: 120%;*/
+    /*height: 120%;*/
 }
 
 #movies_catalog .movie .poster_slide .poster_slide_details {

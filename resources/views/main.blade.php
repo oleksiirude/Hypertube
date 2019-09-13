@@ -4,14 +4,9 @@
 
 @push('search')
     <search-component action="{{ route('search.title') }}"></search-component>
-{{--    <div class="icon search" title="{{ __('titles.search') }}">--}}
-{{--        <form class="form-inline md-form mr-auto mb-2" action="{{ route('search.title') }}" hidden>--}}
-{{--            <input class="form-control mr-sm-2 w-25" type="text" placeholder="Search films..." name="title">--}}
-{{--            <button class="btn btn-secondary" type="submit">Go!</button>--}}
-{{--        </form>--}}
-{{--    </div>--}}
 @endpush
 
+<<<<<<< HEAD
 @section('content')
     <div class="container search_page">
         <div class="search_menu">
@@ -57,54 +52,52 @@
                     <option value="9">9</option>
                 </select>
 
+@push('scripts')
+    <script src="{{ asset('nouislider/distribute/nouislider.js')}}"></script>
+@endpush
 
-                Sort by:
-                <select name="sort" class="browser-default custom-select m-2">
-                    <option value="year" selected>production year</option>
-                    <option value="rating">rating</option>
-                </select>
-                <select name="order" class="browser-default custom-select m-2">
-                    <option value="desc">descending</option>
-                    <option value="asc">ascending</option>
-                </select>
+@push('style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('nouislider/distribute/nouislider.css')}}" />
+@endpush
 
-                <button class="btn btn-secondary m-2" type="submit">Research it!</button>
-            </form>
-        </div>
-        <div class="movies_list">
+@section('content')
+    <div class="search_page">
+        <sidebar-component action="{{ route('research') }}"
+                           url_default="{{ route('main') }}">
+        </sidebar-component>
+        <div class="movies_list" id="movies_list">
             <div class="row" id="movies_catalog">
                 @if(isset($content) && $content)
                     @foreach($content as $item)
-                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
+{{--                        <div class="movie_main_div">--}}
+                        <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
                             <a href="{{ route('watch', [
                                                 'imdDB' => $item->imdb_code,
                                                 'movie' => $item->slug
                                             ]) }}">
                                 <div class="movie">
-                                    <div class="">
-                                        <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
-                                            <img class="movie_poster" src="{{ $item->large_cover_image }}">
-                                        <div class="poster_slide">
-                                            <div class="poster_slide_cont">
-                                                <div class="poster_slide_bg"></div>
-                                                <div class="poster_slide_details">
-                                                    <h5 class="movie_title">
-                                                        {{ $item->title }}
-                                                    </h5>
 
-                                                    <div class="details">
-                                                        @foreach($item->genres as $genre)
-                                                            <span class="badge badge-secondary">{{ $genre }}</span>
-                                                        @endforeach
+                                    <span class="badge badge-info float-right movie_year">{{ $item->year }}</span>
+                                    <img class="movie_poster" src="{{ $item->large_cover_image }}">
+                                    <div class="poster_slide">
+                                        <div class="poster_slide_cont">
+                                            <div class="poster_slide_bg"></div>
+                                            <div class="poster_slide_details">
+                                                <h5 class="movie_title">
+                                                    {{ $item->title }}
+                                                </h5>
 
-                                                        <star-component rating="{{ $item->rating }}"></star-component>
+                                                <div class="details">
+                                                    @foreach($item->genres as $genre)
+                                                        <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
+                                                    @endforeach
 
-                                                    </div>
+                                                    <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>
+
                                                 </div>
-
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </a>

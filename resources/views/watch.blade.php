@@ -6,38 +6,32 @@
             <div class="incont">
                 <img class="poster_img" src="{{ $content->large_cover_image }}">
                 <div class="movie_profile">
+                    <div class="title">{{ $content->title }}</div>
+
+
+                    <genre-component genres="{{ json_encode($content->genres,TRUE)}}"
+                    ></genre-component>
+
+                    <info-component year="{{ $content->year }}"
+                                    runtime="{{ $content->runtime }}"
+                                    rating="{{ $content->rating }}"
+                                    studio="{{ $content->studio }}"
+                    ></info-component>
 
                     <actors-component actors="{{ json_encode($content->actors,TRUE)}}"
                                       path="{{ BASE_URL . SMALL}}"
                     ></actors-component>
-{{--                    <div class="">--}}
-{{--                        Cast:--}}
-{{--                        <ul class="">--}}
-{{--                            @foreach($content->actors as $actor)--}}
-{{--                                <div class="actor">--}}
-{{--                                    <li class="">{{ $actor->name }}</li>--}}
-{{--                                    <img class="actors_img" src="{{ BASE_URL . SMALL . $actor->profile_path }}">--}}
-{{--                                    @if($actor->order === 9)--}}
-{{--                                        @break--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
+
                     <div class="">
-                        <div>
-
-                            <p>Studio: {{ $content->studio }}</p>
-                            <p>Year: {{ $content->year }}</p>
-                            <p>Rating: {{ $content->rating }}</p>
-                            <p>Runtime: {{ $content->runtime }} minutes</p>
-
-                            <h2>{{ $content->title }}</h2>
+                        <div class="movie_desc">
                             {{  $content->summary }}
                         </div>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}" allowfullscreen style="width: 500px; height: 300px"></iframe>
-                        </div>
+
+                        <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
+
+{{--                        <div class="embed-responsive embed-responsive-16by9">--}}
+{{--                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}" allowfullscreen style="width: 500px; height: 300px"></iframe>--}}
+{{--                        </div>--}}
 
 {{--                        Torrents:--}}
 {{--                        <ul class="list-group m-2">--}}

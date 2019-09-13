@@ -31,5 +31,9 @@
         'save' => 'save',
         'cancel' => 'cancel',
         'search' => 'search',
-        'searchFilms' => 'films'
+        'searchFilms' => 'films',
+        'sortBy' => 'sort by',
+        'productionYear' => 'production year',
+        'rating' => 'rating',
+        'minRating' => 'minimum rating',
     ];

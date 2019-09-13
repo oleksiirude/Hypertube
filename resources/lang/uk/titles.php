@@ -31,5 +31,9 @@
         'save' => 'зберегти',
         'cancel' => 'відмінити',
         'search' => 'пошук',
-        'searchFilms' => 'фільмів'
+        'searchFilms' => 'фільмів',
+        'sortBy' => 'сортувати',
+        'productionYear' => 'рік випуску',
+        'rating' => 'рейтинг',
+        'minRating' => 'мінімальний рейтинг',
     ];

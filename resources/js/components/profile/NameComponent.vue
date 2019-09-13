@@ -80,7 +80,6 @@
         color: gray;
         height: 100%;
         cursor: pointer !important;
-        /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);*/
     }
     .edit_submit:hover {
         -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
@@ -93,7 +92,6 @@
     }
     .err_msg {
         display: inline-block;
-        /*width: 100%;*/
         color: red;
         font-size: 14.4px;
         vertical-align: middle;
@@ -103,7 +101,6 @@
         text-decoration: line-through;
     }
     .edit_img {
-        /*display: none;*/
         width: 20px;
         opacity: 0.5;
     }

@@ -25,6 +25,7 @@
         echo json_encode($trans);
         ?>;
     </script>
+    @stack('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,11 +33,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('style')
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm @stack('search_page_class')">
+        <nav class="navbar navbar-expand-md navbar-dark @stack('search_page_class')">
             <div class="container">
                 @if (Auth::check())
                     <a class="navbar-brand" href="{{ route('main') }}">

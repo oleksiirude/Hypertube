@@ -106,7 +106,6 @@
 
 <style scoped>
     #vue_av_div {
-        /*width: calc(50% - 50px);*/
         display: inline-block;
         height: 100%;
         text-align: left;
@@ -119,7 +118,6 @@
     .poster_avatar {
         width: 100%;
         top: -50px;
-        /*max-height: 500px;*/
         left: -50px;
         opacity: 1;
         position: relative;

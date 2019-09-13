@@ -1,17 +1,19 @@
 <template>
     <div class="title_info stars" :title="rating + ' / ' + maxRating">
-        <span v-for="star in maxStars" class="icon" :class="check_class(star)"></span><br>
-        <span>{{ rating }} / {{ maxRating }}</span>
+        <span v-for="star in maxStars" class="icon" :class="check_class(star)"></span>
+        <span class="rating_number" v-show="show">{{ rating }} / {{ maxRating }}</span>
     </div>
 </template>
 
 <script>
     export default {
         props: [
-            'rating'
+            'rating',
+            'rating_nbr'
         ],
         data() {
             return {
+                show: this.rating_nbr,
                 full_stars: Math.floor(parseFloat(this.rating) / 2),
                 maxStars: 5,
                 maxRating: 10,
@@ -56,7 +58,7 @@
 
 <style scoped>
     .stars {
-        margin-top: 20px;
+        /*margin-top: 20px;*/
     }
     .icon.star:before {
         content: '\f005';
@@ -69,5 +71,8 @@
     .icon.star_empty:before {
         content: '\f006';
         font-family: FontAwesome;
+    }
+    .rating_number {
+        display: block;
     }
 </style>

@@ -39,9 +39,6 @@
                 error: '',
                 isHidden: true,
                 upHere: false,
-                // newpassword: '',
-                // password: '',
-                // confirmpassword: '',
                 mutableEyeCurrent: this.eye_show,
                 mutableEyeNew: this.eye_show,
                 mutableEyeConfirm: this.eye_show,
@@ -52,16 +49,13 @@
         },
         methods: {
             show_hide: function(e){
-                console.log(e);
+                // console.log(e);
                 e.preventDefault();
                 let path = e.path || (e.composedPath && e.composedPath()) || composedPath(e.target);
-
-                console.log('hgjghj', path);
                 let img1 = this.eye_show,
                     img2 = this.eye_hide;
                 let imgElement = path[0].src;
                 let type = path[0].previousElementSibling.type;
-                console.log('type', type.type);
                 if (imgElement === img1) {
                     path[0].src = img2;
                     path[0].previousElementSibling.type = 'text';
@@ -100,7 +94,7 @@
                         else {
                             self.error = response.data.error;
                         }
-                        console.log('RESP', response.data);
+                        // console.log('RESP', response.data);
                     })
                     .catch((error) =>
                         console.log(error.response.data)

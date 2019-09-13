@@ -29,13 +29,13 @@
                 </select>
 
                 {{ trans('titles.productionYear') | capitalize }}:
-                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" :value="year_from">
-                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" :value="year_to">{{year_to}}
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" :value="year_from" hidden>
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" :value="year_to" hidden>
 
                 <div id="year_slider" class="my_slider"></div>
 
                 {{ trans('titles.minRating') | capitalize }}:
-                <select name="min_rating" class="browser-default custom-select m-2" :value="rating">
+                <select name="min_rating" class="browser-default custom-select m-2" :value="rating" hidden>
                     <option value="0" selected>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -79,8 +79,6 @@
             return {
                 isOpen: false,
                 isAbsolute: false,
-                // yearSlider: document.getElementById('year_slider'),
-                // ratingSlider:  document.getElementById('rating_slider'),
                 rating: 0,
                 year_from: 1920,
                 year_to: 2019
@@ -131,23 +129,12 @@
                 step: 1,
                 range: {
                     'min': 0,
-                    'max': 10
+                    'max': 9
                 }
             });
 
-            // let self = this;
-            yearSlider.noUiSlider.on('change.one', function () {
-                let year = yearSlider.noUiSlider.get();
-                this.year_from = year[0];
-                this.year_to = year[1];
-                console.log('change_year', year, this.year_to);
-
-            });
-            ratingSlider.noUiSlider.on('change.one', function () {
-                let rating = ratingSlider.noUiSlider.get();
-                this.rating = rating;
-                console.log('change_rating', rating);
-            });
+            yearSlider.noUiSlider.on('change.one', this.change_year);
+            ratingSlider.noUiSlider.on('change.one', this.change_rating);
         },
         methods: {
             checkHeight: function () {
@@ -173,6 +160,18 @@
                 films.style.transform = "translateX(10px)";
                 this.checkHeight();
 
+            },
+            change_year: function (e) {
+                let year = e;
+                this.year_from = year[0];
+                this.year_to = year[1];
+                console.log('change_year', e);
+
+            },
+            change_rating: function (e) {
+                    let rating = e;
+                    this.rating = rating;
+                    console.log('change_rating', rating);
             },
             submit: function () {
                 let self = this;
@@ -262,8 +261,8 @@
         /*-webkit-transition: left 0.3s;*/
         /*-moz-transition: left 0.3s;*/
         /*transition: left 0.3s;*/
-        transition-duration: 0.3s;
-        transition-timing-function: ease-in;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
         /*min-height: 300px;*/
     }
     .search_menu.absolute {

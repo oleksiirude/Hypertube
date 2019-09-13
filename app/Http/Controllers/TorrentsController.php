@@ -14,13 +14,13 @@
                     'https://yts.am/api/v2/list_movies.json', [
                         'query' => [
                             'sort_by' => 'download_count',
-                            'page' => $page,
-                            'limit' => 12
+                            'page' => 1,
+                            'limit' => 20
                         ]
                     ]);
         
                 $results = json_decode($response->getBody());
-
+                
                 return $results->data->movies;
             } catch (Exception $e) {
                 return false;
@@ -68,7 +68,7 @@
                     ]);
         
                 $results = json_decode($response->getBody());
-        
+                
                 return $results->data->movies;
             } catch (Exception $e) {
                 return false;

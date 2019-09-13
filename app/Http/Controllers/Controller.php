@@ -34,7 +34,7 @@
         }
     
         // prepare json response with error
-        protected function jsonResponseWithError($error)
+        protected function jsonResponseWithError($error = null)
         {
             return response()->json([
                 'result' => false,
@@ -43,7 +43,7 @@
         }
     
         // prepare json response with success
-        protected function jsonResponseWithSuccess($data)
+        protected function jsonResponseWithSuccess($data = null)
         {
             return response()->json([
                 'result' => true,

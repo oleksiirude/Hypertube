@@ -157,10 +157,10 @@
                     </div>
                 @endif
             </div>
-            <lang-component ua_url="{{ route('set.language', 'uk') }}"
-                            en_url="{{ route('set.language', 'en') }}"
+            <lang-component ua_url="{{ route('change.language', 'uk') }}"
+                            en_url="{{ route('change.language', 'en') }}"
                             ua_img="{{ asset('images/service/ua.png') }}"
-                            ru_url="{{ route('set.language', 'ru') }}"
+                            ru_url="{{ route('change.language', 'ru') }}"
                             ru_img="{{ asset('images/service/ru.png') }}"
                             en_img="{{ asset('images/service/en.png') }}"
                             id="main_lang"

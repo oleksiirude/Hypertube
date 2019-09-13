@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="search_menu" :class="{ open: isOpen, absolute: isAbsolute }" @mouseenter="open_menu" @mouseleave="close_menu">
+        <div class="search_menu" :class="{ open: isOpen, absolute: isAbsolute }" @mouseenter="open_menu">
+            <button class="destroy" @click="close_menu()" title="hide menu"></button>
+<!--             @mouseleave="close_menu">-->
 <!--            Research:-->
             <form method="GET" :action="action">
                 <select name="genre" class="browser-default custom-select m-2">
@@ -334,5 +336,39 @@
     .back_link {
         display: block;
         color: gray;
+    }
+    .destroy:after {
+        display: inline-block;
+        content: '×';
+    }
+
+    .destroy {
+        display: block;
+    }
+     .destroy {
+         padding: 0px;
+         display: inline-block;
+         float: right;
+         margin-bottom: 20px;
+        /*display: none;*/
+        /*position: absolute;*/
+        /*top: 10px;*/
+        margin-left: 10px;
+        /*bottom: 0;*/
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+        color: white;
+        background-color: rgba(50,50,50,0.75);
+        border: none;
+        /*opacity: 0.5;*/
+        vertical-align: middle;
+        line-height: normal;
+        transition: color 0.2s ease-out;
+    }
+    .destroy:hover {
+        cursor: pointer;
+        opacity: 1;
+        text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
     }
 </style>

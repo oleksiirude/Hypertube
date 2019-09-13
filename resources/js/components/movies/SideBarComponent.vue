@@ -2,7 +2,7 @@
     <div>
         <div class="search_menu" :class="{ open: isOpen, absolute: isAbsolute }" @mouseenter="open_menu" @mouseleave="close_menu">
 <!--            Research:-->
-            <input method="GET" :action="action">
+            <form method="GET" :action="action">
                 <select name="genre" class="browser-default custom-select m-2">
                     <option selected value='all'>{{ trans('genres.all') }}</option>
                     <option value="28">{{ trans('genres.28') }}</option>

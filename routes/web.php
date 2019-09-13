@@ -6,13 +6,6 @@
     
     Auth::routes();
     
-    Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
-        Route::get('/', 'BrowseMoviesController@showMainPageWithSuggestions')->name('main');
-        Route::get('/research', 'BrowseMoviesController@researchByParams')->name('research');
-        Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
-        Route::get('/watch/{imdbId}', 'BrowseMoviesController@watchMovie')->name('watch');
-    });
-    
     // Profile manipulations
     Route::group(['prefix' => '/profile', 'middleware' => 'auth'], function () {
         Route::get('/', 'ProfileController@showAuthProfile')->name('show.auth');
@@ -28,17 +21,25 @@
             Route::post('/avatar', 'ImageController@changeAvatar')->name('change.avatar');
         });
     
-        Route::group(['prefix' => '/delete'], function () {
+        Route::group(['prefix' => '/delete',  'middleware' => 'auth'], function () {
             Route::post('/avatar', 'ImageController@deleteAvatar')->name('delete.avatar');
         });
     });
+    
+    // Research
+    Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+        Route::get('/', 'BrowseMoviesController@showMainPageWithTopFilms')->name('main');
+        Route::get('/search/params', 'BrowseMoviesController@searchByParams')->name('search.params');
+        Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
+        Route::get('/watch/{imdbId}', 'BrowseMoviesController@watchMovie')->name('watch');
+    });
+    
+    // Localization
+    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language')->middleware('auth');
     
     // Oauth via 42, GitHub, etc
     Route::group(['prefix' => '/oauth', 'middleware' => 'guest'], function () {
         Route::get('/{provider}', 'Auth\Oauth\OauthController@redirectToProvider')->name('oauth');
         Route::get('/{provider}/callback', 'Auth\Oauth\OauthController@handleProviderCallback');
     });
-    
-    // Localization
-    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language');
     

@@ -3,8 +3,9 @@
     namespace App\Http\Controllers;
 
     use App;
+    use Validator;
     use Illuminate\Http\Request;
-    
+
     class BrowseMoviesController extends Controller
     {
         protected $searcher;
@@ -17,36 +18,28 @@
             });
         }
         
-        protected function showMainPageWithSuggestions()
+        protected function showMainPageWithTopFilms()
         {
-            $top = $this->searcher->getTwelveTopRatedMovies();
-            
-            return view('main', ['content' => $top]);
+            return view('main', ['content' => $this->searcher->getTwelveTopRatedMovies()]);
         }
         
         protected function searchByTitle(Request $request)
         {
-            $title = $request->get('title');
-            
-            if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $title))
+            if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
             
-            return $this->searcher->getMovieByTitle($title);
+            return $this->searcher->getMovieByTitle($request->get('title'));
         }
     
     
-        protected function researchByParams(Request $request)
+        protected function searchByParams(Request $request)
         {
-            $params = $request->all();
-          
-            $data = TorrentsController::getMoviesByParams($this->client, $params);
+            $validation = Validator::make($request->all(), $this->rules());
     
-            if (App::getLocale() !== 'en')
-                $data = TMDBController::getTranslatedDataForItems($this->client, $data, App::getLocale());
+            if ($validation->fails())
+                return $this->jsonResponseWithError();
             
-            
-            return view('main', ['content' => $data]);
-            
+            return $this->searcher->getMoviesByParams((object)$request->all());
         }
         
         protected function watchMovie($imdbId)
@@ -56,5 +49,26 @@
             $data = TMDBController::getTranslatedAndAdditionalDataForItem($this->client, $data, App::getLocale());
             
             return view('watch', ['content' => $data]);
+        }
+    
+        protected function rules()
+        {
+            return [
+                'genre' => [
+                    'required',
+                    'regex:/^all|28|12|16|35|80|99|18|10751|14|36|27|10402|9648|878|10770|53|10752|37$/'
+                ],
+                'year_from' => 'required|regex:/^[0-9]{4}$/',
+                'year_to' => 'required|regex:/^[0-9]{4}$/',
+                'min_rating' => 'required|regex:/^[0-9]{1,2}$/',
+                'sort' => [
+                    'required',
+                    'regex:/^prod_year|rating|title$/'
+                ],
+                'order' => [
+                    'required',
+                    'regex:/^ASC|DESC$/'
+                ]
+            ];
         }
     }

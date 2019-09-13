@@ -3,6 +3,7 @@
     namespace App\Http\Middleware;
     
     use Closure;
+    use App\User;
     use Illuminate\Support\Facades\App;
 
     class Localization
@@ -16,8 +17,17 @@
          */
         public function handle($request, Closure $next)
         {
-            if (session()->has('locale')) {
-                App::setLocale(session()->get('locale'));
+            $user = User::find(auth()->id());
+            
+            if ($user) {
+                session()->put('locale', $user->lang);
+                App::setLocale($user->lang);
+            }
+            else {
+                if (session()->has('locale'))
+                    App::setLocale(session()->get('locale'));
+                else
+                    App::setLocale('en');
             }
             
             return $next($request);

@@ -10,7 +10,7 @@
         Route::get('/', 'BrowseMoviesController@showMainPageWithSuggestions')->name('main');
         Route::get('/research', 'BrowseMoviesController@researchByParams')->name('research');
         Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
-        Route::get('/watch/{imdbId}/{movie}', 'BrowseMoviesController@watchMovie')->name('watch');
+        Route::get('/watch/{imdbId}', 'BrowseMoviesController@watchMovie')->name('watch');
     });
     
     // Profile manipulations
@@ -40,5 +40,5 @@
     });
     
     // Localization
-    Route::get('/lang/{language}', 'LocaleController@setLanguage')->name('set.language');
+    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language');
     

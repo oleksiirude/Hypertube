@@ -70,10 +70,7 @@
                 @if(isset($content) && $content)
                     @foreach($content as $item)
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
-                            <a href="{{ route('watch', [
-                                                'imdDB' => $item->imdb_id,
-                                                'movie' => $item->title
-                                            ]) }}">
+                            <a href="{{ route('watch', $item->imdb_id) }}">
                                 <div class="movie">
                                     <div class="">
                                         <span class="badge badge-info float-right movie_year">{{ $item->prod_year }}</span>

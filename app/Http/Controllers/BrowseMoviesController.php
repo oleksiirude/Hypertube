@@ -17,16 +17,14 @@
         
         protected function showMainPageWithSuggestions()
         {
-            $data = SearchController::getPopularMoviesSortedByRating(session()->get('locale'));
-            
-            return view('main', ['content' => $data]);
+            return view('main', ['content' => SearchController::getTwelveTopRatedMovies(LocaleController::getLang())]);
         }
         
         protected function searchByTitle(Request $request)
         {
             $title = $request->get('title');
             
-            if (!preg_match('/^[a-zа-яёїі !?,.]{2,20}$/iu', $title))
+            if (!preg_match('/^[a-zа-яёїі :!?,.]{2,100}$/iu', $title))
                 return $this->jsonResponseWithError();
             
             $data = SearchController::getMovieByTitle($title, session()->get('locale'));

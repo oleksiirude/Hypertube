@@ -10,20 +10,7 @@
                     <actors-component actors="{{ json_encode($content->actors,TRUE)}}"
                                       path="{{ BASE_URL . SMALL}}"
                     ></actors-component>
-{{--                    <div class="">--}}
-{{--                        Cast:--}}
-{{--                        <ul class="">--}}
-{{--                            @foreach($content->actors as $actor)--}}
-{{--                                <div class="actor">--}}
-{{--                                    <li class="">{{ $actor->name }}</li>--}}
-{{--                                    <img class="actors_img" src="{{ BASE_URL . SMALL . $actor->profile_path }}">--}}
-{{--                                    @if($actor->order === 9)--}}
-{{--                                        @break--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
+
                     <div class="">
                         <div>
 

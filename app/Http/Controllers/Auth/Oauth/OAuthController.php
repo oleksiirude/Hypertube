@@ -6,6 +6,7 @@
     use App\User;
     use Exception;
     use Hash;
+    use App\Http\Controllers\LocaleController;
     use Laravel\Socialite\Facades\Socialite;
     use App\Http\Controllers\Controller;
     use App\Http\Controllers\ImageController;
@@ -132,10 +133,7 @@
     
         public function login($user)
         {
-            $locale = session()->get('locale');
             auth()->login($user, true);
-            App::setLocale($locale);
-            $locale = $locale ? $locale : 'en';
-            session()->put('locale', $locale);
+            LocaleController::setLang();
         }
     }

@@ -2,6 +2,8 @@
 
     namespace App\Http\Controllers\Auth;
     
+    use App\Http\Controllers\LocaleController;
+    use App\User;
     use Validator;
     use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -29,8 +31,6 @@
             if ($validation->fails())
                 return $this->specifyValidationErrors($validation);
             
-            $locale = session()->get('locale');
-            
             $remember_me = $request->get('remember') ? false : true;
             
             if (Auth::attempt([
@@ -38,9 +38,7 @@
                 'password' => $request->get('password')],
                 $remember_me)) {
                 
-                App::setLocale($locale);
-                $locale = $locale ? $locale : 'en';
-                session()->put('locale', $locale);
+                LocaleController::setLang();
                 return response()->json(['result' => true, 'locale' => App::getLocale()]);
             }
             

@@ -6,23 +6,20 @@
 
     class SearchController extends Controller
     {
-        static public function getPopularMoviesSortedByRating($locale)
+        static public function getTwelveTopRatedMovies($locale)
         {
-            if (!$locale)
-                $locale = 'en';
-            
             $title = $locale . '_title';
             $poster = $locale . '_poster';
             
             $movies = DB::select("SELECT films.*, $title as title, $poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
-                               FROM films, titles, posters, genres
-                               WHERE films.rating >= 7
-                               AND films.prod_year >= 2010
-                               AND films.imdb_id = titles.imdb_id
-                               AND films.imdb_id = posters.imdb_id
-                               AND films.imdb_id = genres.imdb_id
-                               GROUP BY films.imdb_id
-                               ORDER BY rating*1 DESC");
+                                   FROM films, titles, posters, genres
+                                   WHERE films.rating >= 7
+                                   AND films.prod_year = 2019
+                                   AND films.imdb_id = titles.imdb_id
+                                   AND films.imdb_id = posters.imdb_id
+                                   AND films.imdb_id = genres.imdb_id
+                                   GROUP BY films.imdb_id
+                                   ORDER BY rating*1 DESC LIMIT 12");
             
             foreach ($movies as $item)
                 $item->genres = explode(',', $item->genres);
@@ -32,9 +29,6 @@
         
         static public function getMovieByTitle($search, $locale)
         {
-            if (!$locale)
-                $locale = 'en';
-            
             $title = $locale . '_title';
             $poster = $locale . '_poster';
             

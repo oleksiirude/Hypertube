@@ -1,8 +1,15 @@
 <template>
     <div>
         <label :for="name" class="titles">{{ title }}: </label>
-        <input :name="name" class="profiledata" :id="name" @keydown="isHidden = false" :value="mutableValue" placeholder="" autocomplete="off" @mouseover="upHere = true" @mouseleave="upHere = false">
-        <img :src = "edit" class="edit_img" v-show="upHere">
+        <input :name="name" class="profiledata"
+               :id="name"
+               @keydown="isHidden = false"
+               :value="mutableValue" placeholder="" autocomplete="off"
+               @mouseover="upHere = true">
+
+<!--               @mouseleave="upHere = false"-->
+<!--        >-->
+<!--        <img :src = "edit" class="edit_img" v-show="upHere">-->
         <button type="submit" v-show="!isHidden" id="" class="btn edit_submit" @click="submit">{{ title_save | capitalize }}</button>
         <button v-show="!isHidden" class="btn edit_submit cancel" @click="cancel">{{ title_cancel | capitalize}}</button>
         <span class="err_msg" @click="empty_err">{{ error }}</span>
@@ -57,7 +64,7 @@
             }, 
             cancel: function () {
                 this.isHidden = true;
-                document.getElementById(this.name).value = this.mutableValue;
+                // document.getElementById(this.name).value = this.mutableValue;
                 this.empty_err();
             }
         }

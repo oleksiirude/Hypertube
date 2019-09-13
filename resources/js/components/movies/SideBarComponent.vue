@@ -2,7 +2,7 @@
     <div>
         <div class="search_menu" :class="{ open: isOpen, absolute: isAbsolute }" @mouseenter="open_menu" @mouseleave="close_menu">
 <!--            Research:-->
-            <form method="GET" :action="action">
+            <input method="GET" :action="action">
                 <select name="genre" class="browser-default custom-select m-2">
                     <option selected value='all'>{{ trans('genres.all') }}</option>
                     <option value="28">{{ trans('genres.28') }}</option>
@@ -27,13 +27,13 @@
                 </select>
 
                 {{ trans('titles.productionYear') | capitalize }}:
-                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" value="1920" hidden>
-                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" value="2019" hidden>
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="from" name="year_from" :value="year_from">
+                <input class="form-control mr-sm-2 w-50 m-1" type="text" placeholder="to" name="year_to" :value="year_to">{{year_to}}
 
                 <div id="year_slider" class="my_slider"></div>
 
                 {{ trans('titles.minRating') | capitalize }}:
-                <select name="min_rating" class="browser-default custom-select m-2" hidden>
+                <select name="min_rating" class="browser-default custom-select m-2" :value="rating">
                     <option value="0" selected>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -50,11 +50,11 @@
 
                 {{ trans('titles.sortBy') | capitalize }}:
                 <select name="sort" class="browser-default custom-select m-2">
-                    <option value="year" selected> {{ trans('titles.productionYear') | capitalize }}</option>
-                    <option value="rating"> {{ trans('titles.rating') | capitalize }}</option>
+                    <option value="year"> {{ trans('titles.productionYear') | capitalize }}</option>
+                    <option value="rating" selected> {{ trans('titles.rating') | capitalize }}</option>
                 </select>
                 <select name="order" class="browser-default custom-select m-2">
-                    <option value="desc">{{ trans('parts.desc') }}</option>
+                    <option value="desc" selected>{{ trans('parts.desc') }}</option>
                     <option value="asc">{{ trans('parts.asc') }}</option>
                 </select>
 
@@ -77,6 +77,11 @@
             return {
                 isOpen: false,
                 isAbsolute: false,
+                // yearSlider: document.getElementById('year_slider'),
+                // ratingSlider:  document.getElementById('rating_slider'),
+                rating: 0,
+                year_from: 1920,
+                year_to: 2019
             }
         },
         props: [
@@ -90,7 +95,7 @@
                 ratingSlider = document.getElementById('rating_slider');
 
             noUiSlider.create(yearSlider, {
-                start: [1920, 2019],
+                start: [2019, 2019],
                 connect: true,
                 tooltips: true,
                 format: {
@@ -127,6 +132,20 @@
                     'max': 10
                 }
             });
+
+            // let self = this;
+            yearSlider.noUiSlider.on('change.one', function () {
+                let year = yearSlider.noUiSlider.get();
+                this.year_from = year[0];
+                this.year_to = year[1];
+                console.log('change_year', year, this.year_to);
+
+            });
+            ratingSlider.noUiSlider.on('change.one', function () {
+                let rating = ratingSlider.noUiSlider.get();
+                this.rating = rating;
+                console.log('change_rating', rating);
+            });
         },
         methods: {
             checkHeight: function () {
@@ -153,6 +172,49 @@
                 this.checkHeight();
 
             },
+            submit: function () {
+                let self = this;
+                const data = new FormData();
+                // let info = document.getElementById('bio').value;
+                // data.append('info', info);
+                axios.post(self.action, data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                    .then(function (response){
+                        let res = response.data.result;
+                        if (res === true)
+                        {
+                            // if (document.getElementById('bio').value.trim() == '')
+                            // {
+                            //     self.mutableBio = '';
+                            //     document.getElementById('bio').value = '';
+                            // }
+                            // else
+                            //     self.mutableBio = document.getElementById('bio').value;
+                            // self.isHidden = true;
+                            // self.empty_err();
+                        }
+                        else {
+                            // self.error = response.data.error;
+                        }
+                        console.log('RESP', response.data);
+                    })
+                    .catch((error) =>
+                        console.log(error.response.data)
+                    );
+            },
+            // change_rating: function (ratingSlider) {
+            //
+            //     let rating = ratingSlider.noUiSlider.get();
+            //     console.log('change_rating', rating);
+            //     // document.getElementById('age_from').value = from_to[0];
+            // },
+            // change_year: function (yearSlider) {
+            //     let year = yearSlider.noUiSlider.get();
+            //     console.log('change_year', year);
+            // }
         },
     }
 </script>

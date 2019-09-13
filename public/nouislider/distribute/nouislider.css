@@ -139,7 +139,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .noUi-handle {
   /*border: 1px solid #D9D9D9;*/
   border-radius: 3px;
-  background: black;
+  background: #121212;
   cursor: default;
   color: grey;
   box-shadow: inset 0 0 1px black, inset 0 1px 7px #EBEBEB, 0 3px 6px -3px #BBB;
@@ -159,7 +159,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
   position: absolute;
   height: 14px;
   width: 1px;
-  background: #E8E7E6;
+  background: grey;
   left: 14px;
   top: 6px;
 }

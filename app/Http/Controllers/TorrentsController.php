@@ -15,7 +15,7 @@
                         'query' => [
                             'sort_by' => 'download_count',
                             'page' => $page,
-                            'limit' => 9
+                            'limit' => 12
                         ]
                     ]);
         
@@ -37,7 +37,7 @@
                             'minimum_rating' => $params['min_rating'],
                             'sort_by' => $params['sort'],
                             'order_by' => $params['order'],
-                            'limit' => 9
+                            'limit' => 12
                         ]
                     ]);
                 

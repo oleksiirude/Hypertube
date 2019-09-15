@@ -8,27 +8,19 @@
 
     class BrowseMoviesController extends Controller
     {
-        protected $searcher;
-        
-        public function __construct()
-        {
-            $this->middleware(function ($request, $next) {
-                $this->searcher = new SearchController(LocaleController::getLang());
-                return $next($request);
-            });
-        }
-        
         protected function showMainPageWithTopFilms()
         {
-            return view('main', ['content' => $this->searcher->getTwelveTopRatedMovies()]);
+            $searcher = new SearchController(LocaleController::getLang());
+            return view('main', ['content' => $searcher->getTwelveTopRatedMovies()]);
         }
         
         protected function searchByTitle(Request $request)
         {
             if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
-            
-            return $this->searcher->getMovieByTitle($request->get('title'));
+    
+            $searcher = new SearchController(LocaleController::getLang());
+            return $searcher->getMovieByTitle($request->get('title'));
         }
     
     
@@ -38,17 +30,15 @@
     
             if ($validation->fails())
                 return $this->jsonResponseWithError();
-            
-            return $this->searcher->getMoviesByParams((object)$request->all());
+    
+            $searcher = new SearchController(LocaleController::getLang());
+            return $searcher->getMoviesByParams((object)$request->all());
         }
         
         protected function watchMovie($imdbId)
         {
-            $data = TorrentsController::getMovie($this->client, $imdbId)[0];
-            
-            $data = TMDBController::getTranslatedAndAdditionalDataForItem($this->client, $data, App::getLocale());
-            
-            return view('watch', ['content' => $data]);
+            $apiSearcher = new APIController(LocaleController::getLang());
+            return view('watch', ['content' => $apiSearcher->getMovieByImdbId($imdbId)]);
         }
     
         protected function rules()

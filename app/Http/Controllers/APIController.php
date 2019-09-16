@@ -58,7 +58,7 @@
                     ]);
                 $data = json_decode($response->getBody());
                 
-                if (preg_match('/^.*[а-яёїі]{1,}.*$/iu', $data->title))
+                if (preg_match('/^.*[0-9a-zа-яёїі :!?,.]{1,}.*$/iu', $data->title))
                     $movie->title = $data->title;
                 $movie->large_cover_image = BASE_URL . BIG . $data->poster_path;
                 if ($data->overview)

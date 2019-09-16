@@ -10,19 +10,16 @@
     {
         protected function showMainPageWithTopFilms()
         {
-            $searcher = new SearchController(LocaleController::getLang());
-            return view('main', ['content' => $searcher->getTwelveTopRatedMovies()]);
+            return view('main', ['content' => (new SearchController())->getTwelveTopRatedMovies()]);
         }
         
-        protected function searchByTitle(Request $request)
-        {
+        protected function searchByTitle(Request $request) {
             if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
     
-            $searcher = new SearchController(LocaleController::getLang());
+            $searcher = new SearchController();
             return $searcher->getMovieByTitle($request->get('title'));
         }
-    
     
         protected function searchByParams(Request $request)
         {
@@ -30,15 +27,15 @@
     
             if ($validation->fails())
                 return $this->jsonResponseWithError();
-    
-            $searcher = new SearchController(LocaleController::getLang());
-            return $searcher->getMoviesByParams((object)$request->all());
+            
+            return (new SearchController())->getMoviesByParams((object)$request->all());
         }
         
         protected function watchMovie($imdbId)
         {
-            $apiSearcher = new APIController(LocaleController::getLang());
-            return view('watch', ['content' => $apiSearcher->getMovieByImdbId($imdbId)]);
+            $api = (new APIController())->getMovieByImdbId($imdbId);
+          
+            return view('watch', ['content' => $api]);
         }
     
         protected function rules()

@@ -9,10 +9,10 @@
         protected $title;
         protected $poster;
         
-        public function __construct($lang)
+        public function __construct()
         {
-            $this->title = $lang . '_title';
-            $this->poster = $lang . '_poster';
+            $this->title = LocaleController::getLang() . '_title';
+            $this->poster = LocaleController::getLang() . '_poster';
         }
     
         public function getTwelveTopRatedMovies()
@@ -25,6 +25,7 @@
                                   AND films.imdb_id = genres.imdb_id
                                   GROUP BY films.imdb_id
                                   ORDER BY films.rating*1 DESC LIMIT 12");
+            
             foreach ($movies as $item)
                 $item->genres = explode(',', $item->genres);
          

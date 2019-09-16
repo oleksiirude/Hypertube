@@ -18,9 +18,7 @@
                                     studio="{{ $content->studio }}"
                     ></info-component>
 
-                    <actors-component actors="{{ json_encode($content->actors,TRUE)}}"
-                                      path="{{ BASE_URL . SMALL}}"
-                    ></actors-component>
+                    <actors-component actors="{{ json_encode($content->actors, TRUE)}}"></actors-component>
 
                     <div class="">
                         <div class="movie_desc">

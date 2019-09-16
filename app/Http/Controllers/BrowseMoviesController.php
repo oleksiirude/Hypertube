@@ -14,7 +14,7 @@
         }
         
         protected function searchByTitle(Request $request) {
-            if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
+            if (!preg_match('/^[a-zа-яёїі :!?,.]{2,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
     
             $searcher = new SearchController();
@@ -34,7 +34,7 @@
         protected function watchMovie($imdbId)
         {
             $api = (new APIController())->getMovieByImdbId($imdbId);
-          
+
             return view('watch', ['content' => $api]);
         }
     

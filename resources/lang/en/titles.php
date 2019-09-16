@@ -36,4 +36,5 @@
         'productionYear' => 'production year',
         'rating' => 'rating',
         'minRating' => 'minimum rating',
+        'noResults' => 'no results'
     ];

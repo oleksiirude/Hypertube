@@ -1,14 +1,25 @@
 <template>
     <li class="nav-item dropdown search_div">
-        <form class="search_form" :action="action" v-show="!isHidden">
+        <div class="search_form" v-show="!isHidden" id="search_form">
             <input class="" type="text"
                    :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
                    name="title" id="search_input"
                    autocomplete="off"
                    v-show="!isHidden"
-                   @blur="hide_search()"
-                   @mouseleave="hide_search()">
-        </form>
+                   @keyup="find_match">
+        </div>
+        <div id="huge_list" class="searchsuggestions">
+            <a v-for="(film, index) in films" class="film_suggestion" :href="film.link">
+                <div class="poster_film" v-if="film.poster">
+                    <img :src="film.poster" class="film_img">
+                </div>
+                <div class="title_film">
+                    {{ film.title }}<br>
+                    <star-component :rating="film.rating" :rating_nbr="false"></star-component>
+                </div>
+                <span class="movie_year">{{ film. prod_year}}</span>
+            </a>
+        </div>
         <div class="icon search" :title="trans('titles.search')" @mouseover="show_search()">
         </div>
 
@@ -23,6 +34,7 @@
         data: function() {
             return {
                 isHidden: true,
+                films: []
             }
         },
         methods: {
@@ -31,7 +43,50 @@
             },
             hide_search: function () {
                 this.isHidden = true;
-            }
+            },
+            find_match: function (event) {
+                let input = event.target;
+                let min_characters = 2;
+                let self = this;
+                let info = input.value;
+                axios.get(self.action + '?title=' + info)
+                    .then(function (response){
+                        let res = response.data;
+                        if (res.result === true)
+                        {
+                            console.log('true RESP', res.data);
+                            let response = res.data;
+                            self.films = response;
+                            // response.forEach(function (item) {
+                            //     let film = document.createElement('a');
+                            //     film.innerHTML = item.title;
+                            //     huge_list.appendChild(film);
+                            // });
+                            // if (document.getElementById('bio').value.trim() == '')
+                            // {
+                            //     self.mutableBio = '';
+                            //     document.getElementById('bio').value = '';
+                            // }
+                            // else
+                            //     self.mutableBio = document.getElementById('bio').value;
+                            // self.isHidden = true;
+                            // self.empty_err();
+                        }
+                        else {
+                            if (input.value.length >= min_characters ) {
+                                self.films = [""];
+                            }
+                            else
+                                self.films = [];
+                            // self.error = response.data.error;
+                        }
+                        console.log('RESP', response.data);
+                    })
+                    .catch((error) =>
+                        console.log(error.response.data)
+                    );
+            },
+
         }
     }
 </script>
@@ -83,4 +138,60 @@
         color: rgba(255,255,255,0.9);
         outline: 0;
     }
+    .searchsuggestions {
+        width: 240px;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        z-index: 10;
+        background: linear-gradient(to left, rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.3) 79%,rgba(255,255,255,0.5) 100%);
+    }
+
+</style>
+<style>
+    .searchsuggestions a{
+        position: relative;
+        display: flex;
+        background-color: #141414;
+        padding: 2px 2px 2px 2px;
+        margin: 0px 0 5px 0;
+        display: block;
+        clear: left;
+        color: white;
+        height: auto;
+        text-decoration: none;
+    }
+    .searchsuggestions a:hover{
+        color: white;
+        cursor: pointer;
+        text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+    .poster_film {
+        display: inline-block;
+        position: relative;
+        width: 50px;
+        padding-left: 5px;
+    }
+    .title_film {
+        font-size: 14px;
+        vertical-align: middle;
+        padding-left: 5px;
+        padding-right: 5px;
+        display: inline-block;
+        width: 180px;
+    }
+    .film_img {
+        width: 100%;
+    }
+    .searchsuggestions .movie_year {
+        position: absolute;
+        background-color: grey;
+        top: 50px;
+        left: 190px;
+        font-size: 10px;
+        border-radius: 4px;
+        padding: 1px 3px;
+        opacity: 0.8;
+    }
+
 </style>

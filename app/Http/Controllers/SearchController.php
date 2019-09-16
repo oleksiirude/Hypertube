@@ -9,10 +9,10 @@
         protected $title;
         protected $poster;
         
-        public function __construct($lang)
+        public function __construct()
         {
-            $this->title = $lang . '_title';
-            $this->poster = $lang . '_poster';
+            $this->title = LocaleController::getLang() . '_title';
+            $this->poster = LocaleController::getLang() . '_poster';
         }
     
         public function getTwelveTopRatedMovies()
@@ -24,7 +24,7 @@
                                   AND films.imdb_id = posters.imdb_id
                                   AND films.imdb_id = genres.imdb_id
                                   GROUP BY films.imdb_id
-                                  ORDER BY rating*1 DESC LIMIT 12");
+                                  ORDER BY films.rating*1 DESC LIMIT 12");
             
             foreach ($movies as $item)
                 $item->genres = explode(',', $item->genres);
@@ -34,12 +34,11 @@
         
         public function getMovieByTitle($search)
         {
-            $result = DB::select("SELECT films.*, $this->title as title, $this->poster
-                                  FROM titles, films, posters
-                                  WHERE titles.$this->title LIKE '%$search%'
-                                  AND titles.imdb_id = films.imdb_id
-                                  AND titles.imdb_id = posters.imdb_id
-                                  ORDER BY rating*1 DESC LIMIT 4");
+            $result = DB::select("SELECT  films.*, $this->title as title, $this->poster as poster
+                                  FROM films, titles, posters
+                                  WHERE (films.imdb_id = titles.imdb_id AND films.imdb_id = posters.imdb_id)
+                                  AND (titles.en_title LIKE '%$search%' OR titles.uk_title LIKE '%$search%' OR titles.ru_title LIKE '%$search%')
+                                  ORDER BY films.rating*1 DESC LIMIT 4");
             
             foreach ($result as $item)
                 $item->link = asset('watch/' . $item->imdb_id);
@@ -50,34 +49,46 @@
         public function getMoviesByParams($params)
         {
             if ($params->sort === 'rating')
-                $params->sort = 'rating*1';
-            
+                $params->sort = 'films.rating*1';
+
             if ($params->genre === 'all') {
-                $result = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
+                $movies = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                     FROM films, titles, posters, genres
-                                    WHERE films.prod_year BETWEEN $params->year_from AND $params->year_to
-                                    AND films.rating >= $params->min_rating
+                                    WHERE films.prod_year BETWEEN '$params->year_from' AND '$params->year_to'
+                                    AND films.rating >= '$params->min_rating'
                                     AND films.imdb_id = titles.imdb_id
                                     AND films.imdb_id = posters.imdb_id
                                     AND films.imdb_id = genres.imdb_id
                                     GROUP BY films.imdb_id
                                     ORDER BY $params->sort $params->order
                                     LIMIT 12");
+                
+                foreach ($movies as $movie) {
+                    $movie->genres = explode(',', $movie->genres);
+                }
             }
             else {
-                $result = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
+                $movies = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                     FROM films, titles, posters, genres
-                                    WHERE films.prod_year BETWEEN $params->year_from AND $params->year_to
-                                    AND films.rating >= $params->min_rating
+                                    WHERE films.prod_year BETWEEN '$params->year_from' AND '$params->year_to'
+                                    AND films.rating >= '$params->min_rating'
                                     AND films.imdb_id = titles.imdb_id
                                     AND films.imdb_id = posters.imdb_id
                                     AND films.imdb_id = genres.imdb_id
-                                    AND genres.genre = $params->genre
+                                    AND genres.genre = '$params->genre'
                                     GROUP BY films.imdb_id
                                     ORDER BY $params->sort $params->order
                                     LIMIT 12");
-            }
     
-            return count($result) ? $this->jsonResponseWithSuccess($result) : $this->jsonResponseWithError();
+                foreach ($movies as $movie) {
+                    $result = DB::select("SELECT GROUP_CONCAT(genre SEPARATOR ',') as genres
+                                FROM genres
+                                WHERE genres.imdb_id = '$movie->imdb_id'
+                                GROUP BY genres.imdb_id")[0];
+                    $movie->genres = explode(',', $result->genres);
+                }
+            }
+            
+            return count($movies) ? $this->jsonResponseWithSuccess($movies) : $this->jsonResponseWithError();
         }
     }

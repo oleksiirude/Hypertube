@@ -8,29 +8,18 @@
 
     class BrowseMoviesController extends Controller
     {
-        protected $searcher;
-        
-        public function __construct()
-        {
-            $this->middleware(function ($request, $next) {
-                $this->searcher = new SearchController(LocaleController::getLang());
-                return $next($request);
-            });
-        }
-        
         protected function showMainPageWithTopFilms()
         {
-            return view('main', ['content' => $this->searcher->getTwelveTopRatedMovies()]);
+            return view('main', ['content' => (new SearchController())->getTwelveTopRatedMovies()]);
         }
         
-        protected function searchByTitle(Request $request)
-        {
+        protected function searchByTitle(Request $request) {
             if (!preg_match('/^[a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
-            
-            return $this->searcher->getMovieByTitle($request->get('title'));
-        }
     
+            $searcher = new SearchController();
+            return $searcher->getMovieByTitle($request->get('title'));
+        }
     
         protected function searchByParams(Request $request)
         {
@@ -39,16 +28,14 @@
             if ($validation->fails())
                 return $this->jsonResponseWithError();
             
-            return $this->searcher->getMoviesByParams((object)$request->all());
+            return (new SearchController())->getMoviesByParams((object)$request->all());
         }
         
         protected function watchMovie($imdbId)
         {
-            $data = TorrentsController::getMovie($this->client, $imdbId)[0];
-            
-            $data = TMDBController::getTranslatedAndAdditionalDataForItem($this->client, $data, App::getLocale());
-            
-            return view('watch', ['content' => $data]);
+            $api = (new APIController())->getMovieByImdbId($imdbId);
+          
+            return view('watch', ['content' => $api]);
         }
     
         protected function rules()

@@ -6,7 +6,7 @@
                 {{ actor.name }};
 <!--                <span @show="currentLang =='ru'">{{ latin_to_cyrill(actor.name) }}</span>-->
                 <div class="photo_frame" v-if="actor.profile_path" v-show="show[index]">
-                    <img :src="path + actor.profile_path" class="actors_img">
+                    <img :src="actor.profile_path" class="actors_img">
                 </div>
             </li>
         </ul>
@@ -16,8 +16,7 @@
 <script>
     export default {
         props: [
-            'actors',
-            'path'
+            'actors'
         ],
         data: function() {
             return {

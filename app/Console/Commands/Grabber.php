@@ -46,11 +46,11 @@
 
             $pageCount = (int)round($results->data->movie_count / 20 + 1, 1 ,PHP_ROUND_HALF_UP);
             
-            $i = 209;
+            $i = 1;
             echo 'page ' . $i . ': started' . PHP_EOL;
             $start = time();
             $filmCounter = 0;
-            $sleepCounter = 0;
+//            $sleepCounter = 0;
             while ($i <= $pageCount) {
                 $response = $client->request('GET',
                     'https://yts.am/api/v2/list_movies.json', [

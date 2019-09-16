@@ -8,13 +8,16 @@
 
     class BrowseMoviesController extends Controller
     {
-        protected function showMainPageWithTopFilms()
+        protected function showMainPageWithTopFilms($page = null)
         {
-            return view('main', ['content' => (new SearchController())->getTwelveTopRatedMovies()]);
+            if (!$page)
+                return view('main', ['content' => (new SearchController())->getTopRatedMovies(0)]);
+            else
+                return $this->jsonResponseWithSuccess((new SearchController())->getTopRatedMovies($page * 12));
         }
         
         protected function searchByTitle(Request $request) {
-            if (!preg_match('/^[0-9a-zа-яёїі :!?,.]{4,100}$/iu', $request->get('title')))
+            if (!preg_match('/^[0-9a-zа-яёїі :!?,.]{2,100}$/iu', $request->get('title')))
                 return $this->jsonResponseWithError();
     
             $searcher = new SearchController();
@@ -24,7 +27,7 @@
         protected function searchByParams(Request $request)
         {
             $validation = Validator::make($request->all(), $this->rules());
-    
+            
             if ($validation->fails())
                 return $this->jsonResponseWithError();
             
@@ -33,9 +36,12 @@
         
         protected function watchMovie($imdbId)
         {
-            $api = (new APIController())->getMovieByImdbId($imdbId);
-          
-            return view('watch', ['content' => $api]);
+            $data = (new APIController())->getMovieByImdbId($imdbId);
+            
+            if (!$data)
+                return abort(404);
+            
+            return view('watch', ['content' => $data]);
         }
     
         protected function rules()
@@ -55,6 +61,10 @@
                 'order' => [
                     'required',
                     'regex:/^ASC|DESC$/'
+                ],
+                'page' => [
+                    'required',
+                    'regex:/^[0-9]{1,}$/'
                 ]
             ];
         }

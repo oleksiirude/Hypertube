@@ -30,9 +30,9 @@
         }
         },
         methods: {
-            parseData () {
-                JSON.parse(this.actors);
-            },
+            // parseData () {
+            //     JSON.parse(this.actors);
+            // },
             show_img: function (index) {
                 Vue.set(this.show, index, true);
             },

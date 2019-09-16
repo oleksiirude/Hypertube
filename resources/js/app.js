@@ -150,6 +150,7 @@ Vue.component('actors-component', require('./components/one_movie_page/ActorsCom
 Vue.component('genre-component', require('./components/one_movie_page/GenreComponent').default);
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
 Vue.component('trailer-component', require('./components/one_movie_page/TrailerComponent').default);
+Vue.component('pagination-component', require('./components/Pagination/PaginationComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

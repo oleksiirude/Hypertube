@@ -96,7 +96,7 @@
                 ratingSlider = document.getElementById('rating_slider');
 
             noUiSlider.create(yearSlider, {
-                start: [2019, 2019],
+                start: [1908, 2019],
                 connect: true,
                 tooltips: true,
                 format: {
@@ -109,7 +109,7 @@
                 },
                 step: 1,
                 range: {
-                    'min': 1920,
+                    'min': 1908,
                     'max': 2019
                 }
             });

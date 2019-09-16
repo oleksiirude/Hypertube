@@ -15,33 +15,50 @@
             $this->poster = LocaleController::getLang() . '_poster';
         }
     
-        public function getTwelveTopRatedMovies()
+        public function getTopRatedMovies($page = 0)
         {
-            $movies = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
+            $movies = DB::select("SELECT films.*, titles.*, posters.*, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                   FROM films, titles, posters, genres
-                                  WHERE films.prod_year = 2019
-                                  AND films.imdb_id = titles.imdb_id
+                                  WHERE films.imdb_id = titles.imdb_id
                                   AND films.imdb_id = posters.imdb_id
                                   AND films.imdb_id = genres.imdb_id
                                   GROUP BY films.imdb_id
-                                  ORDER BY films.rating*1 DESC LIMIT 12");
+                                  ORDER BY films.rating*1 DESC LIMIT 12 OFFSET $page");
             
-            foreach ($movies as $item)
+            file_put_contents(public_path() . '/log.txt', $page . ',', FILE_APPEND);
+            
+            foreach ($movies as $item) {
+                $title = $this->title;
+                $poster = $this->poster;
+                
+                $item->title = $item->$title;
+                $item->poster = $item->$poster;
                 $item->genres = explode(',', $item->genres);
-         
+                
+                $this->unsetRedundant($item);
+            }
+            
             return $movies;
         }
         
         public function getMovieByTitle($search)
         {
-            $result = DB::select("SELECT  films.*, $this->title as title, $this->poster as poster
+            $result = DB::select("SELECT  films.*, titles.*, posters.*
                                   FROM films, titles, posters
                                   WHERE (films.imdb_id = titles.imdb_id AND films.imdb_id = posters.imdb_id)
                                   AND (titles.en_title LIKE '%$search%' OR titles.uk_title LIKE '%$search%' OR titles.ru_title LIKE '%$search%')
                                   ORDER BY films.rating*1 DESC LIMIT 4");
             
-            foreach ($result as $item)
+            foreach ($result as $item) {
+                $title = $this->title;
+                $poster = $this->poster;
+    
+                $item->title = $item->$title;
+                $item->poster = $item->$poster;
                 $item->link = asset('watch/' . $item->imdb_id);
+    
+                $this->unsetRedundant($item);
+            }
             
             return count($result) ? $this->jsonResponseWithSuccess($result) : $this->jsonResponseWithError();
         }
@@ -52,7 +69,7 @@
                 $params->sort = 'films.rating*1';
 
             if ($params->genre === 'all') {
-                $movies = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
+                $movies = DB::select("SELECT films.*, titles.*, posters.*, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                     FROM films, titles, posters, genres
                                     WHERE films.prod_year BETWEEN '$params->year_from' AND '$params->year_to'
                                     AND films.rating >= '$params->min_rating'
@@ -64,7 +81,14 @@
                                     LIMIT 12");
                 
                 foreach ($movies as $movie) {
+                    $title = $this->title;
+                    $poster = $this->poster;
+    
+                    $movie->title = $movie->$title;
+                    $movie->poster = $movie->$poster;
                     $movie->genres = explode(',', $movie->genres);
+    
+                    $this->unsetRedundant($movie);
                 }
             }
             else {
@@ -85,10 +109,30 @@
                                 FROM genres
                                 WHERE genres.imdb_id = '$movie->imdb_id'
                                 GROUP BY genres.imdb_id")[0];
+    
+                    $title = $this->title;
+                    $poster = $this->poster;
+    
+                    $movie->title = $movie->$title;
+                    $movie->poster = $movie->$poster;
                     $movie->genres = explode(',', $result->genres);
+    
+                    $this->unsetRedundant($movie);
                 }
             }
             
             return count($movies) ? $this->jsonResponseWithSuccess($movies) : $this->jsonResponseWithError();
         }
+        
+        protected function unsetRedundant($item)
+        {
+            unset($item->en_title);
+            unset($item->uk_title);
+            unset($item->ru_title);
+            unset($item->en_poster);
+            unset($item->uk_poster);
+            unset($item->ru_poster);
+        }
     }
+
+    http://localhost:8080/search/params?genre=all&year_from=1920&year_to=2019&min_rating=0&sort=prod_year&order=DESC&page=1

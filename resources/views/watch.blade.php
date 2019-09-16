@@ -9,14 +9,13 @@
                     <div class="title">{{ $content->title }}</div>
 
 
-                    <genre-component genres="{{ json_encode($content->genres,TRUE)}}"
-                    ></genre-component>
+                    <genre-component genres="{{ json_encode($content->genres,TRUE)}}"></genre-component>
 
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
                                     rating="{{ $content->rating }}"
-                                    studio="{{ $content->studio }}"
-                    ></info-component>
+                                    studio="{{ $content->studio }}">
+                    </info-component>
 
                     <actors-component actors="{{ json_encode($content->actors, TRUE)}}"></actors-component>
 
@@ -27,20 +26,10 @@
 
                         <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
 
-{{--                        <div class="embed-responsive embed-responsive-16by9">--}}
-{{--                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}" allowfullscreen style="width: 500px; height: 300px"></iframe>--}}
-{{--                        </div>--}}
-
-{{--                        Torrents:--}}
+{{--                        Magnets:--}}
 {{--                        <ul class="list-group m-2">--}}
-{{--                            @foreach($content->torrents as $item)--}}
-{{--                                <li style="color: forestgreen;">{{ $item->url }}</li>--}}
-{{--                                <li>quality: {{ $item->quality }}</li>--}}
-{{--                                <li>seeds: {{ $item->seeds }}</li>--}}
-{{--                                <li>peers: {{ $item->peers }}</li>--}}
-{{--                                <li>size: {{ $item->size }}</li>--}}
-{{--                                <li>magnet-link: {{ MAGNET . $item->hash . TRACKERS}}</li>--}}
-{{--                            @endforeach--}}
+{{--                            <li>720: {{ $content->magnets->hd }}</li>--}}
+{{--                            <li>1080: {{ $content->magnets->full }}</li>--}}
 {{--                        </ul>--}}
                     </div>
                 </div>

@@ -17,47 +17,49 @@
 @section('content')
     <div class="search_page">
 
+{{--        {{ dd(json_encode($content)) }}--}}
         <sidebar-component action="{{ route('search.params') }}"
                            url_default="{{ route('main') }}">
         </sidebar-component>
-        <div class="movies_list" id="movies_list">
-            <div class="row" id="movies_catalog">
-                @if(isset($content) && $content)
-                    @foreach($content as $item)
-                        {{--                        <div class="movie_main_div">--}}
-                        <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">
-                            <a href="{{ route('watch', $item->imdb_id) }}">
-                                <div class="movie">
 
-                                    <span class="badge badge-info float-right movie_year">{{ $item->prod_year }}</span>
-                                    <img class="movie_poster" src="{{ $item->poster }}">
-                                    <div class="poster_slide">
-                                        <div class="poster_slide_cont">
-                                            <div class="poster_slide_bg"></div>
-                                            <div class="poster_slide_details">
-                                                <h5 class="movie_title">
-                                                    {{ $item->title }}
-                                                </h5>
+        <pagination-component base_url="{{ env('APP_URL') . '/watch/' }}" films_top="{{ json_encode($content)}}"></pagination-component>
 
-                                                <div class="details">
-                                                    @foreach($item->genres as $genre)
-                                                        <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>
-                                                    @endforeach
+{{--        <div class="movies_list" id="movies_list">--}}
+{{--            <div class="row" id="movies_catalog">--}}
+{{--                @if(isset($content) && $content)--}}
+{{--                    @foreach($content as $item)--}}
+{{--                        --}}{{--                        <div class="movie_main_div">--}}
+{{--                        <div class="col-xl-2 col-lg-4 col-md-6 col-sm-12 col-xs-12 movie_main_div">--}}
+{{--                            <a href="{{ route('watch', $item->imdb_id) }}">--}}
+{{--                                <div class="movie">--}}
 
-                                                    <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>
+{{--                                    <span class="badge badge-info float-right movie_year">{{ $item->prod_year }}</span>--}}
+{{--                                    <img class="movie_poster" src="{{ $item->poster }}">--}}
+{{--                                    <div class="poster_slide">--}}
+{{--                                        <div class="poster_slide_cont">--}}
+{{--                                            <div class="poster_slide_bg"></div>--}}
+{{--                                            <div class="poster_slide_details">--}}
+{{--                                                <h5 class="movie_title">--}}
+{{--                                                    {{ $item->title }}--}}
+{{--                                                </h5>--}}
 
-                                                </div>
-                                            </div>
+{{--                                                <div class="details">--}}
+{{--                                                    @foreach($item->genres as $genre)--}}
+{{--                                                        <span class="badge badge-secondary">{{ __('genres.' . $genre) }}</span>--}}
+{{--                                                    @endforeach--}}
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        </div>
+{{--                                                    <star-component rating="{{ $item->rating }}" rating_nbr="true"></star-component>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--        </div>--}}
     </div>
 @endsection
 

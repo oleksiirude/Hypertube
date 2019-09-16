@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
     
     use Exception;
+    use stdClass;
     use GuzzleHttp\Client;
 
     class APIController extends Controller
@@ -63,10 +64,16 @@
                 $movie->large_cover_image = BASE_URL . BIG . $data->poster_path;
                 if ($data->overview)
                     $movie->summary = $data->overview;
-               
+    
+                $movie->magnets = $this->getMagnetLinks($movie->torrents);
                 $movie->actors = $this->getActors($data->credits->cast);
                 $movie->director = $this->getDirector($data->credits->crew);
                 $movie->genres = $this->getGenres($data->genres);
+    
+                if (isset($data->production_countries[0]))
+                    $movie->country = $data->production_countries[0]->iso_3166_1;
+                else
+                    $movie->country = false;
                 
                 if (isset($data->production_companies[0]))
                     $movie->studio = $data->production_companies[0]->name;
@@ -109,8 +116,26 @@
         protected function getGenres($genres)
         {
             foreach ($genres as $genre)
-                $array[] = $genre->id;
+                $genre_ids[] = $genre->id;
             
-            return $array;
+            return $genre_ids;
+        }
+        
+        protected function getMagnetLinks($torrents)
+        {
+            $magnets = new stdClass();
+            
+            foreach ($torrents as $torrent) {
+                if ($torrent->type === 'web' && $torrent->quality === '720p')
+                    $magnets->hd = urlencode(MAGNET . $torrent->hash . TRACKERS);
+                else if ($torrent->type === 'web' && $torrent->quality === '1080p')
+                    $magnets->full = urlencode(MAGNET . $torrent->hash . TRACKERS);
+                else if ($torrent->type === 'bluray' && $torrent->quality === '720p' && !isset($magnets->hd))
+                    $magnets->hd = urlencode(MAGNET . $torrent->hash . TRACKERS);
+                else if ($torrent->type === 'bluray' && $torrent->quality === '1080p' && !isset($magnets->full))
+                    $magnets->full = urlencode(MAGNET . $torrent->hash . TRACKERS);
+            }
+           
+            return $magnets;
         }
     }

@@ -14,8 +14,10 @@ class CreateWishlistTable extends Migration
     public function up()
     {
         Schema::create('wishlist', function (Blueprint $table) {
-            $table->uuid('user_uuid');
+            $table->uuid('user_uuid')->unique();
             $table->string('imdb_id', 20);
+            
+            $table->foreign('user_uuid')->references('uuid')->on('users');
         });
     }
 

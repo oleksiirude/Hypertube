@@ -18,6 +18,8 @@ class CreatePostersTable extends Migration
             $table->string('en_poster', 255);
             $table->string('uk_poster', 255);
             $table->string('ru_poster', 255);
+    
+            $table->foreign('imdb_id')->references('imdb_id')->on('films');
         });
     }
 

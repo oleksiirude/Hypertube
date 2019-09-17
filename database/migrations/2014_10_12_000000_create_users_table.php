@@ -14,7 +14,7 @@
         public function up()
         {
             Schema::create('users', function (Blueprint $table) {
-                $table->uuid('uuid');
+                $table->uuid('uuid')->primary();
                 $table->string('login');
                 $table->string('first_name');
                 $table->string('last_name');

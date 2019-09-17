@@ -25,7 +25,7 @@
                         </div>
 
                         <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
-
+                        <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
 {{--                        Magnets:--}}
 {{--                        <ul class="list-group m-2">--}}
 {{--                            <li>720: {{ $content->magnets->hd }}</li>--}}

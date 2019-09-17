@@ -17,7 +17,6 @@
 @section('content')
     <div class="search_page">
 
-{{--        {{ dd(json_encode($content)) }}--}}
         <sidebar-component action="{{ route('search.params') }}"
                            url_default="{{ route('main') }}">
         </sidebar-component>

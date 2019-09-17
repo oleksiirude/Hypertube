@@ -6101,7 +6101,6 @@ tt6675400;Con Man;Con Man;Аферист
 tt2283362;Jumanji: Welcome to the Jungle;Джуманджі: Поклик джунглів;Джуманджи: Зов Джунглей
 tt0457430;Pan's Labyrinth;Лабіринт Фавна;Лабиринт Фавна
 tt7160070;Along with the Gods: The Two Worlds;Along with the Gods: The Two Worlds;С Богами: Два мира
-tt0066763;Anand;Anand;Anand
 tt0057239;The L-Shaped Room;The L-Shaped Room;The L-Shaped Room
 tt0244479;Dark Blue World;Dark Blue World;Зияющая синева
 tt2901736;Ilo Ilo;Ilo Ilo;Ilo Ilo

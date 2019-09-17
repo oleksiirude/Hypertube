@@ -4,7 +4,7 @@
             <button class="destroy" @click="close_menu()" title="hide menu"></button>
 <!--             @mouseleave="close_menu">-->
 <!--            Research:-->
-            <form method="GET" :action="action">
+            <form id="search_form" method="GET" :action="action">
                 <select name="genre" class="browser-default custom-select m-2">
                     <option selected value='all'>{{ trans('genres.all') }}</option>
                     <option value="28">{{ trans('genres.28') }}</option>

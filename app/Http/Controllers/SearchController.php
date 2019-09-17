@@ -25,8 +25,6 @@
                                   GROUP BY films.imdb_id
                                   ORDER BY films.rating*1 DESC LIMIT 12 OFFSET $page");
             
-            file_put_contents(public_path() . '/log.txt', $page . ',', FILE_APPEND);
-            
             foreach ($movies as $item) {
                 $title = $this->title;
                 $poster = $this->poster;
@@ -65,20 +63,24 @@
         
         public function getMoviesByParams($params)
         {
+            $params->page = $params->page * 12;
+            
             if ($params->sort === 'rating')
                 $params->sort = 'films.rating*1';
-
+            else if ($params->sort === 'title')
+                $params->sort = $this->title;
+            
             if ($params->genre === 'all') {
                 $movies = DB::select("SELECT films.*, titles.*, posters.*, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                     FROM films, titles, posters, genres
-                                    WHERE films.prod_year BETWEEN '$params->year_from' AND '$params->year_to'
-                                    AND films.rating >= '$params->min_rating'
+                                    WHERE films.prod_year BETWEEN $params->year_from AND $params->year_to
+                                    AND films.rating >= $params->min_rating
                                     AND films.imdb_id = titles.imdb_id
                                     AND films.imdb_id = posters.imdb_id
                                     AND films.imdb_id = genres.imdb_id
                                     GROUP BY films.imdb_id
                                     ORDER BY $params->sort $params->order
-                                    LIMIT 12");
+                                    LIMIT 12 OFFSET $params->page");
                 
                 foreach ($movies as $movie) {
                     $title = $this->title;
@@ -92,17 +94,16 @@
                 }
             }
             else {
-                $movies = DB::select("SELECT films.*, $this->title as title, $this->poster as poster, GROUP_CONCAT(genre SEPARATOR ',') as genres
+                $movies = DB::select("SELECT films.*, titles.*, posters.*, genres.genre
                                     FROM films, titles, posters, genres
-                                    WHERE films.prod_year BETWEEN '$params->year_from' AND '$params->year_to'
-                                    AND films.rating >= '$params->min_rating'
+                                    WHERE genres.genre = $params->genre
+                                    AND films.prod_year BETWEEN $params->year_from AND $params->year_to
+                                    AND films.rating >= $params->min_rating
                                     AND films.imdb_id = titles.imdb_id
                                     AND films.imdb_id = posters.imdb_id
                                     AND films.imdb_id = genres.imdb_id
-                                    AND genres.genre = '$params->genre'
-                                    GROUP BY films.imdb_id
                                     ORDER BY $params->sort $params->order
-                                    LIMIT 12");
+                                    LIMIT 12 OFFSET $params->page");
     
                 foreach ($movies as $movie) {
                     $result = DB::select("SELECT GROUP_CONCAT(genre SEPARATOR ',') as genres
@@ -134,5 +135,3 @@
             unset($item->ru_poster);
         }
     }
-
-    http://localhost:8080/search/params?genre=all&year_from=1920&year_to=2019&min_rating=0&sort=prod_year&order=DESC&page=1

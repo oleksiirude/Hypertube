@@ -28,7 +28,7 @@
     
     // Research
     Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
-        Route::get('//{page?}', 'BrowseMoviesController@showMainPageWithTopFilms')->name('main');
+        Route::get('/{page?}', 'BrowseMoviesController@showMainPageWithTopFilms')->name('main');
         Route::get('/search/params', 'BrowseMoviesController@searchByParams')->name('search.params');
         Route::get('/search/title', 'BrowseMoviesController@searchByTitle')->name('search.title');
         Route::get('/watch/{imdbId}', 'BrowseMoviesController@watchMovie')->name('watch');

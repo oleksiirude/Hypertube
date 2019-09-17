@@ -10,7 +10,6 @@
     {
         protected function showMainPageWithTopFilms(Request $request, $page = 0)
         {
-            $this->ifHasHeader();
             if ($page && !$request->headers->has('XMLHttpRequest'))
                 abort(404);
                 

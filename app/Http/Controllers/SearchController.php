@@ -15,7 +15,7 @@
             $this->poster = LocaleController::getLang() . '_poster';
         }
     
-        public function getTopRatedMovies($page = 0)
+        public function getTopRatedMovies($page)
         {
             $movies = DB::select("SELECT films.*, titles.*, posters.*, GROUP_CONCAT(genre SEPARATOR ',') as genres
                                   FROM films, titles, posters, genres

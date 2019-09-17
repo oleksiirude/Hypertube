@@ -8,12 +8,11 @@
 
     class BrowseMoviesController extends Controller
     {
-        protected function showMainPageWithTopFilms($page = null)
+        protected function showMainPageWithTopFilms($page = 0)
         {
-            if (!$page)
-                return view('main', ['content' => (new SearchController())->getTopRatedMovies(0)]);
-            else
-                return $this->jsonResponseWithSuccess((new SearchController())->getTopRatedMovies($page * 12));
+            return $page
+                ? $this->jsonResponseWithSuccess((new SearchController())->getTopRatedMovies($page * 12))
+                : view('main', ['content' => (new SearchController())->getTopRatedMovies(0)]);
         }
         
         protected function searchByTitle(Request $request) {

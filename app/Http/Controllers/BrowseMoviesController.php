@@ -8,8 +8,12 @@
 
     class BrowseMoviesController extends Controller
     {
-        protected function showMainPageWithTopFilms($page = 0)
+        protected function showMainPageWithTopFilms(Request $request, $page = 0)
         {
+            $this->ifHasHeader();
+            if ($page && !$request->headers->has('XMLHttpRequest'))
+                abort(404);
+                
             return $page
                 ? $this->jsonResponseWithSuccess((new SearchController())->getTopRatedMovies($page * 12))
                 : view('main', ['content' => (new SearchController())->getTopRatedMovies(0)]);
@@ -25,6 +29,9 @@
     
         protected function searchByParams(Request $request)
         {
+            if (!$request->headers->has('XMLHttpRequest'))
+                abort(404);
+            
             $validation = Validator::make($request->all(), $this->rules());
             
             if ($validation->fails())

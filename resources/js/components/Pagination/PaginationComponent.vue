@@ -27,7 +27,7 @@
                 </a>
             </div>
         </div>
-        <button id="paginator" class="btn-primary ml-auto mr-auto mt-2" @click="showMore">Show more</button>
+        <button id="paginator" class="btn-primary ml-auto mr-auto mt-4" @click="showMore">Show more</button>
     </div>
 </template>
 
@@ -35,7 +35,6 @@
     export default {
         mounted () {
             document.getElementsByClassName('research')[0].addEventListener('click', this.changeType);
-
         },
 
         methods: {
@@ -45,17 +44,19 @@
                 this.page = 0;
                 this.type = 'params';
                 $('#movies_catalog').empty();
+                this.params = this.getParams();
                 this.showMore();
             },
             showMore: function () {
                 let btn = document.getElementById('paginator');
                 btn.disabled = true;
                 btn.hidden = false;
-                btn.innerHTML = 'Processing...';
+                btn.innerHTML = '';
+                btn.appendChild(this.addLoop());
 
                 if (this.type === 'top') {
                     this.ajax.open('GET', '/' + this.page, true);
-                    this.ajax.setRequestHeader('Content-Type', 'application/json');
+                    this.ajax.setRequestHeader('XMLHttpRequest', 'true');
                     this.ajax.send();
 
                     this.ajax.onreadystatechange = () => {
@@ -74,21 +75,8 @@
                     this.page++;
                 }
                 else if (this.type === 'params') {
-                    let input = document.getElementById('search_form').getElementsByTagName('input');
-                    let select = document.getElementById('search_form').getElementsByTagName('select');
-
-                    let query = jQuery.param({
-                        genre: select.genre.value,
-                        year_from: input.year_from.value,
-                        year_to: input.year_to.value,
-                        min_rating: select.min_rating.value,
-                        sort: select.sort.value,
-                        order: select.order.value,
-                        page: this.page
-                    });
-
-                    this.ajax.open('GET', '/search/params?' + query, true);
-                    this.ajax.setRequestHeader('Content-Type', 'application/json');
+                    this.ajax.open('GET', '/search/params?' + this.params + '&page=' + this.page, true);
+                    this.ajax.setRequestHeader('XMLHttpRequest', 'true');
                     this.ajax.send();
 
                     this.ajax.onreadystatechange = () => {
@@ -96,8 +84,12 @@
                             let response = JSON.parse(this.ajax.responseText);
                             if (response['result'] === true) {
                                 this.films = this.films.concat(response['data']);
-                                btn.disabled = false;
-                                btn.innerHTML = 'Show more';
+                                if ((response['data'].length < 12))
+                                    btn.hidden = true;
+                                else {
+                                    btn.disabled = false;
+                                    btn.innerHTML = 'Show more';
+                                }
                             }
                             else if (response['result'] === false) {
                                 if (this.page === 1)
@@ -109,6 +101,25 @@
                     };
                     this.page++;
                 }
+            },
+            getParams: function () {
+                let input = document.getElementById('search_form').getElementsByTagName('input');
+                let select = document.getElementById('search_form').getElementsByTagName('select');
+
+                return jQuery.param({
+                    genre: select.genre.value,
+                    year_from: input.year_from.value,
+                    year_to: input.year_to.value,
+                    min_rating: select.min_rating.value,
+                    sort: select.sort.value,
+                    order: select.order.value,
+                });
+            },
+            addLoop: function () {
+                let img = document.createElement('img');
+                img.src = "http://186.237.228.34:4010/portal_unimed/images/Load.gif";
+                img.width = 50;
+                return img;
             }
         },
 
@@ -122,12 +133,15 @@
                 films: JSON.parse(this.films_top),
                 page: 1,
                 type: 'top',
-                ajax: new XMLHttpRequest()
+                ajax: new XMLHttpRequest(),
+                params: null
             }
         }
     }
 </script>
 
 <style scoped>
-
+    .loop {
+        width: 20px;
+    }
 </style>

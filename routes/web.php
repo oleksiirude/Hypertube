@@ -26,6 +26,11 @@
         });
     });
     
+    // Add data
+    Route::group(['prefix' => '/add',  'middleware' => 'auth'], function () {
+        Route::post('/comment', 'CommentsController@addComment')->name('add.comment');
+    });
+    
     // Research
     Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/{page?}', 'BrowseMoviesController@showMainPageWithTopFilms')->name('main');

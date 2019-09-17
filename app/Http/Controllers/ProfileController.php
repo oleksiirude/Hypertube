@@ -28,6 +28,11 @@
         
         protected function showUserProfile($login)
         {
+            $user = User::where('login', $login)->firstOrFail();
+            
+            if ($user->uuid === auth()->user()->uuid)
+                return redirect()->route('show.auth');
+            
             return view('profiles.user-profile', ['profile' => User::where('login', $login)->firstOrFail()]);
         }
         

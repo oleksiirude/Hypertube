@@ -9,7 +9,7 @@
                     <div class="title">{{ $content->title }}</div>
 
 
-                    <genre-component genres="{{ json_encode($content->genres,TRUE)}}"></genre-component>
+                    <genre-component genres="{{ json_encode($content->genres)}}"></genre-component>
 
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
@@ -17,7 +17,7 @@
                                     studio="{{ $content->studio }}">
                     </info-component>
 
-                    <actors-component actors="{{ json_encode($content->actors, TRUE)}}"></actors-component>
+                    <actors-component actors="{{ json_encode($content->actors)}}"></actors-component>
 
                     <div class="">
                         <div class="movie_desc">
@@ -25,7 +25,6 @@
                         </div>
 
                         <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
-
 {{--                        Magnets:--}}
 {{--                        <ul class="list-group m-2">--}}
 {{--                            <li>720: {{ $content->magnets->hd }}</li>--}}
@@ -35,5 +34,13 @@
                 </div>
             </div>
         </div>
+        <comments-component
+                action="{{ route('add.comment') }}"
+                comments="{{ json_encode($comments) }}"
+                prefix_avatar="{{ env('APP_URL') }}"
+                prefix_profile="{{ env('APP_URL') . '/profile/' }}"
+                auth_login="{{ auth()->user()->login }}"
+                auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
+        </comments-component>
     </div>
 @endsection

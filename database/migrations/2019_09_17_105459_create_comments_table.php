@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->uuid('user_uuid');
             $table->string('imdb_id', 20);
             $table->string('comment', 500);
-            $table->timestamps();
+            $table->timestamp('created_at');
         });
     }
 

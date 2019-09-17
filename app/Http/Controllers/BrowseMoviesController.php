@@ -10,7 +10,6 @@
     {
         protected function showMainPageWithTopFilms(Request $request, $page = 0)
         {
-            $this->ifHasHeader();
             if ($page && !$request->headers->has('XMLHttpRequest'))
                 abort(404);
                 
@@ -42,12 +41,15 @@
         
         protected function watchMovie($imdbId)
         {
-            $data = (new APIController())->getMovieByImdbId($imdbId);
+            $movie = (new APIController())->getMovieByImdbId($imdbId);
             
-            if (!$data)
+            if (!$movie)
                 return abort(404);
             
-            return view('watch', ['content' => $data]);
+            return view('watch', [
+                'content' => $movie,
+                'comments' => CommentsController::getComments($imdbId)
+            ]);
         }
     
         protected function rules()

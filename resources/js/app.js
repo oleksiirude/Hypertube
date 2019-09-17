@@ -151,6 +151,7 @@ Vue.component('genre-component', require('./components/one_movie_page/GenreCompo
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
 Vue.component('trailer-component', require('./components/one_movie_page/TrailerComponent').default);
 Vue.component('pagination-component', require('./components/Pagination/PaginationComponent').default);
+Vue.component('comments-component', require('./components/one_movie_page/CommentsComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

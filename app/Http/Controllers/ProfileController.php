@@ -23,7 +23,10 @@
     
         protected function showAuthProfile()
         {
-            return view('profiles.auth-profile', ['profile' => User::find(auth()->id())]);
+            return view('profiles.auth-profile', [
+                'profile' => User::find(auth()->id()),
+                'wishlist' => WishlistController::getWishlist($this->user->uuid)
+            ]);
         }
         
         protected function showUserProfile($login)

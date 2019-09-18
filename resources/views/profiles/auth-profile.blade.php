@@ -86,9 +86,27 @@
                         ></bio-component>
 
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    @if($wishlist)
+    <div class="container">
+        <h2>My wishlist</h2>
+        <div class="row">
+            @foreach($wishlist as $item)
+                <div class="col-lg-4 col-6">
+                    <a href="{{ $item->link }}">
+                        <img class="img-thumbnail img-fluid" src="{{ $item->poster }}" alt="">
+                    </a>
+                    <form method="POST" action="{{ route('delete.film') }}">
+                        <input type="text" name="imdb_id" value="{{ $item->imdb_id }}" hidden>
+                        @csrf
+                        <button type="submit" style="margin-bottom: 20px">Delete</button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 @endsection

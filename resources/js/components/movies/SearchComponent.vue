@@ -1,6 +1,6 @@
 <template>
     <li class="nav-item dropdown search_div" v-click-outside="outside">
-        <div class="search_form" v-show="!isHidden" id="search_form">
+        <div class="search_form" v-show="!isHidden" id="search_form_upper">
             <input class="" type="text"
                    :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
                    name="title" id="search_input"
@@ -118,7 +118,7 @@
     .search_div {
         display: flex;
     }
-    .search_form {
+    .search_form_upper {
         /*margin: auto;*/
         width: 200px;
         background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.35) 79%,rgba(255,255,255,0.45) 100%);

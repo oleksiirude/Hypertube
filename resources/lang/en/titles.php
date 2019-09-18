@@ -28,13 +28,16 @@
         'profile' => "Profile:",
         'newAccount' => 'Create account',
         'bioPlaceholder' => 'Tell about yourself, up to 500 symbols',
-        'save' => 'save',
-        'cancel' => 'cancel',
-        'search' => 'search',
+        'save' => 'Save',
+        'cancel' => 'Cancel',
+        'search' => 'Search',
         'searchFilms' => 'films',
-        'sortBy' => 'sort by',
-        'productionYear' => 'production year',
-        'rating' => 'rating',
-        'minRating' => 'minimum rating',
-        'noResults' => 'no results'
+        'sortBy' => 'Sort by',
+        'productionYear' => 'Production year',
+        'rating' => 'Rating',
+        'minRating' => 'Minimum rating',
+        'noResults' => 'No results',
+        'wishlist' => 'Wishlist',
+        'remove' => 'Remove'
+        
     ];

@@ -14,7 +14,8 @@
                 'imdb_id' => $request->get('imdb_id'),
             ]);
             
-            return $this->jsonResponseWithSuccess();
+            // response true means film has added to wishlist
+            return response()->json(['result' => true]);
         }
         
         protected function deleteFilm(Request $request)
@@ -26,8 +27,9 @@
                 'user_uuid' => auth()->user()->uuid,
                 'imdb_id' => $request->get('imdb_id'),
             ])->delete();
-            
-            return $this->jsonResponseWithSuccess();
+    
+            // response false means film has deleted from wishlist
+            return response()->json(['result' => false]);
         }
         
         public static function getWishlist($auth)

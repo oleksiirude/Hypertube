@@ -1,0 +1,32 @@
+{
+  "name": "torrent-streaming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "download": "^7.1.0",
+    "express": "^4.17.1",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "md5": "^2.2.1",
+    "opensubtitles-api": "^5.0.1",
+    "pump": "^3.0.0",
+    "torrent-stream": "^1.1.0",
+    "srt-to-vtt": "latest",
+    "lodash": "latest"
+  }
+}

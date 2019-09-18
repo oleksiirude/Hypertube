@@ -18,6 +18,8 @@
                 $table->string('en_title', 255);
                 $table->string('uk_title', 255);
                 $table->string('ru_title', 255);
+    
+                $table->foreign('imdb_id')->references('imdb_id')->on('films');
             });
         }
     

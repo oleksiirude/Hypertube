@@ -62,14 +62,14 @@
                                              eye_hide="{{asset('/images/service/hide_eye.png')}}"
                             ></email-component>
 
-                            <paswword-component name="password"
+                            <password-component name="password"
                                                 action="{{ route('change.password') }}"
                                                 edit="{{asset('/images/service/edit.png')}}"
                                                 title_save="{{ __('titles.save') }}"
                                                 title_cancel="{{ __('titles.cancel') }}"
                                                 eye_show="{{asset('/images/service/eye.png')}}"
                                                 eye_hide="{{asset('/images/service/hide_eye.png')}}"
-                            ></paswword-component>
+                            ></password-component>
 
                         @endif
 
@@ -86,9 +86,27 @@
                         ></bio-component>
 
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
+    @if($wishlist)
+    <div class="container">
+        <h2>My wishlist</h2>
+        <div class="row">
+            @foreach($wishlist as $item)
+                <div class="col-lg-4 col-6">
+                    <a href="{{ $item->link }}">
+                        <img class="img-thumbnail img-fluid" src="{{ $item->poster }}" alt="">
+                    </a>
+                    <form method="POST" action="{{ route('delete.film') }}">
+                        <input type="text" name="imdb_id" value="{{ $item->imdb_id }}" hidden>
+                        @csrf
+                        <button type="submit" style="margin-bottom: 20px">Delete</button>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 @endsection

@@ -142,7 +142,7 @@ Vue.component('avatar-component', require('./components/profile/AvatarComponent'
 Vue.component('bio-component', require('./components/profile/BioComponent').default);
 Vue.component('name-component', require('./components/profile/NameComponent').default);
 Vue.component('email-component', require('./components/profile/EmailComponent').default);
-Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
+Vue.component('password-component', require('./components/profile/PasswordComponent').default);
 Vue.component('star-component', require('./components/movies/StarComponent').default);
 Vue.component('search-component', require('./components/movies/SearchComponent').default);
 Vue.component('sidebar-component', require('./components/movies/SideBarComponent').default);
@@ -151,7 +151,9 @@ Vue.component('genre-component', require('./components/one_movie_page/GenreCompo
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
 Vue.component('trailer-component', require('./components/one_movie_page/TrailerComponent').default);
 Vue.component('pagination-component', require('./components/Pagination/PaginationComponent').default);
-Vue.component('video-player-component', require('./components/one_movie_page/VideoPlayerComponent').default);
+Vue.component('comments-component', require('./components/one_movie_page/CommentsComponent').default);
+Vue.component('wishlist-component', require('./components/one_movie_page/WishlistComponent').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -32,8 +32,23 @@
 {{--                            <li>1080: {{ $content->magnets->full }}</li>--}}
 {{--                        </ul>--}}
                     </div>
-                </div>
+
+                    <wishlist-component
+                            action_add="{{ route('add.film') }}"
+                            action_delete="{{ route('delete.film') }}"
+                            wishlist="{{ json_encode($wishlist) }}">
+                    </wishlist-component>
+
+                    </div>
             </div>
         </div>
+        <comments-component
+                action="{{ route('add.comment') }}"
+                comments="{{ json_encode($comments) }}"
+                prefix_avatar="{{ env('APP_URL') }}"
+                prefix_profile="{{ env('APP_URL') . '/profile/' }}"
+                auth_login="{{ auth()->user()->login }}"
+                auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
+        </comments-component>
     </div>
 @endsection

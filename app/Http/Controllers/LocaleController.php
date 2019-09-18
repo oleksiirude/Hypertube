@@ -2,6 +2,7 @@
     
     namespace App\Http\Controllers;
     
+    use Auth;
     use App\User;
 
     class LocaleController extends Controller
@@ -11,7 +12,8 @@
             if (!preg_match('/^en|uk|ru$/', $locale))
                 return redirect()->back();
     
-            User::where('uuid', auth()->id())->update(['lang' => $locale]);
+            if (Auth::check())
+                User::where('uuid', auth()->id())->update(['lang' => $locale]);
             session()->put('locale', $locale);
             return redirect()->back();
         }

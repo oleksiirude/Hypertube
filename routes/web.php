@@ -19,11 +19,15 @@
             Route::post('/email', 'ProfileController@changeEmail')->name('change.email');
             Route::post('/password', 'ProfileController@changePassword')->name('change.password');
             Route::post('/avatar', 'ImageController@changeAvatar')->name('change.avatar');
+            Route::post('/delete/avatar', 'ImageController@deleteAvatar')->name('delete.avatar');
         });
+    });
     
-        Route::group(['prefix' => '/delete',  'middleware' => 'auth'], function () {
-            Route::post('/avatar', 'ImageController@deleteAvatar')->name('delete.avatar');
-        });
+    // Add or delete film data
+    Route::group(['prefix' => '/add',  'middleware' => 'auth'], function () {
+        Route::post('/comment', 'CommentsController@addComment')->name('add.comment');
+        Route::post('/film', 'WishlistController@addFilm')->name('add.film');
+        Route::post('delete/film', 'WishlistController@deleteFilm')->name('delete.film');
     });
     
     // Research
@@ -35,7 +39,7 @@
     });
     
     // Localization
-    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language')->middleware('auth');
+    Route::get('/lang/{language}', 'LocaleController@changeLang')->name('change.language');
     
     // Oauth via 42, GitHub, etc
     Route::group(['prefix' => '/oauth', 'middleware' => 'guest'], function () {

@@ -81,7 +81,7 @@
                 isOpen: false,
                 isAbsolute: false,
                 rating: 0,
-                year_from: 1920,
+                year_from: 1908,
                 year_to: 2019
             }
         },

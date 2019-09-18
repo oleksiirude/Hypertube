@@ -62,14 +62,14 @@
                                              eye_hide="{{asset('/images/service/hide_eye.png')}}"
                             ></email-component>
 
-                            <paswword-component name="password"
+                            <password-component name="password"
                                                 action="{{ route('change.password') }}"
                                                 edit="{{asset('/images/service/edit.png')}}"
                                                 title_save="{{ __('titles.save') }}"
                                                 title_cancel="{{ __('titles.cancel') }}"
                                                 eye_show="{{asset('/images/service/eye.png')}}"
                                                 eye_hide="{{asset('/images/service/hide_eye.png')}}"
-                            ></paswword-component>
+                            ></password-component>
 
                         @endif
 

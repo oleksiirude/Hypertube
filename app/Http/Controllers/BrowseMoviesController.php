@@ -19,7 +19,9 @@
         }
         
         protected function searchByTitle(Request $request) {
+
             if (!preg_match('/^[0-9a-zа-яёїі :!?,.]{2,100}$/iu', $request->get('title')))
+
                 return $this->jsonResponseWithError();
     
             $searcher = new SearchController();
@@ -38,14 +40,14 @@
             
             return (new SearchController())->getMoviesByParams((object)$request->all());
         }
-        
+
         protected function watchMovie($imdbId)
         {
             $movie = (new APIController())->getMovieByImdbId($imdbId);
-            
+
             if (!$movie)
                 return abort(404);
-            
+
             return view('watch', [
                 'content' => $movie,
                 'comments' => CommentsController::getComments($imdbId),

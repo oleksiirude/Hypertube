@@ -45,7 +45,7 @@
                                   FROM films, titles, posters
                                   WHERE (films.imdb_id = titles.imdb_id AND films.imdb_id = posters.imdb_id)
                                   AND (titles.en_title LIKE '%$search%' OR titles.uk_title LIKE '%$search%' OR titles.ru_title LIKE '%$search%')
-                                  ORDER BY films.rating*1 DESC LIMIT 4");
+                                  ORDER BY films.rating*1 DESC LIMIT 5");
             
             foreach ($result as $item) {
                 $title = $this->title;

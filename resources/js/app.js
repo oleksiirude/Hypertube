@@ -142,7 +142,7 @@ Vue.component('avatar-component', require('./components/profile/AvatarComponent'
 Vue.component('bio-component', require('./components/profile/BioComponent').default);
 Vue.component('name-component', require('./components/profile/NameComponent').default);
 Vue.component('email-component', require('./components/profile/EmailComponent').default);
-Vue.component('paswword-component', require('./components/profile/PasswordComponent').default);
+Vue.component('password-component', require('./components/profile/PasswordComponent').default);
 Vue.component('star-component', require('./components/movies/StarComponent').default);
 Vue.component('search-component', require('./components/movies/SearchComponent').default);
 Vue.component('sidebar-component', require('./components/movies/SideBarComponent').default);

@@ -104,9 +104,12 @@ button:focus {
     position: fixed;
     width: 100%;
 }
+/*.ml-auto, .mx-auto {*/
+/*    margin-top:60px;*/
+/*}*/
 
 .logo {
-    position: absolute;
+    /*position: absolute;*/
     left: 20px;
     top: 20px;
     width: 120px;
@@ -212,6 +215,10 @@ svg:hover {
     width: auto;
     color: white;
 }
+.movie {
+    /*justify-content: center;*/
+    /*display: flex;*/
+}
 #movies_catalog {
     margin-right: 0px;
     margin-left: 0px;
@@ -234,8 +241,8 @@ svg:hover {
 
 #movies_catalog .movie .poster_slide .poster_slide_bg {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
     background: #fff;
@@ -247,11 +254,13 @@ svg:hover {
     transition-duration: 0.25s;
     transition-timing-function: linear;
 }
-#movies_catalog .movie:hover {
-    /*width: 120%;*/
-    /*height: 120%;*/
-    /*position: absolute;*/
-    /*z-index: 5;*/
+#movies_catalog .movie:hover .movie_poster{
+    /*width: calc(100% + 2px);*/
+    /*overflow: hidden;*/
+    /*left: -1px;*/
+    /*top:-1px;*/
+    /*!*position: absolute;*!*/
+    /*z-index: -1;*/
 }
 #movies_catalog .movie:hover .poster_slide .poster_slide_bg {
     opacity: 0.75;
@@ -294,6 +303,10 @@ svg:hover {
 .movie_poster {
     width: 100%;
 }
+/*.movie_poster:hover {*/
+/*    width: 120%;*/
+/*    overflow: hidden;*/
+/*}*/
 
 .movie_title {
     text-align: center;

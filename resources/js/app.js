@@ -153,6 +153,7 @@ Vue.component('trailer-component', require('./components/one_movie_page/TrailerC
 Vue.component('pagination-component', require('./components/Pagination/PaginationComponent').default);
 Vue.component('comments-component', require('./components/one_movie_page/CommentsComponent').default);
 Vue.component('wishlist-component', require('./components/one_movie_page/WishlistComponent').default);
+Vue.component('video-player-component', require('./components/one_movie_page/VideoPlayerComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

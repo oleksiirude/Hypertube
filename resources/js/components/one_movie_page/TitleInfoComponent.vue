@@ -3,7 +3,8 @@
         <div class="title_info" id="year"><span class="mini_icon"></span> {{ year }}</div>
         <div class="title_info" id="runtime" v-show="!hide"><span class="mini_icon"></span> {{ mutableRuntime }} </div>
         <div class="title_info" id="rating"><span class="mini_icon"><star-component :rating="rating" :rating_nbr="false"></star-component></span><span class="nbr">{{ rating }} / 10</span></div>
-        <div class="title_info" id="studio"><span class="mini_icon"></span> {{ studio }}</div>
+        <div class="title_info" id="studio" v-show="studioshow"><span class="mini_icon"></span> {{ studio }}</div>
+        <div class="title_info"><img :src="url + '/' + country + '.png'" v-if="country"></div>
     </div>
 </template>
 
@@ -13,17 +14,24 @@
             'year',
             'runtime',
             'rating',
-            'studio'
+            'studio',
+            'country',
+            'url'
         ],
         data: function () {
             return {
                 mutableRuntime: this.runtime + ' ' + this.trans('movie.minutes'),
-                hide: false
+                hide: false,
+                studioshow: true,
             }
         },
         mounted() {
+            console.log('img', this.country);
             if (this.runtime == 0){
                this.hide = true;
+            }
+            if (!this.studio) {
+                this. studioshow = false;
             }
         }
 

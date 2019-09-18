@@ -118,18 +118,18 @@
                 start: 0,
                 connect: [false, true],
                 tooltips: true,
-                // format: {
-                //     from: function(value) {
-                //         return parseInt(value);
-                //     },
-                //     to: function(value) {
-                //         return parseInt(value);
-                //     }
-                // },
+                format: {
+                    from: function(value) {
+                        return parseInt(value);
+                    },
+                    to: function(value) {
+                        return parseInt(value);
+                    }
+                },
                 step: 1,
                 range: {
                     'min': 0,
-                    'max': 9
+                    'max': 10
                 }
             });
 

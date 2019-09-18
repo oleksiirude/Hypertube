@@ -13,8 +13,14 @@
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
                                     rating="{{ $content->rating }}"
-                                    studio="{{ $content->studio }}">
+                                    studio="{{ $content->studio }}"
+                                    url="{{ asset('images/flags/')}}"
+                                    country="{{ $content->country}}">
+
                     </info-component>
+
+
+{{--                    <div>fgdg: {{ $content->country}}</div>--}}
 
                     <director-component director="{{ json_encode($content->director)}}"></director-component>
 

@@ -18,8 +18,6 @@ class CreateCommentsTable extends Migration
             $table->string('imdb_id', 20);
             $table->string('comment', 500);
             $table->timestamp('created_at');
-    
-            $table->foreign('user_uuid')->references('uuid')->on('users');
         });
     }
 

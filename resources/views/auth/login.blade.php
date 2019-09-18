@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container login_div">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -31,7 +30,6 @@
                                     <img src="{{ asset('/images/service/googleplus.png') }}" alt="Google+" title="Google+" class="oath_img"></a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

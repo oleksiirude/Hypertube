@@ -31,7 +31,14 @@
 {{--                            <li>1080: {{ $content->magnets->full }}</li>--}}
 {{--                        </ul>--}}
                     </div>
-                </div>
+
+                    <wishlist-component
+                            action_add="{{ route('add.film') }}"
+                            action_delete="{{ route('delete.film') }}"
+                            wishlist="{{ json_encode($wishlist) }}">
+                    </wishlist-component>
+
+                    </div>
             </div>
         </div>
         <comments-component

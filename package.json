@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "nouislider": "^14.0.2",
-        "vue-i18n": "^8.14.0"
+        "vue-i18n": "^8.14.0",
+        "vue-plyr": "^5.1.3"
     }
 }

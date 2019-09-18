@@ -9,7 +9,7 @@
                     <div class="title">{{ $content->title }}</div>
 
 
-                    <genre-component genres="{{ json_encode($content->genres)}}"></genre-component>
+                    <genre-component genres="{{ json_encode($content->genres,TRUE)}}"></genre-component>
 
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
@@ -17,7 +17,7 @@
                                     studio="{{ $content->studio }}">
                     </info-component>
 
-                    <actors-component actors="{{ json_encode($content->actors)}}"></actors-component>
+                    <actors-component actors="{{ json_encode($content->actors, TRUE)}}"></actors-component>
 
                     <div class="">
                         <div class="movie_desc">
@@ -25,6 +25,7 @@
                         </div>
 
                         <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
+                        <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
 {{--                        Magnets:--}}
 {{--                        <ul class="list-group m-2">--}}
 {{--                            <li>720: {{ $content->magnets->hd }}</li>--}}

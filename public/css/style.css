@@ -479,3 +479,7 @@ svg:hover {
         font-size: 22px;
     }
 }
+
+.plyr__progress__container {
+    flex-grow: 2;
+}

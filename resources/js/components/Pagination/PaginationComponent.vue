@@ -27,7 +27,7 @@
                 </a>
             </div>
         </div>
-        <button id="paginator" class="btn-primary ml-auto mr-auto mt-4" @click="showMore">Show more</button>
+        <button id="paginator" class="btn-primary ml-auto mr-auto mt-4" @click="showMore">{{ trans('titles.showMore') | capitalize }}</button>
     </div>
 </template>
 

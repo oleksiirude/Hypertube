@@ -35,6 +35,11 @@
         'sortBy' => 'sort by',
         'productionYear' => 'production year',
         'rating' => 'rating',
+        'title' => 'title',
         'minRating' => 'minimum rating',
-        'noResults' => 'no results'
+        'noResults' => 'no results',
+        'research' => 'research it',
+        'backToDefault' => 'back to default',
+        'showMore' => 'show more'
+
     ];

@@ -43,11 +43,11 @@
                 bind: function(el, binding, vNode) {
                     // Provided expression must evaluate to a function.
                     if (typeof binding.value !== 'function') {
-                        const compName = vNode.context.name
-                        let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
-                        if (compName) { warn += `Found in component '${compName}'` }
+                        const compName = vNode.context.name;
+                        let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`;
+                        if (compName) { warn += `Found in component '${compName}'` };
 
-                        console.warn(warn)
+                        console.warn(warn);
                     }
                     // Define Handler and cache it on the element
                     const bubble = binding.modifiers.bubble
@@ -56,16 +56,16 @@
                             binding.value(e)
                         }
                     }
-                    el.__vueClickOutside__ = handler
+                    el.__vueClickOutside__ = handler;
 
                     // add Event Listeners
-                    document.addEventListener('click', handler)
+                    document.addEventListener('click', handler);
                 },
 
                 unbind: function(el, binding) {
                     // Remove Event Listeners
-                    document.removeEventListener('click', el.__vueClickOutside__)
-                    el.__vueClickOutside__ = null
+                    document.removeEventListener('click', el.__vueClickOutside__);
+                    el.__vueClickOutside__ = null;
 
                 }
             }
@@ -94,20 +94,6 @@
                             console.log('true RESP', res.data);
                             let response = res.data;
                             self.films = response;
-                            // response.forEach(function (item) {
-                            //     let film = document.createElement('a');
-                            //     film.innerHTML = item.title;
-                            //     huge_list.appendChild(film);
-                            // });
-                            // if (document.getElementById('bio').value.trim() == '')
-                            // {
-                            //     self.mutableBio = '';
-                            //     document.getElementById('bio').value = '';
-                            // }
-                            // else
-                            //     self.mutableBio = document.getElementById('bio').value;
-                            // self.isHidden = true;
-                            // self.empty_err();
                         }
                         else {
                             // if (input.value.length >= min_characters ) {

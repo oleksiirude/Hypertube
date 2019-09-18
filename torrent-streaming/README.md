@@ -13,3 +13,7 @@ You need installed `ffmpeg` in your system.
 
 You need node 12+ version
 `nvm use 12`
+
+for UNIT usage:
+
+`ln -s ~/goinfre/files files`

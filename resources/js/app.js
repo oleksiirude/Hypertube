@@ -147,6 +147,7 @@ Vue.component('star-component', require('./components/movies/StarComponent').def
 Vue.component('search-component', require('./components/movies/SearchComponent').default);
 Vue.component('sidebar-component', require('./components/movies/SideBarComponent').default);
 Vue.component('actors-component', require('./components/one_movie_page/ActorsComponent').default);
+Vue.component('director-component', require('./components/one_movie_page/DirectorComponent').default);
 Vue.component('genre-component', require('./components/one_movie_page/GenreComponent').default);
 Vue.component('info-component', require('./components/one_movie_page/TitleInfoComponent').default);
 Vue.component('trailer-component', require('./components/one_movie_page/TrailerComponent').default);

@@ -8,7 +8,6 @@
                 <div class="movie_profile">
                     <div class="title">{{ $content->title }}</div>
 
-
                     <genre-component genres="{{ json_encode($content->genres)}}"></genre-component>
 
                     <info-component year="{{ $content->year }}"
@@ -16,6 +15,8 @@
                                     rating="{{ $content->rating }}"
                                     studio="{{ $content->studio }}">
                     </info-component>
+
+                    <director-component director="{{ json_encode($content->director)}}"></director-component>
 
                     <actors-component actors="{{ json_encode($content->actors)}}"></actors-component>
 

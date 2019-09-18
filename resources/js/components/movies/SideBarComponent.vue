@@ -116,17 +116,16 @@
 
             noUiSlider.create(ratingSlider, {
                 start: 0,
-                behaviour: 'tap',
                 connect: [false, true],
                 tooltips: true,
-                format: {
-                    from: function(value) {
-                        return parseInt(value);
-                    },
-                    to: function(value) {
-                        return parseInt(value);
-                    }
-                },
+                // format: {
+                //     from: function(value) {
+                //         return parseInt(value);
+                //     },
+                //     to: function(value) {
+                //         return parseInt(value);
+                //     }
+                // },
                 step: 1,
                 range: {
                     'min': 0,

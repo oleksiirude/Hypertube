@@ -1,7 +1,7 @@
 <template>
     <div class="title_info_cont">
         <div class="title_info" id="year"><span class="mini_icon"></span> {{ year }}</div>
-        <div class="title_info" id="runtime"><span class="mini_icon"></span> {{ runtime }} {{trans('movie.minutes')}}</div>
+        <div class="title_info" id="runtime" v-show="!hide"><span class="mini_icon"></span> {{ mutableRuntime }} </div>
         <div class="title_info" id="rating"><span class="mini_icon"><star-component :rating="rating" :rating_nbr="false"></star-component></span><span class="nbr">{{ rating }} / 10</span></div>
         <div class="title_info" id="studio"><span class="mini_icon"></span> {{ studio }}</div>
     </div>
@@ -15,6 +15,17 @@
             'rating',
             'studio'
         ],
+        data: function () {
+            return {
+                mutableRuntime: this.runtime + ' ' + this.trans('movie.minutes'),
+                hide: false
+            }
+        },
+        mounted() {
+            if (this.runtime == 0){
+               this.hide = true;
+            }
+        }
 
     }
 </script>

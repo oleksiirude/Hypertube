@@ -1,5 +1,5 @@
 <template>
-    <li class="nav-item dropdown search_div">
+    <li class="nav-item dropdown search_div" v-click-outside="outside">
         <div class="search_form" v-show="!isHidden" id="search_form">
             <input class="" type="text"
                    :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
@@ -8,7 +8,7 @@
                    v-show="!isHidden"
                    @keyup="find_match">
         </div>
-        <div id="huge_list" class="searchsuggestions">
+        <div id="huge_list" class="searchsuggestions" v-show="!isHidden">
             <a v-for="(film, index) in films" class="film_suggestion" :href="film.link">
                 <div class="poster_film" v-if="film.poster">
                     <img :src="film.poster" class="film_img">
@@ -34,15 +34,52 @@
         data: function() {
             return {
                 isHidden: true,
-                films: []
+                films: [],
+                // no_result = {{ trans('titles.noResults') }},
+            }
+        },
+        directives: {
+            'click-outside': {
+                bind: function(el, binding, vNode) {
+                    // Provided expression must evaluate to a function.
+                    if (typeof binding.value !== 'function') {
+                        const compName = vNode.context.name
+                        let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
+                        if (compName) { warn += `Found in component '${compName}'` }
+
+                        console.warn(warn)
+                    }
+                    // Define Handler and cache it on the element
+                    const bubble = binding.modifiers.bubble
+                    const handler = (e) => {
+                        if (bubble || (!el.contains(e.target) && el !== e.target)) {
+                            binding.value(e)
+                        }
+                    }
+                    el.__vueClickOutside__ = handler
+
+                    // add Event Listeners
+                    document.addEventListener('click', handler)
+                },
+
+                unbind: function(el, binding) {
+                    // Remove Event Listeners
+                    document.removeEventListener('click', el.__vueClickOutside__)
+                    el.__vueClickOutside__ = null
+
+                }
             }
         },
         methods: {
             show_search: function () {
                 this.isHidden = false;
             },
-            hide_search: function () {
+            // hide_search: function () {
+            //     this.isHidden = true;
+            // },
+            outside: function(e) {
                 this.isHidden = true;
+                console.log('outside');
             },
             find_match: function (event) {
                 let input = event.target;
@@ -73,17 +110,17 @@
                             // self.empty_err();
                         }
                         else {
-                            if (input.value.length >= min_characters ) {
-                                self.films = [""];
-                            }
-                            else
+                            // if (input.value.length >= min_characters ) {
+                            //     self.films[0] = trans('titles.noResults');
+                            // }
+                            // else
                                 self.films = [];
                             // self.error = response.data.error;
                         }
                         console.log('RESP', response.data);
                     })
                     .catch((error) =>
-                        console.log(error.response.data)
+                        console.log(error)
                     );
             },
 

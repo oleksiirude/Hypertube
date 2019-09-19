@@ -25,7 +25,10 @@
         {
             return view('profiles.auth-profile', [
                 'profile' => User::find(auth()->id()),
-                'wishlist' => WishlistController::getWishlist($this->user->uuid)
+                'wishlist' => WishlistController::getWishlist($this->user->uuid),
+                'history' => HistoryController::getHistory($this->user->uuid),
+                'recommendations' => RecommendationsController::getRecommendations($this->user->uuid),
+                'property' => RecommendationsController::getProperty($this->user->uuid)
             ]);
         }
         
@@ -36,7 +39,11 @@
             if ($user->uuid === auth()->user()->uuid)
                 return redirect()->route('show.auth');
             
-            return view('profiles.user-profile', ['profile' => User::where('login', $login)->firstOrFail()]);
+            return view('profiles.user-profile', [
+                'profile' => $user,
+                'recommendations' => RecommendationsController::getRecommendations($user->uuid),
+                'property' => RecommendationsController::getProperty($user->uuid)
+            ]);
         }
         
         protected function changeLogin(Request $request)

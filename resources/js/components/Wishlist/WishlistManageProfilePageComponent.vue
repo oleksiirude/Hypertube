@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <h2 class="title_wishlist">{{ trans('titles.wishlist') }}</h2>
-        <div class="row">
-            <div class="col-lg-3 col-6" v-for="(item, index) in wishlistParsed">
+        <h2 class="title_topic">{{ trans('titles.wishlist') }}</h2>
+        <div id="movies_catalog" class="row">
+            <div class="col-2 movie_main_div" v-for="(item, index) in wishlistParsed">
                 <div :id="item.imdb_id" class="movie">
                     <button class="close" :title="trans('titles.remove')" @click="remove(item.imdb_id, index)">×</button>
                     <a :href="item.link">
@@ -64,7 +64,6 @@
 
     .movie .close {
         position: absolute;
-        top: 2px;
         right: 2px;
         z-index: 999;
         color: #000;
@@ -80,12 +79,4 @@
     .movie:hover .close {opacity: 1;}
 
     .close:hover {color: darkred;}
-
-    .title_wishlist {
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
-        padding: 1.25rem;
-        font-size: 28px;
-        color: gray;
-        text-transform: uppercase;
-    }
 </style>

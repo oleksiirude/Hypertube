@@ -23,11 +23,18 @@
         });
     });
     
-    // Add or delete film data
-    Route::group(['prefix' => '/add',  'middleware' => 'auth'], function () {
-        Route::post('/comment', 'CommentsController@addComment')->name('add.comment');
-        Route::post('/film', 'WishlistController@addFilm')->name('add.film');
-        Route::post('delete/film', 'WishlistController@deleteFilm')->name('delete.film');
+    // Manage film data
+    Route::group(['prefix' => '/manage',  'middleware' => 'auth'], function () {
+        Route::post('/add/comment', 'CommentsController@addComment')->name('add.comment');
+        // wishlist
+        Route::post('/add/film/wishlist', 'WishlistController@addFilm')->name('add.film.wishlist');
+        Route::post('delete/film/wishlist', 'WishlistController@deleteFilm')->name('delete.film.wishlist');
+        // history
+        Route::post('/add/film/history', 'HistoryController@addFilm')->name('add.film.history');
+        Route::post('delete/film/history', 'HistoryController@deleteFilm')->name('delete.film.history');
+        // recommendations
+        Route::post('/add/film/recommendation', 'RecommendationsController@addFilm')->name('add.film.recommendation');
+        Route::post('delete/film/recommendation', 'RecommendationsController@deleteFilm')->name('delete.film.recommendation');
     });
     
     // Research

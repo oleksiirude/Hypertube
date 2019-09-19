@@ -9,9 +9,19 @@
     import axios from 'axios';
 
     export default {
+        mounted () {
+            let self = this;
+
+            setTimeout(function() {
+                axios.post(self.action_history, { imdb_id: self.imdb_id });
+            }, 20000);
+        },
+
         props: [
+            'imdb_id',
             'action_add',
             'action_delete',
+            'action_history',
             'wishlist'
         ],
 
@@ -25,7 +35,7 @@
             manageWishlist: function (action) {
                 let self = this;
                 axios.post(action, {
-                    imdb_id: document.documentURI.split('/')[4],
+                    imdb_id: self.imdb_id,
                 }).then(function (response) {
                     self.wishlistBoolean = response.data.result;
                 }).catch((error) =>

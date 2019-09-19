@@ -45,8 +45,11 @@
         {
             $movie = (new APIController())->getMovieByImdbId($imdbId);
 
+//            dd($movie);
             if (!$movie)
                 return abort(404);
+
+            event(new App\Events\NewMovieVisitEvent($movie));
 
             return view('watch', [
                 'content' => $movie,

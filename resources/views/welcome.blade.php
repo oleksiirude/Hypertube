@@ -138,9 +138,13 @@
         </div>
         <div id="app">
             <div class="content">
+                <div class="jumbotron">
+                    <h1 class="display-4" style="margin-top: 100px">HYPERTUBE</h1>
+                    <p style="font-weight: bolder;">WATCH TOP FILMS WITHOUT ADVERTISEMENT FOR FREE</p>
+                </div>
                 @if (Route::has('login'))
                     <div class="links">
-                            <a href="{{ route('login') }}">{{ __('titles.signIn') }}</a>
+                            <a href="{{ route('login') }}" style="text-decoration: none">{{ __('titles.signIn') }}</a>
                         <div class="text-center oauth_div">
                             {{ __('parts.or') }}{{ __('titles.signIn') }}{{ __('parts.via') }} {{ __('parts.services') }}:
                             <div id="oauth_main">
@@ -151,7 +155,7 @@
                             </div>
                         </div>
                         @if (Route::has('register'))
-                                <a href="{{ route('register') }}" style=" margin-left: 20px;"> {{ __('titles.register') }}</a>
+                                <a href="{{ route('register') }}" style="text-decoration: none"> {{ __('titles.register') }}</a>
                         @endif
 
                     </div>

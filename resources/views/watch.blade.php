@@ -25,20 +25,25 @@
                         </div>
 
                         <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
-                        <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
-{{--                        Magnets:--}}
-{{--                        <ul class="list-group m-2">--}}
-{{--                            <li>720: {{ $content->magnets->hd }}</li>--}}
-{{--                            <li>1080: {{ $content->magnets->full }}</li>--}}
-{{--                        </ul>--}}
+
+                    <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
+
                     </div>
 
-                    <wishlist-component
-                            action_add="{{ route('add.film') }}"
-                            action_delete="{{ route('delete.film') }}"
+                    <wishlist-film-page-component
+                            imdb_id="{{ $content->imdb_code }}"
+                            action_add="{{ route('add.film.wishlist') }}"
+                            action_delete="{{ route('delete.film.wishlist') }}"
+                            action_history="{{ route('add.film.history') }}"
                             wishlist="{{ json_encode($wishlist) }}">
-                    </wishlist-component>
+                    </wishlist-film-page-component>
 
+                    <recommendations-film-page-component
+                            imdb_id="{{ $content->imdb_code }}"
+                            action_add="{{ route('add.film.recommendation') }}"
+                            action_delete="{{ route('delete.film.recommendation') }}"
+                            recommendations="{{ json_encode($recommendations) }}">
+                    </recommendations-film-page-component>
                     </div>
             </div>
         </div>

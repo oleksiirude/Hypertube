@@ -27,7 +27,10 @@
                 </a>
             </div>
         </div>
-        <button id="paginator" class="btn-primary ml-auto mr-auto mt-4" @click="showMore">Show more</button>
+        <button id="paginator" class="btn-primary ml-auto mr-auto mt-4" @click="showMore">
+            <img src = "http://186.237.228.34:4010/portal_unimed/images/Load.gif" style="width:50px" v-if="show">
+            {{ text }}
+        </button>
     </div>
 </template>
 
@@ -49,10 +52,11 @@
             },
             showMore: function () {
                 let btn = document.getElementById('paginator');
+                let self = this;
                 btn.disabled = true;
                 btn.hidden = false;
-                btn.innerHTML = '';
-                btn.appendChild(this.addLoop());
+                this.show = true;
+                this.text = '';
 
                 if (this.type === 'top') {
                     this.ajax.open('GET', '/' + this.page, true);
@@ -65,7 +69,8 @@
                             if (response['result'] === true) {
                                 this.films = this.films.concat(response['data']);
                                 btn.disabled = false;
-                                btn.innerHTML = 'Show more';
+                                self.text = self.trans('titles.showMore');
+                                this.show = false;
                             }
                             else if (response['result'] === false) {
                                 btn.hidden = true;
@@ -88,12 +93,14 @@
                                     btn.hidden = true;
                                 else {
                                     btn.disabled = false;
-                                    btn.innerHTML = 'Show more';
+                                    self.text = self.trans('titles.showMore');
+                                    this.show = false;
                                 }
                             }
                             else if (response['result'] === false) {
-                                if (this.page === 1)
-                                    btn.innerHTML = 'Empty... Please, try another parameters';
+                                if (this.page === 1) {
+                                    self.text = 'Empty... Please, try another parameters';
+                                }
                                 else
                                     btn.hidden = true;
                             }
@@ -115,12 +122,6 @@
                     order: select.order.value,
                 });
             },
-            addLoop: function () {
-                let img = document.createElement('img');
-                img.src = "http://186.237.228.34:4010/portal_unimed/images/Load.gif";
-                img.width = 50;
-                return img;
-            }
         },
 
         props: [
@@ -134,14 +135,14 @@
                 page: 1,
                 type: 'top',
                 ajax: new XMLHttpRequest(),
-                params: null
+                params: null,
+                text: this.trans('titles.showMore'),
+                show: false,
             }
         }
     }
 </script>
 
 <style scoped>
-    .loop {
-        width: 20px;
-    }
+
 </style>

@@ -147,21 +147,9 @@ const initStreaming = (req, res, magnet, options) => {
 
 const streamingHandler = async (req, res) => {
     const {magnet} = req.params;
-    // console.log(magnet);
     try {
-        //TODO base64 or encoded URI?
-
-        // const decoded = decodeURI('magnet:?xt=urn:btih:79816060ea56d56f2a2148cd45705511079f9bca&dn=TPB.AFK.2013.720p.h264-SimonKlose&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2Fopen.demonii.com%3A1337')
-        // const decoded = decodeURI('magnet:?xt=urn:btih:ce9156eb497762f8b7577b71c0647a4b0c3423e1&dn=Inception+(2010)+720p:+Mkv:+1.0GB:+YIFY&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337');
-        // const decoded = decodeURI('magnet:?xt=urn:btih:B07C0C3782CB3737ED7ECE605375FC8C8150BC04');
-        // const decoded = decodeURI('magnet:?xt=urn:btih:8B1F91F666FB59D27E30ED595682F1FA86A4FBAF&dn=The.Furies.2019.720p.WEBRip.800MB.x264-GalaxyRG+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fbt.xxx-tracker.com%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce');
-        // const decoded = decodeURI('magnet:?xt=urn:btih:16B087DFF9C8153072BD35C1BEC245CB831AEF4D&tr=udp://open.demonii.com:1337/announce&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://glotorrents.pw:6969/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://torrent.gresille.org:80/announce&tr=udp://p4p.arenabg.com:1337&tr=udp://tracker.leechers-paradise.org:6969');
-        // const decoded = decodeURI('magnet:?xt=urn:btih:03B6752B7626FA3E1801F55A2A8F0EB43C814DB1&dn=Greys+Anatomy+S14E20+HDTV+x264+%5BMP4%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftorrent.gresille.org%3A80%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2710%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce');
-        // const buf = new Buffer(magnet, 'base64');
-        //const decoded = buf.toString()
         const decoded = decodeURI(magnet);
         console.log(decoded);
-        // let decoded = 'magnet:?xt=urn:btih:C168B84FC2B8CF062B67E4168E35C98F10BC7C74';
         const path = `./files/${md5(decoded)}`;
         const options = {
             connections: 100,

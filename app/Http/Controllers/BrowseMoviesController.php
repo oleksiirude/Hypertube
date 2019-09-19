@@ -54,7 +54,8 @@
             return view('watch', [
                 'content' => $movie,
                 'comments' => CommentsController::getComments($imdbId),
-                'wishlist' => WishlistController::checkIfInWishlist($imdbId)
+                'wishlist' => WishlistController::checkIfInWishlist($imdbId),
+                'recommendations' => RecommendationsController::checkIfInRecommendations($imdbId)
             ]);
         }
     

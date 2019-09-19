@@ -3,12 +3,12 @@
             <div class="comment-wrapper">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        Comments
+                        {{ trans('titles.comments') }}
                     </div>
                     <div class="panel-body comments-block">
-                                <textarea class="form-control" placeholder="What do you think about this movie? (up to 500 symbols)" rows="3"></textarea>
+                                <textarea class="form-control" :placeholder="trans('titles.commentsPlaceholder')" rows="3"></textarea>
                             <br>
-                            <button type="button" class="btn btn-secondary pull-right button-post mr-2" @click="postComment()">Post</button>
+                            <button type="button" class="btn btn-secondary pull-right button-post mr-2" @click="postComment()">{{ trans('titles.commentsAction') }}</button>
                         <div class="clearfix"></div>
                         <hr>
 
@@ -95,7 +95,7 @@
 
                 let small = document.createElement('small');
                 small.className = 'text-muted';
-                small.innerHTML = 'just now';
+                small.innerHTML = self.trans('titles.commentsNew');
 
                 span.appendChild(small);
 

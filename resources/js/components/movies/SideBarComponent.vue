@@ -61,8 +61,8 @@
                     <option value="ASC">{{ trans('parts.asc') }}</option>
                 </select>
 
-                <button class="research" type="submit">Research it!</button>
-                <a :href="url_default" class="back_link" id="back_link">Back to default</a>
+                <button class="research" type="submit">{{ trans('titles.research') }}</button>
+                <a :href="url_default" class="back_link" id="back_link">{{ trans('titles.backToDefault') }}</a>
             </form>
             <div class="sidebar_right">
             </div>
@@ -336,6 +336,8 @@
     .back_link {
         display: block;
         color: gray;
+        text-decoration: none;
+        font-size: small;
     }
     .destroy:after {
         display: inline-block;

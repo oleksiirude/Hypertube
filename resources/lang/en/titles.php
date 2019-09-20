@@ -65,4 +65,5 @@
         'size' => 'Size',
         'download' => 'Download',
         'tagline' => 'WATCH TOP FILMS WITHOUT ADVERTISEMENT FOR FREE',
+        'apologies' => 'Sorry, but this is an error...'
     ];

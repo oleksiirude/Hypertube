@@ -1,29 +1,31 @@
 <template>
-    <li class="nav-item dropdown search_div" v-click-outside="outside">
-        <div class="search_form" v-show="!isHidden" id="search_form_upper">
-            <input class="" type="text"
-                   :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
-                   name="title" id="search_input"
-                   autocomplete="off"
-                   v-show="!isHidden"
-                   @keyup="find_match">
-        </div>
-        <div id="huge_list" class="searchsuggestions" v-show="!isHidden">
-            <a v-for="(film, index) in films" class="film_suggestion" :href="film.link">
-                <div class="poster_film" v-if="film.poster">
-                    <img :src="film.poster" class="film_img">
-                </div>
-                <div class="title_film">
-                    {{ film.title }}<br>
-                    <star-component :rating="film.rating" :rating_nbr="false"></star-component>
-                </div>
-                <span class="movie_year">{{ film. prod_year}}</span>
-            </a>
-        </div>
-        <div class="icon search" :title="trans('titles.search')" @mouseover="show_search()">
-        </div>
+    <div class="container">
+        <div class="nav-item dropdown search_div" v-click-outside="outside" style="float: right">
+            <div class="search_form" v-show="!isHidden" id="search_form_upper">
+                <input class="form-control" type="text"
+                       :placeholder="trans('titles.search')  + ' ' + trans('titles.searchFilms') + '...' | capitalize"
+                       name="title" id="search_input"
+                       autocomplete="off"
+                       v-show="!isHidden"
+                       @keyup="find_match">
+            </div>
+            <div id="huge_list" class="searchsuggestions" v-show="!isHidden">
+                <a v-for="(film, index) in films" class="film_suggestion" :href="film.link">
+                    <div class="poster_film" v-if="film.poster">
+                        <img :src="film.poster" class="film_img">
+                    </div>
+                    <div class="title_film">
+                        {{ film.title }}<br>
+                        <star-component :rating="film.rating" :rating_nbr="false"></star-component>
+                    </div>
+                    <span class="movie_year">{{ film. prod_year}}</span>
+                </a>
+            </div>
+            <div class="icon search" :title="trans('titles.search')" @mouseover="show_search()">
+            </div>
 
-    </li>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -148,7 +150,7 @@
         color: rgba(255,255,255,0.8);
         right: 2px;
         top: 0;
-        background: transparent;
+        background: #4f4d4c;
         border: 0;
         transition-duration: 0.2s;
         transition-timing-function: ease-in;

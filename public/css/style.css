@@ -126,7 +126,12 @@ svg:hover {
     text-decoration: underline;
 }
 .menu_link {
+    text-decoration: none !important;
     color: white;
+}
+
+.menu_link:hover {
+    color: #c4c4c4 !important;
 }
 .navbar-dark .navbar-toggler {
     color: rgba(255, 255, 255, 0.5);
@@ -499,4 +504,20 @@ svg:hover {
     margin: 10px;
     width: 152px;
     height: 40px;
+}
+
+/*404 page*/
+
+.fourZeroFour {
+    border-radius: 5px ;
+    margin-top: 15%;
+    padding: 5%;
+    background-color: rgb(85, 85, 85)
+}
+
+.apologies {
+    margin-top: -20px;
+    color: #282828;
+    font-size: 2em;
+    float: left;
 }

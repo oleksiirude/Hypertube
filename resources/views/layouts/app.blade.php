@@ -57,6 +57,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                @stack('search')
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
@@ -66,8 +68,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-
-                        @stack('search')
 
                         @guest
                             <li class="nav-item">
@@ -79,30 +79,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle menu_link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->login }} <span class="caret"></span>
-                                </a>
+                            {{-- My Profile --}}
+                            <a class="dropdown-item menu_link" href="{{ route('show.auth') }}">
+                                {{ __('titles.myProfile') }}
+                            </a>
+                            {{-- Logout --}}
+                            <a class="dropdown-item menu_link" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                {{ __('titles.logout') }}
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    {{-- My Profile --}}
-                                    <a class="dropdown-item menu_link" href="{{ route('show.auth') }}">
-                                        {{ __('titles.myProfile') }}
-                                    </a>
-
-                                    {{-- Logout --}}
-                                    <a class="dropdown-item menu_link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('titles.logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         @endguest
                     </ul>
                 </div>

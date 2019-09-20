@@ -53,6 +53,11 @@
                     'result' => false,
                     'error' => trans('errors.tooBigImage')
                 ]);
+            else if ($this->isHttpException($e)) {
+                if ($e->getCode() === 404) {
+                    return response()->view('errors.404', [], 404);
+                }
+            }
             
             return parent::render($request, $e);
         }

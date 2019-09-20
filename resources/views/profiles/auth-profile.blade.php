@@ -92,23 +92,17 @@
             </div>
         </div>
     </div>
-    @if($wishlist)
-        <wishlist-profile-page-component
-                wishlist="{{ json_encode($wishlist) }}"
-                action="{{ route('delete.film.wishlist') }}">
-        </wishlist-profile-page-component>
-    @endif
-    @if($history)
-        <history-component
-                history="{{ json_encode($history) }}"
-                action="{{ route('delete.film.history') }}">
-        </history-component>
-    @endif
-    @if($recommendations)
-        <recommendations-profile-page-component
-                recommendations="{{ json_encode($recommendations) }}"
-                property="{{ json_encode($property) }}"
-                action="{{ route('delete.film.recommendation') }}">
-        </recommendations-profile-page-component>
-    @endif
+    <wishlist-profile-page-component
+            wishlist="{{ json_encode($wishlist) }}"
+            action="{{ route('delete.film.wishlist') }}">
+    </wishlist-profile-page-component>
+    <history-component
+            history="{{ json_encode($history) }}"
+            action="{{ route('delete.film.history') }}">
+    </history-component>
+    <recommendations-profile-page-component
+            recommendations="{{ json_encode($recommendations) }}"
+            property="{{ json_encode($property) }}"
+            action="{{ route('delete.film.recommendation') }}">
+    </recommendations-profile-page-component>
 @endsection

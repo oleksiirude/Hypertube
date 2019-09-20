@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h2 class="title_topic">{{ trans('titles.recommendations') }}</h2>
-        <div id="movies_catalog" class="row">
+        <div v-if="recommendationsParsed.length" id="movies_catalog" class="row">
             <div class="col-2 movie_main_div" v-for="(item, index) in recommendationsParsed">
                 <div :id="item.imdb_id" class="movie">
                     <button v-if="propertyParsed" class="close" :title="trans('titles.remove')" @click="remove(item.imdb_id, index)">×</button>
@@ -10,6 +10,9 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <p class="empty">{{ trans('titles.noRecommendations') }}</p>
         </div>
     </div>
 </template>
@@ -25,25 +28,20 @@
         ],
 
         mounted () {
-          console.log(this.property);
+          console.log(this.recommendationsParsed);
         },
 
         data: function() {
             return {
                 recommendationsParsed: JSON.parse(this.recommendations),
-                propertyParsed: JSON.parse(this.property)
+                propertyParsed: JSON.parse(this.property),
+                empty: [this.trans('titles.noRecommendations')]
             }
         },
 
         methods: {
             remove: function (imdbId, index) {
                 this.recommendationsParsed.splice(index, 1);
-
-                // remove entire Vue element from DOM if array is empty
-                if (this.recommendationsParsed.length < 1) {
-                    this.$destroy();
-                    this.$el.parentNode.removeChild(this.$el);
-                }
 
                 axios.post(this.action, { imdb_id: imdbId });
             }

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <h2 class="title_topic">{{ trans('titles.wishlist') }}</h2>
-        <div id="movies_catalog" class="row">
+        <div v-if="wishlistParsed.length" id="movies_catalog" class="row">
             <div class="col-2 movie_main_div" v-for="(item, index) in wishlistParsed">
                 <div :id="item.imdb_id" class="movie">
                     <button class="close" :title="trans('titles.remove')" @click="remove(item.imdb_id, index)">×</button>
@@ -10,6 +10,9 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <p class="empty">{{ trans('titles.noWishlist') }}</p>
         </div>
     </div>
 </template>
@@ -32,12 +35,6 @@
         methods: {
             remove: function (imdbId, index) {
                 this.wishlistParsed.splice(index, 1);
-
-                // remove entire Vue element from DOM if array is empty
-                if (this.wishlistParsed.length < 1) {
-                    this.$destroy();
-                    this.$el.parentNode.removeChild(this.$el);
-                }
 
                 axios.post(this.action, { imdb_id: imdbId });
             }

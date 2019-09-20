@@ -24,27 +24,32 @@
                             {{  $content->summary }}
                         </div>
 
-                        <trailer-component trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}"></trailer-component>
+                        <trailer-component
+                                trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}">
+                        </trailer-component>
 
-                    <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
-
+                        <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
                     </div>
 
-                    <wishlist-film-page-component
-                            imdb_id="{{ $content->imdb_code }}"
-                            action_add="{{ route('add.film.wishlist') }}"
-                            action_delete="{{ route('delete.film.wishlist') }}"
-                            action_history="{{ route('add.film.history') }}"
-                            wishlist="{{ json_encode($wishlist) }}">
-                    </wishlist-film-page-component>
+                        <wishlist-film-page-component
+                                imdb_id="{{ $content->imdb_code }}"
+                                action_add="{{ route('add.film.wishlist') }}"
+                                action_delete="{{ route('delete.film.wishlist') }}"
+                                action_history="{{ route('add.film.history') }}"
+                                wishlist="{{ json_encode($wishlist) }}">
+                        </wishlist-film-page-component>
+                        <recommendations-film-page-component
+                                imdb_id="{{ $content->imdb_code }}"
+                                action_add="{{ route('add.film.recommendation') }}"
+                                action_delete="{{ route('delete.film.recommendation') }}"
+                                recommendations="{{ json_encode($recommendations) }}">
+                        </recommendations-film-page-component>
 
-                    <recommendations-film-page-component
-                            imdb_id="{{ $content->imdb_code }}"
-                            action_add="{{ route('add.film.recommendation') }}"
-                            action_delete="{{ route('delete.film.recommendation') }}"
-                            recommendations="{{ json_encode($recommendations) }}">
-                    </recommendations-film-page-component>
                     </div>
+                        <torrents-download-component
+                                torrents="{{ json_encode($content->torrents) }}">
+                        </torrents-download-component>
+                </div>
             </div>
         </div>
         <comments-component
@@ -55,5 +60,4 @@
                 auth_login="{{ auth()->user()->login }}"
                 auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
         </comments-component>
-    </div>
 @endsection

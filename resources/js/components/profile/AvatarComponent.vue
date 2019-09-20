@@ -1,8 +1,8 @@
 <template>
     <div id="vue_av_div" class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
         <div id="avatar_div">
-            <img :src=mutableSrc :alt=alt class="poster_avatar" @click="choose_file('avatar_label')" id="avatar" title="click to download">
-            <button class="destroy" @click="removeAvatar()" title="delete avatar"></button>
+            <img :src=mutableSrc :alt=alt class="poster_avatar" @click="choose_file('avatar_label')" id="avatar" :title="trans('titles.uploadAvatar')">
+            <button class="destroy" @click="removeAvatar()" :title="trans('titles.deleteAvatar')"></button>
         </div>
         <span class="err_msg" @click="empty_err">{{ text }}</span>
 

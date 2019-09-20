@@ -140,7 +140,7 @@
             <div class="content">
                 <div class="jumbotron">
                     <h1 class="display-4" style="margin-top: 100px">HYPERTUBE</h1>
-                    <p style="font-weight: bolder;">WATCH TOP FILMS WITHOUT ADVERTISEMENT FOR FREE</p>
+                    <p style="font-weight: bolder;">{{ trans('titles.tagline') }}</p>
                 </div>
                 @if (Route::has('login'))
                     <div class="links">

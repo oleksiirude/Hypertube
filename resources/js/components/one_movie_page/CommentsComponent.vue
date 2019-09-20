@@ -1,8 +1,8 @@
 <template>
-        <div class="col-md-6 col-md-offset-2 col-sm-12 m-auto">
+        <div class="col-md-6 col-md-offset-2 col-sm-12 m-auto pt-2">
             <div class="comment-wrapper">
                 <div class="panel panel-info">
-                    <div class="panel-heading">
+                    <div class="panel-heading title_topic">
                         {{ trans('titles.comments') }}
                     </div>
                     <div class="panel-body comments-block">

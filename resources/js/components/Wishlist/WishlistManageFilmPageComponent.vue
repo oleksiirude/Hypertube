@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button type="button" v-if="!wishlistBoolean" class="btn btn-success" @click="manageWishlist(action_add)">Add to wishlist</button>
-        <button type="button" v-if="wishlistBoolean" class="btn btn-danger" @click="manageWishlist(action_delete)">Delete from wishlist</button>
+    <div style="display: inline">
+        <button type="button" v-if="!wishlistBoolean" class="btn btn-success btn-action" @click="manageWishlist(action_add)">{{ trans('titles.addWishlist') }}</button>
+        <button type="button" v-if="wishlistBoolean" class="btn btn-danger btn-action" @click="manageWishlist(action_delete)">{{ trans('titles.deleteWishlist') }}</button>
     </div>
 </template>
 
@@ -14,7 +14,7 @@
 
             setTimeout(function() {
                 axios.post(self.action_history, { imdb_id: self.imdb_id });
-            }, 20000);
+            }, 30000);
         },
 
         props: [

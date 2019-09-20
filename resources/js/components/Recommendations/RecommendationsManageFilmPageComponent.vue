@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <button type="button" v-if="!recommendationsBoolean" class="btn btn-success" @click="manageRecommendations(action_add)">Recommend</button>
-        <button type="button" v-if="recommendationsBoolean" class="btn btn-danger" @click="manageRecommendations(action_delete)">Not recommend</button>
+    <div style="display: inline">
+        <button type="button" v-if="!recommendationsBoolean" class="btn btn-success btn-action" @click="manageRecommendations(action_add)">{{ trans('titles.recommend') }}</button>
+        <button type="button" v-if="recommendationsBoolean" class="btn btn-danger btn-action" @click="manageRecommendations(action_delete)">{{ trans('titles.notRecommend') }}</button>
     </div>
 </template>
 

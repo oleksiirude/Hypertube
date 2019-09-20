@@ -3,7 +3,7 @@
         {{ trans('movie.cast') | capitalize }}:
         <ul class="movies_list">
             <li v-for="(actor, index) in actors_parse.slice(0,9)" class="actor" @mouseover="show_img(index)" @mouseleave="hide_img(index)">
-                {{ actor.name }};
+                {{ actor.name }}
 <!--                <span @show="currentLang =='ru'">{{ latin_to_cyrill(actor.name) }}</span>-->
                 <div class="photo_frame" v-if="actor.profile_path" v-show="show[index]">
                     <img :src="actor.profile_path" class="actors_img">

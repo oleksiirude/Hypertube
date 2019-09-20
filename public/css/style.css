@@ -379,7 +379,7 @@ svg:hover {
     transition-timing-function: ease-in;
     z-index: 9;
     max-height: calc(100vh - 270px);
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     padding-left: 35px;
 }
 .slider .title {
@@ -449,6 +449,11 @@ svg:hover {
     text-transform: uppercase;
 }
 
+.empty {
+    color: rgb(94, 94, 94);
+    padding-bottom: 10px;
+}
+
 @media only screen and (max-width: 1600px), only screen and (max-device-width: 1600px) {
     .col-xl-2 {
         flex: 0 0 25%;
@@ -488,4 +493,10 @@ svg:hover {
 
 .plyr__progress__container {
     flex-grow: 2;
+}
+
+.btn-action {
+    margin: 10px;
+    width: 152px;
+    height: 40px;
 }

@@ -59,6 +59,7 @@ Vue.component('wishlist-profile-page-component', require('./components/Wishlist/
 Vue.component('history-component', require('./components/profile/HistoryComponent').default);
 Vue.component('recommendations-film-page-component', require('./components/Recommendations/RecommendationsManageFilmPageComponent').default);
 Vue.component('recommendations-profile-page-component', require('./components/Recommendations/RecommendationsManageProfilePageComponent').default);
+Vue.component('torrents-download-component', require('./components/one_movie_page/TorrentsDownloadComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -44,8 +44,7 @@
         protected function watchMovie($imdbId)
         {
             $movie = (new APIController())->getMovieByImdbId($imdbId);
-
-//            dd($movie);
+            
             if (!$movie)
                 return abort(404);
 

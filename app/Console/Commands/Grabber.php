@@ -136,17 +136,15 @@
                         $filmCounter++;
                         echo $filmCounter . ' films have written to files, imdb_id->' . $movie->imdb_code . ', rating-> ' . $result->data->movies[0]->rating .PHP_EOL;
                         
-                        if ($sleepCounter === 1) {
-                            //sleep(1);
-                            $sleepCounter = 0;
-                        }
-                        else
-                            $sleepCounter++;
+//                        if ($sleepCounter === 1) {
+//                            sleep(1);
+//                            $sleepCounter = 0;
+//                        }
+//                        else
+//                            $sleepCounter++;
                     }
                 }
                 echo 'page ' . $i . ': done' . PHP_EOL;
-//                if ($i === 1000)
-//                    exit('stopped' . PHP_EOL);
                 $i++;
             }
             $end = time();

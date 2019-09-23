@@ -339,6 +339,11 @@
         text-decoration: none;
         font-size: small;
     }
+
+    .back_link:hover {
+        color: whitesmoke;
+    }
+
     .destroy:after {
         display: inline-block;
         content: '×';
@@ -348,7 +353,7 @@
         display: block;
     }
      .destroy {
-         padding: 0px;
+         padding: 0;
          display: inline-block;
          float: right;
          margin-bottom: 20px;

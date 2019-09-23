@@ -2,7 +2,7 @@
     <div class="container" style="margin-top: 2%;">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card" style="box-shadow: none">
                     <div class="card-header"><h2 class="title_topic" style="text-align: center">{{ trans('titles.downloadTorrent') }}</h2></div>
                         <table class="table table-dark">
                             <thead style="text-align: center">

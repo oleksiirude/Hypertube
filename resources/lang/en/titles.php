@@ -55,7 +55,7 @@
         'uploadAvatar' => 'Upload avatar',
         'deleteAvatar' => 'Delete avatar',
         'addWishlist' => 'Add to wishlist',
-        'deleteWishlist' => 'Delete from wishlist',
+        'deleteWishlist' => 'Delete',
         'recommend' => 'Recommend',
         'notRecommend' => 'Not recommend',
         'downloadTorrent' => 'Do you want to download a torrent-file?',
@@ -65,5 +65,6 @@
         'size' => 'Size',
         'download' => 'Download',
         'tagline' => 'WATCH TOP FILMS WITHOUT ADVERTISEMENT FOR FREE',
-        'apologies' => 'Sorry, but this is an error...'
+        'apologies' => 'Sorry, but this is an error...',
+        'noComments' => "Anybody hasn't left comment yet",
     ];

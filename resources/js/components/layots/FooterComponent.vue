@@ -2,8 +2,8 @@
     <footer>
         <div class="upper_footer"></div>
         <div class="footer_content">
-            <p class="copyright">
-                &copy; created by US, 2019
+            <p class="copyright" style="margin-top: 6px">
+                &copy; 42 Kyiv
             </p>
             <lang-component :ua_url="ua_url"
                             :ua_img="ua_img"

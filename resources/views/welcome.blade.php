@@ -140,7 +140,11 @@
             <div class="content">
                 <div class="jumbotron">
                     <h1 class="display-4" style="margin-top: 100px">HYPERTUBE</h1>
-                    <p style="font-weight: bolder;">{{ trans('titles.tagline') }}</p>
+
+                    <self-print-component
+                        motto="{{ trans('titles.tagline') }}">
+                    </self-print-component>
+
                 </div>
                 @if (Route::has('login'))
                     <div class="links">

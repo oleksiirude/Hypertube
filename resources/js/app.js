@@ -60,6 +60,7 @@ Vue.component('history-component', require('./components/profile/HistoryComponen
 Vue.component('recommendations-film-page-component', require('./components/Recommendations/RecommendationsManageFilmPageComponent').default);
 Vue.component('recommendations-profile-page-component', require('./components/Recommendations/RecommendationsManageProfilePageComponent').default);
 Vue.component('torrents-download-component', require('./components/one_movie_page/TorrentsDownloadComponent').default);
+Vue.component('self-print-component', require('./components/Motto/SelfPrintComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

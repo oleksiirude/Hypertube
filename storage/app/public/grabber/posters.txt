@@ -13048,3 +13048,6 @@ tt1715873;https://yts.lt/assets/images/movies/10_Years_2011/large-cover.jpg;http
 tt0147800;https://yts.lt/assets/images/movies/10_Things_I_Hate_About_You_1999/large-cover.jpg;https://image.tmdb.org/t/p/w780/m7YEcJgPnBBzqS1DGstYplxkL8G.jpg;https://image.tmdb.org/t/p/w780/f470HUX9I3g0BWyHK1uPA6Mq7RG.jpg
 tt2395385;https://yts.lt/assets/images/movies/1_2013/large-cover.jpg;https://image.tmdb.org/t/p/w780/48zCLzCwdQ2if7OxKa2i0RVz5sp.jpg;https://image.tmdb.org/t/p/w780/gRpK36wnlgxepKy4BAldeUocPyN.jpg
 tt3208802;https://yts.lt/assets/images/movies/bikini_model_academy_2015/large-cover.jpg;https://image.tmdb.org/t/p/w780/ybWEAYHNiIgpQc6dFX1kvsLplVk.jpg;https://image.tmdb.org/t/p/w780/ybWEAYHNiIgpQc6dFX1kvsLplVk.jpg
+tt0078212;https://yts.lt/assets/images/movies/the_swissmakers_1978/large-cover.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg
+tt0078212;https://yts.lt/assets/images/movies/the_swissmakers_1978/large-cover.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg
+tt0078212;https://yts.lt/assets/images/movies/the_swissmakers_1978/large-cover.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg;https://image.tmdb.org/t/p/w780/q9QMXnPgsPS74GoZdIkgwcTK3Zu.jpg

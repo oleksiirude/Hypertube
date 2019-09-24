@@ -8,16 +8,21 @@
                 <div class="movie_profile">
                     <div class="title">{{ $content->title }}</div>
 
-
                     <genre-component genres="{{ json_encode($content->genres,TRUE)}}"></genre-component>
 
                     <info-component year="{{ $content->year }}"
                                     runtime="{{ $content->runtime }}"
                                     rating="{{ $content->rating }}"
-                                    studio="{{ $content->studio }}">
+                                    studio="{{ $content->studio }}"
+                                    url="{{ asset('images/flags/')}}"
+                                    country="{{ $content->country}}">
+
                     </info-component>
 
-                    <actors-component actors="{{ json_encode($content->actors, TRUE)}}"></actors-component>
+
+                    <director-component director="{{ json_encode($content->director)}}"></director-component>
+
+                    <actors-component actors="{{ json_encode($content->actors)}}"></actors-component>
 
                     <div class="">
                         <div class="movie_desc">

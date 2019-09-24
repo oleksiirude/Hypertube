@@ -116,7 +116,6 @@
 
             noUiSlider.create(ratingSlider, {
                 start: 0,
-                behaviour: 'tap',
                 connect: [false, true],
                 tooltips: true,
                 format: {
@@ -130,7 +129,7 @@
                 step: 1,
                 range: {
                     'min': 0,
-                    'max': 9
+                    'max': 10
                 }
             });
 

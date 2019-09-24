@@ -23,7 +23,6 @@
             </div>
             <div class="icon search" :title="trans('titles.search')" @mouseover="show_search()">
             </div>
-
         </div>
     </div>
 </template>

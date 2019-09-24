@@ -21,7 +21,7 @@
                                 <span class="text-muted pull-right mr-2">
                                     <small class="text-muted">{{ comment.date }}</small>
                                 </span>
-                                    <strong class="text-info pull-left">{{ comment.login }}</strong>
+                                    <strong class="pull-left">{{ comment.login }}</strong>
                                     <p style="margin: 20px">
                                         {{ comment.comment }}
                                     </p>
@@ -113,11 +113,10 @@
     .comment-wrapper .media-list .media img {
         width: 64px;
         height: 64px;
-        border: 2px solid #e5e7e8;
     }
 
     .comment-wrapper .media-list .media {
-        border-bottom: 1px dashed #efefef;
+        border-bottom: 1px dashed grey;
         margin-bottom: 25px;
     }
 
@@ -127,11 +126,14 @@
     }
 
     .button-post {
-        background-color: #828282;
-        border: #000;
+        background-color: transparent;
     }
 
     .button-post:hover {
-        background-color: #646464;
+        text-decoration: none;
+        text-shadow: 0 0 5px #228DFF, 0 0 10px #228DFF, 0 0 15px #228DFF, 0 0 20px #fff, 0 0 35px #fff, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+    }
+    .pull-left {
+        color: grey;
     }
 </style>

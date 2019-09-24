@@ -46,7 +46,6 @@ body, html {
     box-shadow: 0 0.6vw 1vw -0.4vw rgba(0,0,0,.35);
     background-color: gray;
     color: #000;
-    /*height: 1.2vw;*/
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     color: #fff;
@@ -104,12 +103,8 @@ button:focus {
     position: fixed;
     width: 100%;
 }
-/*.ml-auto, .mx-auto {*/
-/*    margin-top:60px;*/
-/*}*/
 
 .logo {
-    /*position: absolute;*/
     left: 20px;
     top: 20px;
     width: 120px;
@@ -220,10 +215,7 @@ svg:hover {
     width: auto;
     color: white;
 }
-.movie {
-    /*justify-content: center;*/
-    /*display: flex;*/
-}
+§
 #movies_catalog {
     margin-right: 0;
     margin-left: 0;
@@ -336,7 +328,6 @@ svg:hover {
 
 .slider_movie {
     width: 100%;
-    /*height: calc(100% - 160px);*/
     background: #221f1f;
     z-index: 6;
     opacity: 1;
@@ -386,7 +377,6 @@ svg:hover {
     top: 0;
     max-height: calc(100vh);
     min-height: 500px;
-    /*max-width: 100%;*/
     transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-in;
@@ -396,7 +386,6 @@ svg:hover {
     width: calc(65% - 30px);
     max-width: 700px;
     position: relative;
-    /*position: absolute;*/
     margin-top: -100vh;
     left: 35%;
     right: 10px;
@@ -407,8 +396,6 @@ svg:hover {
     transition-duration: 0.2s;
     transition-timing-function: ease-in;
     z-index: 9;
-    /*max-height: calc(100vh - 270px);*/
-    /*overflow-y: auto;*/
     padding-left: 35px;
     padding-top: 20px;
 }
@@ -480,8 +467,6 @@ svg:hover {
         padding-right: 5%;
         background-color: rgba(51,51,51,.4);
         left: 0;
-        /*right: 10px;*/
-        /*margin-top: 0;*/
     }
 }
 
@@ -498,11 +483,8 @@ svg:hover {
     .slider_movie .movie_profile {
         width: calc(100%);
         max-width: 100%;
-        /*padding-left: 5%;*/
         background-color: rgba(51,51,51,.4);
         left: 0;
-        /*right: 10px;*/
-        /*margin-top: 0;*/
     }
     .table-dark {
         font-size: 12px;
@@ -511,7 +493,7 @@ svg:hover {
 @media only screen and (max-width: 550px), only screen and (max-device-width: 550px) {
 
     .slider_movie .movie_profile {
-        /*margin-top: 0;*/
+
     }
 }
 

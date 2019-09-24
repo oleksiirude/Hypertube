@@ -5,7 +5,7 @@
             <label for="login" class="col-md-4 col-form-label text-md-right">{{ trans('titles.username') }}</label>
 
             <div class="col-md-6">
-                <input id="login" type="text" class="form-control" name="login">
+                <input id="login" type="text" class="form-control" name="login" autocomplete="off">
             </div>
         </div>
 
@@ -13,7 +13,7 @@
             <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ trans('titles.firstName') }}</label>
 
             <div class="col-md-6">
-                <input id="first_name" type="text" class="form-control" name="first_name">
+                <input id="first_name" type="text" class="form-control" name="first_name" autocomplete="off">
             </div>
         </div>
 
@@ -21,7 +21,7 @@
             <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ trans('titles.lastName') }}</label>
 
             <div class="col-md-6">
-                <input id="last_name" type="text" class="form-control" name="last_name">
+                <input id="last_name" type="text" class="form-control" name="last_name" autocomplete="off">
             </div>
         </div>
 
@@ -29,7 +29,7 @@
             <label for="email" class="col-md-4 col-form-label text-md-right">{{ trans('titles.email') }}</label>
 
             <div class="col-md-6">
-                <input id="email" type="text" class="form-control" name="email">
+                <input id="email" type="text" class="form-control" name="email" autocomplete="off">
             </div>
         </div>
 
@@ -37,14 +37,14 @@
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('titles.password') }}</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password">
+                <input id="password" type="password" class="form-control" name="password" autocomplete="off">
             </div>
         </div>
 
         <div id="password_confirmation-div" class="form-group row">
             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ trans('titles.passwordConfirmation') }}</label>
             <div class="col-md-6">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="off">
             </div>
         </div>
 

@@ -48,7 +48,6 @@
         display: inline-block;
         text-align: left;
         padding-left: 20px;
-        /*padding-top: 10px;*/
         opacity: 0.5;
     }
     footer::before {

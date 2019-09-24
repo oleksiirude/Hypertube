@@ -5,7 +5,7 @@
             <label for="login" class="col-md-4 col-form-label text-md-right">{{ trans('titles.username') }}</label>
 
             <div class="col-md-6">
-                <input id="login" type="text" class="form-control" name="login" value="">
+                <input id="login" type="text" class="form-control" name="login" value="" autocomplete="off">
             </div>
         </div>
 
@@ -13,14 +13,14 @@
             <label for="password" class="col-md-4 col-form-label text-md-right">{{ trans('titles.password') }}</label>
 
             <div class="col-md-6">
-                <input id="password" type="password" class="form-control" name="password">
+                <input id="password" type="password" class="form-control" name="password" autocomplete="off">
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-md-6 offset-md-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" style="cursor: pointer">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" style="cursor: pointer" autocomplete="off">
 
                     <label class="form-check-label" for="remember">
                         {{ trans('titles.doNotRememberMe') }}

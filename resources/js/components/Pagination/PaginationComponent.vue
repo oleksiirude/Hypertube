@@ -112,7 +112,6 @@
             getParams: function () {
                 let input = document.getElementById('search_form').getElementsByTagName('input');
                 let select = document.getElementById('search_form').getElementsByTagName('select');
-                // console.log('select', select, input)
 
                 return jQuery.param({
                     genre: select.genre.value,

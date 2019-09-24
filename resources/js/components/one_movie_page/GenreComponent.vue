@@ -20,7 +20,6 @@
             JSON.parse(this.genres);
         },
         mounted() {
-            // console.log('genres', this.genres_parse);
         }
     }
 </script>

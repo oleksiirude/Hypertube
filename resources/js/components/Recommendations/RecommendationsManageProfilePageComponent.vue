@@ -28,7 +28,7 @@
         ],
 
         mounted () {
-          console.log(this.recommendationsParsed);
+
         },
 
         data: function() {

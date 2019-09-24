@@ -49,7 +49,6 @@
         },
         methods: {
             show_hide: function(e){
-                // console.log(e);
                 e.preventDefault();
                 let path = e.path || (e.composedPath && e.composedPath()) || composedPath(e.target);
                 let img1 = this.eye_show,
@@ -81,20 +80,17 @@
             submit: function () {
                 let self = this;
                 let data = new FormData(document.getElementById(this.name));
-                // data.append(this.name, info);
                 axios.post(self.action, data)
                     .then(function (response){
                         let res = response.data.result;
                         if (res === true)
                         {
-                            // self.mutableValue = document.getElementById('new_' + self.name).value;
                             self.isHidden = true;
                             self.empty_err();
                         }
                         else {
                             self.error = response.data.error;
                         }
-                        // console.log('RESP', response.data);
                     })
                     .catch((error) => {
                             // console.log(error.response.data);
@@ -128,7 +124,6 @@
         border-radius: 4px;
         border: 1px rgba(255,255,255, 0.91) solid;
         cursor: pointer !important;
-        /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);*/
     }
     .edit_submit:hover {
         -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
@@ -136,7 +131,6 @@
     }
     .err_msg {
         display: inline-block;
-        /*width: 100%;*/
         color: red;
         font-size: 14.4px;
         vertical-align: middle;
@@ -146,7 +140,6 @@
         text-decoration: line-through;
     }
     .edit_img {
-        /*display: none;*/
         width: 20px;
         opacity: 0.5;
     }

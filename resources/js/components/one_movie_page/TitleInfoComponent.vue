@@ -26,7 +26,6 @@
             }
         },
         mounted() {
-            console.log('img', this.country);
             if (this.runtime == 0){
                this.hide = true;
             }

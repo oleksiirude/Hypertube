@@ -42,7 +42,6 @@
         float: right;
         position: relative;
         right: 10px;
-        /*bottom: 10px;*/
         z-index: 11;
     }
     .top-right {

@@ -54,7 +54,6 @@
                             self.empty_err();
                             self.i++;
                         }
-                        // console.log('RESP', response.data);
                     })
                     .catch((error) => {
                             // console.log(error.response.data);

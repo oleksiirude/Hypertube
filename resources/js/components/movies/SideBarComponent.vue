@@ -2,15 +2,12 @@
     <div>
         <div class="search_menu" :class="{ open: isOpen, absolute: isAbsolute }" @mouseenter="open_menu">
             <button class="destroy" @click="close_menu()" title="hide menu"></button>
-<!--             @mouseleave="close_menu">-->
-<!--            Research:-->
             <form id="search_form" method="GET" :action="action">
                 <select name="genre" class="browser-default custom-select m-2">
                     <option selected value='all'>{{ trans('genres.all') }}</option>
                     <option value="28">{{ trans('genres.28') }}</option>
                     <option value="12">{{ trans('genres.12') }}</option>
                     <option value="16">{{ trans('genres.16') }}</option>
-<!--                    <option value="Biography">{{ trans('genres.Biography') }}</option>-->
                     <option value="35">{{ trans('genres.35') }}</option>
                     <option value="80">{{ trans('genres.80') }}</option>
                     <option value="99">{{ trans('genres.99') }}</option>
@@ -165,19 +162,15 @@
                 let year = e;
                 this.year_from = year[0];
                 this.year_to = year[1];
-                // console.log('change_year', e);
 
             },
             change_rating: function (e) {
                     let rating = e;
                     this.rating = rating;
-                    // console.log('change_rating', rating);
             },
             submit: function () {
                 let self = this;
                 const data = new FormData();
-                // let info = document.getElementById('bio').value;
-                // data.append('info', info);
                 axios.post(self.action, data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -187,18 +180,10 @@
                         let res = response.data.result;
                         if (res === true)
                         {
-                            // if (document.getElementById('bio').value.trim() == '')
-                            // {
-                            //     self.mutableBio = '';
-                            //     document.getElementById('bio').value = '';
-                            // }
-                            // else
-                            //     self.mutableBio = document.getElementById('bio').value;
-                            // self.isHidden = true;
-                            // self.empty_err();
+
                         }
                         else {
-                            // self.error = response.data.error;
+
                         }
                         // console.log('RESP', response.data);
                     })
@@ -207,16 +192,6 @@
                         }
                     );
             },
-            // change_rating: function (ratingSlider) {
-            //
-            //     let rating = ratingSlider.noUiSlider.get();
-            //     console.log('change_rating', rating);
-            //     // document.getElementById('age_from').value = from_to[0];
-            // },
-            // change_year: function (yearSlider) {
-            //     let year = yearSlider.noUiSlider.get();
-            //     console.log('change_year', year);
-            // }
         },
     }
 </script>
@@ -226,14 +201,11 @@
         padding: 10px;
     }
     select {
-        /*border: 1px solid black;*/
-        /*color: white;*/
         display: block;
         margin-top: 5px;
         color: #ccc;
         background: rgba(50,50,50,0.75);
         height: 30px;
-        /*width: 222px;*/
         line-height: 30px;
         padding: 0 4px;
         border: 0;
@@ -245,26 +217,16 @@
         width:250px;
         padding-top: 20px;
         padding-right: 20px;
-        /*padding-bottom: 60px;*/
         color: grey;
         padding-left: 20px;
-        /*position: absolute;*/
         position: fixed;
         height: 100%;
-        /*background: #121212;*/
-        /*box-shadow: inset -21px 0px 50px 0px rgba(0,0,0, 1);*/
         opacity: 0;
         top: 100px;
         left: -230px;
         box-sizing: border-box;
-        /*border-right: 1px rgba(255,255,255,0.15) solid;*/
-        /*transition-property: *;*/
-        /*-webkit-transition: left 0.3s;*/
-        /*-moz-transition: left 0.3s;*/
-        /*transition: left 0.3s;*/
         transition-duration: 0.5s;
         transition-timing-function: ease-in-out;
-        /*min-height: 300px;*/
     }
     .search_menu.absolute {
         position: absolute;
@@ -324,10 +286,8 @@
         height: 50px;
         position: relative;
         color: #fff;
-        /*border-radius: 4px;*/
         border: none;
         cursor: pointer !important;
-        /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);*/
     }
     .research:hover {
         text-decoration: none;
@@ -357,21 +317,16 @@
          display: inline-block;
          float: right;
          margin-bottom: 20px;
-        /*display: none;*/
-        /*position: absolute;*/
-        /*top: 10px;*/
-        margin-left: 10px;
-        /*bottom: 0;*/
-        width: 35px;
-        height: 35px;
-        font-size: 24px;
-        color: white;
-        background-color: rgba(50,50,50,0.75);
-        border: none;
-        /*opacity: 0.5;*/
-        vertical-align: middle;
-        line-height: normal;
-        transition: color 0.2s ease-out;
+         margin-left: 10px;
+         width: 35px;
+         height: 35px;
+         font-size: 24px;
+         color: white;
+         background-color: rgba(50,50,50,0.75);
+         border: none;
+         vertical-align: middle;
+         line-height: normal;
+         transition: color 0.2s ease-out;
     }
     .destroy:hover {
         cursor: pointer;

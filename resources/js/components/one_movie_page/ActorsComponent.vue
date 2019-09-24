@@ -48,7 +48,7 @@
             // }
         },
         mounted() {
-            console.log('actors', this.actors_parse);
+            // console.log('actors', this.actors_parse);
 
         }
     }

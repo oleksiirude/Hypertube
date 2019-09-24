@@ -83,7 +83,6 @@
                 if (error.length)
                     error[0].remove();
 
-                console.log(response);
                 let parent = document.getElementById(response['div'] + '-div');
                 let child = document.createElement('div');
                 child.innerHTML = response['error'];

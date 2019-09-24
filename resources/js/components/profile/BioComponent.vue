@@ -57,7 +57,7 @@
                         'Content-Type': 'multipart/form-data'
                     }
                 })
-                    .then(function (response){
+                    .then(function (response) {
                         let res = response.data.result;
                         if (res === true)
                         {
@@ -75,10 +75,10 @@
                             self.error = response.data.error;
                         }
                         // console.log('RESP', response.data);
-                    })
-                    // .catch((error) =>
-                    //     console.log(error)
-                    // );
+                    }).catch((error) => {
+                        // console.log(error.response.data);
+                    }
+                );
             },
         }
     }

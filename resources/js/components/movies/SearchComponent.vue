@@ -80,7 +80,7 @@
             // },
             outside: function(e) {
                 this.isHidden = true;
-                console.log('outside');
+                // console.log('outside');
             },
             find_match: function (event) {
                 let input = event.target;
@@ -92,7 +92,7 @@
                         let res = response.data;
                         if (res.result === true)
                         {
-                            console.log('true RESP', res.data);
+                            // console.log('true RESP', res.data);
                             let response = res.data;
                             self.films = response;
                         }
@@ -104,10 +104,11 @@
                                 self.films = [];
                             // self.error = response.data.error;
                         }
-                        console.log('RESP', response.data);
+                        // console.log('RESP', response.data);
                     })
-                    .catch((error) =>
-                        console.log(error)
+                    .catch((error) => {
+                        // console.log(error)
+                        }
                     );
             },
 

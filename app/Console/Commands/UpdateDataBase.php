@@ -136,6 +136,7 @@
                     $updates[$movie->imdb_code]['posters']['en_poster'] = $movie->large_cover_image;
                     $updates[$movie->imdb_code]['posters']['uk_poster'] = BASE_URL . BIG . $uk->poster_path;
                     $updates[$movie->imdb_code]['posters']['ru_poster'] = BASE_URL . BIG . $ru->poster_path;
+                    sleep(1);
                 }
                 echo count($updates) . ' new films grabbed, pushing into db...' . PHP_EOL;
                 $this->pushIntoDB($updates);

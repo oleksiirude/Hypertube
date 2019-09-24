@@ -415,6 +415,7 @@ svg:hover {
 }
 .movie_desc {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .my_slider div:focus {

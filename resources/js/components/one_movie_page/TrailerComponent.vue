@@ -17,8 +17,8 @@
 
 <style scoped>
     .trailer_div {
-        margin-top: 20px;
-        margin-bottom: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .watch-btn {
         display: inline-block;
@@ -48,5 +48,7 @@
     .caption {
         display: inline-block;
         text-transform: uppercase;
+        vertical-align: text-bottom;
+        font-size: 0.9rem;
     }
 </style>

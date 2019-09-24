@@ -1,13 +1,14 @@
 <template>
     <div>
         <p class="titles"> {{ title }}: </p>
-        <div type="text" :name="name" :placeholder="no_bio + '. '+ placeholder"
+        <textarea type="text" :name="name" :placeholder="no_bio + '. '+ placeholder"
                   class="profiledata" contenteditable="true"
-                  id="bio" @keyup="isHidden = false"
+                  id="bio"
                   maxlength="500"
                   spellcheck="false"
                   @mouseover="upHere = true" @mouseleave="upHere = false"
-        >{{ mutableBio }}</div>
+                  @keyup="check_onkeyup($event.srcElement)"
+        >{{ mutableBio }}</textarea>
         <img :src = "edit" class="edit_img" v-show="upHere">
         <span class="err_msg" @click="empty_err">{{ error }}</span>
         <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">{{ title_save | capitalize}}</button>
@@ -38,36 +39,49 @@
             }
         },
         methods: {
+            auto_grow: function(element) {
+                // console.log('el', element)
+                element.style.height = "5px";
+                element.style.height = (element.scrollHeight)+"px";
+            },
+            check_onkeyup: function (element) {
+                this.auto_grow(element);
+                this.isHidden = false;
+            },
             empty_err: function () {
                 this.error = '';
             },
 
             cancel: function () {
                 this.isHidden = true;
-                document.getElementById('bio').innerHTML = this.mutableBio;
+                document.getElementById('bio').value = this.mutableBio;
                 this.empty_err();
             },
             submit: function () {
                 let self = this;
                 const data = new FormData();
-                let info = document.getElementById('bio').innerHTML;
+                let info = document.getElementById('bio').value.trim();
                 data.append('info', info);
                 axios.post(self.action, data, {
                     headers: {
-                        'Content-Type': 'multipart/form-data'
+                        'Content-Type': 'text/plain'
                     }
                 })
                     .then(function (response) {
                         let res = response.data.result;
                         if (res === true)
                         {
-                            if (document.getElementById('bio').innerHTML.trim() == '')
+                            if (document.getElementById('bio').value.trim() == '')
                             {
                                 self.mutableBio = '';
-                                document.getElementById('bio').innerHTML = '';
+                                document.getElementById('bio').value = '';
                             }
-                            else
-                                self.mutableBio = document.getElementById('bio').innerHTML;
+                            else {
+                                let el = document.getElementById('bio');
+                                self.mutableBio = el.value.trim();
+                                el.value = self.mutableBio;
+                                self.auto_grow(el);
+                            }
                             self.isHidden = true;
                             self.empty_err();
                         }
@@ -79,7 +93,11 @@
                     }
                 );
             },
-        }
+        },
+        mounted(){
+            let element = document.getElementById('bio');
+            this.auto_grow(element);
+        },
     }
 </script>
 
@@ -95,6 +113,7 @@
         padding: 0px;
         padding-left: 5px;
         border: none;
+        overflow-y: auto;
     }
     :focus {
         outline: black auto 2px;

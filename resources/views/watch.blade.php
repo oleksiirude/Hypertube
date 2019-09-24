@@ -29,10 +29,6 @@
                             {{  $content->summary }}
                         </div>
 
-                        <trailer-component
-                                trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}">
-                        </trailer-component>
-
                         <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
 
                         <wishlist-film-page-component
@@ -48,6 +44,10 @@
                                 action_delete="{{ route('delete.film.recommendation') }}"
                                 recommendations="{{ json_encode($recommendations) }}">
                         </recommendations-film-page-component>
+
+                        <trailer-component
+                                trailer="http://www.youtube.com/embed/{{ $content->yt_trailer_code }}">
+                        </trailer-component>
 
                         <torrents-download-component
                                 torrents="{{ json_encode($content->torrents) }}">

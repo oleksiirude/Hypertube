@@ -165,7 +165,7 @@
     }
 
     .err_msg {
-        position: absolute;
+        display: block;
         color: red;
         top: 150px;
         font-size: 18px;

@@ -81,8 +81,9 @@
                 }).then(function (response) {
                     if (response.data.result === true)
                        self.addComment(self, textarea);
-                    }).catch((error) =>
-                        console.log(error)
+                    }).catch((error) => {
+                            // console.log(error)
+                        }
                     );
             },
 

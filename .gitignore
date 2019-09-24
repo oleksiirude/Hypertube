@@ -4,6 +4,8 @@
 /public/storage
 /storage/*.key
 /vendor
+/torrent-streaming/node_modules
+/torrent-streaming/files
 .env
 .phpunit.result.cache
 Homestead.json

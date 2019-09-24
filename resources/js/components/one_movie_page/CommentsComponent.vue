@@ -15,7 +15,7 @@
                         <ul v-if="parsedComments.length" class="media-list">
                             <li v-for="comment in parsedComments" class="media">
                                 <a :href="prefix_profile + comment.login" class="pull-left">
-                                    <img :src="prefix_avatar + comment.avatar" alt="" class="rounded-circle m-2">
+                                    <img :src="comment.avatar" alt="" class="rounded-circle m-2">
                                 </a>
                                 <div class="media-body">
                                 <span class="text-muted pull-right mr-2">
@@ -121,7 +121,7 @@
     }
 
     .comments-block {
-        background-color: #2f2f2f;
+        background-color: rgba(51,51,51,.4);
         word-break: break-word;
     }
 

@@ -57,7 +57,7 @@
                                 action="{{ route('add.comment') }}"
                                 comments="{{ json_encode($comments) }}"
                                 prefix_avatar="{{ env('APP_URL') }}"
-                                prefix_profile="{{ env('APP_URL') . '/profile/' }}"
+                                prefix_profile="{{'/profile/' }}"
                                 auth_login="{{ auth()->user()->login }}"
                                 auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
                         </comments-component>

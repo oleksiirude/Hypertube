@@ -1,7 +1,7 @@
 <template>
     <div style="display: inline">
-        <button type="button" v-if="!wishlistBoolean" class="btn btn-success btn-action" @click="manageWishlist(action_add)">{{ trans('titles.addWishlist') }}</button>
-        <button type="button" v-if="wishlistBoolean" class="btn btn-danger btn-action" @click="manageWishlist(action_delete)">{{ trans('titles.deleteWishlist') }}</button>
+        <button type="button" v-if="!wishlistBoolean" class="btn btn-primary" @click="manageWishlist(action_add)">{{ trans('titles.addWishlist') }}</button>
+        <button type="button" v-if="wishlistBoolean" class="btn btn-primary" @click="manageWishlist(action_delete)">{{ trans('titles.deleteWishlist') }}</button>
     </div>
 </template>
 

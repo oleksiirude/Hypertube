@@ -1,7 +1,7 @@
 <template>
-    <div class="container" style="margin-top: 2%;">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+    <div class="" style="margin-top: 2%;">
+        <div class="justify-content-center">
+            <div class="">
                 <div class="card" style="box-shadow: none">
                     <div class="card-header"><h2 class="title_topic" style="text-align: center">{{ trans('titles.downloadTorrent') }}</h2></div>
                         <table class="table table-dark">
@@ -18,7 +18,7 @@
                             <tr v-for="torrent in torrentsParsed">
                                 <td>{{ torrent.quality }}</td>
                                 <td>{{ torrent.type }}</td>
-                                <td style="color: green">{{ torrent.seeds }}</td>
+                                <td style="color: #228DFF">{{ torrent.seeds }}</td>
                                 <td>{{ torrent.size }}</td>
                                 <td><a :href="torrent.url">
                                     <img src="https://img.icons8.com/material/4ac144/256/download.png" style="width: 20px">
@@ -45,3 +45,8 @@
         },
     }
 </script>
+<style>
+    .table-dark {
+        background-color: rgba(51,51,51,.4);
+    }
+</style>

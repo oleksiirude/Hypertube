@@ -34,7 +34,6 @@
                         </trailer-component>
 
                         <video-player-component imdb-id="{{$content->imdb_code}}" :video-srcs="{{json_encode($content->magnets, TRUE)}}"></video-player-component>
-                    </div>
 
                         <wishlist-film-page-component
                                 imdb_id="{{ $content->imdb_code }}"
@@ -50,19 +49,23 @@
                                 recommendations="{{ json_encode($recommendations) }}">
                         </recommendations-film-page-component>
 
-                    </div>
                         <torrents-download-component
                                 torrents="{{ json_encode($content->torrents) }}">
                         </torrents-download-component>
+
+                        <comments-component
+                                action="{{ route('add.comment') }}"
+                                comments="{{ json_encode($comments) }}"
+                                prefix_avatar="{{ env('APP_URL') }}"
+                                prefix_profile="{{ env('APP_URL') . '/profile/' }}"
+                                auth_login="{{ auth()->user()->login }}"
+                                auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
+                        </comments-component>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-        <comments-component
-                action="{{ route('add.comment') }}"
-                comments="{{ json_encode($comments) }}"
-                prefix_avatar="{{ env('APP_URL') }}"
-                prefix_profile="{{ env('APP_URL') . '/profile/' }}"
-                auth_login="{{ auth()->user()->login }}"
-                auth_avatar="{{ env('APP_URL') . auth()->user()->avatar }}">
-        </comments-component>
+    </div>
 @endsection

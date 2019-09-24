@@ -119,7 +119,7 @@
     .search_div {
         display: flex;
     }
-    .search_form_upper {
+    .search_form {
         /*margin: auto;*/
         width: 200px;
         background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.35) 79%,rgba(255,255,255,0.45) 100%);
@@ -149,7 +149,7 @@
         color: rgba(255,255,255,0.8);
         right: 2px;
         top: 0;
-        background: #4f4d4c;
+        background: transparent;
         border: 0;
         transition-duration: 0.2s;
         transition-timing-function: ease-in;
@@ -160,6 +160,7 @@
     }
     #search_input:focus {
         color: rgba(255,255,255,0.9);
+        box-shadow: 0 0 0 0rem rgba(236, 236, 236, 0.2);
         outline: 0;
     }
     .searchsuggestions {

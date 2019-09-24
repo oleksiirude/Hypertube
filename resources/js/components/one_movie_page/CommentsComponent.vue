@@ -1,5 +1,5 @@
 <template>
-        <div class="col-md-6 col-md-offset-2 col-sm-12 m-auto pt-2">
+        <div class="">
             <div class="comment-wrapper">
                 <div class="panel panel-info">
                     <div class="panel-heading title_topic">

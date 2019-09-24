@@ -1,13 +1,13 @@
 <template>
     <div>
         <p class="titles"> {{ title }}: </p>
-        <textarea type="text" :name="name" :placeholder="no_bio + '. '+ placeholder"
-                  class="profiledata"
+        <div type="text" :name="name" :placeholder="no_bio + '. '+ placeholder"
+                  class="profiledata" contenteditable="true"
                   id="bio" @keyup="isHidden = false"
                   maxlength="500"
                   spellcheck="false"
                   @mouseover="upHere = true" @mouseleave="upHere = false"
-        >{{ mutableBio }}</textarea>
+        >{{ mutableBio }}</div>
         <img :src = "edit" class="edit_img" v-show="upHere">
         <span class="err_msg" @click="empty_err">{{ error }}</span>
         <button type="submit" v-show="!isHidden" id="bio_btn" class="btn edit_submit" @click="submit">{{ title_save | capitalize}}</button>
@@ -44,13 +44,13 @@
 
             cancel: function () {
                 this.isHidden = true;
-                document.getElementById('bio').value = this.mutableBio;
+                document.getElementById('bio').innerHTML = this.mutableBio;
                 this.empty_err();
             },
             submit: function () {
                 let self = this;
                 const data = new FormData();
-                let info = document.getElementById('bio').value;
+                let info = document.getElementById('bio').innerHTML;
                 data.append('info', info);
                 axios.post(self.action, data, {
                     headers: {
@@ -61,31 +61,31 @@
                         let res = response.data.result;
                         if (res === true)
                         {
-                            if (document.getElementById('bio').value.trim() == '')
+                            if (document.getElementById('bio').innerHTML.trim() == '')
                             {
                                 self.mutableBio = '';
-                                document.getElementById('bio').value = '';
+                                document.getElementById('bio').innerHTML = '';
                             }
                             else
-                                self.mutableBio = document.getElementById('bio').value;
+                                self.mutableBio = document.getElementById('bio').innerHTML;
                             self.isHidden = true;
                             self.empty_err();
                         }
                         else {
                             self.error = response.data.error;
                         }
-                        console.log('RESP', response.data);
+                        // console.log('RESP', response.data);
                     })
-                    .catch((error) =>
-                        console.log(error.response.data)
-                    );
+                    // .catch((error) =>
+                    //     console.log(error)
+                    // );
             },
         }
     }
 </script>
 
 <style scoped>
-    textarea {
+    #bio {
         background-color: transparent;
         color: white;
         word-wrap: break-word;

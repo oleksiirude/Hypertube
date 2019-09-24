@@ -21,7 +21,7 @@
                                 <td style="color: #228DFF">{{ torrent.seeds }}</td>
                                 <td>{{ torrent.size }}</td>
                                 <td><a :href="torrent.url">
-                                    <img src="https://img.icons8.com/material/4ac144/256/download.png" style="width: 20px">
+                                    <img src="http://localhost:8080/images/service/download.png" style="width: 20px">
                                 </a></td>
                             </tr>
                             </tbody>
@@ -48,5 +48,8 @@
 <style>
     .table-dark {
         background-color: rgba(51,51,51,.4);
+    }
+    .card {
+        background: transparent;
     }
 </style>

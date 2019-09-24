@@ -350,9 +350,15 @@ svg:hover {
 }
 
 /*one film page*/
+.movie_cont .btn-primary {
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 200px;
+}
+
 .slider_movie {
     width: 100%;
-    height: calc(100% - 160px);
+    /*height: calc(100% - 160px);*/
     background: #221f1f;
     z-index: 6;
     opacity: 1;
@@ -374,19 +380,6 @@ svg:hover {
     position: relative;
 }
 
-.movie_profile {
-    position: absolute;
-    text-align: left;
-    vertical-align: top;
-    -webkit-filter: saturate(116%);
-    transition-property: opacity;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in;
-    z-index: 9;
-    max-height: calc(100vh - 270px);
-    /*overflow-y: auto;*/
-    padding-left: 35px;
-}
 .slider .title {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
     padding: 1.25rem;
@@ -410,20 +403,34 @@ svg:hover {
     -webkit-filter: saturate(116%);
     -webkit-mask-image: -webkit-gradient(linear, right top, left top, color-stop(1,rgba(0,0,0,1)), color-stop(0.5,rgba(0,0,0,1)), color-stop(0,rgba(0,0,0,0)));
     opacity: 1;
-    max-height: calc(100vh - 260px);
-    min-height: 500px;
+    position: sticky;
     left: 0;
+    top: 0;
+    max-height: calc(100vh);
+    min-height: 500px;
     transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-in;
+
 }
 .slider_movie .movie_profile {
     width: calc(65% - 30px);
     max-width: 700px;
-    position: absolute;
-    top: 20px;
+    position: relative;
+    /*position: absolute;*/
+    margin-top: -100vh;
     left: 35%;
     right: 10px;
+    text-align: left;
+    vertical-align: top;
+    -webkit-filter: saturate(116%);
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+    z-index: 9;
+    /*max-height: calc(100vh - 270px);*/
+    /*overflow-y: auto;*/
+    padding-left: 35px;
 }
 
 .slider_movie .title {
@@ -493,6 +500,12 @@ svg:hover {
     }
     .slider_movie .title {
         font-size: 22px;
+    }
+    .slider_movie .movie_profile {
+        width: calc(95% - 30px);
+        max-width: 700px;
+        left: 5%;
+        right: 10px;
     }
 }
 

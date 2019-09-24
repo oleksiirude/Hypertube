@@ -48,7 +48,7 @@
                         return this.subtitles = res.data;
                     })
                     .catch(() => {
-                        console.log('subtitles not found');
+                        // console.log('subtitles not found');
                         this.loading = false;
                     });
             },
@@ -63,7 +63,7 @@
             this.getSubs();
         },
         mounted() {
-            console.log(this.subtitles);
+            // console.log(this.subtitles);
         }
     }
 </script>

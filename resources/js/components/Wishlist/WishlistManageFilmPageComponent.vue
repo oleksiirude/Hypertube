@@ -38,8 +38,9 @@
                     imdb_id: self.imdb_id,
                 }).then(function (response) {
                     self.wishlistBoolean = response.data.result;
-                }).catch((error) =>
-                    console.log(error)
+                }).catch((error) => {
+                        // console.log(error);
+                    }
                 );
             }
         }

@@ -91,8 +91,9 @@
                         }
                         // console.log('RESP', response.data);
                     })
-                    .catch((error) =>
-                        console.log(error.response.data)
+                    .catch((error) => {
+                        // console.log(error.response.data);
+                        }
                     );
             },
         }

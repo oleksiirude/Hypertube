@@ -146,7 +146,7 @@
             },
             open_menu: function () {
               this.isOpen = true;
-              console.log('OPEN');
+              // console.log('OPEN');
               let films = document.getElementById('movies_list');
               films.style.width = "calc(100% - 280px)";
               films.style.transform = "translateX(260px)";
@@ -155,7 +155,7 @@
 
             close_menu: function () {
                 this.isOpen = false;
-                console.log('CLOSE');
+                // console.log('CLOSE');
                 let films = document.getElementById('movies_list');
                 films.style.width = "calc(100% - 30px)";
                 films.style.transform = "translateX(10px)";
@@ -166,13 +166,13 @@
                 let year = e;
                 this.year_from = year[0];
                 this.year_to = year[1];
-                console.log('change_year', e);
+                // console.log('change_year', e);
 
             },
             change_rating: function (e) {
                     let rating = e;
                     this.rating = rating;
-                    console.log('change_rating', rating);
+                    // console.log('change_rating', rating);
             },
             submit: function () {
                 let self = this;
@@ -201,10 +201,11 @@
                         else {
                             // self.error = response.data.error;
                         }
-                        console.log('RESP', response.data);
+                        // console.log('RESP', response.data);
                     })
-                    .catch((error) =>
-                        console.log(error.response.data)
+                    .catch((error) => {
+                        // console.log(error.response.data);
+                        }
                     );
             },
             // change_rating: function (ratingSlider) {

@@ -4,6 +4,7 @@
     
     use Exception;
     use PDOException;
+    use Illuminate\Session\TokenMismatchException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Http\Exceptions\PostTooLargeException;
 
@@ -61,6 +62,9 @@
             }
             else if ($e instanceof PDOException) {
                 return response()->view('errors.500', [], 500);
+            }
+            else if ($e instanceof TokenMismatchException) {
+                return response()->view('auth.login', [], 200);
             }
             
             return parent::render($request, $e);

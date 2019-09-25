@@ -8,7 +8,6 @@
                             <thead style="text-align: center">
                             <tr>
                                 <th scope="col">{{ trans('titles.quality') }}</th>
-                                <th scope="col">{{ trans('titles.type') }}</th>
                                 <th scope="col">{{ trans('titles.seeds') }}</th>
                                 <th scope="col">{{ trans('titles.size') }}</th>
                                 <th scope="col">{{ trans('titles.download') }}</th>
@@ -17,7 +16,6 @@
                             <tbody style="text-align: center">
                             <tr v-for="torrent in torrentsParsed">
                                 <td>{{ torrent.quality }}</td>
-                                <td>{{ torrent.type }}</td>
                                 <td style="color: #228DFF">{{ torrent.seeds }}</td>
                                 <td>{{ torrent.size }}</td>
                                 <td><a :href="torrent.url">

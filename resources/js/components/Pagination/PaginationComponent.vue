@@ -99,7 +99,7 @@
                             }
                             else if (response['result'] === false) {
                                 if (this.page === 1) {
-                                    self.text = 'Empty... Please, try another parameters';
+                                    self.text = self.trans('titles.emptySearch');
                                 }
                                 else
                                     btn.hidden = true;

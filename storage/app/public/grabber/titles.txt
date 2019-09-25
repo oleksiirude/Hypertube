@@ -13049,5 +13049,53 @@ tt0147800;10 Things I Hate About You;10 причин моєї ненависті
 tt2395385;+1;Plus One;+1
 tt3208802;Bikini Model Academy;Bikini Model Academy;Bikini Model Academy
 tt0078212;The Swissmakers;The Swissmakers;The Swissmakers
+tt0269856;Ritual;Ritual;Ritual
+tt8418126;Lie Low;Lie Low;Залечь на дно
+tt6827388;The Field;The Field;The Field
+tt8328716;Doom: Annihilation;Doom: Анігіляція;Дум: Аннигиляция
+tt0035019;The Major and the Minor;The Major and the Minor;The Major and the Minor
+tt0099939;King of New York;Король Нью-Йорка;Король Нью-Йорка
+tt0997152;The Experiment;Експеримент;Эксперимент
+tt4019346;Brutal;Brutal;Brutal
+tt0081975;Absolution;Відпущення гріхів;Absolution
+tt0032701;The Letter;Лист;Письмо
+tt3901256;KILD TV;KILD TV;Убийство на студии
+tt0067500;Tombs of the Blind Dead;Tombs of the Blind Dead;Могилы слепых мертвецов
+tt6185026;The Baylock Residence;The Baylock Residence;Дом Бейлоков
+tt0444672;Moving McAllister;Moving McAllister;Бегущий МакАллистер
+tt6184194;Monky;Monky;Monky
+tt1436045;13 Assassins;13 убивць;13 убийц
+tt0059530;Hands of a Gunfighter;Hands of A Gunfighter;Hands of A Gunfighter
+tt0094739;Big Business;Великий бізнес;Большой бизнес
+tt0063465;Project X;Project X;Project X
+tt7331424;Bare Knuckle Brawler;Bare Knuckle Brawler;Bare Knuckle Brawler
+tt0168972;Love & Pop;Love & Pop;Love & Pop
+tt6489160;Harvie and the Magic Museum;Гарві і магічний музей;Гурвинек. Волшебная игра
+tt5342950;The Wolf Hour;The Wolf Hour;Час волка
+tt0075164;Satan's Slave;Satan's Slave;Satan's Slave
+tt0110631;Nightwatch;Nightwatch;Ночной сторож
+tt6138688;Once Upon A Time;Once Upon a Time;Once Upon a Time
+tt7520286;Bisbee '17;Bisbee '17;Bisbee '17
 tt0078212;The Swissmakers;The Swissmakers;The Swissmakers
-tt0078212;The Swissmakers;The Swissmakers;The Swissmakers
+tt0429715;The Business;The Business;Конкретный бизнес
+tt0015014;The Inhuman Woman;L'Inhumaine;L'Inhumaine
+tt1403047;Aurora;Aurora;Аврора
+tt4466490;Sieranevada;Sieranevada;Сьераневада
+tt6358156;Brecht;Brecht;Brecht
+tt0180748;In China They Eat Dogs;In China They Eat Dogs;Быстрые стволы
+tt0080931;Nightmare City;Nightmare City;Nightmare City
+tt0311648;Pieces of April;Свято Ейпріл;Праздник Эйприл
+tt3398436;German Angst;German Angst;Немецкий страх
+tt0035462;Tower of Terror;Tower of Terror;Tower of Terror
+tt2852406;Omar;Omar;Омар
+tt0063595;She-Devils on Wheels;She-Devils on Wheels;She-Devils on Wheels
+tt0052929;Invisible Invaders;Invisible Invaders;Invisible Invaders
+tt8749922;Grand-Daddy Day Care;Grand-Daddy Day Care;Grand-Daddy Day Care
+tt0409860;Cutie Honey: Live Action;Cutie Honey;Cutie Honey
+tt0066498;The Ear;The Ear;The Ear
+tt7553766;Trauma Is a Time Machine;Trauma is a Time Machine;Trauma is a Time Machine
+tt0107478;Made in America;Зроблено в Америці;Сделано в Америке
+tt0084690;Six Pack;Six Pack;Six Pack
+tt4630550;The Unknown Girl;Невідома;Неизвестная
+tt0095513;The Legend of the Holy Drinker;The Legend of the Holy Drinker;Легенда о святом пропойце
+tt5792656;Running with the Devil;Running with the Devil;Кокаиновый барон

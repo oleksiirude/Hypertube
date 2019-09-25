@@ -3,9 +3,9 @@
     namespace App\Exceptions;
     
     use Exception;
+    use PDOException;
     use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
     use Illuminate\Http\Exceptions\PostTooLargeException;
-    use Symfony\Component\HttpKernel\Exception\HttpException;
 
     class Handler extends ExceptionHandler
     {
@@ -48,15 +48,19 @@
          */
         public function render($request, Exception $e)
         {
-            if ($e instanceof PostTooLargeException)
+            if ($e instanceof PostTooLargeException) {
                 return response()->json([
                     'result' => false,
                     'error' => trans('errors.tooBigImage')
                 ]);
+            }
             else if ($this->isHttpException($e)) {
                 if ($e->getCode() === 404) {
                     return response()->view('errors.404', [], 404);
                 }
+            }
+            else if ($e instanceof PDOException) {
+                return response()->view('errors.500', [], 500);
             }
             
             return parent::render($request, $e);

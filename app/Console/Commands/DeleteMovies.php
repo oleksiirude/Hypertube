@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\MoviesVisitHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 
 class DeleteMovies extends Command
 {

@@ -5,8 +5,8 @@
     use Auth;
     use App\User;
     use Validator;
-    use Illuminate\Support\Facades\Hash;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Hash;
     
     class ProfileController extends Controller
     {

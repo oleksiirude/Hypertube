@@ -62,9 +62,6 @@
         created() {
             this.getSubs();
         },
-        mounted() {
-            // console.log(this.subtitles);
-        }
     }
 </script>
 

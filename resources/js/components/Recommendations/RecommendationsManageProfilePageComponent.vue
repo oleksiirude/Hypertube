@@ -27,10 +27,6 @@
             'action'
         ],
 
-        mounted () {
-          console.log(this.recommendationsParsed);
-        },
-
         data: function() {
             return {
                 recommendationsParsed: JSON.parse(this.recommendations),

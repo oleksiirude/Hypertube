@@ -6,7 +6,6 @@
     use DB;
     use GuzzleHttp\Client;
     use Illuminate\Console\Command;
-    use SebastianBergmann\CodeCoverage\Report\PHP;
 
     class UpdateDataBase extends Command
     {

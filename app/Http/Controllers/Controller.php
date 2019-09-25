@@ -2,8 +2,6 @@
 
     namespace App\Http\Controllers;
     
-    use App\User;
-    use Illuminate\Support\Str;
     use Illuminate\Foundation\Bus\DispatchesJobs;
     use Illuminate\Routing\Controller as BaseController;
     use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,7 +12,8 @@
         use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
         
         // manage creating necessary directories
-        protected function manageDir($login) {
+        protected function manageDir($login)
+        {
             if (!file_exists(public_path() . PATH_TO_PROFILE))
                 mkdir(public_path() . PATH_TO_PROFILE);
             if (!file_exists(public_path() . PATH_TO_PROFILE . $login))
@@ -22,7 +21,8 @@
         }
         
         // specify auth validation errors
-        protected function specifyValidationErrors($validation) {
+        protected function specifyValidationErrors($validation)
+        {
             $message = $validation->errors()->first();
             $div = key($validation->errors()->toArray());
             

@@ -3,9 +3,9 @@
     namespace App\Http\Controllers\Auth\Oauth;
     
     use App;
+    use Hash;
     use App\User;
     use Exception;
-    use Hash;
     use App\Http\Controllers\LocaleController;
     use Laravel\Socialite\Facades\Socialite;
     use App\Http\Controllers\Controller;
@@ -20,8 +20,7 @@
                 $socialite = Socialite::driver($provider);
                 return $socialite->redirect();
             } catch (Exception $exception) {
-                dd($exception->getMessage());
-                // abort(401);
+                abort(404);
             }
         }
         
@@ -34,8 +33,7 @@
                 
                 $this->login($user);
             } catch (Exception $exception) {
-                dd($exception->getMessage());
-                // abort(401);
+                abort(404);
             }
             
             return redirect('/');

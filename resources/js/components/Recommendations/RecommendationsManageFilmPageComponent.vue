@@ -37,15 +37,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .btn-success {
-        background-color: #1f5335;
-        border-color: #000;
-    }
-
-    .btn-success:hover {
-        background-color: #2fa360;
-        border-color: #2d995b;
-    }
-</style>

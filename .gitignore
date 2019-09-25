@@ -6,7 +6,6 @@
 /vendor
 /torrent-streaming/node_modules
 /torrent-streaming/files
-.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

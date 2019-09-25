@@ -4,9 +4,9 @@
     
     use App\User;
     use Validator;
-    use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
+    use App\Http\Controllers\Controller;
     use Illuminate\Foundation\Auth\RegistersUsers;
     
     class RegisterController extends Controller

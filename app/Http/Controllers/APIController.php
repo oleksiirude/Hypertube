@@ -96,6 +96,7 @@
                 else
                     $actor->profile_path = BASE_URL . SMALL . $actor->profile_path;
             }
+            
             return $cast;
         }
         
@@ -110,6 +111,7 @@
                     return $item;
                 }
             }
+            
             return false;
         }
         

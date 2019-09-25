@@ -26,14 +26,6 @@
             'property',
             'action'
         ],
-
-<<<<<<< HEAD
-=======
-        mounted () {
-
-        },
-
->>>>>>> a9fad93a54398f56ccedd906e4a7f0e888e2db48
         data: function() {
             return {
                 recommendationsParsed: JSON.parse(this.recommendations),

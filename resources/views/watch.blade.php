@@ -38,6 +38,7 @@
                                 action_history="{{ route('add.film.history') }}"
                                 wishlist="{{ json_encode($wishlist) }}">
                         </wishlist-film-page-component>
+
                         <recommendations-film-page-component
                                 imdb_id="{{ $content->imdb_code }}"
                                 action_add="{{ route('add.film.recommendation') }}"

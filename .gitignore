@@ -1,4 +1,5 @@
 /.idea
+/.DS_Store
 /node_modules
 /public/hot
 /public/storage
@@ -6,6 +7,7 @@
 /vendor
 /torrent-streaming/node_modules
 /torrent-streaming/files
+.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

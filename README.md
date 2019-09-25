@@ -1,7 +1,5 @@
 # Hypertube
 Hypertube project at UNIT Factory (School 42) 
 
-
-cron job:
-
-`0 0 * * * cd /path-to-your-project &&  php artisan command:deletemovies`
+1. Launch "sh start.sh" in root
+2. Launch the same in torrent-streaming dir

@@ -62,6 +62,11 @@
         created() {
             this.getSubs();
         },
+<<<<<<< HEAD
+=======
+        mounted() {
+        }
+>>>>>>> a9fad93a54398f56ccedd906e4a7f0e888e2db48
     }
 </script>
 

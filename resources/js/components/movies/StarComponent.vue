@@ -57,9 +57,7 @@
 </script>
 
 <style scoped>
-    .stars {
-        /*margin-top: 20px;*/
-    }
+
     .icon.star:before {
         content: '\f005';
         font-family: FontAwesome;

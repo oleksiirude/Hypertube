@@ -31,6 +31,6 @@ We've used torrent-stream library for video streaming, yts and TMDB APIs for col
 ![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/research.png)
 
 ### Player:
-![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/player.png)
+![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/player.jpg)
 
 All project requirements you can find in Subject.pdf<br>

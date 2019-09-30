@@ -22,15 +22,15 @@ We've used torrent-stream library for video streaming, yts and TMDB APIs for col
 </pre>
 
 ### Welcome page:
-![alt text](https://github.com/oleksiirude/Hypertube/storage/pics/main.jpg)
+![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/main.jpg)
 
 ### Search:
-![alt text](https://github.com/oleksiirude/Hypertube/storage/pics/search.png)
+![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/search.png)
 
 ### Search by title:
-![alt text](https://github.com/oleksiirude/Hypertube/storage/pics/research.png)
+![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/research.png)
 
 ### Player:
-![alt text](https://github.com/oleksiirude/Hypertube/storage/pics/player.png)
+![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/player.png)
 
 All project requirements you can find in Subject.pdf<br>

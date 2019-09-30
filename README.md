@@ -43,5 +43,5 @@ We've used torrent-stream library for video streaming, yts and TMDB APIs for col
 ### Player:
 ![alt text](https://github.com/oleksiirude/Hypertube/blob/master/storage/pics/player.jpg)
 
-Correction form you can find in storage/correction_form
+Correction form you can find in storage/correction_form<br>
 All project requirements you can find in Subject.pdf<br>

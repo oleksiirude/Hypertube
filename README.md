@@ -1,4 +1,4 @@
-# Matcha [125/125]
+# Hypertube [125/125]
 This project at UNIT Factory (School 42) is about creating a web application that allows the user to research and watch films.
 
 Project is done with 2 outstanding developers [@dashacherednichenko](https://github.com/dashacherednichenko) and [@hromadsky](https://github.com/hromadsky)
@@ -19,6 +19,16 @@ We've used torrent-stream library for video streaming, yts and TMDB APIs for col
 4. Run bash script at the root "sh start.sh" into one term window
 5. Run bash script at ~Hypertube/torrent-streaming "sh start.sh" into second term window
 6. Enjoy films!
+</pre>
+
+### Functionality:
+<pre>
+1. Complete auth functionality with password recovery
+2. Capabilty to auth with 4 external resources (42 intra, github, google+, linkedin)
+3. Film research (by title, by genre, year, etc)
+4. Save films to wishlist, recommend films to others and see all watched films in his profile page
+5. Watch selected film online, change quality, subtitles, volume and speed
+6. Three languages are available (english, ukrainian, russian)
 </pre>
 
 ### Welcome page:

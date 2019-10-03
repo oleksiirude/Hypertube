@@ -26,7 +26,7 @@ We've used torrent-stream library for video streaming, yts and TMDB APIs for col
 1. Complete auth functionality with password recovery
 2. Capabilty to auth with 4 external resources (42 intra, github, google+, linkedin)
 3. Film research (by title, by genre, year, etc)
-4. Save films to wishlist, recommend films to others and see all watched films in his profile page
+4. Save films to wishlist, recommend films to others and see all watched films in profile page
 5. Watch selected film online, change quality, subtitles, volume and speed
 6. Three languages are available (english, ukrainian, russian)
 </pre>
